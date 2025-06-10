@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohol(お酒) Lv.6</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* メインテーマカラー */
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .introduction {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 5px solid #1976D2;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        .task {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .task-title-en {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #333;
+        }
+        .task-title-ja {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .answer-level {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+        }
+        .answer-level:first-of-type {
+             border-top: none;
+             padding-top: 0;
+             margin-top: 0;
+        }
+        .answer-level h4 {
+            color: #1976D2;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Container for "Show English" button and Play button */
+        .english-controls-container {
+            display: flex;
+            align-items: center; /* Vertically aligns the toggle button and play button */
+            margin-bottom: 8px;  /* Space below the button row, before English text appears */
+        }
+
+        .toggle-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 8px; /* Space between toggle and play button (or next toggle button) */
+        }
+        .toggle-button:hover {
+            background-color: #1976D2;
+        }
+
+        /* Play button style */
+        .play-button {
+            background: none;
+            border: none;
+            font-size: 1.6em; /* Icon size */
+            color: #1976D2;   /* Icon color, matches theme */
+            cursor: pointer;
+            padding: 0;
+        }
+        .play-button:hover {
+            color: #1565C0; /* Darker shade on hover */
+        }
+
+        /* Div that contains the English answer text, display toggled by JS */
+        .english-text-div {
+            margin-bottom: 10px; /* Space below English text when visible */
+        }
+
+        .english-answer { /* The actual styled English text block */
+            background-color: #e3f2fd;
+            padding: 12px;
+            border: 1px solid #90caf9;
+            border-radius: 4px;
+        }
+        .japanese-translation {
+            margin-top: 5px;
+            color: #444;
+            font-style: italic;
+        }
+        .japanese-hint { /* Style for the new hint text */
+            margin-top: 3px;
+            margin-bottom: 10px;
+            color: #757575; /* Slightly lighter color */
+            font-size: 0.9em;
+            font-style: italic;
+            padding-left: 15px; /* Indent for visual distinction */
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .vocab-table th, .vocab-table td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        .vocab-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        .vocab-table td:first-child {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Alcohol(お酒) Lv.6</h1>
+
+    <div class="introduction">
+        <p>Describe the following items in your own words.</p>
+        <p>以下の物事を自分の言葉で説明してください。</p>
+    </div>
+
+    <div id="tasks-container">
+        <!-- Tasks will be dynamically inserted here by JavaScript -->
+    </div>
+
+    <script>
+        const tasksData = [
+            {
+                id: 1,
+                title_en: "1. What would you do if alcohol was prohibited in your country?",
+                title_ja: "自分の国でお酒が禁止されたらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "Initially, I would be very surprised.",
+                        ja: "最初は、とても驚くでしょう。",
+                        ja_hint: "最初は、私はだろう とても驚く。",
+                        vocab: [
+                            { word: "initially", meaning: "最初は、初めに" },
+                            { word: "surprised", meaning: "驚いた" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "However, I would respect the law and stop drinking.",
+                        ja: "しかし、法律を尊重し、お酒を飲むのをやめるでしょう。",
+                        ja_hint: "しかし、私はだろう 尊重する 法律を そして やめる 飲むことを。",
+                        vocab: [
+                            { word: "respect the law", meaning: "法律を尊重する" },
+                            { word: "stop drinking", meaning: "飲酒をやめる" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I'd probably look for healthier alternatives to enjoy, like craft sodas or non-alcoholic cocktails.",
+                        ja: "クラフトソーダやノンアルコールカクテルのような、楽しめるより健康的な代替品を探すでしょう。",
+                        ja_hint: "私はだろう おそらく探す より健康的な代替品を 楽しむための、例えば クラフトソーダやノンアルコールカクテルのように。",
+                        vocab: [
+                            { word: "alternatives", meaning: "代替品、選択肢" },
+                            { word: "craft soda", meaning: "クラフトソーダ" },
+                            { word: "non-alcoholic", meaning: "ノンアルコールの" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "I would also be concerned about the economic impact on businesses like bars and restaurants that rely on alcohol sales.",
+                        ja: "また、お酒の販売に依存しているバーやレストランのようなビジネスへの経済的影響も心配になるでしょう。",
+                        ja_hint: "私はまただろう 心配する 経済的な影響について ビジネスへの 例えば バーやレストランのように 頼っている お酒の販売に。",
+                        vocab: [
+                            { word: "be concerned about", meaning: "～について心配する" },
+                            { word: "economic impact", meaning: "経済的影響" },
+                            { word: "rely on", meaning: "～に頼る、依存する" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Ultimately, while I'd miss social drinking, I would try to see the potential positive side, such as a potential decrease in alcohol-related health problems and accidents.",
+                        ja: "最終的には、付き合いでお酒を飲むのが恋しくなるでしょうが、アルコール関連の健康問題や事故が減少する可能性など、潜在的な良い側面を見ようと努めるでしょう。",
+                        ja_hint: "最終的に、一方では私は恋しくなるだろう 付き合いの飲み会を、私はだろう 試みる 見ることを その潜在的な良い側面を、例えば 潜在的な減少 アルコール関連の健康問題や事故の。",
+                        vocab: [
+                            { word: "ultimately", meaning: "最終的に" },
+                            { word: "social drinking", meaning: "付き合いでの飲酒" },
+                            { word: "potential", meaning: "潜在的な" },
+                            { word: "decrease", meaning: "減少" },
+                            { word: "alcohol-related", meaning: "アルコール関連の" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title_en: "2. If you were told by your doctor that you could never drink alcohol again, how would you react?",
+                title_ja: "お医者さんにもう二度とお酒を飲まないように言われたらどういうリアクションをしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would be a little disappointed at first.",
+                        ja: "最初は少しがっかりするでしょう。",
+                        ja_hint: "私はだろう 少しがっかりする 最初は。",
+                        vocab: [
+                            { word: "disappointed", meaning: "がっかりした" },
+                            { word: "at first", meaning: "最初は" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "However, I would take the doctor's advice seriously because my health is important.",
+                        ja: "しかし、自分の健康は重要なので、医師のアドバイスを真剣に受け止めるでしょう。",
+                        ja_hint: "しかし、私はだろう 受け止める 医者のアドバイスを 真剣に なぜなら 私の健康は 重要だから。",
+                        vocab: [
+                            { word: "take ... seriously", meaning: "～を真剣に受け止める" },
+                            { word: "advice", meaning: "アドバイス、助言" },
+                            { word: "health", meaning: "健康" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I'd explain the situation to my friends so they would understand why I'm not drinking at gatherings.",
+                        ja: "友人たちに状況を説明し、なぜ私が集まりで飲まないのかを理解してもらうでしょう。",
+                        ja_hint: "私はだろう 説明する その状況を 私の友達に そうすれば 彼らは理解するだろう なぜ私が飲まないのか 集まりで。",
+                        vocab: [
+                            { word: "explain", meaning: "説明する" },
+                            { word: "situation", meaning: "状況" },
+                            { word: "gatherings", meaning: "集まり、会合" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "It might be a good opportunity to explore new hobbies and ways to socialize that don't revolve around alcohol.",
+                        ja: "お酒中心ではない新しい趣味や付き合い方を探求する良い機会になるかもしれません。",
+                        ja_hint: "それは かもしれない 良い機会 探求するための 新しい趣味や方法を 付き合うための しない 回転しない お酒を中心に。",
+                        vocab: [
+                            { word: "opportunity", meaning: "機会" },
+                            { word: "explore", meaning: "探求する" },
+                            { word: "socialize", meaning: "付き合う、交流する" },
+                            { word: "revolve around", meaning: "～を中心に展開する" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Ultimately, I would prioritize my long-term well-being over the temporary pleasure of drinking, and I'd adapt to a new, healthier lifestyle.",
+                        ja: "最終的には、飲酒という一時的な楽しみよりも長期的な健康を優先し、新しい、より健康的なライフスタイルに適応するでしょう。",
+                        ja_hint: "最終的に、私はだろう 優先する 私の長期的な健康を 一時的な楽しみより 飲酒の、そして 私はだろう 適応する 新しい、より健康的なライフスタイルに。",
+                        vocab: [
+                            { word: "prioritize", meaning: "～を優先する" },
+                            { word: "long-term well-being", meaning: "長期的な健康・幸福" },
+                            { word: "temporary pleasure", meaning: "一時的な楽しみ" },
+                            { word: "adapt to", meaning: "～に適応する" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title_en: "3. What would you do if you realized that your underage son/daughter was drunk?",
+                title_ja: "未成年の息子または娘が酔っ払っていると気付いたらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "First, I would make sure they are safe.",
+                        ja: "まず、彼らが安全であることを確認します。",
+                        ja_hint: "まず、私はだろう 確認する 彼らが安全であることを。",
+                        vocab: [
+                            { word: "make sure", meaning: "確認する、確かめる" },
+                            { word: "safe", meaning: "安全な" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would be very worried and a little angry, but I'd try to stay calm.",
+                        ja: "とても心配し、少し腹も立ちますが、冷静でいようと努めるでしょう。",
+                        ja_hint: "私はだろう とても心配し そして 少し怒る、しかし 私はだろう 試みる 冷静でいることを。",
+                        vocab: [
+                            { word: "worried", meaning: "心配している" },
+                            { word: "stay calm", meaning: "冷静でいる" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "The next day, when they are sober, I would have a serious conversation with them about the dangers of underage drinking.",
+                        ja: "翌日、彼らの酔いが覚めたら、未成年飲酒の危険性について真剣な話し合いをします。",
+                        ja_hint: "次の日、彼らがしらふの時に、私はだろう 持つ 真剣な会話を 彼らと 危険性について 未成年飲酒の。",
+                        vocab: [
+                            { word: "sober", meaning: "しらふの、酔っていない" },
+                            { word: "have a serious conversation", meaning: "真剣な話し合いをする" },
+                            { word: "dangers", meaning: "危険性" },
+                            { word: "underage drinking", meaning: "未成年飲酒" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "I would try to understand why it happened, whether it was due to peer pressure or simple curiosity.",
+                        ja: "それが仲間からのプレッシャーによるものだったのか、それとも単なる好奇心からだったのか、なぜそれが起こったのかを理解しようと努めます。",
+                        ja_hint: "私はだろう 試みる 理解することを なぜそれが起こったのか、それが ～のためだったかどうか 仲間からの圧力 または 単純な好奇心。",
+                        vocab: [
+                            { word: "peer pressure", meaning: "仲間からの圧力" },
+                            { word: "curiosity", meaning: "好奇心" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "My goal would be to educate them and establish clear rules and consequences, not just punish them, to prevent it from happening again.",
+                        ja: "私の目標は、単に罰するのではなく、それが二度と起こらないように彼らを教育し、明確なルールと結果（罰則）を設けることです。",
+                        ja_hint: "私の目標は だろう 教育すること 彼らを そして 確立すること 明確なルールと結果を、ただ罰するのではなく 彼らを、防ぐために それが再び起こることから。",
+                        vocab: [
+                            { word: "educate", meaning: "教育する" },
+                            { word: "establish", meaning: "確立する、設ける" },
+                            { word: "consequences", meaning: "結果、(悪い行いに対する)罰" },
+                            { word: "prevent ... from ~ing", meaning: "…が～するのを防ぐ" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title_en: "4. If your best friend got drunk and told you that they're in love with you, how would you react?",
+                title_ja: "酔っ払った親友に告白されたらどういうリアクションをしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would be very surprised and probably a bit awkward.",
+                        ja: "とても驚き、おそらく少し気まずくなるでしょう。",
+                        ja_hint: "私はだろう とても驚く そして おそらく少し気まずい。",
+                        vocab: [
+                            { word: "awkward", meaning: "気まずい、ぎこちない" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "First, I would make sure they get home safely.",
+                        ja: "まず、彼らが安全に家に帰れるようにします。",
+                        ja_hint: "まず、私はだろう 確認する 彼らが家に帰ることを 安全に。",
+                        vocab: [
+                            { word: "make sure", meaning: "確認する、確かめる" },
+                            { word: "safely", meaning: "安全に" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I wouldn't give an immediate answer because they are not sober.",
+                        ja: "彼らはしらふではないので、すぐには返事をしないでしょう。",
+                        ja_hint: "私はだろうない 与える すぐの返事を なぜなら 彼らはしらふではないから。",
+                        vocab: [
+                            { word: "immediate answer", meaning: "即答、すぐの返事" },
+                            { word: "sober", meaning: "しらふの、酔っていない" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "I would suggest we talk about it again when they are clear-headed to see if they meant it.",
+                        ja: "彼らが本気だったのか確かめるために、頭がはっきりしている時にもう一度そのことについて話そうと提案します。",
+                        ja_hint: "私はだろう 提案する 私たちがそれについて再び話すことを 彼らが頭がはっきりしている時に 確かめるために 彼らがそれを本気で言ったかどうか。",
+                        vocab: [
+                            { word: "suggest", meaning: "提案する" },
+                            { word: "clear-headed", meaning: "頭がはっきりしている" },
+                            { word: "meant it (mean it)", meaning: "本気で言う" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Regardless of my own feelings, I would handle the situation carefully to protect our friendship, as it is very valuable to me.",
+                        ja: "私自身の気持ちに関わらず、私たちの友情は私にとって非常に価値があるので、それを守るために慎重に状況を処理するでしょう。",
+                        ja_hint: "私自身の気持ちに関わらず、私はだろう 処理する その状況を 慎重に 守るために 私たちの友情を、なぜなら それはとても価値があるから 私にとって。",
+                        vocab: [
+                            { word: "regardless of", meaning: "～に関わらず" },
+                            { word: "handle the situation", meaning: "状況を処理する" },
+                            { word: "protect", meaning: "守る" },
+                            { word: "friendship", meaning: "友情" },
+                            { word: "valuable", meaning: "価値のある" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title_en: "5. If your partner told you that they got drunk and kissed someone else, what would you do?",
+                title_ja: "恋人・結婚相手が酔っ払って他の人とキスしたらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would be very hurt and upset.",
+                        ja: "とても傷つき、動揺するでしょう。",
+                        ja_hint: "私はだろう とても傷つく そして 動揺する。",
+                        vocab: [
+                            { word: "hurt", meaning: "傷ついた" },
+                            { word: "upset", meaning: "動揺した、腹を立てた" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would need some time alone to process my feelings.",
+                        ja: "自分の気持ちを整理するために、一人になる時間が必要でしょう。",
+                        ja_hint: "私はだろう 必要とする 一人の時間を 整理するために 私の気持ちを。",
+                        vocab: [
+                            { word: "process my feelings", meaning: "自分の気持ちを整理する" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "After I calm down, I would want to have a serious talk about why it happened and what it means for our relationship.",
+                        ja: "落ち着いたら、なぜそれが起こったのか、そしてそれが私たちの関係にとって何を意味するのかについて、真剣な話し合いをしたいと思います。",
+                        ja_hint: "私が落ち着いた後、私はだろう 持ちたい 真剣な話を なぜそれが起こったのか そして それが何を意味するのか 私たちの関係にとって。",
+                        vocab: [
+                            { word: "calm down", meaning: "落ち着く" },
+                            { word: "relationship", meaning: "関係" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "While being drunk is an explanation, it is not a complete excuse for breaking trust.",
+                        ja: "酔っていたことは説明にはなりますが、信頼を壊したことの完全な言い訳にはなりません。",
+                        ja_hint: "酔っていたことは 説明ではあるが、それは ではない 完全な言い訳 信頼を壊したことに対する。",
+                        vocab: [
+                            { word: "explanation", meaning: "説明" },
+                            { word: "excuse", meaning: "言い訳" },
+                            { word: "break trust", meaning: "信頼を壊す" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Ultimately, whether we could move past this would depend on their honesty, remorse, and our ability to rebuild the trust that was damaged.",
+                        ja: "最終的に、私たちがこの問題を乗り越えられるかどうかは、彼らの正直さ、反省、そして傷ついた信頼を再構築する私たちの能力にかかっているでしょう。",
+                        ja_hint: "最終的に、私たちがこれを乗り越えられるかどうかは だろう 依存する 彼らの正直さ、後悔、そして 私たちの能力に 再構築するための 傷つけられた信頼を。",
+                        vocab: [
+                            { word: "move past", meaning: "～を乗り越える" },
+                            { word: "depend on", meaning: "～による、～次第である" },
+                            { word: "honesty", meaning: "正直さ" },
+                            { word: "remorse", meaning: "深い後悔、自責の念" },
+                            { word: "rebuild trust", meaning: "信頼を再構築する" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title_en: "6. What would you do if a drunk person suddenly threw up on you?",
+                title_ja: "酔っ払いがあなたに向かって戻したらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would be shocked and disgusted.",
+                        ja: "ショックを受け、気分が悪くなるでしょう。",
+                        ja_hint: "私はだろう ショックを受ける そして 嫌悪感を抱く。",
+                        vocab: [
+                            { word: "shocked", meaning: "ショックを受けた" },
+                            { word: "disgusted", meaning: "うんざりした、むかついた" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "My immediate priority would be to clean myself up as quickly as possible.",
+                        ja: "私の最優先事項は、できるだけ早く自分の体をきれいにすることです。",
+                        ja_hint: "私の当面の優先事項は だろう きれいにすること 私自身を できるだけ早く。",
+                        vocab: [
+                            { word: "immediate priority", meaning: "当面の優先事項" },
+                            { word: "clean myself up", meaning: "自分の体をきれいにする" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I'd try not to get angry at the person, as they are clearly not in control.",
+                        ja: "その人は明らかに自分をコントロールできていないので、怒らないように努めるでしょう。",
+                        ja_hint: "私はだろう 試みる 怒らないように その人に、なぜなら 彼らは明らかにコントロールできていないから。",
+                        vocab: [
+                            { word: "get angry at", meaning: "～に腹を立てる" },
+                            { word: "not in control", meaning: "自制が効かない、コントロール不能" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "If their friends are around, I might ask for their help in managing the situation and maybe getting some money for the cleaning fee.",
+                        ja: "もし彼らの友人が周りにいれば、状況を収拾する手伝いや、クリーニング代としていくらかお金をもらえないか頼むかもしれません。",
+                        ja_hint: "もし彼らの友達が周りにいるなら、私は かもしれない 頼む 彼らの助けを 状況を管理することにおいて そして 多分もらうことを いくらかのお金を クリーニング代のために。",
+                        vocab: [
+                            { word: "manage the situation", meaning: "状況を収拾する、管理する" },
+                            { word: "cleaning fee", meaning: "クリーニング代" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Although it would be a very unpleasant experience, I'd try to handle it with as much grace as possible, understanding that it was an accident caused by intoxication.",
+                        ja: "とても不快な経験でしょうが、それが酩酊によって引き起こされた事故だと理解し、できるだけ品位をもって対処しようと努めるでしょう。",
+                        ja_hint: "それはとても不快な経験でしょうが、私はだろう 試みる それに対処することを できるだけ多くの品位をもって、理解しながら それは事故だった 酩酊によって引き起こされた。",
+                        vocab: [
+                            { word: "unpleasant experience", meaning: "不快な経験" },
+                            { word: "handle it with grace", meaning: "品位をもって対処する" },
+                            { word: "intoxication", meaning: "酩酊、酔い" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 7,
+                title_en: "7. If one of your friends started developing a drinking habit, would you try to do something about it?",
+                title_ja: "友達の一人が習慣的にお酒を飲むようになったら何とかしようと思いますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "Yes, I would be concerned about my friend.",
+                        ja: "はい、その友達のことが心配になるでしょう。",
+                        ja_hint: "はい、私はだろう 心配する 私の友達について。",
+                        vocab: [
+                            { word: "be concerned about", meaning: "～を心配する" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would try to talk to them privately about my concerns.",
+                        ja: "私の懸念について、彼らと個人的に話そうと試みるでしょう。",
+                        ja_hint: "私はだろう 試みる 話すことを 彼らと 個人的に 私の懸念について。",
+                        vocab: [
+                            { word: "talk to them privately", meaning: "彼らと個人的に話す" },
+                            { word: "concerns", meaning: "懸念、心配事" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I would express my worries in a non-judgmental way, focusing on their health and well-being.",
+                        ja: "彼らの健康と幸福に焦点を当て、批判的でない方法で私の心配を表明します。",
+                        ja_hint: "私はだろう 表現する 私の心配を 批判的でない方法で、焦点を当てながら 彼らの健康と幸福に。",
+                        vocab: [
+                            { word: "express", meaning: "表現する" },
+                            { word: "non-judgmental", meaning: "批判的でない、評価を下さない" },
+                            { word: "well-being", meaning: "幸福、健康" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "I might suggest doing activities together that don't involve alcohol to show them there are other ways to have fun.",
+                        ja: "楽しむためには他の方法もあることを示すために、お酒を伴わない活動を一緒にやることを提案するかもしれません。",
+                        ja_hint: "私は かもしれない 提案する 活動を一緒にすることを お酒を伴わない 見せるために 彼らに 他の方法があると 楽しむための。",
+                        vocab: [
+                            { word: "suggest", meaning: "提案する" },
+                            { word: "involve", meaning: "伴う、含む" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "If the situation seems serious, I would gently encourage them to seek professional help, and I'd offer to support them through that process.",
+                        ja: "もし状況が深刻そうであれば、専門家の助けを求めるように優しく促し、その過程で彼らを支えることを申し出るでしょう。",
+                        ja_hint: "もし状況が深刻に見えるなら、私はだろう 優しく奨励する 彼らに 専門家の助けを求めることを、そして 私はだろう 申し出る 支えることを 彼らを その過程を通して。",
+                        vocab: [
+                            { word: "gently encourage", meaning: "優しく促す" },
+                            { word: "seek professional help", meaning: "専門家の助けを求める" },
+                            { word: "support", meaning: "支える" },
+                            { word: "through that process", meaning: "その過程を通して" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 8,
+                title_en: "8. If you found out that the person you're dating was a recovering alcoholic, what would you do?",
+                title_ja: "付き合っている人が昔アル中だったことが分かったらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would take some time to think about it.",
+                        ja: "それについて考える時間を少し取るでしょう。",
+                        ja_hint: "私はだろう 取る 少しの時間を それについて考えるために。",
+                        vocab: [
+                            { word: "take some time", meaning: "少し時間を取る" },
+                            { word: "think about it", meaning: "それについて考える" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would admire their strength for overcoming their addiction.",
+                        ja: "依存症を克服した彼らの強さを尊敬するでしょう。",
+                        ja_hint: "私はだろう 尊敬する 彼らの強さを 克服したことに対する 彼らの依存症を。",
+                        vocab: [
+                            { word: "admire", meaning: "尊敬する、感心する" },
+                            { word: "strength", meaning: "強さ" },
+                            { word: "overcoming", meaning: "克服すること" },
+                            { word: "addiction", meaning: "依存症" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I'd want to have an open conversation with them about their recovery journey and how I can support them.",
+                        ja: "彼らの回復までの道のりや、私がどのように彼らを支えることができるかについて、オープンな会話をしたいと思います。",
+                        ja_hint: "私はだろう 持ちたい オープンな会話を 彼らと 彼らの回復の道のりについて そして どう私が彼らを支えられるか。",
+                        vocab: [
+                            { word: "open conversation", meaning: "オープンな会話、率直な話し合い" },
+                            { word: "recovery journey", meaning: "回復までの道のり" },
+                            { word: "support", meaning: "支える" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "It would be important to educate myself about alcoholism to better understand their struggles and triggers.",
+                        ja: "彼らの苦闘や（飲酒の）引き金となるものをより良く理解するために、アルコール依存症について自分自身で学ぶことが重要になるでしょう。",
+                        ja_hint: "それはだろう 重要である 教育すること 私自身を アルコール依存症について より良く理解するために 彼らの苦闘や引き金を。",
+                        vocab: [
+                            { word: "educate myself", meaning: "自分自身で学ぶ" },
+                            { word: "alcoholism", meaning: "アルコール依存症" },
+                            { word: "struggles", meaning: "苦闘、奮闘" },
+                            { word: "triggers", meaning: "引き金、誘因" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "Ultimately, their past wouldn't define them, and as long as they are committed to their sobriety, I would be committed to supporting them and building a healthy relationship together.",
+                        ja: "最終的に、彼らの過去が彼らを定義するわけではなく、彼らが禁酒を固く決意している限り、私は彼らを支え、共に健康な関係を築くことに専念するでしょう。",
+                        ja_hint: "最終的に、彼らの過去は だろうない 彼らを定義しない、そして 彼らが固く決意している限り 彼らの禁酒に、私はだろう 専念する 彼らを支えることに そして 築くこと 健康な関係を 一緒に。",
+                        vocab: [
+                            { word: "define", meaning: "定義する、特徴づける" },
+                            { word: "be committed to", meaning: "～に専念する、固く決意している" },
+                            { word: "sobriety", meaning: "禁酒、しらふ" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 9,
+                title_en: "9. If you got really drunk and embarrassed yourself in front of your boss, what would you do?",
+                title_ja: "ひどく酔っ払って上司の前で恥ずかしいことをしてしまったらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would feel extremely embarrassed the next day.",
+                        ja: "次の日、非常に恥ずかしく感じるでしょう。",
+                        ja_hint: "私はだろう 感じる 非常に恥ずかしく 次の日。",
+                        vocab: [
+                            { word: "extremely", meaning: "非常に、極度に" },
+                            { word: "embarrassed", meaning: "恥ずかしい" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would go to my boss and apologize sincerely for my behavior.",
+                        ja: "上司のところへ行き、自分の振る舞いについて心から謝罪するでしょう。",
+                        ja_hint: "私はだろう 行く 私の上司のところへ そして 謝罪する 心から 私の振る舞いについて。",
+                        vocab: [
+                            { word: "apologize", meaning: "謝罪する" },
+                            { word: "sincerely", meaning: "心から、誠実に" },
+                            { word: "behavior", meaning: "振る舞い、行動" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I would take full responsibility for my actions and not make excuses.",
+                        ja: "言い訳をせず、自分の行動に全責任を負います。",
+                        ja_hint: "私はだろう 負う 全責任を 私の行動に対して そして しない 言い訳を。",
+                        vocab: [
+                            { word: "take full responsibility", meaning: "全責任を負う" },
+                            { word: "make excuses", meaning: "言い訳をする" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "I would also make sure to moderate my drinking at future company events to show that I have learned my lesson.",
+                        ja: "また、教訓を得たことを示すために、今後の会社のイベントでは飲酒を控えめにするようにします。",
+                        ja_hint: "私はまただろう 確実にする 控えることを 私の飲酒を 将来の会社のイベントで 示すために 私が教訓を学んだことを。",
+                        vocab: [
+                            { word: "moderate my drinking", meaning: "飲酒を控える、適度にする" },
+                            { word: "future company events", meaning: "今後の会社のイベント" },
+                            { word: "learn one's lesson", meaning: "教訓を得る、懲りる" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "After apologizing, I would focus on demonstrating my professionalism through my work to regain their respect and prove that the incident was an uncharacteristic mistake.",
+                        ja: "謝罪した後は、彼らの尊敬を取り戻し、その出来事が普段の自分らしくない過ちであったことを証明するために、仕事を通じてプロ意識を示すことに集中します。",
+                        ja_hint: "謝罪した後、私はだろう 集中する 示すことに 私のプロ意識を 私の仕事を通じて 取り戻すために 彼らの尊敬を そして 証明するために その出来事が普段らしくない間違いだったと。",
+                        vocab: [
+                            { word: "demonstrate professionalism", meaning: "プロ意識を示す" },
+                            { word: "regain respect", meaning: "尊敬を取り戻す" },
+                            { word: "incident", meaning: "出来事、事件" },
+                            { word: "uncharacteristic", meaning: "普段らしくない、柄にもない" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 10,
+                title_en: "10. If you saw two of your friends fighting while drunk, what would you do?",
+                title_ja: "友達二人が酔っ払ってけんかしているのを見たらどうしますか。",
+                answers: [
+                    {
+                        level: 1,
+                        en: "I would immediately try to stop them.",
+                        ja: "すぐに彼らを止めようとするでしょう。",
+                        ja_hint: "私はだろう すぐに試みる 止めることを 彼らを。",
+                        vocab: [
+                            { word: "immediately", meaning: "すぐに" },
+                            { word: "try to stop", meaning: "止めようと試みる" }
+                        ]
+                    },
+                    {
+                        level: 2,
+                        en: "I would try to de-escalate the situation by separating them.",
+                        ja: "彼らを引き離すことによって、状況を鎮静化させようとします。",
+                        ja_hint: "私はだろう 試みる 鎮静化させることを 状況を 引き離すことによって 彼らを。",
+                        vocab: [
+                            { word: "de-escalate the situation", meaning: "状況を鎮静化させる" },
+                            { word: "separate", meaning: "引き離す" }
+                        ]
+                    },
+                    {
+                        level: 3,
+                        en: "I would tell them that fighting won't solve anything and suggest they talk when they are sober.",
+                        ja: "喧嘩しても何も解決しないと伝え、しらふの時に話すよう提案します。",
+                        ja_hint: "私はだろう 彼らに言う 喧嘩は解決しない何も そして 提案する 彼らが話すことを 彼らがしらふの時に。",
+                        vocab: [
+                            { word: "solve", meaning: "解決する" },
+                            { word: "sober", meaning: "しらふの、酔っていない" }
+                        ]
+                    },
+                    {
+                        level: 4,
+                        en: "If needed, I would ask other people nearby for help to prevent them from hurting each other.",
+                        ja: "必要であれば、彼らが互いを傷つけないように、近くにいる他の人に助けを求めるでしょう。",
+                        ja_hint: "もし必要なら、私はだろう 頼む 他の人々に 近くの 助けを 防ぐために 彼らが傷つけることから お互いを。",
+                        vocab: [
+                            { word: "if needed", meaning: "必要であれば" },
+                            { word: "prevent from", meaning: "～するのを防ぐ" },
+                            { word: "hurting each other", meaning: "互いを傷つける" }
+                        ]
+                    },
+                    {
+                        level: 5,
+                        en: "My main priority would be ensuring everyone's safety and preventing a minor drunken argument from escalating into something more serious.",
+                        ja: "私の最優先事項は、全員の安全を確保し、酔っ払いによる些細な口論がより深刻な事態にエスカレートするのを防ぐことです。",
+                        ja_hint: "私の主な優先事項は だろう 確保すること 全員の安全を そして 防ぐこと 些細な酔った口論が エスカレートすることから 何かより深刻なものへ。",
+                        vocab: [
+                            { word: "priority", meaning: "優先事項" },
+                            { word: "ensuring safety", meaning: "安全を確保すること" },
+                            { word: "argument", meaning: "口論" },
+                            { word: "escalate into", meaning: "～へとエスカレートする、悪化する" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        const tasksContainer = document.getElementById('tasks-container');
+
+        tasksData.forEach((task) => {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+
+            const titleEn = document.createElement('p');
+            titleEn.classList.add('task-title-en');
+            titleEn.textContent = task.title_en;
+            taskDiv.appendChild(titleEn);
+
+            const titleJa = document.createElement('p');
+            titleJa.classList.add('task-title-ja');
+            titleJa.textContent = task.title_ja;
+            taskDiv.appendChild(titleJa);
+
+            task.answers.forEach((answer, index) => {
+                const answerLevelDiv = document.createElement('div');
+                answerLevelDiv.classList.add('answer-level');
+
+                const answerTitle = document.createElement('h4');
+                answerTitle.textContent = `${task.id}-${answer.level} Answer Level ${answer.level}`;
+                answerLevelDiv.appendChild(answerTitle);
+
+                // 1. Japanese Translation
+                const japaneseTranslationP = document.createElement('p');
+                japaneseTranslationP.classList.add('japanese-translation');
+                japaneseTranslationP.innerHTML = `<strong>日本語訳:</strong> ${answer.ja}`;
+                answerLevelDiv.appendChild(japaneseTranslationP);
+
+                // NEW: Japanese Hint
+                if (answer.ja_hint) {
+                    const japaneseHintP = document.createElement('p');
+                    japaneseHintP.classList.add('japanese-hint');
+                    japaneseHintP.innerHTML = `<strong>ヒント:</strong> ${answer.ja_hint}`;
+                    answerLevelDiv.appendChild(japaneseHintP);
+                }
+
+                // 2. English Controls (Toggle Button and Play Button)
+                const englishControlsContainer = document.createElement('div');
+                englishControlsContainer.classList.add('english-controls-container');
+
+                // English Toggle Button
+                const toggleEnButton = document.createElement('button');
+                toggleEnButton.classList.add('toggle-button');
+                toggleEnButton.textContent = '表示 (Show English)';
+                englishControlsContainer.appendChild(toggleEnButton);
+
+                // Play Button
+                const playButton = document.createElement('button');
+                playButton.classList.add('play-button');
+                playButton.textContent = '🔊'; // Speaker icon
+                playButton.title = '英文を再生 (Play English)';
+                playButton.addEventListener('click', () => {
+                    if (typeof SpeechSynthesisUtterance === 'undefined' || typeof window.speechSynthesis === 'undefined') {
+                        alert('お使いのブラウザは音声読み上げに対応していません。');
+                        return;
+                    }
+                    if (window.speechSynthesis.speaking) {
+                        window.speechSynthesis.cancel(); // Stop any currently speaking utterance
+                    }
+                    const utterance = new SpeechSynthesisUtterance(answer.en);
+                    utterance.lang = 'en-US'; // Set language to English
+                    window.speechSynthesis.speak(utterance);
+                });
+                englishControlsContainer.appendChild(playButton);
+                answerLevelDiv.appendChild(englishControlsContainer);
+
+                // Div to hold the English answer text (toggled visibility)
+                const englishTextDiv = document.createElement('div');
+                englishTextDiv.classList.add('english-text-div');
+                englishTextDiv.style.display = 'none'; // Default hidden
+
+                // The actual English answer content with its specific styling
+                const englishAnswerContent = document.createElement('div');
+                englishAnswerContent.classList.add('english-answer');
+                englishAnswerContent.textContent = answer.en;
+                englishTextDiv.appendChild(englishAnswerContent);
+                answerLevelDiv.appendChild(englishTextDiv);
+
+                // English Toggle Functionality
+                toggleEnButton.addEventListener('click', () => {
+                    if (englishTextDiv.style.display === 'none') {
+                        englishTextDiv.style.display = 'block'; // Show the English text
+                        toggleEnButton.textContent = '隠す (Hide English)';
+                    } else {
+                        englishTextDiv.style.display = 'none';
+                        toggleEnButton.textContent = '表示 (Show English)';
+                    }
+                });
+
+                // 3. Vocabulary Table (if exists)
+                if (answer.vocab && answer.vocab.length > 0) {
+                    const toggleVocabButton = document.createElement('button');
+                    toggleVocabButton.classList.add('toggle-button'); // Re-use style
+                    toggleVocabButton.textContent = '単語表を表示 (Show Vocab)';
+                    toggleVocabButton.style.marginTop = '10px'; // Add some space above vocab button
+                    answerLevelDiv.appendChild(toggleVocabButton);
+
+                    const vocabTable = document.createElement('table');
+                    vocabTable.classList.add('vocab-table');
+                    vocabTable.style.display = 'none'; // Default hidden
+                    const tableHead = document.createElement('thead');
+                    const headRow = document.createElement('tr');
+                    const th1 = document.createElement('th');
+                    th1.textContent = '単語/表現 (Vocabulary/Expression)';
+                    const th2 = document.createElement('th');
+                    th2.textContent = '意味 (Meaning)';
+                    headRow.appendChild(th1);
+                    headRow.appendChild(th2);
+                    tableHead.appendChild(headRow);
+                    vocabTable.appendChild(tableHead);
+
+                    const tableBody = document.createElement('tbody');
+                    answer.vocab.forEach(v => {
+                        const row = document.createElement('tr');
+                        const cell1 = document.createElement('td');
+                        cell1.textContent = v.word;
+                        const cell2 = document.createElement('td');
+                        cell2.textContent = v.meaning;
+                        row.appendChild(cell1);
+                        row.appendChild(cell2);
+                        tableBody.appendChild(row);
+                    });
+                    vocabTable.appendChild(tableBody);
+                    answerLevelDiv.appendChild(vocabTable);
+
+                    toggleVocabButton.addEventListener('click', () => {
+                        if (vocabTable.style.display === 'none') {
+                            vocabTable.style.display = 'table';
+                            toggleVocabButton.textContent = '単語表を隠す (Hide Vocab)';
+                        } else {
+                            vocabTable.style.display = 'none';
+                            toggleVocabButton.textContent = '単語表を表示 (Show Vocab)';
+                        }
+                    });
+                }
+                taskDiv.appendChild(answerLevelDiv);
+            });
+            tasksContainer.appendChild(taskDiv);
+        });
+    </script>
+
+</body>
+</html>
