@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瞬間タイ語作文：お金と税金の役割</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        /* --- ここからタイトルヘッダー用スタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px; /* 目次との間隔調整 */
+            white-space: nowrap;
+            overflow-x: auto; /* タイトルが長い場合に対応 */
+        }
+        .main-title-header .title-japanese { font-size: 2.5em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 2.0em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        /* --- ここまでタイトルヘッダー用スタイル --- */
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .sentence-japanese { font-weight: bold; margin-bottom: 5px; font-size: 1.1em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .translation-details { color: #228b22; }
+
+        table.vocab-table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .vocab-table th, .vocab-table td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .vocab-table th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        .vocab-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        .vocab-table tbody tr:hover { background-color: #e2e6ea; }
+        .vocab-table td { font-size: 1em; }
+        .vocab-table td:nth-child(1) { font-family: 'Tahoma', 'Leelawadee', sans-serif; } /* タイ語の列 */
+
+        .vocab-table td:nth-child(2) .content-wrapper,
+        .vocab-table td:nth-child(3) .content-wrapper {
+             word-break: break-all;
+        }
+
+        /* --- ここから折りたたみ機能用スタイル (details/summary) --- */
+        .collapsible-content summary,
+        .vocab-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .collapsible-content summary:hover,
+        .vocab-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .collapsible-content[open] summary,
+        .vocab-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .collapsible-content .content-wrapper,
+        .vocab-details .content-wrapper {
+            padding-top: 8px;
+            padding-left: 0px;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+        }
+        /* --- ここまで折りたたみ機能用スタイル --- */
+
+        /* --- 目次用スタイル --- */
+        #index-toc {
+            background-color: #e9f5ff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+        }
+        #index-toc h3 {
+            color: #0056b3;
+            border-bottom: none;
+            margin-top: 0;
+        }
+        #index-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #index-toc ul li {
+            margin-bottom: 8px;
+        }
+        #index-toc ul li a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 500;
+        }
+        #index-toc ul li a:hover {
+            text-decoration: underline;
+            color: #003d80;
+        }
+        .back-to-toc {
+            text-align: right;
+            margin-top: 15px;
+            margin-bottom: 0px;
+        }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover {
+            background-color: #d0e6ff;
+        }
+        .section-end-back-to-toc {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="main-title-header" id="section-main-title">
+        <span class="title-japanese">お金と税金の本当の役割</span>
+        <span class="title-thai">บทบาทที่แท้จริงของเงินและภาษี <span class="pronunciation-thai">(bòt-bàat tîi tɛ́ɛ-jing kɔ̌ɔng ngən lɛ́ paa-sǐi)</span></span>
+    </div>
+
+    <div id="index-toc" class="article-section">
+        <h3>目次</h3>
+        <ul>
+            <li><a href="#section-intro">1. 序文：経済を学ぶヒント</a></li>
+            <li><a href="#section-1">2. お金はなぜ必要？ (政府と国民の関係)</a></li>
+            <li><a href="#section-2">3. 税金は何のため？ (公共サービスの仕組み)</a></li>
+            <li><a href="#section-3">4. 経済を動かす力 (政府の支出と通貨管理)</a></li>
+            <li><a href="#section-summary-vocab">5. 総まとめ単語表</a></li>
+        </ul>
+    </div>
+    
+    <!-- セクション: 序文 -->
+    <div class="article-section" id="section-intro">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>1. 序文：経済を学ぶヒント</h3>
+        
+        <h4>1-1</h4>
+        <p class="sentence-japanese">「モズラーの名刺」の物語は、単なるお話ではありません。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">เรื่องราว "บัตรธุรกิจของโมสลาร์" ไม่ใช่เป็นเพียงแค่นิทานครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(rʉ̂ang-raao "bàt tú-rá-gìt kɔ̌ɔng moo-sə-laa" mâi châi bpen piang kɛ̂ɛ ní-taan kráp/kâ)</span></p>
+        </div></details>
+        
+        <h4>1-2</h4>
+        <p class="sentence-japanese">この物語は、私たちの経済、特にお金と税金の仕組みを理解するための素晴らしいヒントを与えてくれます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">เรื่องนี้ให้ข้อคิดที่ดีเยี่ยม, <br>ในการทำความเข้าใจกลไกทางเศรษฐกิจของเรา, <br>โดยเฉพาะเรื่องเงินและภาษีครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(rʉ̂ang níi hâi kɔ̂ɔ-kít tîi yîam, <br>nai gaan tam-kwaam-kâo-jai gon-gai taang sèet-tà-gìt kɔ̌ɔng rao, <br>dooi chà-pɔ́ rʉ̂ang ngən lɛ́ paa-sǐi kráp/kâ)</span></p>
+        </div></details>
+
+        <h4>1-3</h4>
+        <p class="sentence-japanese">このセクションでは、その関係性をさらに詳しく見ていきましょう。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ในส่วนนี้ เราจะมาดูความสัมพันธ์นั้นให้ละเอียดมากยิ่งขึ้นกันครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(nai sùan níi, rao jà maa duu kwaam-sǎm-pan nán hâi lá-ìat mâak yîng kʉ̂n gan kráp/kâ)</span></p>
+        </div></details>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- セクション1 -->
+    <div class="article-section" id="section-1">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>2. お金はなぜ必要？ (政府と国民の関係)</h3>
+        
+        <h4>2-1</h4>
+        <p class="sentence-japanese">この話の父親は、現実の世界の「政府」と似ています。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">พ่อในเรื่องนี้คล้ายกับ "รัฐบาล" ในโลกแห่งความเป็นจริงครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(pɔ̂ɔ nai rʉ̂ang níi kláai gàp "rát-tà-baan" nai lôok hɛ̀ng kwaam-bpen-jing kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รัฐบาล</td><td><details class="vocab-details"><summary>表示</summary>rát-tà-baan</details></td><td><details class="vocab-details"><summary>表示</summary>政府</details></td></tr>
+                <tr><td>โลกแห่งความเป็นจริง</td><td><details class="vocab-details"><summary>表示</summary>lôok hɛ̀ng kwaam-bpen-jing</details></td><td><details class="vocab-details"><summary>表示</summary>現実の世界</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-2</h4>
+        <p class="sentence-japanese">そして、子供たちは「国民」に例えることができます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">และลูกๆ ก็สามารถเปรียบได้กับ "ประชาชน" ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(lɛ́ lûuk-lûuk gɔ̂ɔ sǎa-mâat bprìap dâi gàp "bprà-chaa-chon" kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ประชาชน</td><td><details class="vocab-details"><summary>表示</summary>bprà-chaa-chon</details></td><td><details class="vocab-details"><summary>表示</summary>国民、民衆</details></td></tr>
+                <tr><td>เปรียบได้กับ</td><td><details class="vocab-details"><summary>表示</summary>bprìap dâi gàp</details></td><td><details class="vocab-details"><summary>表示</summary>～に例えることができる</details></td></tr>
+            </tbody>
+        </table>
+        
+        <h4>2-3</h4>
+        <p class="sentence-japanese">父親が発行した名刺は、政府が発行する「お金」と同じ役割です。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">นามบัตรที่พ่อออกให้มีบทบาทเหมือนกับ "เงิน" ที่รัฐบาลเป็นผู้ออกครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(naam-bàt tîi pɔ̂ɔ ɔ̀ɔk hâi mii bòt-bàat mʉ̌an gàp "ngən" tîi rát-tà-baan bpen pûu-ɔ̀ɔk kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ออกให้</td><td><details class="vocab-details"><summary>表示</summary>ɔ̀ɔk hâi</details></td><td><details class="vocab-details"><summary>表示</summary>発行する、出す</details></td></tr>
+                <tr><td>บทบาท</td><td><details class="vocab-details"><summary>表示</summary>bòt-bàat</details></td><td><details class="vocab-details"><summary>表示</summary>役割</details></td></tr>
+                <tr><td>เงิน</td><td><details class="vocab-details"><summary>表示</summary>ngən</details></td><td><details class="vocab-details"><summary>表示</summary>お金</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-4</h4>
+        <p class="sentence-japanese">なぜ子供たちは名刺を欲しがったのでしょうか？</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ทำไมเด็กๆ ถึงต้องการนามบัตรกันล่ะครับ/คะ</span></p>
+            <p><span class="pronunciation">(tam-mai dèk-dèk tʉ̌ng dtɔ̂ng-gaan naam-bàt gan lâ kráp/ká)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ต้องการ</td><td><details class="vocab-details"><summary>表示</summary>dtɔ̂ng-gaan</details></td><td><details class="vocab-details"><summary>表示</summary>欲しがる、必要とする</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-5</h4>
+        <p class="sentence-japanese">それは、名刺がないと家から追い出される、つまり「罰」があったからです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">นั่นก็เพราะว่าถ้าไม่มีนามบัตรจะถูกไล่ออกจากบ้าน, <br>หรือก็คือมี "การลงโทษ" รออยู่ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(nân gɔ̂ɔ prɔ́ wâa tâa mâi mii naam-bàt jà tùuk lâi ɔ̀ɔk jàak bâan, <br>rʉ̌ʉ gɔ̂ɔ kʉʉ mii "gaan-long-tôot" rɔɔ yùu kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>การลงโทษ</td><td><details class="vocab-details"><summary>表示</summary>gaan-long-tôot</details></td><td><details class="vocab-details"><summary>表示</summary>罰、処罰</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-6</h4>
+        <p class="sentence-japanese">現実の世界では、国民は政府に「税金」を支払う義務があります。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ในโลกแห่งความเป็นจริง ประชาชนมีหน้าที่ต้องจ่าย "ภาษี" ให้กับรัฐบาลครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(nai lôok hɛ̀ng kwaam-bpen-jing, bprà-chaa-chon mii nâa-tîi dtɔ̂ng jàai "paa-sǐi" hâi gàp rát-tà-baan kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>หน้าที่</td><td><details class="vocab-details"><summary>表示</summary>nâa-tîi</details></td><td><details class="vocab-details"><summary>表示</summary>義務、役割</details></td></tr>
+                <tr><td>จ่าย</td><td><details class="vocab-details"><summary>表示</summary>jàai</details></td><td><details class="vocab-details"><summary>表示</summary>支払う</details></td></tr>
+                <tr><td>ภาษี</td><td><details class="vocab-details"><summary>表示</summary>paa-sǐi</details></td><td><details class="vocab-details"><summary>表示</summary>税金</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-7</h4>
+        <p class="sentence-japanese">この税金は、政府が発行したお金で支払わなければなりません。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ภาษีนี้จะต้องชำระด้วยเงินที่รัฐบาลเป็นผู้ออกเท่านั้นครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(paa-sǐi níi jà dtɔ̂ng cham-rá dûay ngən tîi rát-tà-baan bpen pûu-ɔ̀ɔk tâo-nán kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ชำระ</td><td><details class="vocab-details"><summary>表示</summary>cham-rá</details></td><td><details class="vocab-details"><summary>表示</summary>支払う、清算する</details></td></tr>
+                <tr><td>เท่านั้น</td><td><details class="vocab-details"><summary>表示</summary>tâo-nán</details></td><td><details class="vocab-details"><summary>表示</summary>～だけ、～のみ</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-8</h4>
+        <p class="sentence-japanese">だからこそ、人々はそのお金を得るために働きます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ด้วยเหตุนี้เอง ผู้คนจึงทำงานเพื่อที่จะได้เงินนั้นมาครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(dûay hèet níi eeng, pûu-kon jʉng tam-ngaan pʉ̂a tîi jà dâi ngən nán maa kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ด้วยเหตุนี้</td><td><details class="vocab-details"><summary>表示</summary>dûay hèet níi</details></td><td><details class="vocab-details"><summary>表示</summary>この理由で、だからこそ</details></td></tr>
+                <tr><td>ทำงาน</td><td><details class="vocab-details"><summary>表示</summary>tam-ngaan</details></td><td><details class="vocab-details"><summary>表示</summary>働く</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-9</h4>
+        <p class="sentence-japanese">お金そのものに価値があるのではなく、納税義務が価値を生み出しているのです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ตัวเงินเองไม่ได้มีมูลค่าในตัวเอง, <br>แต่เป็นภาระหน้าที่ในการเสียภาษีที่สร้างมูลค่าให้มันครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(dtua ngən eeng mâi dâi mii muun-lá-kâa nai dtua-eeng, <br>dtɛ̀ɛ bpen paa-rá-nâa-tîi nai gaan sǐa paa-sǐi tîi sâang muun-lá-kâa hâi man kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>มูลค่า</td><td><details class="vocab-details"><summary>表示</summary>muun-lá-kâa</details></td><td><details class="vocab-details"><summary>表示</summary>価値</details></td></tr>
+                <tr><td>ภาระหน้าที่</td><td><details class="vocab-details"><summary>表示</summary>paa-rá-nâa-tîi</details></td><td><details class="vocab-details"><summary>表示</summary>責務、義務</details></td></tr>
+                <tr><td>สร้าง</td><td><details class="vocab-details"><summary>表示</summary>sâang</details></td><td><details class="vocab-details"><summary>表示</summary>創造する、生み出す</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>2-10</h4>
+        <p class="sentence-japanese">これが、みんながお金を共通の交換手段として受け入れる基本的な理由です。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">นี่คือเหตุผลพื้นฐานที่ทุกคนยอมรับเงิน, <br>เป็นสื่อกลางในการแลกเปลี่ยนครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(nîi kʉʉ hèet-pǒn pʉ́ʉn-tǎan tîi túk-kon yɔɔm-ráp ngən, <br>bpen sʉ̀ʉ-glaang nai gaan lɛ̂ɛk-bplìan kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เหตุผลพื้นฐาน</td><td><details class="vocab-details"><summary>表示</summary>hèet-pǒn pʉ́ʉn-tǎan</details></td><td><details class="vocab-details"><summary>表示</summary>基本的な理由</details></td></tr>
+                <tr><td>ยอมรับ</td><td><details class="vocab-details"><summary>表示</summary>yɔɔm-ráp</details></td><td><details class="vocab-details"><summary>表示</summary>受け入れる</details></td></tr>
+                <tr><td>สื่อกลางในการแลกเปลี่ยน</td><td><details class="vocab-details"><summary>表示</summary>sʉ̀ʉ-glaang nai gaan lɛ̂ɛk-bplìan</details></td><td><details class="vocab-details"><summary>表示</summary>交換手段</details></td></tr>
+            </tbody>
+        </table>
+
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- セクション2 -->
+    <div class="article-section" id="section-2">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>3. 税金は何のため？ (公共サービスの仕組み)</h3>
+        
+        <h4>3-1</h4>
+        <p class="sentence-japanese">それでは、父親（政府）が集めた名刺（税金）は何に使われるのでしょうか？</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">แล้วนามบัตร (ภาษี) ที่พ่อ (รัฐบาล) เก็บไปนั้น, <br>ถูกนำไปใช้อะไรบ้างครับ/คะ</span></p>
+            <p><span class="pronunciation">(lɛ́ɛo naam-bàt (paa-sǐi) tîi pɔ̂ɔ (rát-tà-baan) gèp bpai nán, <br>tùuk nam bpai chái à-rai bâang kráp/ká)</span></p>
+        </div></details>
+
+        <h4>3-2</h4>
+        <p class="sentence-japanese">父親は、集めた名刺を使って「家の中をより良くする」ことができます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">พ่อสามารถใช้นามบัตรที่รวบรวมมา "ทำให้บ้านดีขึ้น" ได้ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(pɔ̂ɔ sǎa-mâat chái naam-bàt tîi rûap-ruam maa "tam hâi bâan dii kʉ̂n" dâi kráp/kâ)</span></p>
+        </div></details>
+        
+        <h4>3-3</h4>
+        <p class="sentence-japanese">例えば、新しいおもちゃを買ったり、家を修理したりすることです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ตัวอย่างเช่น การซื้อของเล่นใหม่ หรือการซ่อมแซมบ้านครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(dtua-yàang-chên, gaan sʉ́ʉ kɔ̌ɔng-lên mài rʉ̌ʉ gaan sɔ̂m-sɛɛm bâan kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ของเล่น</td><td><details class="vocab-details"><summary>表示</summary>kɔ̌ɔng-lên</details></td><td><details class="vocab-details"><summary>表示</summary>おもちゃ</details></td></tr>
+                <tr><td>ซ่อมแซม</td><td><details class="vocab-details"><summary>表示</summary>sɔ̂m-sɛɛm</details></td><td><details class="vocab-details"><summary>表示</summary>修理する</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-4</h4>
+        <p class="sentence-japanese">これらは、家族全員（国民）のための「公共サービス」に相当します。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">สิ่งเหล่านี้เทียบเท่าได้กับ "บริการสาธารณะ" สำหรับสมาชิกทุกคนในครอบครัว (ประชาชน) ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(sìng lào níi tîap-tâo dâi gàp "bɔɔ-rí-gaan sǎa-taa-rá-ná" sǎm-ràp sà-maa-chík túk-kon nai krɔ̂ɔp-krua (bprà-chaa-chon) kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เทียบเท่าได้กับ</td><td><details class="vocab-details"><summary>表示</summary>tîap-tâo dâi gàp</details></td><td><details class="vocab-details"><summary>表示</summary>～に相当する</details></td></tr>
+                <tr><td>บริการสาธารณะ</td><td><details class="vocab-details"><summary>表示</summary>bɔɔ-rí-gaan sǎa-taa-rá-ná</details></td><td><details class="vocab-details"><summary>表示</summary>公共サービス</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-5</h4>
+        <p class="sentence-japanese">現実の政府も、税金を使って道路や橋を建設します。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">รัฐบาลจริงๆ ก็ใช้ภาษีในการสร้างถนนและสะพานเช่นกันครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(rát-tà-baan jing-jing gɔ̂ɔ chái paa-sǐi nai gaan sâang tà-nǒn lɛ́ sà-paan chên-gan kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ถนน</td><td><details class="vocab-details"><summary>表示</summary>tà-nǒn</details></td><td><details class="vocab-details"><summary>表示</summary>道路</details></td></tr>
+                <tr><td>สะพาน</td><td><details class="vocab-details"><summary>表示</summary>sà-paan</details></td><td><details class="vocab-details"><summary>表示</summary>橋</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-6</h4>
+        <p class="sentence-japanese">学校や病院を建て、警察や消防のサービスを提供します。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">สร้างโรงเรียน โรงพยาบาล และให้บริการตำรวจและดับเพลิงครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(sâang roong-rian, roong-pá-yaa-baan, lɛ́ hâi bɔɔ-rí-gaan dtam-rùat lɛ́ dàp-pləəng kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>โรงเรียน</td><td><details class="vocab-details"><summary>表示</summary>roong-rian</details></td><td><details class="vocab-details"><summary>表示</summary>学校</details></td></tr>
+                <tr><td>โรงพยาบาล</td><td><details class="vocab-details"><summary>表示</summary>roong-pá-yaa-baan</details></td><td><details class="vocab-details"><summary>表示</summary>病院</details></td></tr>
+                <tr><td>ตำรวจ</td><td><details class="vocab-details"><summary>表示</summary>dtam-rùat</details></td><td><details class="vocab-details"><summary>表示</summary>警察</details></td></tr>
+                <tr><td>ดับเพลิง</td><td><details class="vocab-details"><summary>表示</summary>dàp-pləəng</details></td><td><details class="vocab-details"><summary>表示</summary>消防</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-7</h4>
+        <p class="sentence-japanese">これらのサービスは、個人の力だけでは実現が難しいものです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">บริการเหล่านี้เป็นสิ่งที่ยากจะทำให้สำเร็จได้ด้วยกำลังของคนคนเดียวครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(bɔɔ-rí-gaan lào níi bpen sìng tîi yâak jà tam hâi sǎm-rèt dâi dûay gam-lang kɔ̌ɔng kon-kon-diao kráp/kâ)</span></p>
+        </div></details>
+
+        <h4>3-8</h4>
+        <p class="sentence-japanese">税金は、社会全体を豊かで安全にするために不可欠な資金なのです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ภาษีจึงเป็นเงินทุนที่ขาดไม่ได้, <br>เพื่อทำให้สังคมโดยรวมมั่งคั่งและปลอดภัยครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(paa-sǐi jʉng bpen ngən-tun tîi kàat mâi dâi, <br>pʉ̂a tam hâi sǎng-kom dooi-ruam mâng-kâng lɛ́ bplɔ̀ɔt-pai kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เงินทุน</td><td><details class="vocab-details"><summary>表示</summary>ngən-tun</details></td><td><details class="vocab-details"><summary>表示</summary>資金、資本</details></td></tr>
+                <tr><td>ขาดไม่ได้</td><td><details class="vocab-details"><summary>表示</summary>kàat mâi dâi</details></td><td><details class="vocab-details"><summary>表示</summary>不可欠である</details></td></tr>
+                <tr><td>สังคม</td><td><details class="vocab-details"><summary>表示</summary>sǎng-kom</details></td><td><details class="vocab-details"><summary>表示</summary>社会</details></td></tr>
+                <tr><td>มั่งคั่ง</td><td><details class="vocab-details"><summary>表示</summary>mâng-kâng</details></td><td><details class="vocab-details"><summary>表示</summary>豊かである</details></td></tr>
+                <tr><td>ปลอดภัย</td><td><details class="vocab-details"><summary>表示</summary>bplɔ̀ɔt-pai</details></td><td><details class="vocab-details"><summary>表示</summary>安全である</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-9</h4>
+        <p class="sentence-japanese">国民は税金を支払うことで、間接的に自分たちの生活を支えています。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">การที่ประชาชนจ่ายภาษี ก็คือการสนับสนุนชีวิตความเป็นอยู่ของตนเองโดยอ้อมครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(gaan tîi bprà-chaa-chon jàai paa-sǐi gɔ̂ɔ kʉʉ gaan sà-nàp-sà-nǔn chii-wít kwaam-bpen-yùu kɔ̌ɔng dton-eeng dooi-ɔ̂ɔm kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>สนับสนุน</td><td><details class="vocab-details"><summary>表示</summary>sà-nàp-sà-nǔn</details></td><td><details class="vocab-details"><summary>表示</summary>支援する、支える</details></td></tr>
+                <tr><td>โดยอ้อม</td><td><details class="vocab-details"><summary>表示</summary>dooi-ɔ̂ɔm</details></td><td><details class="vocab-details"><summary>表示</summary>間接的に</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>3-10</h4>
+        <p class="sentence-japanese">つまり、税金は罰金ではなく、社会への投資と考えることができます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">พูดอีกอย่างก็คือ ภาษีไม่ใช่ค่าปรับ แต่เป็นการลงทุนเพื่อสังคมครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(pûut ìik yàang gɔ̂ɔ kʉʉ, paa-sǐi mâi châi kâa-bpràp, dtɛ̀ɛ bpen gaan-long-tun pʉ̂a sǎng-kom kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ค่าปรับ</td><td><details class="vocab-details"><summary>表示</summary>kâa-bpràp</details></td><td><details class="vocab-details"><summary>表示</summary>罰金</details></td></tr>
+                <tr><td>การลงทุน</td><td><details class="vocab-details"><summary>表示</summary>gaan-long-tun</details></td><td><details class="vocab-details"><summary>表示</summary>投資</details></td></tr>
+            </tbody>
+        </table>
+        
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- セクション3 -->
+    <div class="article-section" id="section-3">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>4. 経済を動かす力 (政府の支出と通貨管理)</h3>
+        
+        <h4>4-1</h4>
+        <p class="sentence-japanese">父親（政府）が名刺（お金）を子供たちに支払う行為は「政府支出」です。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">การที่พ่อ (รัฐบาล) จ่ายนามบัตร (เงิน) ให้กับลูกๆ, <br>คือ "รายจ่ายภาครัฐ" ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(gaan tîi pɔ̂ɔ (rát-tà-baan) jàai naam-bàt (ngən) hâi gàp lûuk-lûuk, <br>kʉʉ "raai-jàai pâak-rát" kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รายจ่ายภาครัฐ</td><td><details class="vocab-details"><summary>表示</summary>raai-jàai pâak-rát</details></td><td><details class="vocab-details"><summary>表示</summary>政府支出</details></td></tr>
+            </tbody>
+        </table>
+        
+        <h4>4-2</h4>
+        <p class="sentence-japanese">子供たちが家事を手伝うことで、父親から名刺をもらいました。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">เด็กๆ ได้รับนามบัตรจากพ่อโดยการช่วยทำงานบ้านครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(dèk-dèk dâi-ráp naam-bàt jàak pɔ̂ɔ dooi gaan chûay tam-ngaan-bâan kráp/kâ)</span></p>
+        </div></details>
+        
+        <h4>4-3</h4>
+        <p class="sentence-japanese">これは、政府が公共事業などで仕事を提供し、国民に給料を支払うのと同じです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ซึ่งเหมือนกับที่รัฐบาลจัดหางานผ่านโครงการสาธารณะ, <br>และจ่ายเงินเดือนให้กับประชาชนครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(sʉ̂ng mʉ̌an gàp tîi rát-tà-baan jàt-hǎa ngaan pàan kroong-gaan sǎa-taa-rá-ná, <br>lɛ́ jàai ngən-dʉan hâi gàp bprà-chaa-chon kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>จัดหางาน</td><td><details class="vocab-details"><summary>表示</summary>jàt-hǎa ngaan</details></td><td><details class="vocab-details"><summary>表示</summary>仕事を提供する</details></td></tr>
+                <tr><td>โครงการสาธารณะ</td><td><details class="vocab-details"><summary>表示</summary>kroong-gaan sǎa-taa-rá-ná</details></td><td><details class="vocab-details"><summary>表示</summary>公共事業</details></td></tr>
+                <tr><td>เงินเดือน</td><td><details class="vocab-details"><summary>表示</summary>ngən-dʉan</details></td><td><details class="vocab-details"><summary>表示</summary>給料</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>4-4</h4>
+        <p class="sentence-japanese">このように政府がお金を使うことで、経済にお金が供給されます。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">การที่รัฐบาลใช้จ่ายเงินในลักษณะนี้, <br>เป็นการนำเงินเข้าสู่ระบบเศรษฐกิจครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(gaan tîi rát-tà-baan chái-jàai ngən nai lák-sà-nà níi, <br>bpen gaan nam ngən kâo sùu rá-bòp sèet-tà-gìt kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ระบบเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary>rá-bòp sèet-tà-gìt</details></td><td><details class="vocab-details"><summary>表示</summary>経済システム</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>4-5</h4>
+        <p class="sentence-japanese">そして、国民（子供たち）はそのお金を使って、互いに取引（サービスや物の交換）をします。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">แล้วประชาชน (เด็กๆ) ก็นำเงินนั้นไปใช้ซื้อขายแลกเปลี่ยนกัน, <br>(แลกเปลี่ยนบริการหรือสิ่งของ) ครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(lɛ́ɛo bprà-chaa-chon (dèk-dèk) gɔ̂ɔ nam ngən nán bpai chái sʉ́ʉ-kǎai lɛ̂ɛk-bplìan gan, <br>(lɛ̂ɛk-bplìan bɔɔ-rí-gaan rʉ̌ʉ sìng-kɔ̌ɔng) kráp/kâ)</span></p>
+        </div></details>
+        
+        <h4>4-6</h4>
+        <p class="sentence-japanese">これが経済活動の基本的な循環です。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">นี่คือการหมุนเวียนพื้นฐานของกิจกรรมทางเศรษฐกิจครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(nîi kʉʉ gaan-mǔn-wian pʉ́ʉn-tǎan kɔ̌ɔng gìt-jà-gam taang sèet-tà-gìt kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>การหมุนเวียน</td><td><details class="vocab-details"><summary>表示</summary>gaan-mǔn-wian</details></td><td><details class="vocab-details"><summary>表示</summary>循環</details></td></tr>
+                <tr><td>กิจกรรมทางเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary>gìt-jà-gam taang sèet-tà-gìt</details></td><td><details class="vocab-details"><summary>表示</summary>経済活動</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>4-7</h4>
+        <p class="sentence-japanese">父親は、必要に応じて名刺を自由に印刷できました。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">พ่อสามารถพิมพ์นามบัตรได้อย่างอิสระตามความจำเป็นครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(pɔ̂ɔ sǎa-mâat pim naam-bàt dâi yàang ìt-sà-rà dtaam kwaam-jam-bpen kráp/kâ)</span></p>
+        </div></details>
+        
+        <h4>4-8</h4>
+        <p class="sentence-japanese">同様に、政府も自国の通貨を発行する能力を持っています。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">เช่นเดียวกัน รัฐบาลก็มีความสามารถในการออกสกุลเงินของประเทศตนเองครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(chên-diao-gan, rát-tà-baan gɔ̂ɔ mii kwaam-sǎa-mâat nai gaan ɔ̀ɔk sà-gun-ngən kɔ̌ɔng bprà-têet dton-eeng kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>สกุลเงิน</td><td><details class="vocab-details"><summary>表示</summary>sà-gun-ngən</details></td><td><details class="vocab-details"><summary>表示</summary>通貨</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>4-9</h4>
+        <p class="sentence-japanese">政府は、税金を集めることで、市場に出回るお金の量を調整します。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">รัฐบาลจะปรับปริมาณเงินในตลาด, <br>โดยการเก็บภาษีครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(rát-tà-baan jà bpràp bpà-rí-maan ngən nai dtà-làat, <br>dooi gaan gèp paa-sǐi kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ปรับ</td><td><details class="vocab-details"><summary>表示</summary>bpràp</details></td><td><details class="vocab-details"><summary>表示</summary>調整する</details></td></tr>
+                <tr><td>ปริมาณ</td><td><details class="vocab-details"><summary>表示</summary>bpà-rí-maan</details></td><td><details class="vocab-details"><summary>表示</summary>量</details></td></tr>
+                <tr><td>ตลาด</td><td><details class="vocab-details"><summary>表示</summary>dtà-làat</details></td><td><details class="vocab-details"><summary>表示</summary>市場</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>4-10</h4>
+        <p class="sentence-japanese">この仕組みによって、社会は安定し、経済は円滑に機能するのです。</p>
+        <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+            <p><span class="thai-text">ด้วยกลไกนี้ สังคมจึงมีความมั่นคง, <br>และเศรษฐกิจก็ดำเนินไปอย่างราบรื่นครับ/ค่ะ</span></p>
+            <p><span class="pronunciation">(dûay gon-gai níi, sǎng-kom jʉng mii kwaam-mân-kong, <br>lɛ́ sèet-tà-gìt gɔ̂ɔ dam-nəən bpai yàang râap-rʉ̂ʉn kráp/kâ)</span></p>
+        </div></details>
+        <h5>単語:</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ความมั่นคง</td><td><details class="vocab-details"><summary>表示</summary>kwaam-mân-kong</details></td><td><details class="vocab-details"><summary>表示</summary>安定</details></td></tr>
+                <tr><td>ดำเนินไปอย่างราบรื่น</td><td><details class="vocab-details"><summary>表示</summary>dam-nəən bpai yàang râap-rʉ̂ʉn</details></td><td><details class="vocab-details"><summary>表示</summary>円滑に進む、機能する</details></td></tr>
+            </tbody>
+        </table>
+
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- 総まとめ単語表 -->
+    <div class="article-section" id="section-summary-vocab">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>5. 総まとめ単語表</h3>
+        <p class="note">このレッスンで登場した主な単語の一覧です。</p>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รัฐบาล</td><td><details class="vocab-details"><summary>表示</summary>rát-tà-baan</details></td><td><details class="vocab-details"><summary>表示</summary>政府</details></td></tr>
+                <tr><td>ประชาชน</td><td><details class="vocab-details"><summary>表示</summary>bprà-chaa-chon</details></td><td><details class="vocab-details"><summary>表示</summary>国民</details></td></tr>
+                <tr><td>เปรียบได้กับ</td><td><details class="vocab-details"><summary>表示</summary>bprìap dâi gàp</details></td><td><details class="vocab-details"><summary>表示</summary>～に例えることができる</details></td></tr>
+                <tr><td>บทบาท</td><td><details class="vocab-details"><summary>表示</summary>bòt-bàat</details></td><td><details class="vocab-details"><summary>表示</summary>役割</details></td></tr>
+                <tr><td>ต้องการ</td><td><details class="vocab-details"><summary>表示</summary>dtɔ̂ng-gaan</details></td><td><details class="vocab-details"><summary>表示</summary>欲する、必要とする</details></td></tr>
+                <tr><td>การลงโทษ</td><td><details class="vocab-details"><summary>表示</summary>gaan-long-tôot</details></td><td><details class="vocab-details"><summary>表示</summary>罰</details></td></tr>
+                <tr><td>ภาษี</td><td><details class="vocab-details"><summary>表示</summary>paa-sǐi</details></td><td><details class="vocab-details"><summary>表示</summary>税金</details></td></tr>
+                <tr><td>หน้าที่</td><td><details class="vocab-details"><summary>表示</summary>nâa-tîi</details></td><td><details class="vocab-details"><summary>表示</summary>義務、役割</details></td></tr>
+                <tr><td>จ่าย</td><td><details class="vocab-details"><summary>表示</summary>jàai</details></td><td><details class="vocab-details"><summary>表示</summary>支払う</details></td></tr>
+                <tr><td>มูลค่า</td><td><details class="vocab-details"><summary>表示</summary>muun-lá-kâa</details></td><td><details class="vocab-details"><summary>表示</summary>価値</details></td></tr>
+                <tr><td>สร้าง</td><td><details class="vocab-details"><summary>表示</summary>sâang</details></td><td><details class="vocab-details"><summary>表示</summary>創造する、建設する</details></td></tr>
+                <tr><td>ยอมรับ</td><td><details class="vocab-details"><summary>表示</summary>yɔɔm-ráp</details></td><td><details class="vocab-details"><summary>表示</summary>受け入れる</details></td></tr>
+                <tr><td>สื่อกลางในการแลกเปลี่ยน</td><td><details class="vocab-details"><summary>表示</summary>sʉ̀ʉ-glaang nai gaan lɛ̂ɛk-bplìan</details></td><td><details class="vocab-details"><summary>表示</summary>交換手段</details></td></tr>
+                <tr><td>ซ่อมแซม</td><td><details class="vocab-details"><summary>表示</summary>sɔ̂m-sɛɛm</details></td><td><details class="vocab-details"><summary>表示</summary>修理する</details></td></tr>
+                <tr><td>บริการสาธารณะ</td><td><details class="vocab-details"><summary>表示</summary>bɔɔ-rí-gaan sǎa-taa-rá-ná</details></td><td><details class="vocab-details"><summary>表示</summary>公共サービス</details></td></tr>
+                <tr><td>สังคม</td><td><details class="vocab-details"><summary>表示</summary>sǎng-kom</details></td><td><details class="vocab-details"><summary>表示</summary>社会</details></td></tr>
+                <tr><td>ขาดไม่ได้</td><td><details class="vocab-details"><summary>表示</summary>kàat mâi dâi</details></td><td><details class="vocab-details"><summary>表示</summary>不可欠である</details></td></tr>
+                <tr><td>ปลอดภัย</td><td><details class="vocab-details"><summary>表示</summary>bplɔ̀ɔt-pai</details></td><td><details class="vocab-details"><summary>表示</summary>安全である</details></td></tr>
+                <tr><td>สนับสนุน</td><td><details class="vocab-details"><summary>表示</summary>sà-nàp-sà-nǔn</details></td><td><details class="vocab-details"><summary>表示</summary>支援する、支える</details></td></tr>
+                <tr><td>โดยอ้อม</td><td><details class="vocab-details"><summary>表示</summary>dooi-ɔ̂ɔm</details></td><td><details class="vocab-details"><summary>表示</summary>間接的に</details></td></tr>
+                <tr><td>การลงทุน</td><td><details class="vocab-details"><summary>表示</summary>gaan-long-tun</details></td><td><details class="vocab-details"><summary>表示</summary>投資</details></td></tr>
+                <tr><td>รายจ่ายภาครัฐ</td><td><details class="vocab-details"><summary>表示</summary>raai-jàai pâak-rát</details></td><td><details class="vocab-details"><summary>表示</summary>政府支出</details></td></tr>
+                <tr><td>โครงการสาธารณะ</td><td><details class="vocab-details"><summary>表示</summary>kroong-gaan sǎa-taa-rá-ná</details></td><td><details class="vocab-details"><summary>表示</summary>公共事業</details></td></tr>
+                <tr><td>ระบบเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary>rá-bòp sèet-tà-gìt</details></td><td><details class="vocab-details"><summary>表示</summary>経済システム</details></td></tr>
+                <tr><td>การหมุนเวียน</td><td><details class="vocab-details"><summary>表示</summary>gaan-mǔn-wian</details></td><td><details class="vocab-details"><summary>表示</summary>循環</details></td></tr>
+                <tr><td>กิจกรรมทางเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary>gìt-jà-gam taang sèet-tà-gìt</details></td><td><details class="vocab-details"><summary>表示</summary>経済活動</details></td></tr>
+                <tr><td>สกุลเงิน</td><td><details class="vocab-details"><summary>表示</summary>sà-gun-ngən</details></td><td><details class="vocab-details"><summary>表示</summary>通貨</details></td></tr>
+                <tr><td>ปรับ</td><td><details class="vocab-details"><summary>表示</summary>bpràp</details></td><td><details class="vocab-details"><summary>表示</summary>調整する</details></td></tr>
+                <tr><td>ตลาด</td><td><details class="vocab-details"><summary>表示</summary>dtà-làat</details></td><td><details class="vocab-details"><summary>表示</summary>市場</details></td></tr>
+                <tr><td>ดำเนินไปอย่างราบรื่น</td><td><details class="vocab-details"><summary>表示</summary>dam-nəən bpai yàang râap-rʉ̂ʉn</details></td><td><details class="vocab-details"><summary>表示</summary>円滑に進む、機能する</details></td></tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <p class="footer-note">発音記号は、タイ語学習で一般的に用いられる表記法（声調記号付きローマ字表記）を参考にしています。丁寧語尾「ครับ/ค่ะ」は適宜補足しています。</p>
+
+</body>
+</html>

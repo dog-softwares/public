@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語文章解析 - 第17課 命名 การตั้งชื่อ</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif; /* タイ語表示も考慮したフォント */
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .main-title-header {
+            display: flex;
+            align-items: baseline; /* テキストのベースラインを揃える */
+            border-bottom: 6px solid black; /* 画像の太い下線 */
+            padding-bottom: 8px;
+            margin-bottom: 30px;
+            white-space: nowrap; /* タイトルが折り返さないように */
+        }
+        .main-title-header .prefix-lesson {
+            font-size: 2.2em; /* 「第」のサイズ */
+            font-weight: bold;
+            margin-right: 2px;
+        }
+        .main-title-header .lesson-main-number {
+            font-size: 5.5em; /* 「17」のサイズ */
+            font-weight: bold;
+            line-height: 0.8; /* 数字の上下の余白を調整 */
+            margin-right: 4px;
+        }
+        .main-title-header .suffix-lesson {
+            font-size: 2.2em; /* 「課」のサイズ */
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .main-title-header .title-japanese {
+            font-size: 2.2em; /* 「命名」のサイズ */
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .main-title-header .title-thai {
+            font-size: 2.2em; /* タイ語「การตั้งชื่อ」のサイズ */
+            font-weight: bold;
+            font-family: 'Tahoma', 'Leelawadee', sans-serif; /* タイ語に適したフォント */
+        }
+        .main-title-header .pronunciation-thai {
+            font-size: 0.75em; /* 発音記号の相対的なサイズ */
+            font-weight: normal; /* 発音記号は通常の太さ */
+            margin-left: 5px;
+            vertical-align: middle; /* 他のテキストとの垂直位置調整 */
+        }
+
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .article-section h4 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        .article-section p {
+            margin: 12px 0;
+        }
+        .article-section strong {
+            color: #34495e;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #d1d9e6;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e9ecef;
+            font-weight: bold;
+            color: #495057;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+        tbody tr:hover {
+            background-color: #e2e6ea;
+        }
+        td:nth-child(2), td:nth-child(3), td:nth-child(4) {
+             word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-title-header">
+        <span class="prefix-lesson">第</span><span class="lesson-main-number">17</span><span class="suffix-lesson">課</span>
+        <span class="title-japanese">命名</span>
+        <span class="title-thai">การตั้งชื่อ <span class="pronunciation-thai">(gaan dtâŋ chʉ̂ʉ)</span></span>
+    </div>
+
+    <div class="article-section">
+        <h3>1.</h3>
+        <p><strong>元のタイ語:</strong> สมัยก่อนพ่อแม่ตั้งชื่อเด็กแรกเกิดตอนทำพิธีโกนผมไฟ ชื่อนี้เป็นชื่อเล่นก่อนที่จะตั้งชื่อจริง</p>
+        <p><strong>発音記号:</strong> samǎi gɔ̀ɔn pɔ̂ɔ mɛ̂ɛ dtâŋ chʉ̂ʉ dèk rɛ̂ɛk gə̀ət dtɔɔn tam pítii goon pǒm fai chʉ̂ʉ níi bpen chʉ̂ʉ lên gɔ̀ɔn tîi jà dtâŋ chʉ̂ʉ jiŋ</p>
+        <p><strong>和訳:</strong> 昔、両親は子供が生まれた時、髪を剃る儀式（ゴーポンファイの儀式）の際に名前をつけました。この名前は、本名を付ける前のニックネームでした。</p>
+        <h4>難しい単語 (1):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1-1</td>
+                    <td>สมัยก่อน</td>
+                    <td>samǎi gɔ̀ɔn</td>
+                    <td>昔、以前</td>
+                </tr>
+                <tr>
+                    <td>1-2</td>
+                    <td>แรกเกิด</td>
+                    <td>rɛ̂ɛk gə̀ət</td>
+                    <td>生まれたばかりの</td>
+                </tr>
+                <tr>
+                    <td>1-3</td>
+                    <td>พิธีโกนผมไฟ</td>
+                    <td>pítii goon pǒm fai</td>
+                    <td>ゴーポンファイの儀式（赤子の髪を剃る儀式）</td>
+                </tr>
+                <tr>
+                    <td>1-4</td>
+                    <td>ชื่อเล่น</td>
+                    <td>chʉ̂ʉ lên</td>
+                    <td>ニックネーム</td>
+                </tr>
+                <tr>
+                    <td>1-5</td>
+                    <td>ชื่อจริง</td>
+                    <td>chʉ̂ʉ jiŋ</td>
+                    <td>本名</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>2.</h3>
+        <p><strong>元のタイ語:</strong> บางคนใช้ชื่อสัตว์ เช่น หมู นก เป็ด ไก่ กุ้ง</p>
+        <p><strong>発音記号:</strong> baaŋ kon chái chʉ̂ʉ sàt chên mǔu nók bpèt gài gûŋ</p>
+        <p><strong>和訳:</strong> 動物の名前を使う人もいました。例えば、豚、鳥、アヒル、鶏、エビなどです。</p>
+        <h4>難しい単語 (2):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2-1</td>
+                    <td>สัตว์</td>
+                    <td>sàt</td>
+                    <td>動物</td>
+                </tr>
+                <tr>
+                    <td>2-2</td>
+                    <td>เช่น</td>
+                    <td>chên</td>
+                    <td>例えば</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>3.</h3>
+        <p><strong>元のタイ語:</strong> บางคนใช้ชื่อสี เช่น แดง ดำ หรือบางทีก็เรียกตามลักษณะของเด็ก เช่น อ้วน หรือบางทีก็เรียกตามลำดับเกิดก่อนเกิดหลัง เช่น โต กลาง เล็ก เป็นต้น</p>
+        <p><strong>発音記号:</strong> baaŋ kon chái chʉ̂ʉ sǐi chên dɛɛŋ dam rʉ̌ʉ baaŋ tii gɔ̂ɔ rîak dtaam láksànà kɔ̌ɔŋ dèk chên ûan rʉ̌ʉ baaŋ tii gɔ̂ɔ rîak dtaam lamdàp gə̀ət gɔ̀ɔn gə̀ət lǎŋ chên dtoo glaang lék bpen dtôn</p>
+        <p><strong>和訳:</strong> 色の名前を使う人もいました。例えば、赤、黒などです。あるいは、子供の特徴によって呼ぶこともありました。例えば、太っちょなど。また、生まれた順番によって呼ぶこともありました。例えば、大きい（長男/長女）、真ん中、小さい（末っ子）などです。</p>
+        <h4>難しい単語 (3):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3-1</td>
+                    <td>ลักษณะ</td>
+                    <td>láksànà</td>
+                    <td>特徴、様子</td>
+                </tr>
+                <tr>
+                    <td>3-2</td>
+                    <td>ลำดับ</td>
+                    <td>lamdàp</td>
+                    <td>順番</td>
+                </tr>
+                <tr>
+                    <td>3-3</td>
+                    <td>เป็นต้น</td>
+                    <td>bpen dtôn</td>
+                    <td>～など、等々</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>4.</h3>
+        <p><strong>元のタイ語:</strong> ส่วนชื่อจริงจะตั้งให้ตอนก่อนเข้าโรงเรียน</p>
+        <p><strong>発音記号:</strong> sùan chʉ̂ʉ jiŋ jà dtâŋ hâi dtɔɔn gɔ̀ɔn kâo rooŋ rian</p>
+        <p><strong>和訳:</strong> 本名は、学校に入る前につけられました。</p>
+        <h4>難しい単語 (4):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>4-1</td>
+                    <td>ส่วน</td>
+                    <td>sùan</td>
+                    <td>～に関しては、部分は</td>
+                </tr>
+                <tr>
+                    <td>4-2</td>
+                    <td>โรงเรียน</td>
+                    <td>rooŋ rian</td>
+                    <td>学校</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>5.</h3>
+        <p><strong>元のタイ語:</strong> สมัยนี้การแจ้งเกิดตามกฎหมาย ต้องแจ้งภายในสิบห้าวัน พ่อแม่ส่วนใหญ่ก็ตั้งชื่อจริงให้เด็กไปเลยตอนนั้น</p>
+        <p><strong>発音記号:</strong> samǎi níi gaan jɛ̂ɛŋ gə̀ət dtaam gòtmǎai dtɔ̂ŋ jɛ̂ɛŋ paai nai sìp hâa wan pɔ̂ɔ mɛ̂ɛ sùan yài gɔ̂ɔ dtâŋ chʉ̂ʉ jiŋ hâi dèk bpai ləəi dtɔɔn nán</p>
+        <p><strong>和訳:</strong> 現代では、法律に基づいた出生届は15日以内に届け出る必要があります。ほとんどの親は、その時に子供に本名をつけます。</p>
+        <h4>難しい単語 (5):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5-1</td>
+                    <td>แจ้งเกิด</td>
+                    <td>jɛ̂ɛŋ gə̀ət</td>
+                    <td>出生届を出す</td>
+                </tr>
+                <tr>
+                    <td>5-2</td>
+                    <td>กฎหมาย</td>
+                    <td>gòtmǎai</td>
+                    <td>法律</td>
+                </tr>
+                <tr>
+                    <td>5-3</td>
+                    <td>ภายใน</td>
+                    <td>paai nai</td>
+                    <td>～以内に</td>
+                </tr>
+                <tr>
+                    <td>5-4</td>
+                    <td>ส่วนใหญ่</td>
+                    <td>sùan yài</td>
+                    <td>大部分、ほとんど</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>6.</h3>
+        <p><strong>元のタイ語:</strong> ไม่ว่าจะเป็นสมัยก่อนหรือสมัยนี้ การตั้งชื่อจริง พ่อแม่พิถีพิถันมาก มักจะให้ญาติผู้ใหญ่ตั้งให้ บางคนให้พระหรือหมอดูตั้งให้</p>
+        <p><strong>発音記号:</strong> mâi wâa jà bpen samǎi gɔ̀ɔn rʉ̌ʉ samǎi níi gaan dtâŋ chʉ̂ʉ jiŋ pɔ̂ɔ mɛ̂ɛ pítǐipìtan mâak mák jà hâi yâat pûu yài dtâŋ hâi baaŋ kon hâi prá rʉ̌ʉ mɔ̌ɔ duu dtâŋ hâi</p>
+        <p><strong>和訳:</strong> 昔であろうと現代であろうと、本名を付ける際、両親は非常に念入りに行います。年長の親戚に名付けてもらうことが多いです。僧侶や占い師に名付けてもらう人もいます。</p>
+        <h4>難しい単語 (6):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6-1</td>
+                    <td>ไม่ว่าจะเป็น</td>
+                    <td>mâi wâa jà bpen</td>
+                    <td>～であろうとなかろうと</td>
+                </tr>
+                <tr>
+                    <td>6-2</td>
+                    <td>พิถีพิถัน</td>
+                    <td>pítǐipìtan</td>
+                    <td>念入りな、凝った</td>
+                </tr>
+                <tr>
+                    <td>6-3</td>
+                    <td>มักจะ</td>
+                    <td>mák jà</td>
+                    <td>～しがちである</td>
+                </tr>
+                <tr>
+                    <td>6-4</td>
+                    <td>ญาติผู้ใหญ่</td>
+                    <td>yâat pûu yài</td>
+                    <td>年長の親戚</td>
+                </tr>
+                <tr>
+                    <td>6-5</td>
+                    <td>พระ</td>
+                    <td>prá</td>
+                    <td>僧侶</td>
+                </tr>
+                <tr>
+                    <td>6-6</td>
+                    <td>หมอดู</td>
+                    <td>mɔ̌ɔ duu</td>
+                    <td>占い師</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>7.</h3>
+        <p><strong>元のタイ語:</strong> ตัวอักษรที่ใช้ต้องเป็นมงคลกับเด็ก</p>
+        <p><strong>発音記号:</strong> dtua àksɔ̌ɔn tîi chái dtɔ̂ŋ bpen moŋkon gàp dèk</p>
+        <p><strong>和訳:</strong> 使われる文字は、子供にとって縁起の良いものでなければなりません。</p>
+        <h4>難しい単語 (7):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7-1</td>
+                    <td>ตัวอักษร</td>
+                    <td>dtua àksɔ̌ɔn</td>
+                    <td>文字</td>
+                </tr>
+                <tr>
+                    <td>7-2</td>
+                    <td>มงคล</td>
+                    <td>moŋkon</td>
+                    <td>縁起の良い、吉祥の</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>8.</h3>
+        <p><strong>元のタイ語:</strong> พ่อแม่บางคนตั้งชื่อลูกเองโดยใช้ตัวอักษรจากชื่อตัวเอง บางคนเล่นเสียงสระพยัญชนะให้คล้องจองกัน เช่น ลูกสาวคนโตชื่อ “เจียดฉัตรโฉม” ลูกสาวคนเล็กชื่อ “โสมส่องแสง”</p>
+        <p><strong>発音記号:</strong> pɔ̂ɔ mɛ̂ɛ baaŋ kon dtâŋ chʉ̂ʉ lûuk eeŋ dooi chái dtua àksɔ̌ɔn jàak chʉ̂ʉ dtua eeŋ baaŋ kon lên sǐaŋ sàrà payanchánà hâi klɔ́ɔŋ jɔɔŋ gan chên lûuk sǎao kon dtoo chʉ̂ʉ “jìat chàt chǒom” lûuk sǎao kon lék chʉ̂ʉ “sǒom sɔ̀ŋ sɛ̌ɛŋ”</p>
+        <p><strong>和訳:</strong> 親自身が自分の名前の文字を使って子供の名前を付けることもあります。また、母音や子音の響きを合わせて韻を踏むようにする人もいます。例えば、長女の名前を「ジアドチャットチョーム」、末娘の名前を「ソームソンセーン」とするなどです。</p>
+        <h4>難しい単語 (8):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8-1</td>
+                    <td>โดย</td>
+                    <td>dooi</td>
+                    <td>～によって、～で</td>
+                </tr>
+                <tr>
+                    <td>8-2</td>
+                    <td>สระ</td>
+                    <td>sàrà</td>
+                    <td>母音</td>
+                </tr>
+                <tr>
+                    <td>8-3</td>
+                    <td>พยัญชนะ</td>
+                    <td>payanchánà</td>
+                    <td>子音</td>
+                </tr>
+                <tr>
+                    <td>8-4</td>
+                    <td>คล้องจองกัน</td>
+                    <td>klɔ́ɔŋ jɔɔŋ gan</td>
+                    <td>韻を踏む、語呂が良い</td>
+                </tr>
+                <tr>
+                    <td>8-5</td>
+                    <td>ลูกสาวคนโต</td>
+                    <td>lûuk sǎao kon dtoo</td>
+                    <td>長女</td>
+                </tr>
+                <tr>
+                    <td>8-6</td>
+                    <td>ลูกสาวคนเล็ก</td>
+                    <td>lûuk sǎao kon lék</td>
+                    <td>末娘（一番下の娘）</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>9.</h3>
+        <p><strong>元のタイ語:</strong> “โฉม” กับ “โสม” มีสระและตัวสะกดเดียวกัน คือ สระโอและตัวสะกดแม่กมเหมือนกัน</p>
+        <p><strong>発音記号:</strong> “chǒom” gàp “sǒom” mii sàrà lɛ́ dtua sagòt diao gan kʉʉ sàrà oo lɛ́ dtua sagòt mɛ̂ɛ gom mʉ̌an gan</p>
+        <p><strong>和訳:</strong> 「チョーム」と「ソーム」は同じ母音と末子音を持っています。つまり、オー母音と同じゴム（กม）末子音です。</p>
+        <h4>難しい単語 (9):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>9-1</td>
+                    <td>ตัวสะกด</td>
+                    <td>dtua sagòt</td>
+                    <td>末子音</td>
+                </tr>
+                <tr>
+                    <td>9-2</td>
+                    <td>เดียวกัน</td>
+                    <td>diao gan</td>
+                    <td>同じ</td>
+                </tr>
+                <tr>
+                    <td>9-3</td>
+                    <td>คือ</td>
+                    <td>kʉʉ</td>
+                    <td>つまり、すなわち</td>
+                </tr>
+                <tr>
+                    <td>9-4</td>
+                    <td>สระโอ</td>
+                    <td>sàrà oo</td>
+                    <td>オー母音</td>
+                </tr>
+                <tr>
+                    <td>9-5</td>
+                    <td>แม่กม</td>
+                    <td>mɛ̂ɛ gom</td>
+                    <td>ゴム末子音群（mで終わる末子音のグループ）</td>
+                </tr>
+                <tr>
+                    <td>9-6</td>
+                    <td>เหมือนกัน</td>
+                    <td>mʉ̌an gan</td>
+                    <td>同じように</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>10.</h3>
+        <p><strong>元のタイ語:</strong> พ่อแม่บางคนตั้งชื่อลูกทุกคนขึ้นต้นด้วยพยัญชนะต้นตัวเดียวกัน เช่น ขึ้นต้นด้วยอักษร พพาน “เพลิน พิศ พรรณ พัฒน์” เป็นต้น</p>
+        <p><strong>発音記号:</strong> pɔ̂ɔ mɛ̂ɛ baaŋ kon dtâŋ chʉ̂ʉ lûuk túk kon kʉ̂n dtôn dûai payanchánà dtôn dtua diao gan chên kʉ̂n dtôn dûai àksɔ̌ɔn pɔɔ paan “pləən pít pan pát” bpen dtôn</p>
+        <p><strong>和訳:</strong> 一部の親は、子供たち全員の名前を同じ頭子音で始まるように名付けます。例えば、ポー・パーン（พ）の文字で始まる「プルーン、ピット、パン、パット」などです。</p>
+        <h4>難しい単語 (10):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10-1</td>
+                    <td>ทุกคน</td>
+                    <td>túk kon</td>
+                    <td>みんな、全員</td>
+                </tr>
+                <tr>
+                    <td>10-2</td>
+                    <td>ขึ้นต้นด้วย</td>
+                    <td>kʉ̂n dtôn dûai</td>
+                    <td>～で始まる</td>
+                </tr>
+                <tr>
+                    <td>10-3</td>
+                    <td>พยัญชนะต้น</td>
+                    <td>payanchánà dtôn</td>
+                    <td>頭子音</td>
+                </tr>
+                <tr>
+                    <td>10-4</td>
+                    <td>ตัวเดียวกัน</td>
+                    <td>dtua diao gan</td>
+                    <td>同じもの</td>
+                </tr>
+                <tr>
+                    <td>10-5</td>
+                    <td>อักษร</td>
+                    <td>àksɔ̌ɔn</td>
+                    <td>文字</td>
+                </tr>
+                <tr>
+                    <td>10-6</td>
+                    <td>พ พาน</td>
+                    <td>pɔɔ paan</td>
+                    <td>（タイ文字の）พ</td>
+                </tr>
+                <tr>
+                    <td>10-7</td>
+                    <td>เป็นต้น</td>
+                    <td>bpen dtôn</td>
+                    <td>～など、等々</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article-section">
+        <h3>11.</h3>
+        <p><strong>元のタイ語:</strong> พ่อแม่บางคนตั้งชื่อโดยเลือกจากความหมายของคำ ชื่อของเด็กผู้ชายส่วนใหญ่มีความหมายว่า กล้าหาญ ยิ่งใหญ่ หรือเจริญก้าวหน้า ชื่อของเด็กผู้หญิงส่วนใหญ่มีความหมายว่า สวยงาม น่ารัก</p>
+        <p><strong>発音記号:</strong> pɔ̂ɔ mɛ̂ɛ baaŋ kon dtâŋ chʉ̂ʉ dooi lʉ̂ak jàak kwaam mǎai kɔ̌ɔŋ kam chʉ̂ʉ kɔ̌ɔŋ dèk pûu chaai sùan yài mii kwaam mǎai wâa glâa hǎan yîŋ yài rʉ̌ʉ jarəən gâao nâa chʉ̂ʉ kɔ̌ɔŋ dèk pûu yǐŋ sùan yài mii kwaam mǎai wâa sǔai ngaam nâa rák</p>
+        <p><strong>和訳:</strong> 一部の親は、言葉の意味から選んで名前を付けます。男の子の名前の多くは、勇敢、偉大、または進歩発展を意味します。女の子の名前の多くは、美しい、可愛らしいを意味します。</p>
+        <h4>難しい単語 (11):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>単語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11-1</td>
+                    <td>โดยเลือกจาก</td>
+                    <td>dooi lʉ̂ak jàak</td>
+                    <td>～から選んで</td>
+                </tr>
+                <tr>
+                    <td>11-2</td>
+                    <td>ความหมาย</td>
+                    <td>kwaam mǎai</td>
+                    <td>意味</td>
+                </tr>
+                <tr>
+                    <td>11-3</td>
+                    <td>คำ</td>
+                    <td>kam</td>
+                    <td>言葉</td>
+                </tr>
+                <tr>
+                    <td>11-4</td>
+                    <td>เด็กผู้ชาย</td>
+                    <td>dèk pûu chaai</td>
+                    <td>男の子</td>
+                </tr>
+                <tr>
+                    <td>11-5</td>
+                    <td>ส่วนใหญ่</td>
+                    <td>sùan yài</td>
+                    <td>大部分、ほとんど</td>
+                </tr>
+                <tr>
+                    <td>11-6</td>
+                    <td>กล้าหาญ</td>
+                    <td>glâa hǎan</td>
+                    <td>勇敢な</td>
+                </tr>
+                <tr>
+                    <td>11-7</td>
+                    <td>ยิ่งใหญ่</td>
+                    <td>yîŋ yài</td>
+                    <td>偉大な</td>
+                </tr>
+                <tr>
+                    <td>11-8</td>
+                    <td>เจริญก้าวหน้า</td>
+                    <td>jarəən gâao nâa</td>
+                    <td>進歩発展する</td>
+                </tr>
+                <tr>
+                    <td>11-9</td>
+                    <td>เด็กผู้หญิง</td>
+                    <td>dèk pûu yǐŋ</td>
+                    <td>女の子</td>
+                </tr>
+                <tr>
+                    <td>11-10</td>
+                    <td>สวยงาม</td>
+                    <td>sǔai ngaam</td>
+                    <td>美しい</td>
+                </tr>
+                <tr>
+                    <td>11-11</td>
+                    <td>น่ารัก</td>
+                    <td>nâa rák</td>
+                    <td>可愛らしい</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

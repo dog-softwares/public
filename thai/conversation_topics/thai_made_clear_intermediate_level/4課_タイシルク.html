@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4課 タイシルク ผ้าไหมไทย</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            /* 横スクロールバーが表示されるのを防ぐ */
+            overflow-x: hidden;
+        }
+
+        .page-container {
+            display: flex;
+            min-height: 100vh;
+            /* ↑ bodyに移動したため、ここからは削除 */
+        }
+
+        /* --- 左メニュー用スタイル --- */
+        .left-menu {
+            flex: 0 0 220px; /* 左メニューの幅を固定 */
+            background-color: #e9f5ff;
+            padding: 20px;
+            border-right: 1px solid #d1d9e6;
+            height: 100vh;
+            position: sticky; /* スクロールに追従させる */
+            top: 0; /* 上端に固定 */
+            overflow-y: auto; /* 内容が多い場合にメニュー内をスクロール可能にする */
+            /* 開閉アニメーションのためのトランジションを追加 */
+            transition: margin-left 0.35s ease-in-out;
+            z-index: 990;
+        }
+        .left-menu h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .left-menu ul li {
+            margin-bottom: 12px;
+        }
+        .left-menu ul li a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 500;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .left-menu ul li a:hover {
+            text-decoration: underline;
+            background-color: #d0e6ff;
+        }
+
+        /* --- 中央メインコンテンツ用スタイル --- */
+        .main-content {
+            flex: 1; /* 残りの幅をすべて使用 */
+            padding: 20px 30px;
+        }
+        
+        /* --- ここからタイトルヘッダー用スタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap; /* レスポンシブ対応 */
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 35px;
+        }
+        .main-title-header .prefix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 2px; }
+        .main-title-header .lesson-main-number { font-size: 5.5em; font-weight: bold; line-height: 0.8; margin-right: 4px; }
+        .main-title-header .suffix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 20px; }
+        .main-title-header .title-japanese { font-size: 2.2em; font-weight: bold; margin-right: 10px; }
+        .main-title-header .title-thai { font-size: 2.2em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai-details { display: inline-block; margin-left: 10px; vertical-align: middle; }
+        .main-title-header .pronunciation-thai { font-size: 0.75em; font-weight: normal; color: #c0392b; }
+
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .translation { color: #228b22; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        tbody tr:hover { background-color: #e2e6ea; }
+        td { font-size: 1em; }
+
+        /* --- ここから折りたたみ機能用スタイル (details/summary) --- */
+        .collapsible-content summary,
+        .vocab-details summary,
+        .pronunciation-thai-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .collapsible-content summary:hover,
+        .vocab-details summary:hover,
+        .pronunciation-thai-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .collapsible-content[open] summary,
+        .vocab-details[open] summary,
+        .pronunciation-thai-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .collapsible-content .content-wrapper,
+        .vocab-details .content-wrapper,
+        .pronunciation-thai-details .content-wrapper {
+            padding-top: 8px;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+             word-break: break-all;
+        }
+        
+        /* --- フッター用スタイル --- */
+        .page-footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.95em;
+            color: #555;
+            border-top: 1px solid #d1d9e6;
+        }
+
+        /* --- ここからメニュー開閉機能のためのスタイル --- */
+        #menu-toggle-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            font-size: 24px;
+            line-height: 1;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        #menu-toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* .menu-closedクラスが付与された時にメニューを隠す */
+        .page-container.menu-closed .left-menu {
+            margin-left: -220px; /* メニューの幅分だけ左に移動させる */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- メニュー開閉ボタン -->
+    <button id="menu-toggle-button" aria-label="メニューを開閉">☰</button>
+
+    <div class="page-container">
+        <nav class="left-menu">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#section-main-title">タイトル</a></li>
+                <li><a href="#section-new-words">1. 新単語</a></li>
+                <li><a href="#section-reading">2. 読解</a></li>
+                <li><a href="#section-conversation">3. 会話練習</a></li>
+                <li><a href="#section-translation">4. 翻訳練習</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-title-header" id="section-main-title">
+                <span class="prefix-lesson">第</span><span class="lesson-main-number">4</span><span class="suffix-lesson">課</span>
+                <span class="title-japanese">タイシルク</span>
+                <span class="title-thai">ผ้าไหมไทย</span>
+                <details class="pronunciation-thai-details">
+                    <summary>発音</summary>
+                    <div class="content-wrapper">
+                        <span class="pronunciation-thai">(pâa mǎi tai)</span>
+                    </div>
+                </details>
+            </header>
+
+            <section class="article-section" id="section-new-words">
+                <h3>1. 新単語</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th>タイ語</th>
+                            <th>発音記号</th>
+                            <th>意味</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>วิธี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wí-tii</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">方法</div></details></td></tr>
+                        <tr><td>การเลี้ยงไหม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan líang mǎi</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">養蚕</div></details></td></tr>
+                        <tr><td>สมัยโบราณ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-mǎi boo-raan</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">古代</div></details></td></tr>
+                        <tr><td>สันนิษฐาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎn-nít-tǎan</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">推定する</div></details></td></tr>
+                        <tr><td>พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prá-bàat sǒm-dèt prá jù-laa-jɔɔm-glâo jâo-yùu-hǔa</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ラーマ5世</div></details></td></tr>
+                        <tr><td>รัชกาลที่~</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rát-chá-gaan tîi</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ラーマ～世</div></details></td></tr>
+                        <tr><td>ผู้เชี่ยวชาญ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pûu chîao-chaan</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">専門家</div></details></td></tr>
+                        <tr><td>ปรับปรุง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpràp-bprung</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">改善する</div></details></td></tr>
+                        <tr><td>กลายเป็น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">glaai bpen</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～に変わる</div></details></td></tr>
+                        <tr><td>สินค้าออก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǐn-káa ɔ̀ɔk</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">輸出品</div></details></td></tr>
+                        <tr><td>ชั้นสูง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chán sǔung</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">高級な</div></details></td></tr>
+                        <tr><td>เฉพาะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chà-pɔ́</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">もっぱら、特に～だけ</div></details></td></tr>
+                        <tr><td>เจ้านาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jâo naai</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">王族</div></details></td></tr>
+                        <tr><td>นิยม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ní-yom</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">好む</div></details></td></tr>
+                        <tr><td>ชุดไทย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chút tai</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">タイ衣装</div></details></td></tr>
+                        <tr><td>ผ้าพื้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pâa pʉ́ʉn</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">無地の布</div></details></td></tr>
+                        <tr><td>ผ้าลาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pâa laai</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">柄の布</div></details></td></tr>
+                        <tr><td>สีสด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǐi sòt</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">鮮やかな色</div></details></td></tr>
+                        <tr><td>สีเรียบๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǐi rîap-rîap</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">地味な色</div></details></td></tr>
+                        <tr><td>สีฉูดฉาด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǐi chùut-chàat</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">派手な色</div></details></td></tr>
+                        <tr><td>เนื้อผ้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nʉ́ʉa pâa</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">生地の質</div></details></td></tr>
+                        <tr><td>เป็นมันวาว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpen man waao</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">美しい光沢の、ぴかぴかの</div></details></td></tr>
+                        <tr><td>ประกาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bprà-gaai</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">輝き、スパーク</div></details></td></tr>
+                        <tr><td>เด่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dèn</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">目立った、際立った</div></details></td></tr>
+                        <tr><td>สะดุดตา</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-dùt dtaa</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">目を引く、目立つ</div></details></td></tr>
+                        <tr><td>ยิ่งนัก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">yîng nák</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">はなはだ、極めて</div></details></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="article-section" id="section-reading">
+                <h3>2. 読解</h3>
+
+                <h4>4-1.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยรู้จักวิธีการเลี้ยงไหมทอผ้ามาตั้งแต่สมัยโบราณ</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kon tai rúu-jàk wí-tii gaan líang mǎi tɔɔ pâa maa dtâng-dtɛ̀ɛ sà-mǎi boo-raan.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイ人は古代から養蚕と機織りの方法を知っていました。</span></div></details></p>
+                <h5>難しい単語 (4-1):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>ทอผ้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tɔɔ pâa</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">機織りをする</div></details></td></tr>
+                        <tr><td>ตั้งแต่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtâng-dtɛ̀ɛ</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～から</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-2.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">สันนิษฐานกันว่าคนไทยเรียนวิธีการเลี้ยงไหมทอผ้ามาจากชาวจีน</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎn-nít-tǎan gan wâa kon tai rian wí-tii gaan líang mǎi tɔɔ pâa maa jàak chaao jiin.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイ人は中国人から養蚕と機織りの方法を学んだと推定されています。</span></div></details></p>
+                <h5>難しい単語 (4-2):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>สันนิษฐาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎn-nít-tǎan</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">推定する</div></details></td></tr>
+                        <tr><td>ชาวจีน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chaao jiin</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">中国人</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-3.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">ในสมัยพระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว รัชกาลที่ 5 แห่งกรุงรัตนโกสินทร์ มีผู้เชี่ยวชาญจากญี่ปุ่นเข้ามาสอนการเลี้ยงไหมทอผ้าให้กับคนไทย</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nai sà-mǎi prá-bàat sǒm-dèt prá jù-laa-jɔɔm-glâo jâo-yùu-hǔa, rát-chá-gaan tîi hâa hɛ̀ng grung rát-dtà-ná-goo-sǐn, mii pûu chîao-chaan jàak yîi-bpùn kâo maa sɔ̌ɔn gaan líang mǎi tɔɔ pâa hâi gàp kon tai.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ラタナコーシン王朝ラーマ5世の時代に、日本からの専門家がタイ人に養蚕と機織りを教えに来ました。</span></div></details></p>
+                <h5>難しい単語 (4-3):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>แห่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hɛ̀ng</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～の（場所）</div></details></td></tr>
+                        <tr><td>กรุงรัตนโกสินทร์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">grung rát-dtà-ná-goo-sǐn</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ラタナコーシン（バンコクの正式名称の一部）</div></details></td></tr>
+                     </tbody>
+                </table>
+
+                <h4>4-4.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">ตั้งแต่นั้นมา คนไทยก็ได้ปรับปรุงวิธีการเลี้ยงไหมทอผ้าให้มีคุณภาพขึ้น</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtâng-dtɛ̀ɛ nán maa, kon tai gɔ̂ dâi bpràp-bprung wí-tii gaan líang mǎi tɔɔ pâa hâi mii kun-ná-pâap kʉ̂n.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">それ以来、タイ人は養蚕と機織りの方法を改善し、品質を向上させました。</span></div></details></p>
+                <h5>難しい単語 (4-4):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>คุณภาพ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kun-ná-pâap</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">品質</div></details></td></tr>
+                     </tbody>
+                </table>
+
+                <h4>4-5.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">จนถึงสมัยนี้ สมัยนี้คนไทยนอกจากจะใช้ผ้าไหมตัดเป็นเสื้อผ้าแล้วยังใช้ทำของใช้ต่างๆอีกด้วย ผ้าไหมจึงกลายเป็นสินค้าออกที่สำคัญอย่างหนึ่งของประเทศไทย</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jon-tʉ̌ng sà-mǎi níi, sà-mǎi níi kon tai nɔ̂ɔk-jàak jà chái pâa mǎi dtàt bpen sʉ̂a-pâa lɛ́ɛo yang chái tam kɔ̌ɔng chái dtàang-dtàang ìik dûai. pâa mǎi jʉng glaai bpen sǐn-káa ɔ̀ɔk tîi sǎm-kan yàang nʉ̀ng kɔ̌ɔng bprà-têet tai.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">現代に至るまで、タイ人はシルクを衣類に仕立てるだけでなく、様々な日用品を作るためにも使っています。そのため、タイシルクはタイの重要な輸出品の一つとなりました。</span></div></details></p>
+                <h5>難しい単語 (4-5):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>นอกจาก...แล้วยัง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nɔ̂ɔk-jàak...lɛ́ɛo yang</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～だけでなく～も</div></details></td></tr>
+                        <tr><td>ของใช้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔ̌ɔng chái</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">日用品、使う物</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-6.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">สมัยก่อนคนไทยธรรมดาไม่ใช้ผ้าไหม เพราะว่าผ้าไหมเป็นของชั้นสูงราคาแพง</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-mǎi gɔ̀ɔn kon tai tam-má-daa mâi chái pâa mǎi, prɔ́ wâa pâa mǎi bpen kɔ̌ɔng chán sǔung raa-kaa pɛɛng.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">昔は、一般のタイ人はシルクを使いませんでした。なぜならシルクは高価な高級品だったからです。</span></div></details></p>
+                <h5>難しい単語 (4-6):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>ธรรมดา</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam-má-daa</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">普通の、一般の</div></details></td></tr>
+                        <tr><td>ราคาแพง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">raa-kaa pɛɛng</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">値段が高い</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-7.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เฉพาะเจ้านายและข้าราชการชั้นสูงเท่านั้นที่ใช้ผ้าไหม</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chà-pɔ́ jâo naai lɛ́ kâa-râat-chá-gaan chán sǔung tâo-nán tîi chái pâa mǎi.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">王族と高官だけがシルクを使用していました。</span></div></details></p>
+                <h5>難しい単語 (4-7):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>ข้าราชการ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâa-râat-chá-gaan</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">公務員、官吏</div></details></td></tr>
+                        <tr><td>เท่านั้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tâo-nán</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～だけ</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-8.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">แต่สมัยนี้คนไทยนิยมใช้ผ้าไหมกันมากขึ้น คนไทยสมัยนี้ไม่ไค่ใช้ผ้าไหมตัดเป็นชุดไทยเท่านั้น แต่ยังใช้ตัดเป็นเสื้อ กระโปรง กางเกง ใช้ในโอกาสต่างๆ</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtɛ̀ɛ sà-mǎi níi kon tai ní-yom chái pâa mǎi gan mâak kʉ̂n. kon tai sà-mǎi níi mâi kâi chái pâa mǎi dtàt bpen chút tai tâo-nán, dtɛ̀ɛ yang chái dtàt bpen sʉ̂a, grà-bproong, gaang-geeng, chái nai oo-gàat dtàang-dtàang.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">しかし現代では、タイ人はよりシルクを好んで使うようになりました。現代のタイ人は、シルクをタイ衣装に仕立てるだけでなく、シャツ、スカート、ズボンに仕立てて様々な機会に着用します。</span></div></details></p>
+                <h5>難しい単語 (4-8):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>มากขึ้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mâak kʉ̂n</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">より多く</div></details></td></tr>
+                        <tr><td>โอกาส</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">oo-gàat</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">機会</div></details></td></tr>
+                     </tbody>
+                </table>
+
+                <h4>4-9.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">ผ้าไหมมีทั้งผ้าพื้นและผ้าลาย สีของผ้าไหมส่วนใหญ่เป็นสีสด แต่ก็มีสีเรียบๆ สำหรับคนที่ไม่ชอบสีฉูดฉาด</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pâa mǎi mii táng pâa pʉ́ʉn lɛ́ pâa laai. sǐi kɔ̌ɔng pâa mǎi sùan yài bpen sǐi sòt, dtɛ̀ɛ gɔ̂ mii sǐi rîap-rîap sǎm-ràp kon tîi mâi chɔ̂ɔp sǐi chùut-chàat.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイシルクには無地と柄物があります。シルクの色はほとんどが鮮やかですが、派手な色を好まない人向けに地味な色もあります。</span></div></details></p>
+                <h5>難しい単語 (4-9):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>ส่วนใหญ่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sùan yài</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ほとんど、大部分</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>4-10.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เนื้อผ้าของผ้าไหมเป็นมันวาวมีประกาย เพราะฉะนั้นเวลาใส่ผ้าไหม คนใส่จึงดูเด่นสะดุดตายิ่งนัก</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nʉ́ʉa pâa kɔ̌ɔng pâa mǎi bpen man waao mii bprà-gaai. prɔ́-chà-nán wee-laa sài pâa mǎi, kon sài jʉng duu dèn sà-dùt dtaa yîng nák.</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">シルクの生地は光沢があり輝いています。そのため、シルクを着ると、着ている人はとても際立って人目を引きます。</span></div></details></p>
+                <h5>難しい単語 (4-10):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                     <tbody>
+                        <tr><td>เพราะฉะนั้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prɔ́-chà-nán</span></div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">それゆえ、そのため</div></details></td></tr>
+                     </tbody>
+                </table>
+                
+            </section>
+
+            <section class="article-section" id="section-conversation">
+                <h3>3. 会話練習</h3>
+                <p>※編集中...</p>
+            </section>
+
+            <section class="article-section" id="section-translation">
+                <h3>4. 翻訳練習</h3>
+                <p>※編集中...</p>
+            </section>
+
+            <footer class="page-footer">
+                <p>発音記号は、タイ語教科書で用いられる一般的な表記法（声調記号付き）を参考にしています。</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- メニュー開閉のためのJavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('menu-toggle-button');
+            const pageContainer = document.querySelector('.page-container');
+
+            // デフォルトでメニューを閉じた状態にする
+            pageContainer.classList.add('menu-closed');
+
+            // ボタンがクリックされたら、.menu-closedクラスを付け外しする
+            toggleButton.addEventListener('click', function() {
+                pageContainer.classList.toggle('menu-closed');
+            });
+        });
+    </script>
+</body>
+</html>

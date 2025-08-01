@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2課 タイの気候 ภูมิอากาศของประเทศไทย</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        /* --- ここからタイトルヘッダー用スタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 35px;
+            white-space: nowrap;
+        }
+        .main-title-header .prefix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 2px; }
+        .main-title-header .lesson-main-number { font-size: 5.5em; font-weight: bold; line-height: 0.8; margin-right: 4px; }
+        .main-title-header .suffix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 20px; }
+        .main-title-header .title-japanese { font-size: 2.2em; font-weight: bold; margin-right: 10px; }
+        .main-title-header .title-thai { font-size: 2.2em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.75em; font-weight: normal; margin-left: 5px; vertical-align: middle; color: #c0392b; }
+        /* --- ここまでタイトルヘッダー用スタイル --- */
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .translation { color: #228b22; }
+        .japanese-question { font-weight: bold; margin-bottom: 5px; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        tbody tr:hover { background-color: #e2e6ea; }
+        td { font-size: 1em; }
+        /* 発音記号の折りたたみ内容のスタイル調整 */
+        td:nth-child(3) .content-wrapper {
+             word-break: break-all;
+        }
+        /* 意味の折りたたみ内容のスタイル調整 */
+        td:nth-child(4) .content-wrapper {
+             word-break: break-all;
+        }
+
+        /* --- ここから折りたたみ機能用スタイル (details/summary) --- */
+        .collapsible-content summary,
+        .vocab-details summary { /* 両方のsummaryに適用 */
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            margin-left: 5px;
+            font-size: 0.9em; /* ボタンの文字サイズを少し小さく */
+        }
+        .collapsible-content summary:hover,
+        .vocab-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .collapsible-content[open] summary,
+        .vocab-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .collapsible-content .content-wrapper,
+        .vocab-details .content-wrapper { /* 両方の折りたたみ内容に適用 */
+            padding-top: 8px;
+            padding-left: 0px; /* 単語表ではインデント不要 */
+        }
+        /* テーブル内のdetails/summaryは少し小さめに */
+        .vocab-table td .vocab-details summary {
+            margin-left: 0; /* テーブルセル内では左マージンなし */
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+        }
+        /* --- ここまで折りたたみ機能用スタイル --- */
+
+        /* --- 目次用スタイル --- */
+        #index-toc {
+            background-color: #e9f5ff; /* 少し薄い青系の背景 */
+            border-left: 5px solid #007bff;
+        }
+        #index-toc h3 {
+            color: #0056b3;
+            border-bottom: none; /* 目次のH3は下線なし */
+        }
+        #index-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #index-toc ul li {
+            margin-bottom: 8px;
+        }
+        #index-toc ul li a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 500;
+        }
+        #index-toc ul li a:hover {
+            text-decoration: underline;
+            color: #003d80;
+        }
+        .back-to-toc {
+            text-align: right;
+            margin-top: 15px;
+            margin-bottom: 0px; /* セクション開始時の上マージンを調整 */
+        }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover {
+            background-color: #d0e6ff;
+        }
+        .section-end-back-to-toc { /* セクション終わりのリンク用 */
+            text-align: right;
+            margin-top: 20px;
+        }
+
+
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div id="index-toc" class="article-section">
+        <h3>目次</h3>
+        <ul>
+            <li><a href="#section-main-title">タイトル</a></li>
+            <li><a href="#section-new-words">1. 新単語</a></li>
+            <li><a href="#section-reading">2. 読解</a></li>
+            <li><a href="#section-conversation">3. 会話練習</a></li>
+            <li><a href="#section-translation">4. 翻訳練習</a></li>
+        </ul>
+    </div>
+
+    <div class="main-title-header" id="section-main-title">
+        <span class="prefix-lesson">第</span><span class="lesson-main-number">2</span><span class="suffix-lesson">課</span>
+        <span class="title-japanese">タイの気候</span>
+        <span class="title-thai">ภูมิอากาศของประเทศไทย <span class="pronunciation-thai">(puum-mí-aa-gàat kɔ̌ɔng bprà-têet thai)</span></span>
+    </div>
+
+    <div class="article-section" id="section-new-words">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>1. 新単語</h3>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2-1</td>
+                    <td>ภูมิอากาศ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">puum-mí-aa-gàat</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">気候</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-2</td>
+                    <td>เขต</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kèet</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">区域、地域、地帯</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-3</td>
+                    <td>ฤดู</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rʉ́-duu</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">季節</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-4</td>
+                    <td>แตกต่างกัน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtɛ̀ɛk-dtàang gan</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">相異なる</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-5</td>
+                    <td>แล้วแต่</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lɛ́ɛo-dtɛ̀ɛ</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～による、～しだいだ</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-6</td>
+                    <td>อุณหภูมิ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">un-hà-puum</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">気温</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-7</td>
+                    <td>เฉลี่ย</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chà-lìa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">平均する</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8</td>
+                    <td>องศาเซลเซียส</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ong-sǎa sen-sîat</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">摂氏～度</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-9</td>
+                    <td>ชุก</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chúk</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">多い (雨などが)</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10</td>
+                    <td>ข้อเสีย</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔ̂ɔ-sǐa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">欠点、短所</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-11</td>
+                    <td>ข้อดี</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔ̂ɔ-dii</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">利点、長所</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-12</td>
+                    <td>เพราะฉะนั้น</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prɔ́-chà-nán</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">それゆえに</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-13</td>
+                    <td>หน้าทำนา</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa tam-naa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">田植えの季節、稲作期</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <div class="article-section" id="section-reading">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>2. 読解</h3>
+
+        <h4>2-1.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">ประเทศไทยเป็นประเทศในเขตร้อน</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">bprà-têet tai bpen bprà-têet nai kèet rɔ́ɔn.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">タイは熱帯の国です。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-1):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-1-1</td>
+                    <td>เขตร้อน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kèet rɔ́ɔn</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">熱帯（地域）</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-2.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">การแบ่งระยะเวลาของฤดูแตกต่างกันบ้างแล้วแต่ภาค</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">gaan bɛ̀ng rá-yá-wee-laa kɔ̌ɔng rʉ́-duu dtɛ̀ɛk-dtàang gan bâang lɛ́ɛo-dtɛ̀ɛ pâak.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">季節の期間の分け方は、地方によって多少異なります。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-2):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-2-1</td>
+                    <td>การแบ่ง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan bɛ̀ng</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">分けること、分割</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-2-2</td>
+                    <td>ระยะเวลา</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rá-yá-wee-laa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">期間</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-2-3</td>
+                    <td>ภาค</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pâak</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">地方、地域</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-3.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">แต่ในหนึ่งปีส่วนใหญ่ของประเทศไทยมีสามฤดู ฤดูร้อน ฤดูฝน และฤดูหนาว</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">dtɛ̀ɛ nai nʉ̀ng bpii sùan-yài kɔ̌ɔng bprà-têet tai mii sǎam rʉ́-duu: rʉ́-duu rɔ́ɔn, rʉ́-duu fǒn, lɛ́ rʉ́-duu nǎao.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">しかし、タイの1年の大部分には、暑季、雨季、乾季の3つの季節があります。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-3):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-3-1</td>
+                    <td>ส่วนใหญ่</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sùan-yài</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">大部分</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-3-2</td>
+                    <td>ฤดูร้อน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rʉ́-duu rɔ́ɔn</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">暑季</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-3-3</td>
+                    <td>ฤดูฝน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rʉ́-duu fǒn</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">雨季</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-3-4</td>
+                    <td>ฤดูหนาว</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rʉ́-duu nǎao</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">乾季 (タイの文脈)</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-4.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">อุณหภูมิเฉลี่ยทั้งปีอยู่ที่ระหว่าง 26 ถึง 28 องศาเซลเซียส</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">un-hà-puum chà-lìa táng bpii yùu tîi rá-wàang yîi-sìp-hòk tʉ̌ng yîi-sìp-bpɛ̀ɛt ong-sǎa sen-sîat.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">年間平均気温は摂氏26度から28度の間です。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-4):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-4-1</td>
+                    <td>ทั้งปี</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">táng bpii</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">一年中、年間</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-4-2</td>
+                    <td>ระหว่าง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rá-wàang</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～の間</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-5.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">“ฤดู”เรียกว่า“หน้า”</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">“rʉ́-duu” rîak wâa “nâa”.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">「ฤดู（季節）」は口語で「หน้า」とも呼ばれます。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-5):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-5-1</td>
+                    <td>เรียกว่า</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rîak wâa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～と呼ばれる</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-5-2</td>
+                    <td>หน้า</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">季節（口語表現）</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-6.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">ฤดูร้อนหรือหน้าร้อนอยู่ในระหว่างประมาณเดือนมีนาคม เมษายน และพฤษภาคม</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">rʉ́-duu rɔ́ɔn rʉ̌ʉ nâa rɔ́ɔn yùu nai rá-wàang bprà-maan dʉan mii-naa-kom mee-sǎa-yon lɛ́ prʉ́t-sà-paa-kom.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">暑季、または「ナローン」（暑い季節）は、およそ3月、4月、5月の間にあります。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-6):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-6-1</td>
+                    <td>หน้าร้อน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa rɔ́ɔn</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">暑季（口語）</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-6-2</td>
+                    <td>ประมาณ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bprà-maan</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">約、およそ</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-6-3</td>
+                    <td>เดือนมีนาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan mii-naa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">3月</div></details></td>
+                </tr>
+                 <tr>
+                    <td>2-6-4</td>
+                    <td>เดือนเมษายน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan mee-sǎa-yon</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">4月</div></details></td>
+                </tr>
+                 <tr>
+                    <td>2-6-5</td>
+                    <td>เดือนพฤษภาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan prʉ́t-sà-paa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">5月</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-7.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">เดือนเมษายนเป็นเดือนที่ร้อนที่สุด</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">dʉan mee-sǎa-yon bpen dʉan tîi rɔ́ɔn tîi-sùt.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">4月が最も暑い月です。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-7):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-7-1</td>
+                    <td>ร้อนที่สุด</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rɔ́ɔn tîi-sùt</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">最も暑い</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-8.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">ในหน้าร้อนอากาศร้อนจริง แต่ก็เป็นหน้าของผลไม้อร่อย เช่น มะม่วงและทุเรียน</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">nai nâa rɔ́ɔn aa-gàat rɔ́ɔn jing, dtɛ̀ɛ gɔ̂ɔ bpen nâa kɔ̌ɔng pǒn-lá-mái à-rɔ̀i, chêen má-mûang lɛ́ tú-rian.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">暑季は本当に暑いですが、マンゴーやドリアンのような美味しい果物の季節でもあります。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-8):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-8-1</td>
+                    <td>อากาศ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">aa-gàat</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">天気、気候</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-2</td>
+                    <td>จริง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jing</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">本当に、真実</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-3</td>
+                    <td>ผลไม้</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pǒn-lá-mái</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">果物</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-4</td>
+                    <td>อร่อย</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">à-rɔ̀i</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">美味しい</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-5</td>
+                    <td>เช่น</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chêen</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">例えば</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-6</td>
+                    <td>มะม่วง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">má-mûang</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">マンゴー</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-8-7</td>
+                    <td>ทุเรียน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tú-rian</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ドリアン</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-9.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยเรียกหน้านี้ว่า หน้ามะม่วง หน้าทุเรียน</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">kon tai rîak nâa níi wâa nâa má-mûang, nâa tú-rian.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">タイ人はこの季節を「マンゴーの季節」「ドリアンの季節」と呼びます。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-9):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                 <tr>
+                    <td>2-9-1</td>
+                    <td>หน้ามะม่วง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa má-mûang</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">マンゴーの季節</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-9-2</td>
+                    <td>หน้าทุเรียน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa tú-rian</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ドリアンの季節</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-10.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">ฤดูฝนหรือหน้าฝนอยู่ในระหว่างประมาณเดือนมิถุนายน กรกฎาคม สิงหาคม กันยายน และตุลาคม</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">rʉ́-duu fǒn rʉ̌ʉ nâa fǒn yùu nai rá-wàang bprà-maan dʉan mí-tù-naa-yon, gà-rá-gà-daa-kom, sǐng-hǎa-kom, gan-yaa-yon, lɛ́ dtù-laa-kom.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">雨季、または「ナーフォン」（雨の季節）は、およそ6月、7月、8月、9月、10月の間にあります。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-10):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-10-1</td>
+                    <td>หน้าฝน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa fǒn</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">雨季（口語）</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10-2</td>
+                    <td>เดือนมิถุนายน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan mí-tù-naa-yon</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">6月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10-3</td>
+                    <td>เดือนกรกฎาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan gà-rá-gà-daa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">7月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10-4</td>
+                    <td>เดือนสิงหาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan sǐng-hǎa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">8月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10-5</td>
+                    <td>เดือนกันยายน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan gan-yaa-yon</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">9月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-10-6</td>
+                    <td>เดือนตุลาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan dtù-laa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">10月</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-11.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">ถ้าปีไหนฝนตกชุกเกินไปก็จะทำให้เกิดน้ำท่วม</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">tâa bpii nǎi fǒn dtòk chúk gəən-bpai gɔ̂ɔ jà tam-hâi gə̀ət náam-tûam.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">もしある年に雨が降りすぎると、洪水を引き起こします。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-11):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-11-1</td>
+                    <td>ฝนตก</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">fǒn dtòk</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">雨が降る</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-11-2</td>
+                    <td>เกินไป</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gəən-bpai</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～すぎる</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-11-3</td>
+                    <td>ทำให้เกิด</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam-hâi gə̀ət</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～を引き起こす</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-11-4</td>
+                    <td>น้ำท่วม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">náam-tûam</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">洪水</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-12.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">เป็นข้อเสียของหน้าฝน</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">bpen kɔ̂ɔ-sǐa kɔ̌ɔng nâa fǒn.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">これは雨季の短所です。</span>
+                </div>
+            </details>
+        </p>
+        <!-- 難しい単語は新単語リストにあるものなので省略 -->
+
+        <h4>2-13.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">แต่ข้อดีคือ ฝนทำให้อากาศเย็นสบาย และที่สำคัญคือ ชาวนาทำนาในหน้าฝน</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">dtɛ̀ɛ kɔ̂ɔ-dii kʉʉ: fǒn tam-hâi aa-gàat yen-sà-baai, lɛ́ tîi sǎm-kan kʉʉ chaao-naa tam-naa nai nâa fǒn.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">しかし長所は、雨が気候を涼しく快適にし、そして重要なことには、農民が雨季に稲作をすることです。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-13):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-13-1</td>
+                    <td>เย็นสบาย</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">yen-sà-baai</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">涼しく快適な</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-13-2</td>
+                    <td>ที่สำคัญ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tîi sǎm-kan</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">重要なことには</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-13-3</td>
+                    <td>ชาวนา</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chaao-naa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">農民、稲作農家</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-13-4</td>
+                    <td>ทำนา</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam-naa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">稲作をする</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-14.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">เพราะฉะนั้นชาวนาจึงเรียกอีกชื่อหนึ่งว่า หน้าทำนา</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">prɔ́-chà-nán chaao-naa jʉng rîak ìik chʉ̂ʉ nʉ̀ng wâa nâa tam-naa.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">それゆえ、農民たちは（雨季を）別名「稲作の季節」と呼びます。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-14):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-14-1</td>
+                    <td>จึง</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jʉng</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">そこで、だから（結果を示す接続詞）</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-14-2</td>
+                    <td>เรียกอีกชื่อหนึ่งว่า</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rîak ìik chʉ̂ʉ nʉ̀ng wâa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">別名～と呼ぶ</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-15.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">เดือนพฤศจิกายน ธันวาคม มกราคม และกุมภาพันธ์เป็นระยะเวลาที่ฝนไม่ค่อยตก</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">dʉan prʉ́t-sà-jì-gaa-yon, tan-waa-kom, má-gà-raa-kom, lɛ́ gum-paa-pan bpen rá-yá-wee-laa tîi fǒn mâi kɔ̂i dtòk.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">11月、12月、1月、そして2月は、雨があまり降らない期間です。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-15):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-15-1</td>
+                    <td>เดือนพฤศจิกายน</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan prʉ́t-sà-jì-gaa-yon</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">11月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-15-2</td>
+                    <td>เดือนธันวาคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan tan-waa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">12月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-15-3</td>
+                    <td>เดือนมกราคม</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan má-gà-raa-kom</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">1月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-15-4</td>
+                    <td>เดือนกุมภาพันธ์</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dʉan gum-paa-pan</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">2月</div></details></td>
+                </tr>
+                <tr>
+                    <td>2-15-5</td>
+                    <td>ไม่ค่อย</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mâi kɔ̂i</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">あまり～ない</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-16.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">อุณหภูมิต่ำกว่า</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">un-hà-puum dtàm gwàa.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">気温が（他の季節より）低いです。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-16):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-16-1</td>
+                    <td>ต่ำกว่า</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtàm gwàa</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">より低い</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>2-17.</h4>
+        <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยเรียกระยะเวลานี้ว่าฤดูหนาวหรือหน้าหนาว</span></p>
+        <p><strong>発音記号:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="pronunciation">kon tai rîak rá-yá-wee-laa níi wâa rʉ́-duu nǎao rʉ̌ʉ nâa nǎao.</span>
+                </div>
+            </details>
+        </p>
+        <p><strong>日本語訳:</strong>
+            <details class="collapsible-content">
+                <summary>表示</summary>
+                <div class="content-wrapper">
+                    <span class="translation">タイ人はこの期間を乾季または「ナーナーオ」（寒い季節）と呼びます。</span>
+                </div>
+            </details>
+        </p>
+        <h5>難しい単語 (2-17):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>番号</th><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>2-17-1</td>
+                    <td>หน้าหนาว</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nâa nǎao</span></div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">乾季（口語、寒い季節）</div></details></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <div class="article-section" id="section-conversation">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>3. 会話練習</h3>
+        <p><em>このセクションの内容は、後ほど指示があります。</em></p>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <div class="article-section" id="section-translation">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>4. 翻訳練習</h3>
+        <p><em>このセクションの内容は、後ほど指示があります。</em></p>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <p class="footer-note">発音記号は、タイ語教科書で用いられる一般的な表記法（声調記号付き）を参考にしています。</p>
+
+</body>
+</html>
