@@ -65,11 +65,28 @@
             margin-top: 0;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
+            cursor: pointer; /* Make header clickable */
+            position: relative; /* For indicator positioning */
+            user-select: none; /* Prevent text selection on click */
+        }
+        /* Style for the accordion indicator */
+        .topic-category h3::after {
+            content: '▶';
+            font-size: 0.7em;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            color: #888;
         }
         .topic-list {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            max-height: 0; /* Collapse by default */
+            overflow: hidden; /* Hide content */
+            transition: max-height 0.4s ease-out, margin-top 0.4s ease-out;
         }
         .topic-list li {
             margin-bottom: 15px;
@@ -95,6 +112,17 @@
             color: #888;
             font-style: italic;
         }
+        
+        /* -- Accordion Active State -- */
+        .topic-category.active .topic-list {
+            margin-top: 20px; /* Add space when expanded */
+            max-height: 1500px; /* A large enough value to show all content */
+            transition: max-height 0.4s ease-in, margin-top 0.4s ease-in;
+        }
+        .topic-category.active h3::after {
+            transform: translateY(-50%) rotate(90deg); /* Point arrow down */
+        }
+
         footer {
             margin-top: 40px;
             padding: 20px;
@@ -141,20 +169,20 @@
                 </ul>
             </div>
             <div class="topic-category">
-                <h3>Thai Made Clear - Intermediate Level</h3>
+                <h3>Textbook - Thai Made Clear</h3>
                 <ul class="topic-list">
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/1_タイの地理.html">1課 タイの地理</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/2_タイの気候.html">2課 タイの気候</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/3_他民族のタイ人.html">3課 他民族のタイ人</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/4課_タイシルク.html">4課 タイシルク</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/5課_タイ家屋.html">5課 タイ家屋</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/6課_タイの食文化.html">6課 タイの食文化</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17_課_通常.html">17課 (通常版)</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17課_和訳有.html">17課 (和訳付き)</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_通常.html">18課 (通常版)</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_翻訳版.html">18課 (翻訳付き)</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/19_死.html">19課 死について</a></li>
-                    <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/20_タイ人の信仰.html">20課 タイ人の信仰</a></li>
+                    <li><a href="./thai/textbook/1_タイの地理.html">1課 タイの地理</a></li>
+                    <li><a href="./thai/textbook/2_タイの気候.html">2課 タイの気候</a></li>
+                    <li><a href="./thai/textbook/3_他民族のタイ人.html">3課 他民族のタイ人</a></li>
+                    <li><a href="./thai/textbook/4課_タイシルク.html">4課 タイシルク</a></li>
+                    <li><a href="./thai/textbook/5課_タイ家屋.html">5課 タイ家屋</a></li>
+                    <li><a href="./thai/textbook/6課_タイの食文化.html">6課 タイの食文化</a></li>
+                    <li><a href="./thai/textbook/17_課_通常.html">17課 (通常版)</a></li>
+                    <li><a href="./thai/textbook/17課_和訳有.html">17課 (和訳付き)</a></li>
+                    <li><a href="./thai/textbook/18課_通常.html">18課 (通常版)</a></li>
+                    <li><a href="./thai/textbook/18課_翻訳版.html">18課 (翻訳付き)</a></li>
+                    <li><a href="./thai/textbook/19_死.html">19課 死について</a></li>
+                    <li><a href="./thai/textbook/20_タイ人の信仰.html">20課 タイ人の信仰</a></li>
                 </ul>
             </div>
         </div>
@@ -164,8 +192,10 @@
             <h2>Chinese (中文)</h2>
             <div class="topic-category">
                 <h3>Intermediate Topics</h3>
-                <p class="placeholder-text">Materials coming soon...</p>
-                <!-- Links to Chinese materials will be added here -->
+                <ul class="topic-list">
+                    <!-- Links to Chinese materials will be added here -->
+                    <li><p class="placeholder-text">Materials coming soon...</p></li>
+                </ul>
             </div>
         </div>
 
@@ -175,6 +205,25 @@
         <p>&copy; 2024 Language Learning Hub. Keep practicing!</p>
         <p>Created by dog-softwares(Yabe)</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryHeaders = document.querySelectorAll('.topic-category h3');
+
+            categoryHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const category = header.parentElement;
+                    category.classList.toggle('active');
+                });
+            });
+
+            // Keep the first English topic open by default as an example
+            const firstEnglishCategory = document.querySelector('.language-section .topic-category');
+            if(firstEnglishCategory) {
+                firstEnglishCategory.classList.add('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
