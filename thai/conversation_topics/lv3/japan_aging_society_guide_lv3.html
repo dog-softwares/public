@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語で学ぶ：日本の少子高齢化問題（深掘り編）</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            transition: margin-left 0.3s;
+        }
+
+        /* --- ここからサイドメニュー用スタイル --- */
+        #side-menu {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: -250px; /* デフォルトで隠す */
+            background-color: #1a5276;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        #side-menu a {
+            padding: 10px 15px 10px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            color: #e9f5ff;
+            display: block;
+            transition: 0.2s;
+        }
+        #side-menu a:hover {
+            color: #ffffff;
+            background-color: #2e86c1;
+        }
+        #side-menu .close-btn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #f1f1f1;
+        }
+        #menu-toggle {
+            font-size: 30px;
+            cursor: pointer;
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            border-radius: 5px;
+        }
+
+        /* メインコンテンツエリア */
+        #main-content {
+            transition: margin-left .3s;
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        /* メニューが開いている時のスタイル */
+        body.menu-open #side-menu {
+            left: 0;
+        }
+        body.menu-open #main-content {
+            /* スマホでコンテンツが隠れないように調整 */
+            /* margin-left: 250px; */ 
+        }
+        @media (min-width: 768px) {
+             body.menu-open #main-content {
+                margin-left: 250px;
+             }
+        }
+
+
+        /* --- ここまでサイドメニュー用スタイル --- */
+
+
+        /* --- ここから既存のスタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .main-title-header .title-japanese { font-size: 2.5em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 1.8em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .sentence-japanese { font-weight: bold; margin-bottom: 5px; font-size: 1.1em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        
+        table.vocab-table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .vocab-table th, .vocab-table td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .vocab-table th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        .vocab-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        .vocab-table tbody tr:hover { background-color: #e2e6ea; }
+        .vocab-table td { font-size: 1em; }
+        .vocab-table td:nth-child(1) { font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+
+        .collapsible-content summary, .vocab-details summary {
+            cursor: pointer; font-weight: normal; color: #0056b3; display: inline-block; padding: 3px 8px;
+            border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff; margin-left: 5px; font-size: 0.9em;
+        }
+        .collapsible-content summary:hover, .vocab-details summary:hover { background-color: #d0e6ff; }
+        .collapsible-content[open] summary, .vocab-details[open] summary { background-color: #c0d9f7; }
+        .collapsible-content .content-wrapper, .vocab-details .content-wrapper { padding-top: 8px; padding-left: 0px; }
+        .vocab-table td .vocab-details summary { margin-left: 0; padding: 2px 6px; font-size: 0.85em; }
+        .vocab-table td .vocab-details .content-wrapper { padding-top: 5px; }
+
+        #index-toc { background-color: #e9f5ff; border-left: 5px solid #007bff; padding: 15px 20px; margin-bottom: 30px; }
+        #index-toc h3 { color: #0056b3; border-bottom: none; margin-top: 0; }
+        #index-toc ul { list-style-type: none; padding-left: 0; }
+        #index-toc ul li { margin-bottom: 8px; }
+        #index-toc ul li a { text-decoration: none; color: #0056b3; font-weight: 500; }
+        #index-toc ul li a:hover { text-decoration: underline; color: #003d80; }
+        
+        .back-to-toc { text-align: right; margin-top: 15px; margin-bottom: 0px; }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none; color: #0056b3; font-size: 0.9em; font-weight: bold;
+            padding: 5px 10px; border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover { background-color: #d0e6ff; }
+        .section-end-back-to-toc { text-align: right; margin-top: 20px; }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <!-- サイドメニュー -->
+    <div id="side-menu">
+        <a href="javascript:void(0)" class="close-btn" id="close-menu-btn">&times;</a>
+        <a href="#section-sentences-1">1. 少子化の複合的な原因</a>
+        <a href="#section-sentences-2">2. 高齢化がもたらす社会課題</a>
+        <a href="#section-sentences-3">3. 対策と国際比較</a>
+        <a href="#section-discussion">4. ディスカッション</a>
+        <a href="#section-summary-vocab">5. 総まとめ単語表</a>
+    </div>
+
+    <!-- メニュー開閉ボタン -->
+    <button id="menu-toggle">&#9776;</button>
+
+    <main id="main-content">
+        <div class="main-title-header" id="section-main-title">
+            <span class="title-japanese">日本の少子高齢化：複合的要因と未来への挑戦</span>
+            <span class="title-thai">สังคมผู้สูงอายุและอัตราการเกิดต่ำในญี่ปุ่น: ปัจจัยซับซ้อนและความท้าทายสู่อนาคต<span class="pronunciation-thai">(sǎng-kom pûu-sǔung-aa-yú lɛ́ àt-dtraa-gaan-gə̀ət-dtàm nai yîi-bpùn: bpàt-jai sáp-sɔ́ɔn lɛ́ kwaam-táa-taai sùu à-naa-kót)</span></span>
+        </div>
+
+        <div id="index-toc" class="article-section">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#section-sentences-1">1. 少子化の複合的な原因 (例文 1-7)</a></li>
+                <li><a href="#section-sentences-2">2. 高齢化がもたらす社会課題 (例文 8-14)</a></li>
+                <li><a href="#section-sentences-3">3. 対策と国際比較 (例文 15-20)</a></li>
+                <li><a href="#section-discussion">4. ディスカッション</a></li>
+                <li><a href="#section-summary-vocab">5. 総まとめ単語表</a></li>
+            </ul>
+        </div>
+
+        <!-- セクション1: 少子化の複合的な原因 -->
+        <div class="article-section" id="section-sentences-1">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>1. 少子化の複合的な原因 (例文 1-7)</h3>
+
+            <h4>例文 1</h4>
+            <p class="sentence-japanese">現在の日本は、子供の数が減り続ける「少子化」という大きな課題に直面しています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ปัจจุบันญี่ปุ่นกำลังเผชิญกับความท้าทายครั้งใหญ่<br>ที่เรียกว่า "โชชิกะ" (少子化) ซึ่งจำนวนเด็กลดลงอย่างต่อเนื่อง</span></p>
+                <p><span class="pronunciation">(bpàt-jù-ban yîi-bpùn gam-lang pà-chəən gàp kwaam-táa-taai kráng-yài<br>tîi rîak-wâa "choo-chí-gà", sʉ̂ng jam-nuan dèk lót-long yàang-dtɔ̀ɔ-nʉ̂ang)</span></p>
+            </div></details>
+            <h5>単語 (1):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>เผชิญกับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pà-chəən gàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>～に直面する</details></td></tr>
+                <tr><td>ความท้าทาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-táa-taai</div></details></td><td><details class="vocab-details"><summary>表示</summary>課題、挑戦</details></td></tr>
+                <tr><td>อย่างต่อเนื่อง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yàang-dtɔ̀ɔ-nʉ̂ang</div></details></td><td><details class="vocab-details"><summary>表示</summary>継続的に</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 2</h4>
+            <p class="sentence-japanese">この問題は日本だけでなく、多くの先進国で共通して見られる現象です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในญี่ปุ่นเท่านั้น<br>แต่เป็นปรากฏการณ์ที่พบได้ทั่วไปในกลุ่มประเทศที่พัฒนาแล้ว</span></p>
+                <p><span class="pronunciation">(bpan-hǎa níi mâi-dâi gə̀ət-kʉ̂n chà-pɔ́ nai yîi-bpùn tâo-nán<br>dtɛ̀ɛ bpen bpraa-gòt-gaan tîi póp-dâi tûa-bpai nai glùm bprà-têet tîi pát-tá-naa lɛ́ɛo)</span></p>
+            </div></details>
+            <h5>単語 (2):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>เฉพาะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chà-pɔ́</div></details></td><td><details class="vocab-details"><summary>表示</summary>～だけ、特定の</details></td></tr>
+                <tr><td>ปรากฏการณ์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpraa-gòt-gaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>現象</details></td></tr>
+                <tr><td>ประเทศที่พัฒนาแล้ว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-têet tîi pát-tá-naa lɛ́ɛo</div></details></td><td><details class="vocab-details"><summary>表示</summary>先進国</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 3</h4>
+            <p class="sentence-japanese">少子化の原因は一つではなく、複数の要因が複雑に絡み合っています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">สาเหตุของอัตราการเกิดต่ำไม่ได้มีเพียงปัจจัยเดียว<br>แต่มีหลายปัจจัยที่เกี่ยวข้องกันอย่างซับซ้อน</span></p>
+                <p><span class="pronunciation">(sǎa-hèet kɔ̌ɔng àt-dtraa-gaan-gə̀ət-dtàm mâi-dâi mii piang bpàt-jai diao<br>dtɛ̀ɛ mii lǎai bpàt-jai tîi gìao-kɔ̂ng gan yàang sáp-sɔ́ɔn)</span></p>
+            </div></details>
+            <h5>単語 (3):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>สาเหตุ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎa-hèet</div></details></td><td><details class="vocab-details"><summary>表示</summary>原因</details></td></tr>
+                <tr><td>ปัจจัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpàt-jai</div></details></td><td><details class="vocab-details"><summary>表示</summary>要因</details></td></tr>
+                <tr><td>ซับซ้อน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sáp-sɔ́ɔn</div></details></td><td><details class="vocab-details"><summary>表示</summary>複雑な</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 4</h4>
+            <p class="sentence-japanese">原因の一つに、女性の社会進出に伴う、社会全体の価値観の変化があります。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">สาเหตุหนึ่งคือการเปลี่ยนแปลงค่านิยมของสังคมโดยรวม<br>ซึ่งมาพร้อมกับการที่ผู้หญิงมีบทบาทในสังคมมากขึ้น</span></p>
+                <p><span class="pronunciation">(sǎa-hèet nʉ̀ng kʉʉ gaan-bplìan-bplɛɛng kâa-ní-yom kɔ̌ɔng sǎng-kom dooi-ruam<br>sʉ̂ng maa prɔ́ɔm gàp gaan-tîi pûu-yǐng mii bòt-bàat nai sǎng-kom mâak-kʉ̂n)</span></p>
+            </div></details>
+            <h5>単語 (4):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>การเปลี่ยนแปลง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-bplìan-bplɛɛng</div></details></td><td><details class="vocab-details"><summary>表示</summary>変化</details></td></tr>
+                <tr><td>ค่านิยม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâa-ní-yom</div></details></td><td><details class="vocab-details"><summary>表示</summary>価値観</details></td></tr>
+                <tr><td>มีบทบาทในสังคมมากขึ้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mii bòt-bàat nai sǎng-kom mâak-kʉ̂n</div></details></td><td><details class="vocab-details"><summary>表示</summary>社会進出する（社会で役割が増える）</details></td></tr>
+            </tbody></table>
+            
+            <h4>例文 5</h4>
+            <p class="sentence-japanese">キャリアを重視したり、結婚しないという生き方を選んだりする若者が増えました。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คนหนุ่มสาวที่ให้ความสำคัญกับอาชีพการงาน<br>หรือเลือกวิถีชีวิตที่ไม่แต่งงานมีจำนวนเพิ่มขึ้น</span></p>
+                <p><span class="pronunciation">(kon-nùm-sǎao tîi hâi kwaam-sǎm-kan gàp aa-chîip gaan-ngaan<br>rʉ̌ʉ lʉ̂ak wí-tǐi chii-wít tîi mâi dtɛ̀ng-ngaan mii jam-nuan pə̂əm-kʉ̂n)</span></p>
+            </div></details>
+            <h5>単語 (5):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ให้ความสำคัญกับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hâi kwaam-sǎm-kan gàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>～を重視する</details></td></tr>
+                <tr><td>อาชีพการงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">aa-chîip gaan-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>キャリア、仕事</details></td></tr>
+                <tr><td>วิถีชีวิต</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">wí-tǐi chii-wít</div></details></td><td><details class="vocab-details"><summary>表示</summary>生き方、ライフスタイル</details></td></tr>
+            </tbody></table>
+
+            <!-- ▼▼▼ 修正箇所 ▼▼▼ -->
+            <h4>例文 6</h4>
+            <p class="sentence-japanese">日本では長引く経済停滞や税負担の重さが、人々の生活を圧迫していると指摘されています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">มีการชี้ว่าในญี่ปุ่น ภาวะเศรษฐกิจชะลอตัวที่ยาวนานและภาระทางภาษีที่หนัก<br>กำลังสร้างแรงกดดันต่อการใช้ชีวิตของผู้คน</span></p>
+                <p><span class="pronunciation">(mii gaan chíi-wâa nai yîi-bpùn, paa-wá sèet-tà-gìt chà-lɔɔ-dtua tîi yaao-naan lɛ́ paa-rá taang paa-sǐi tîi nàk<br>gam-lang sâang rɛɛng-gòt-dan dtɔ̀ɔ gaan-chái-chii-wít kɔ̌ɔng pûu-kon)</span></p>
+            </div></details>
+            <h5>単語 (6):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>เศรษฐกิจชะลอตัว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sèet-tà-gìt chà-lɔɔ-dtua</div></details></td><td><details class="vocab-details"><summary>表示</summary>経済停滞</details></td></tr>
+                <tr><td>ภาระทางภาษี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-rá taang paa-sǐi</div></details></td><td><details class="vocab-details"><summary>表示</summary>税負担</details></td></tr>
+                <tr><td>สร้างแรงกดดัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sâang rɛɛng-gòt-dan</div></details></td><td><details class="vocab-details"><summary>表示</summary>圧迫する、プレッシャーをかける</details></td></tr>
+            </tbody></table>
+            <!-- ▲▲▲ 修正箇所 ▲▲▲ -->
+
+            <h4>例文 7</h4>
+            <p class="sentence-japanese">隣国の韓国では、日本よりもさらに深刻な少子化が進んでおり、国際的な課題となっています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในเกาหลีใต้ซึ่งเป็นประเทศเพื่อนบ้าน,<br>ปัญหาอัตราการเกิดต่ำนั้นรุนแรงยิ่งกว่าญี่ปุ่น และได้กลายเป็นประเด็นระดับนานาชาติ</span></p>
+                <p><span class="pronunciation">(nai gao-lǐi-dtâi sʉ̂ng bpen bprà-têet pʉ̂an-bâan,<br>bpan-hǎa àt-dtraa-gaan-gə̀ət-dtàm nán run-rɛɛng yîng-gwàa yîi-bpùn, lɛ́ dâi glaai-bpen bprà-den rá-dàp naa-naa-châat)</span></p>
+            </div></details>
+            <h5>単語 (7):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ประเทศเพื่อนบ้าน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-têet pʉ̂an-bâan</div></details></td><td><details class="vocab-details"><summary>表示</summary>隣国</details></td></tr>
+                <tr><td>รุนแรงยิ่งกว่า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">run-rɛɛng yîng-gwàa</div></details></td><td><details class="vocab-details"><summary>表示</summary>～よりもさらに深刻だ</details></td></tr>
+                <tr><td>ประเด็นระดับนานาชาติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-den rá-dàp naa-naa-châat</div></details></td><td><details class="vocab-details"><summary>表示</summary>国際的な課題（問題点）</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション2: 高齢化がもたらす社会課題 -->
+        <div class="article-section" id="section-sentences-2">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>2. 高齢化がもたらす社会課題 (例文 8-14)</h3>
+
+            <h4>例文 8</h4>
+            <p class="sentence-japanese">少子化と同時に、日本では「高齢化」が急速に進んでいます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในขณะเดียวกันกับปัญหาอัตราการเกิดต่ำ,<br>ญี่ปุ่นก็กำลังเข้าสู่ "สังคมผู้สูงอายุ" (高齢化) อย่างรวดเร็ว</span></p>
+                <p><span class="pronunciation">(nai kà-nà-diao-gan gàp bpan-hǎa àt-dtraa-gaan-gə̀ət-dtàm,<br>yîi-bpùn gɔ̂ gam-lang kâo-sùu "sǎng-kom pûu-sǔung-aa-yú" yàang-rûat-reo)</span></p>
+            </div></details>
+            <h5>単語 (8):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ในขณะเดียวกัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nai kà-nà-diao-gan</div></details></td><td><details class="vocab-details"><summary>表示</summary>同時に</details></td></tr>
+                <tr><td>เข้าสู่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâo-sùu</div></details></td><td><details class="vocab-details"><summary>表示</summary>～に入る、～に進む</details></td></tr>
+                <tr><td>อย่างรวดเร็ว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yàang-rûat-reo</div></details></td><td><details class="vocab-details"><summary>表示</summary>急速に</details></td></tr>
+            </tbody></table>
+            
+            <h4>例文 9</h4>
+            <p class="sentence-japanese">これにより、労働人口が減少し、社会を支える力が弱まっています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">สิ่งนี้ส่งผลให้ประชากรวัยทำงานลดลง<br>และทำให้กำลังในการค้ำจุนสังคมอ่อนแอลง</span></p>
+                <p><span class="pronunciation">(sìng-níi sòng-pǒn-hâi bprà-chaa-gɔɔn wai-tam-ngaan lót-long<br>lɛ́ tam-hâi gam-lang nai gaan-kám-jun sǎng-kom ɔ̀ɔn-ɛɛ-long)</span></p>
+            </div></details>
+            <h5>単語 (9):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ประชากรวัยทำงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-chaa-gɔɔn wai-tam-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>労働人口</details></td></tr>
+                <tr><td>ค้ำจุน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kám-jun</div></details></td><td><details class="vocab-details"><summary>表示</summary>支える</details></td></tr>
+                <tr><td>อ่อนแอลง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ɔ̀ɔn-ɛɛ-long</div></details></td><td><details class="vocab-details"><summary>表示</summary>弱まる</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 10</h4>
+            <p class="sentence-japanese">特に、年金や医療などの社会保障制度を維持するための費用が増大しています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">โดยเฉพาะอย่างยิ่ง ค่าใช้จ่ายในการรักษาระบบประกันสังคม เช่น เงินบำนาญและการแพทย์ ได้เพิ่มสูงขึ้น</span></p>
+                <p><span class="pronunciation">(dooi-chà-pɔ́-yàang-yîng, kâa-chái-jàai nai gaan-rák-sǎa rá-bòp bprà-gan-sǎng-kom chên ngən-bam-naan lɛ́ gaan-pɛ̂ɛt, dâi pə̂əm-sǔung-kʉ̂n)</span></p>
+            </div></details>
+            <h5>単語 (10):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ค่าใช้จ่าย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâa-chái-jàai</div></details></td><td><details class="vocab-details"><summary>表示</summary>費用</details></td></tr>
+                <tr><td>รักษาระบบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rák-sǎa rá-bòp</div></details></td><td><details class="vocab-details"><summary>表示</summary>制度を維持する</details></td></tr>
+                <tr><td>ระบบประกันสังคม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rá-bòp bprà-gan-sǎng-kom</div></details></td><td><details class="vocab-details"><summary>表示</summary>社会保障制度</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 11</h4>
+            <p class="sentence-japanese">少ない現役世代が、多くの高齢者を支えるという構造的な問題が深刻化しています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ปัญหาเชิงโครงสร้างที่คนวัยทำงานจำนวนน้อยต้องค้ำจุนผู้สูงอายุจำนวนมาก<br>กำลังทวีความรุนแรงขึ้น</span></p>
+                <p><span class="pronunciation">(bpan-hǎa chəəng-kroong-sâang tîi kon-wai-tam-ngaan jam-nuan-nɔ́ɔi dtɔ̂ng kám-jun pûu-sǔung-aa-yú jam-nuan-mâak<br>gam-lang tá-wii kwaam-run-rɛɛng kʉ̂n)</span></p>
+            </div></details>
+            <h5>単語 (11):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ปัญหาเชิงโครงสร้าง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpan-hǎa chəəng-kroong-sâang</div></details></td><td><details class="vocab-details"><summary>表示</summary>構造的な問題</details></td></tr>
+                <tr><td>คนวัยทำงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kon-wai-tam-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>現役世代</details></td></tr>
+                <tr><td>ทวีความรุนแรงขึ้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tá-wii kwaam-run-rɛɛng kʉ̂n</div></details></td><td><details class="vocab-details"><summary>表示</summary>深刻化する</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 12</h4>
+            <p class="sentence-japanese">介護を必要とする高齢者の増加は、医療や介護の現場に大きな負担をかけています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">การเพิ่มขึ้นของผู้สูงอายุที่ต้องการการดูแล<br>ได้สร้างภาระอย่างหนักให้กับสถานพยาบาลและสถานดูแลผู้สูงอายุ</span></p>
+                <p><span class="pronunciation">(gaan-pə̂əm-kʉ̂n kɔ̌ɔng pûu-sǔung-aa-yú tîi dtɔ̂ng-gaan gaan-duu-lɛɛ<br>dâi sâang paa-rá yàang-nàk hâi-gàp sà-tǎan-pá-yaa-baan lɛ́ sà-tǎan-duu-lɛɛ-pûu-sǔung-aa-yú)</span></p>
+            </div></details>
+            <h5>単語 (12):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ต้องการการดูแล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtɔ̂ng-gaan gaan-duu-lɛɛ</div></details></td><td><details class="vocab-details"><summary>表示</summary>介護を必要とする</details></td></tr>
+                <tr><td>ภาระอย่างหนัก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-rá yàang-nàk</div></details></td><td><details class="vocab-details"><summary>表示</summary>大きな負担</details></td></tr>
+                <tr><td>สถานพยาบาล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-tǎan-pá-yaa-baan</div></details></td><td><details class="vocab-details"><summary>表示</summary>医療現場（施設）</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 13</h4>
+            <p class="sentence-japanese">地方では過疎化がさらに進み、地域社会の維持が困難になっている場所もあります。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในพื้นที่ชนบท ปัญหาประชากรเบาบางลงยิ่งขึ้น<br>ทำให้บางพื้นที่การรักษาชุมชนไว้เป็นเรื่องยาก</span></p>
+                <p><span class="pronunciation">(nai pʉ́ʉn-tîi chon-ná-bòt, bpan-hǎa bprà-chaa-gɔɔn-bao-baang long yîng-kʉ̂n<br>tam-hâi baang pʉ́ʉn-tîi gaan-rák-sǎa chum-chon wái bpen rʉ̂ang yâak)</span></p>
+            </div></details>
+            <h5>単語 (13):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ประชากรเบาบาง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-chaa-gɔɔn-bao-baang</div></details></td><td><details class="vocab-details"><summary>表示</summary>過疎化</details></td></tr>
+                <tr><td>รักษาชุมชน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rák-sǎa chum-chon</div></details></td><td><details class="vocab-details"><summary>表示</summary>地域社会を維持する</details></td></tr>
+                <tr><td>เป็นเรื่องยาก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpen rʉ̂ang yâak</div></details></td><td><details class="vocab-details"><summary>表示</summary>困難である</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 14</h4>
+            <p class="sentence-japanese">これらの問題は、将来の日本の経済成長にとって大きな懸念材料です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ปัญหาเหล่านี้ถือเป็นปัจจัยที่น่ากังวลอย่างยิ่ง<br>ต่อการเติบโตทางเศรษฐกิจของญี่ปุ่นในอนาคต</span></p>
+                <p><span class="pronunciation">(bpan-hǎa lào-níi tʉ̌ʉ-bpen bpàt-jai tîi nâa-gang-won yàang-yîng<br>dtɔ̀ɔ gaan-dtə̀əp-dtoo taang sèet-tà-gìt kɔ̌ɔng yîi-bpùn nai à-naa-kót)</span></p>
+            </div></details>
+            <h5>単語 (14):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>น่ากังวล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nâa-gang-won</div></details></td><td><details class="vocab-details"><summary>表示</summary>懸念される</details></td></tr>
+                <tr><td>การเติบโตทางเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-dtə̀əp-dtoo taang sèet-tà-gìt</div></details></td><td><details class="vocab-details"><summary>表示</summary>経済成長</details></td></tr>
+                <tr><td>ในอนาคต</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nai à-naa-kót</div></details></td><td><details class="vocab-details"><summary>表示</summary>将来に</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション3: 対策と国際比較 -->
+        <div class="article-section" id="section-sentences-3">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>3. 対策と国際比較 (例文 15-20)</h3>
+
+            <h4>例文 15</h4>
+            <p class="sentence-japanese">日本政府は働き方改革を進め、長時間労働の是正に取り組んでいます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">รัฐบาลญี่ปุ่นกำลังส่งเสริมการปฏิรูปการทำงาน<br>และพยายามแก้ไขปัญหาการทำงานเป็นเวลานาน</span></p>
+                <p><span class="pronunciation">(rát-tá-baan yîi-bpùn gam-lang sòng-sə̌əm gaan-bpà-dtì-rûup-gaan-tam-ngaan<br>lɛ́ pá-yaa-yaam gɛ̂ɛ-kǎi bpan-hǎa gaan-tam-ngaan bpen-wee-laa-naan)</span></p>
+            </div></details>
+            <h5>単語 (15):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>การปฏิรูปการทำงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-bpà-dtì-rûup-gaan-tam-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>働き方改革</details></td></tr>
+                <tr><td>ส่งเสริม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sòng-sə̌əm</div></details></td><td><details class="vocab-details"><summary>表示</summary>推進する、奨励する</details></td></tr>
+                <tr><td>การทำงานเป็นเวลานาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-tam-ngaan bpen-wee-laa-naan</div></details></td><td><details class="vocab-details"><summary>表示</summary>長時間労働</details></td></tr>
+            </tbody></table>
+            
+            <h4>例文 16</h4>
+            <p class="sentence-japanese">仕事と子育てを両立しやすい環境を作るため、男性の育児休暇取得も奨励されています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">เพื่อสร้างสภาพแวดล้อมที่สามารถทำงานและเลี้ยงลูกไปพร้อมกันได้,<br>จึงมีการสนับสนุนให้ผู้ชายลาคลอดเพื่อเลี้ยงลูกด้วย</span></p>
+                <p><span class="pronunciation">(pʉ̂a sâang sà-pâap-wɛ̂ɛt-lɔ́ɔm tîi sǎa-mâat tam-ngaan lɛ́ líang-lûuk bpai-prɔ́ɔm-gan dâi,<br>jʉng mii gaan-sà-nàp-sà-nǔn hâi pûu-chaai laa-klɔ̂ɔt pʉ̂a líang-lûuk dûay)</span></p>
+            </div></details>
+            <h5>単語 (16):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>สภาพแวดล้อม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-pâap-wɛ̂ɛt-lɔ́ɔm</div></details></td><td><details class="vocab-details"><summary>表示</summary>環境</details></td></tr>
+                <tr><td>ไปพร้อมกัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpai-prɔ́ɔm-gan</div></details></td><td><details class="vocab-details"><summary>表示</summary>両立する、同時に</details></td></tr>
+                <tr><td>ลาคลอด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">laa-klɔ̂ɔt</div></details></td><td><details class="vocab-details"><summary>表示</summary>育児休暇（出産休暇）</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 17</h4>
+            <p class="sentence-japanese">ジェンダー平等の推進も、女性がキャリアと家庭を両立させる上で不可欠な要素です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">การส่งเสริมความเท่าเทียมทางเพศ<br>ก็เป็นปัจจัยที่ขาดไม่ได้เพื่อให้ผู้หญิงสามารถสร้างสมดุลระหว่างการทำงานและครอบครัว</span></p>
+                <p><span class="pronunciation">(gaan-sòng-sə̌əm kwaam-tâo-tiam-taang-pêet<br>gɔ̂ bpen bpàt-jai tîi kàat-mâi-dâi pʉ̂a-hâi pûu-yǐng sǎa-mâat sâang sǒm-dun rá-wàang gaan-tam-ngaan lɛ́ krɔ̂ɔp-krua)</span></p>
+            </div></details>
+            <h5>単語 (17):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ความเท่าเทียมทางเพศ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-tâo-tiam-taang-pêet</div></details></td><td><details class="vocab-details"><summary>表示</summary>ジェンダー平等</details></td></tr>
+                <tr><td>ขาดไม่ได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kàat-mâi-dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>不可欠な</details></td></tr>
+                <tr><td>สร้างสมดุล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sâang sǒm-dun</div></details></td><td><details class="vocab-details"><summary>表示</summary>バランスをとる</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 18</h4>
+            <p class="sentence-japanese">不足する労働力を補うため、外国人材の受け入れをより積極的に進める議論も行われています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">เพื่อชดเชยแรงงานที่ขาดแคลน,<br>จึงมีการหารือเพื่อส่งเสริมการรับบุคลากรชาวต่างชาติอย่างแข็งขันมากขึ้น</span></p>
+                <p><span class="pronunciation">(pʉ̂a chót-chəəi rɛɛng-ngaan tîi kàat-klɛɛn,<br>jʉng mii gaan-hǎa-rʉʉ pʉ̂a sòng-sə̌əm gaan-ráp bùk-ká-laa-gɔɔn chaao-dtàang-châat yàang-kɛ̌ng-kǎn mâak-kʉ̂n)</span></p>
+            </div></details>
+            <h5>単語 (18):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ชดเชย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chót-chəəi</div></details></td><td><details class="vocab-details"><summary>表示</summary>補う</details></td></tr>
+                <tr><td>แรงงานที่ขาดแคลน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rɛɛng-ngaan tîi kàat-klɛɛn</div></details></td><td><details class="vocab-details"><summary>表示</summary>不足する労働力</details></td></tr>
+                <tr><td>อย่างแข็งขัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yàang-kɛ̌ng-kǎn</div></details></td><td><details class="vocab-details"><summary>表示</summary>積極的に</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 19</h4>
+            <p class="sentence-japanese">高齢者が健康で、社会で活躍し続けられるような仕組み作りも重要です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">การสร้างระบบที่ช่วยให้ผู้สูงอายุมีสุขภาพดีและสามารถมีบทบาทในสังคมต่อไปได้ก็เป็นสิ่งสำคัญเช่นกัน</span></p>
+                <p><span class="pronunciation">(gaan-sâang rá-bòp tîi chûay-hâi pûu-sǔung-aa-yú mii sùk-kà-pâap-dii lɛ́ sǎa-mâat mii bòt-bàat nai sǎng-kom dtɔ̀ɔ-bpai dâi gɔ̂ bpen sìng sǎm-kan chên-gan)</span></p>
+            </div></details>
+            <h5>単語 (19):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>สร้างระบบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sâang rá-bòp</div></details></td><td><details class="vocab-details"><summary>表示</summary>仕組みを作る</details></td></tr>
+                <tr><td>สุขภาพดี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sùk-kà-pâap-dii</div></details></td><td><details class="vocab-details"><summary>表示</summary>健康である</details></td></tr>
+                <tr><td>มีบทบาท</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mii bòt-bàat</div></details></td><td><details class="vocab-details"><summary>表示</summary>活躍する、役割を持つ</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 20</h4>
+            <p class="sentence-japanese">この複雑な問題を解決するためには、政府、企業、そして国民一人ひとりの意識改革が求められます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในการแก้ปัญหาสลับซับซ้อนนี้<br>จำเป็นต้องมีการปฏิรูปจิตสำนึกของทั้งภาครัฐ, ภาคเอกชน และประชาชนแต่ละคน</span></p>
+                <p><span class="pronunciation">(nai gaan-gɛ̂ɛ-bpan-hǎa sà-làp-sáp-sɔ́ɔn níi<br>jam-bpen dtɔ̂ng mii gaan-bpà-dtì-rûup jìt-sǎm-nʉ́k kɔ̌ɔng táng pâak-rát, pâak-èek-gà-chon lɛ́ bprà-chaa-chon dtɛ̀ɛ-lá kon)</span></p>
+            </div></details>
+            <h5>単語 (20):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>สลับซับซ้อน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-làp-sáp-sɔ́ɔn</div></details></td><td><details class="vocab-details"><summary>表示</summary>複雑な</details></td></tr>
+                <tr><td>การปฏิรูปจิตสำนึก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-bpà-dtì-rûup jìt-sǎm-nʉ́k</div></details></td><td><details class="vocab-details"><summary>表示</summary>意識改革</details></td></tr>
+                <tr><td>ภาครัฐ, ภาคเอกชน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pâak-rát, pâak-èek-gà-chon</div></details></td><td><details class="vocab-details"><summary>表示</summary>政府、企業（官、民）</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション4: ディスカッション -->
+        <div class="article-section" id="section-discussion">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>4. ディスカッション</h3>
+            
+            <h4>質問 1</h4>
+            <p class="sentence-japanese">あなたの国では、「結婚や家族に対する価値観」はどのように変化していますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในประเทศของคุณ ค่านิยมเกี่ยวกับการแต่งงานและครอบครัวเปลี่ยนแปลงไปอย่างไรบ้างครับ/คะ</span></p>
+                <p><span class="pronunciation">(nai bprà-têet kɔ̌ɔng kun, kâa-ní-yom gìao-gàp gaan-dtɛ̀ng-ngaan lɛ́ krɔ̂ɔp-krua bplìan-bplɛɛng-bpai yàang-rai bâang kráp/ká)</span></p>
+            </div></details>
+            
+            <h4>質問 2</h4>
+            <p class="sentence-japanese">経済的な理由で子供を持つことをためらう人がいる問題について、どう思いますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณคิดอย่างไรเกี่ยวกับปัญหาที่บางคนลังเลที่จะมีลูกเนื่องจากเหตุผลทางเศรษฐกิจครับ/คะ</span></p>
+                <p><span class="pronunciation">(kun kít yàang-rai gìao-gàp bpan-hǎa tîi baang-kon lang-lee tîi jà mii lûuk nʉ̂ang-jàak hèet-pǒn taang sèet-tà-gìt kráp/ká)</span></p>
+            </div></details>
+
+            <h4>質問 3</h4>
+            <p class="sentence-japanese">「働き方改革」や「ジェンダー平等」は、少子化問題の解決に繋がると思いますか？なぜですか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณคิดว่า "การปฏิรูปการทำงาน" หรือ "ความเท่าเทียมทางเพศ" จะช่วยแก้ปัญหาอัตราการเกิดต่ำได้หรือไม่ครับ/คะ เพราะอะไร</span></p>
+                <p><span class="pronunciation">(kun kít-wâa "gaan-bpà-dtì-rûup-gaan-tam-ngaan" rʉ̌ʉ "kwaam-tâo-tiam-taang-pêet" jà chûay gɛ̂ɛ bpan-hǎa àt-dtraa-gaan-gə̀ət-dtàm dâi-rʉ̌ʉ-mâi kráp/ká, prɔ́ à-rai)</span></p>
+            </div></details>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+
+        <!-- 総まとめ単語表 -->
+        <div class="article-section" id="section-summary-vocab">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>5. 総まとめ単語表</h3>
+            <p class="note">これまでに登場した主な単語の一覧です。</p>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>อัตราการเกิดต่ำ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">àt-dtraa-gaan-gə̀ət-dtàm</div></details></td><td><details class="vocab-details"><summary>表示</summary>少子化（低い出生率）</details></td></tr>
+                <tr><td>สังคมผู้สูงอายุ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎng-kom pûu-sǔung-aa-yú</div></details></td><td><details class="vocab-details"><summary>表示</summary>高齢化社会</details></td></tr>
+                <tr><td>เผชิญกับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pà-chəən gàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>～に直面する</details></td></tr>
+                <tr><td>ปัจจัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpàt-jai</div></details></td><td><details class="vocab-details"><summary>表示</summary>要因</details></td></tr>
+                <tr><td>ซับซ้อน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sáp-sɔ́ɔn</div></details></td><td><details class="vocab-details"><summary>表示</summary>複雑な</details></td></tr>
+                <tr><td>ค่านิยม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâa-ní-yom</div></details></td><td><details class="vocab-details"><summary>表示</summary>価値観</details></td></tr>
+                <tr><td>เศรษฐกิจชะลอตัว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sèet-tà-gìt chà-lɔɔ-dtua</div></details></td><td><details class="vocab-details"><summary>表示</summary>経済停滞</details></td></tr>
+                <tr><td>ภาระทางภาษี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-rá taang paa-sǐi</div></details></td><td><details class="vocab-details"><summary>表示</summary>税負担</details></td></tr>
+                <tr><td>ประชากรวัยทำงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bprà-chaa-gɔɔn wai-tam-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>労働人口</details></td></tr>
+                <tr><td>ระบบประกันสังคม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rá-bòp bprà-gan-sǎng-kom</div></details></td><td><details class="vocab-details"><summary>表示</summary>社会保障制度</details></td></tr>
+                <tr><td>ปัญหาเชิงโครงสร้าง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpan-hǎa chəəng-kroong-sâang</div></details></td><td><details class="vocab-details"><summary>表示</summary>構造的な問題</details></td></tr>
+                <tr><td>การเติบโตทางเศรษฐกิจ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-dtə̀əp-dtoo taang sèet-tà-gìt</div></details></td><td><details class="vocab-details"><summary>表示</summary>経済成長</details></td></tr>
+                <tr><td>การปฏิรูปการทำงาน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-bpà-dtì-rûup-gaan-tam-ngaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>働き方改革</details></td></tr>
+                <tr><td>ความเท่าเทียมทางเพศ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-tâo-tiam-taang-pêet</div></details></td><td><details class="vocab-details"><summary>表示</summary>ジェンダー平等</details></td></tr>
+                <tr><td>แรงงานที่ขาดแคลน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rɛɛng-ngaan tîi kàat-klɛɛn</div></details></td><td><details class="vocab-details"><summary>表示</summary>不足する労働力</details></td></tr>
+                <tr><td>การปฏิรูปจิตสำนึก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan-bpà-dtì-rûup jìt-sǎm-nʉ́k</div></details></td><td><details class="vocab-details"><summary>表示</summary>意識改革</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <p class="footer-note">発音記号は、タイ語学習で一般的に用いられる表記法（声調記号付きローマ字表記）を参考にしています。</p>
+    </main>
+
+    <script>
+        // サイドメニューの開閉機能
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const mainContent = document.getElementById('main-content');
+        const body = document.body;
+
+        function openMenu() {
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            body.classList.remove('menu-open');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // メニューのリンクをクリックしたらメニューを閉じる
+        const menuLinks = sideMenu.getElementsByTagName('a');
+        for (let i = 0; i < menuLinks.length; i++) {
+            menuLinks[i].addEventListener('click', closeMenu);
+        }
+
+        // メニュー外をクリックしたら閉じる (オプション)
+        mainContent.addEventListener('click', () => {
+            if (body.classList.contains('menu-open')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
