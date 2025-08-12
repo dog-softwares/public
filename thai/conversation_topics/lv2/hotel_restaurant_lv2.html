@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瞬間タイ語作文：ホテル・レストラン (中級編)</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        /* --- ここからタイトルヘッダー用スタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px; /* 目次との間隔調整 */
+            white-space: nowrap;
+            overflow-x: auto; /* タイトルが長い場合に対応 */
+        }
+        /* 新しいタイトル用に調整 */
+        .main-title-header .title-japanese { font-size: 2.5em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 2.0em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        /* --- ここまでタイトルヘッダー用スタイル --- */
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .sentence-japanese { font-weight: bold; margin-bottom: 5px; font-size: 1.1em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .translation-details { color: #228b22; }
+
+        table.vocab-table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .vocab-table th, .vocab-table td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .vocab-table th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        .vocab-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        .vocab-table tbody tr:hover { background-color: #e2e6ea; }
+        .vocab-table td { font-size: 1em; }
+        .vocab-table td:nth-child(1) { font-family: 'Tahoma', 'Leelawadee', sans-serif; } /* タイ語の列 */
+
+        /* 発音記号、意味の折りたたみ内容のスタイル調整 */
+        .vocab-table td:nth-child(2) .content-wrapper, /* 発音記号列 */
+        .vocab-table td:nth-child(3) .content-wrapper { /* 意味列 */
+             word-break: break-all;
+        }
+
+        /* --- ここから折りたたみ機能用スタイル (details/summary) --- */
+        .collapsible-content summary,
+        .vocab-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .collapsible-content summary:hover,
+        .vocab-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .collapsible-content[open] summary,
+        .vocab-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .collapsible-content .content-wrapper,
+        .vocab-details .content-wrapper {
+            padding-top: 8px;
+            padding-left: 0px;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+        }
+        /* --- ここまで折りたたみ機能用スタイル --- */
+
+        /* --- 目次用スタイル --- */
+        #index-toc {
+            background-color: #e9f5ff;
+            border-left: 5px solid #007bff;
+            padding: 15px 20px; /* 少しパディング調整 */
+            margin-bottom: 30px; /* セクションとの間隔 */
+        }
+        #index-toc h3 {
+            color: #0056b3;
+            border-bottom: none;
+            margin-top: 0; /* 目次タイトル上のマージン除去 */
+        }
+        #index-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #index-toc ul li {
+            margin-bottom: 8px;
+        }
+        #index-toc ul li a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 500;
+        }
+        #index-toc ul li a:hover {
+            text-decoration: underline;
+            color: #003d80;
+        }
+        .back-to-toc {
+            text-align: right;
+            margin-top: 15px;
+            margin-bottom: 0px;
+        }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none;
+            color: #0056b3;
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover {
+            background-color: #d0e6ff;
+        }
+        .section-end-back-to-toc {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="main-title-header" id="section-main-title">
+        <span class="title-japanese">瞬間タイ語作文：ホテル・レストラン (中級編)</span>
+        <span class="title-thai">ฝึกแต่งประโยคภาษาไทยทันที: โรงแรมและร้านอาหาร (ระดับกลาง) <span class="pronunciation-thai">(fʉ̀k dtɛ̀ng bprà-yòok paa-sǎa thai tan-tii: roong-rɛɛm lɛ́ ráan aa-hǎan (rá-dàp glaang))</span></span>
+    </div>
+
+    <div id="index-toc" class="article-section">
+        <h3>目次</h3>
+        <ul>
+            <li><a href="#section-sentences-1">1. 練習問題：基本的な状況説明とリクエスト (例文 1-10)</a></li>
+            <li><a href="#section-sentences-2">2. 練習問題：より詳細な希望と問い合わせ (例文 11-20)</a></li>
+            <li><a href="#section-sentences-3">3. 練習問題：複雑な交渉・変更・トラブル対応 (例文 21-30)</a></li>
+            <li><a href="#section-summary-vocab">4. 総まとめ単語表</a></li>
+        </ul>
+    </div>
+
+    <!-- セクション1: 基本的な状況説明とリクエスト (例文 1-10) -->
+    <div class="article-section" id="section-sentences-1">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>1. 練習問題：基本的な状況説明とリクエスト (例文 1-10)</h3>
+
+        <h4>例文 1</h4>
+        <p class="sentence-japanese">今晩、午後7時に2名でテーブルを予約したいです。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">อยากจะจองโต๊ะสำหรับสองคน, คืนนี้ เวลาหนึ่งทุ่มครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(yàak jà jɔɔng dtó sǎm-ràp sɔ̌ɔng kon, kʉʉn níi wee-laa nʉ̀ng tûm kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (1):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>จองโต๊ะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jɔɔng dtó</div></details></td><td><details class="vocab-details"><summary>表示</summary>テーブルを予約する</details></td></tr>
+                <tr><td>สำหรับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎm-ràp</div></details></td><td><details class="vocab-details"><summary>表示</summary>～のために</details></td></tr>
+                <tr><td>คืนนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kʉʉn níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>今晩</details></td></tr>
+                <tr><td>หนึ่งทุ่ม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nʉ̀ng tûm</div></details></td><td><details class="vocab-details"><summary>表示</summary>午後7時</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 2</h4>
+        <p class="sentence-japanese">大人2名と子供1名です。子供用の椅子はありますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ผู้ใหญ่สองคนกับเด็กหนึ่งคนครับ/ค่ะ<br>มีเก้าอี้สำหรับเด็กไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(pûu-yài sɔ̌ɔng kon gàp dèk nʉ̀ng kon kráp/kâ.<br>mii gâo-îi sǎm-ràp dèk mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (2):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ผู้ใหญ่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pûu-yài</div></details></td><td><details class="vocab-details"><summary>表示</summary>大人</details></td></tr>
+                <tr><td>กับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>～と</details></td></tr>
+                <tr><td>เด็ก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dèk</div></details></td><td><details class="vocab-details"><summary>表示</summary>子供</details></td></tr>
+                <tr><td>เก้าอี้สำหรับเด็ก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gâo-îi sǎm-ràp dèk</div></details></td><td><details class="vocab-details"><summary>表示</summary>子供用の椅子</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 3</h4>
+        <p class="sentence-japanese">予約している鈴木です。アーリーチェックインは可能ですか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ผม/ฉันชื่อซูซูกิที่จองไว้ครับ/ค่ะ<br>ขอเช็คอินก่อนเวลาได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(pǒm/chǎn chʉ̂ʉ su-su-gì tîi jɔɔng wái kráp/kâ.<br>kɔ̌ɔ chék-in gɔ̀ɔn wee-laa dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (3):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ที่จองไว้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tîi jɔɔng wái</div></details></td><td><details class="vocab-details"><summary>表示</summary>予約してある～</details></td></tr>
+                <tr><td>เช็คอินก่อนเวลา</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chék-in gɔ̀ɔn wee-laa</div></details></td><td><details class="vocab-details"><summary>表示</summary>アーリーチェックイン</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 4</h4>
+        <p class="sentence-japanese">英語か日本語のメニューはありますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">มีเมนูภาษาอังกฤษหรือภาษาญี่ปุ่นไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(mii mee-nuu paa-sǎa ang-grìt rʉ̌ʉ paa-sǎa yîi-bpùn mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (4):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ภาษาอังกฤษ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-sǎa ang-grìt</div></details></td><td><details class="vocab-details"><summary>表示</summary>英語</details></td></tr>
+                <tr><td>หรือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rʉ̌ʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>または</details></td></tr>
+                <tr><td>ภาษาญี่ปุ่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-sǎa yîi-bpùn</div></details></td><td><details class="vocab-details"><summary>表示</summary>日本語</details></td></tr>
+            </tbody>
+        </table>
+        
+        <h4>例文 5</h4>
+        <p class="sentence-japanese">写真のこれと同じものを一つください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ขอสั่งอันนี้เหมือนในรูปหนึ่งที่ครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(kɔ̌ɔ sàng an níi mʉ̌an nai rûup nʉ̀ng tîi kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (5):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>สั่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sàng</div></details></td><td><details class="vocab-details"><summary>表示</summary>注文する</details></td></tr>
+                <tr><td>เหมือน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mʉ̌an</div></details></td><td><details class="vocab-details"><summary>表示</summary>同じ</details></td></tr>
+                <tr><td>ในรูป</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nai rûup</div></details></td><td><details class="vocab-details"><summary>表示</summary>写真の中の</details></td></tr>
+                <tr><td>หนึ่งที่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nʉ̀ng tîi</div></details></td><td><details class="vocab-details"><summary>表示</summary>一つ（料理などを数える）</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 6</h4>
+        <p class="sentence-japanese">もし可能なら、静かな窓際の席をお願いしたいです。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ถ้าเป็นไปได้,<br>อยากได้ที่นั่งริมหน้าต่างที่เงียบๆ หน่อยครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(tâa bpen-bpai-dâi,<br>yàak dâi tîi-nâng rim nâa-dtàang tîi ngîap-ngîap nɔ̀i kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (6):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ถ้าเป็นไปได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tâa bpen-bpai-dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>もし可能なら</details></td></tr>
+                <tr><td>ที่นั่งริมหน้าต่าง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tîi-nâng rim nâa-dtàang</div></details></td><td><details class="vocab-details"><summary>表示</summary>窓際の席</details></td></tr>
+                <tr><td>เงียบๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ngîap-ngîap</div></details></td><td><details class="vocab-details"><summary>表示</summary>静かな（強調）</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 7</h4>
+        <p class="sentence-japanese">部屋で使うWi-Fiのパスワードを教えてください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ขอรหัสไวไฟสำหรับใช้ในห้องหน่อยครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(kɔ̌ɔ rá-hàt wai-fai sǎm-ràp chái nai hɔ̂ng nɔ̀i kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (7):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รหัส</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rá-hàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>パスワード、コード</details></td></tr>
+                <tr><td>สำหรับใช้ในห้อง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎm-ràp chái nai hɔ̂ng</div></details></td><td><details class="vocab-details"><summary>表示</summary>部屋で使うための</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 8</h4>
+        <p class="sentence-japanese">禁煙の部屋を予約したはずですが、この部屋はタバコの匂いがします。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ผม/ฉันจองห้องปลอดบุหรี่ไว้,<br>แต่ห้องนี้มีกลิ่นบุหรี่ครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(pǒm/chǎn jɔɔng hɔ̂ng bplɔ̀ɔt bù-rìi wái,<br>dtɛ̀ɛ hɔ̂ng níi mii glìn bù-rìi kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (8):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ห้องปลอดบุหรี่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hɔ̂ng bplɔ̀ɔt bù-rìi</div></details></td><td><details class="vocab-details"><summary>表示</summary>禁煙室</details></td></tr>
+                <tr><td>แต่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtɛ̀ɛ</div></details></td><td><details class="vocab-details"><summary>表示</summary>しかし</details></td></tr>
+                <tr><td>กลิ่นบุหรี่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">glìn bù-rìi</div></details></td><td><details class="vocab-details"><summary>表示</summary>タバコの匂い</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 9</h4>
+        <p class="sentence-japanese">カードキーが反応しません。部屋に入れないのですが。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">คีย์การ์ดใช้ไม่ได้ครับ/ค่ะ<br>เข้าห้องไม่ได้</span></p>
+                <p><span class="pronunciation">(kii-gáat chái mâi dâi kráp/kâ.<br>kâo hɔ̂ng mâi dâi)</span></p>
+            </div>
+        </details>
+        <h5>単語 (9):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>คีย์การ์ด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kii-gáat</div></details></td><td><details class="vocab-details"><summary>表示</summary>カードキー</details></td></tr>
+                <tr><td>ใช้ไม่ได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chái mâi dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>使えない</details></td></tr>
+                <tr><td>เข้าห้องไม่ได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâo hɔ̂ng mâi dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>部屋に入れない</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 10</h4>
+        <p class="sentence-japanese">このレストランの名物料理は何ですか？あまり辛くないものがいいです。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">อาหารขึ้นชื่อของร้านนี้คืออะไรครับ/คะ<br>ขอแบบไม่ค่อยเผ็ดนะครับ/คะ</span></p>
+                <p><span class="pronunciation">(aa-hǎan kʉ̂n-chʉ̂ʉ kɔ̌ɔng ráan níi kʉʉ à-rai kráp/ká.<br>kɔ̌ɔ bɛ̀ɛp mâi kɔ̂i pèt ná kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (10):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>อาหารขึ้นชื่อ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">aa-hǎan kʉ̂n-chʉ̂ʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>名物料理</details></td></tr>
+                <tr><td>ของร้านนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kɔ̌ɔng ráan níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>この店の</details></td></tr>
+                <tr><td>ไม่ค่อยเผ็ด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi kɔ̂i pèt</div></details></td><td><details class="vocab-details"><summary>表示</summary>あまり辛くない</details></td></tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- セクション2: より詳細な希望と問い合わせ (例文 11-20) -->
+    <div class="article-section" id="section-sentences-2">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>2. 練習問題：より詳細な希望と問い合わせ (例文 11-20)</h3>
+
+        <h4>例文 11</h4>
+        <p class="sentence-japanese">1泊の料金には、朝食と税金は含まれていますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ราคาต่อคืนรวมอาหารเช้ากับภาษีแล้วหรือยังครับ/คะ</span></p>
+                <p><span class="pronunciation">(raa-kaa dtɔ̀ɔ kʉʉn ruam aa-hǎan cháo gàp paa-sǐi lɛ́ɛo rʉ̌ʉ yang kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (11):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ราคาต่อคืน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">raa-kaa dtɔ̀ɔ kʉʉn</div></details></td><td><details class="vocab-details"><summary>表示</summary>1泊あたりの料金</details></td></tr>
+                <tr><td>รวม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ruam</div></details></td><td><details class="vocab-details"><summary>表示</summary>含む</details></td></tr>
+                <tr><td>ภาษี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-sǐi</div></details></td><td><details class="vocab-details"><summary>表示</summary>税金</details></td></tr>
+                <tr><td>แล้วหรือยัง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lɛ́ɛo rʉ̌ʉ yang</div></details></td><td><details class="vocab-details"><summary>表示</summary>もう～しましたか？</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 12</h4>
+        <p class="sentence-japanese">できれば高層階で、海の見える眺めの良い部屋をお願いできますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ถ้าเป็นไปได้,<br>ขอห้องพักชั้นสูงๆ ที่มองเห็นวิวทะเลได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(tâa bpen-bpai-dâi,<br>kɔ̌ɔ hɔ̂ng-pák chán sǔung-sǔung tîi mɔɔng-hěn wio tá-lee dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (12):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ห้องพัก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hɔ̂ng-pák</div></details></td><td><details class="vocab-details"><summary>表示</summary>客室</details></td></tr>
+                <tr><td>ชั้นสูงๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chán sǔung-sǔung</div></details></td><td><details class="vocab-details"><summary>表示</summary>高層階</details></td></tr>
+                <tr><td>มองเห็น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mɔɔng-hěn</div></details></td><td><details class="vocab-details"><summary>表示</summary>見える</details></td></tr>
+                <tr><td>วิวทะเล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">wio tá-lee</div></details></td><td><details class="vocab-details"><summary>表示</summary>海の景色</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 13</h4>
+        <p class="sentence-japanese">空港行きのシャトルバスを予約したいです。明日の朝9時の便に乗りたいのですが、何時のバスに乗ればいいですか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">อยากจองรถรับส่งไปสนามบินครับ/ค่ะ<br>ไฟลท์ของผม/ฉันออกเก้าโมงเช้าพรุ่งนี้, ควรจะขึ้นรถรอบกี่โมงดีครับ/คะ</span></p>
+                <p><span class="pronunciation">(yàak jɔɔng rót ráp-sòng bpai sà-nǎam-bin kráp/kâ.<br>flái kɔ̌ɔng pǒm/chǎn ɔ̀ɔk gâo moong cháo prûng-níi, kuan jà kʉ̂n rót rɔ̂ɔp gìi moong dii kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (13):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รถรับส่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rót ráp-sòng</div></details></td><td><details class="vocab-details"><summary>表示</summary>送迎車</details></td></tr>
+                <tr><td>ไฟลท์ออก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">flái ɔ̀ɔk</div></details></td><td><details class="vocab-details"><summary>表示</summary>フライトが出発する</details></td></tr>
+                <tr><td>ควรจะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kuan jà</div></details></td><td><details class="vocab-details"><summary>表示</summary>～すべきだ</details></td></tr>
+                <tr><td>ขึ้นรถรอบกี่โมง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kʉ̂n rót rɔ̂ɔp gìi moong</div></details></td><td><details class="vocab-details"><summary>表示</summary>何時の便の車に乗る</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 14</h4>
+        <p class="sentence-japanese">ルームサービスで、クラブサンドイッチを2つとオレンジジュースを2つお願いできますか？部屋番号は708です。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ขอสั่งรูมเซอร์วิสครับ/ค่ะ<br>คลับแซนด์วิชสองที่กับน้ำส้มสองแก้ว, ห้องเบอร์เจ็ดศูนย์แปดครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(kɔ̌ɔ sàng ruum-səə-wít kráp/kâ.<br>klàp-sɛɛn-wít sɔ̌ɔng tîi gàp náam-sôm sɔ̌ɔng gɛ̂ɛo, hɔ̂ng bəə jèt-sǔun-bpɛ̀ɛt kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (14):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>รูมเซอร์วิส</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ruum-səə-wít</div></details></td><td><details class="vocab-details"><summary>表示</summary>ルームサービス</details></td></tr>
+                <tr><td>คลับแซนด์วิช</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">klàp-sɛɛn-wít</div></details></td><td><details class="vocab-details"><summary>表示</summary>クラブサンドイッチ</details></td></tr>
+                <tr><td>น้ำส้ม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">náam-sôm</div></details></td><td><details class="vocab-details"><summary>表示</summary>オレンジジュース</details></td></tr>
+                <tr><td>แก้ว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gɛ̂ɛo</div></details></td><td><details class="vocab-details"><summary>表示</summary>杯、グラス（類別詞）</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 15</h4>
+        <p class="sentence-japanese">子供が卵アレルギーなのですが、このチャーハンには卵が入っていますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ลูกผม/ฉันแพ้ไข่ครับ/ค่ะ<br>ไม่ทราบว่าข้าวผัดจานนี้ใส่ไข่ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(lûuk pǒm/chǎn pɛ́ɛ kài kráp/kâ.<br>mâi sâap wâa kâao-pàt jaan níi sài kài mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (15):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ลูก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lûuk</div></details></td><td><details class="vocab-details"><summary>表示</summary>子供（自分の）</details></td></tr>
+                <tr><td>แพ้ไข่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ́ɛ kài</div></details></td><td><details class="vocab-details"><summary>表示</summary>卵アレルギー</details></td></tr>
+                <tr><td>ไม่ทราบว่า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi sâap wâa</div></details></td><td><details class="vocab-details"><summary>表示</summary>～かどうか存じませんが（丁寧）</details></td></tr>
+                <tr><td>ข้าวผัด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâao-pàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>チャーハン</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 16</h4>
+        <p class="sentence-japanese">このトムヤムクンは、辛さを控えめにして、パクチーを入れないで作ってもらえますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ต้มยำกุ้งถ้วยนี้, ขอรสชาติไม่เผ็ดมาก,<br>และไม่ใส่ผักชีได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(dtôm-yam-gûng tûay níi, kɔ̌ɔ rót-châat mâi pèt mâak,<br>lɛ́ mâi sài pàk-chii dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (16):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ต้มยำกุ้ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtôm-yam-gûng</div></details></td><td><details class="vocab-details"><summary>表示</summary>トムヤムクン</details></td></tr>
+                <tr><td>รสชาติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rót-châat</div></details></td><td><details class="vocab-details"><summary>表示</summary>味</details></td></tr>
+                <tr><td>ไม่เผ็ดมาก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi pèt mâak</div></details></td><td><details class="vocab-details"><summary>表示</summary>あまり辛くない</details></td></tr>
+                <tr><td>ผักชี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pàk-chii</div></details></td><td><details class="vocab-details"><summary>表示</summary>パクチー</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 17</h4>
+        <p class="sentence-japanese">明日の市内観光ツアーに申し込みたいです。集合場所と時間、持ち物について教えてください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">อยากสมัครทัวร์เที่ยวในเมืองสำหรับวันพรุ่งนี้ครับ/ค่ะ<br>ช่วยบอกสถานที่นัดพบ, เวลา, และของที่ต้องเตรียมมาด้วยครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(yàak sà-màk tua tîao nai mʉang sǎm-ràp wan-prûng-níi kráp/kâ.<br>chûay bɔ̀ɔk sà-tǎan-tîi nát-póp, wee-laa, lɛ́ kɔ̌ɔng tîi dtɔ̂ng dtriam maa dûay kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (17):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>สมัคร</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-màk</div></details></td><td><details class="vocab-details"><summary>表示</summary>申し込む</details></td></tr>
+                <tr><td>สถานที่นัดพบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-tǎan-tîi nát-póp</div></details></td><td><details class="vocab-details"><summary>表示</summary>集合場所</details></td></tr>
+                <tr><td>ของที่ต้องเตรียม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kɔ̌ɔng tîi dtɔ̂ng dtriam</div></details></td><td><details class="vocab-details"><summary>表示</summary>準備が必要なもの</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 18</h4>
+        <p class="sentence-japanese">部屋にセーフティーボックスが見当たらないのですが、どこにありますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">หาตู้เซฟในห้องไม่เจอครับ/ค่ะ<br>ไม่ทราบว่าอยู่ตรงไหนครับ/คะ</span></p>
+                <p><span class="pronunciation">(hǎa dtûu-sée-p nai hɔ̂ng mâi jəə kráp/kâ.<br>mâi sâap wâa yùu dtrong-nǎi kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (18):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>หา...ไม่เจอ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hǎa...mâi jəə</div></details></td><td><details class="vocab-details"><summary>表示</summary>～が見つからない</details></td></tr>
+                <tr><td>ตู้เซฟ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtûu-sée-p</div></details></td><td><details class="vocab-details"><summary>表示</summary>セーフティーボックス</details></td></tr>
+                <tr><td>อยู่ตรงไหน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yùu dtrong-nǎi</div></details></td><td><details class="vocab-details"><summary>表示</summary>どこにありますか</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 19</h4>
+        <p class="sentence-japanese">申し訳ありませんが、明日の朝食の予約をキャンセルさせてください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ขอโทษนะครับ/คะ ขอยกเลิกการจองอาหารเช้าสำหรับวันพรุ่งนี้ครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(kɔ̌ɔ-tôot ná kráp/ká. kɔ̌ɔ yók-lə̂ək gaan jɔɔng aa-hǎan cháo sǎm-ràp wan-prûng-níi kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (19):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ขอโทษ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kɔ̌ɔ-tôot</div></details></td><td><details class="vocab-details"><summary>表示</summary>すみません</details></td></tr>
+                <tr><td>ยกเลิก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yók-lə̂ək</div></details></td><td><details class="vocab-details"><summary>表示</summary>キャンセルする</details></td></tr>
+                <tr><td>การจองอาหารเช้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gaan jɔɔng aa-hǎan cháo</div></details></td><td><details class="vocab-details"><summary>表示</summary>朝食の予約</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 20</h4>
+        <p class="sentence-japanese">チェックアウトは12時ですが、午後3時まで延長することは可能ですか？その場合の追加料金はいくらになりますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ปกติเช็คเอาท์ตอนเที่ยงใช่ไหมครับ/คะ<br>ไม่ทราบว่าสามารถขอเลทเช็คเอาท์ถึงบ่ายสามโมงได้ไหม<br>ถ้าได้จะต้องจ่ายเพิ่มเท่าไหร่ครับ/คะ</span></p>
+                <p><span class="pronunciation">(bpòk-gà-dtì chék-âo dtɔɔn tîang châi-mái kráp/ká.<br>mâi sâap wâa sǎa-mâat kɔ̌ɔ lée-t-chék-âo tʉ̌ng bàai sǎam moong dâi mái.<br>tâa dâi jà dtɔ̂ng jàai pə̂əm tâo-rài kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (20):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ปกติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpòk-gà-dtì</div></details></td><td><details class="vocab-details"><summary>表示</summary>通常</details></td></tr>
+                <tr><td>ตอนเที่ยง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtɔɔn tîang</div></details></td><td><details class="vocab-details"><summary>表示</summary>正午</details></td></tr>
+                <tr><td>เลทเช็คเอาท์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lée-t-chék-âo</div></details></td><td><details class="vocab-details"><summary>表示</summary>レイトチェックアウト</details></td></tr>
+                <tr><td>จ่ายเพิ่ม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jàai pə̂əm</div></details></td><td><details class="vocab-details"><summary>表示</summary>追加で支払う</details></td></tr>
+            </tbody>
+        </table>
+
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- セクション3: 複雑な交渉・変更・トラブル対応 (例文 21-30) -->
+    <div class="article-section" id="section-sentences-3">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>3. 練習問題：複雑な交渉・変更・トラブル対応 (例文 21-30)</h3>
+
+        <h4>例文 21</h4>
+        <p class="sentence-japanese">予約内容を変更したいです。到着が1日遅れるので、チェックイン日を明後日に変更してください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ต้องการเปลี่ยนแปลงการจองครับ/ค่ะ<br>พอดีจะไปถึงช้าไปหนึ่งวัน, เลยอยากจะเลื่อนวันเช็คอินเป็นวันมะรืนนี้ครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(dtɔ̂ng-gaan bplìan-bplɛɛng gaan-jɔɔng kráp/kâ.<br>pɔɔ-dii jà bpai tʉ̌ng cháa bpai nʉ̀ng wan, ləəi yàak jà lʉ̂an wan chék-in bpen wan-má-rʉʉn-níi kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (21):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เปลี่ยนแปลง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bplìan-bplɛɛng</div></details></td><td><details class="vocab-details"><summary>表示</summary>変更する</details></td></tr>
+                <tr><td>ไปถึงช้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpai tʉ̌ng cháa</div></details></td><td><details class="vocab-details"><summary>表示</summary>到着が遅れる</details></td></tr>
+                <tr><td>เลื่อนวัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lʉ̂an wan</div></details></td><td><details class="vocab-details"><summary>表示</summary>日を延期する</details></td></tr>
+                <tr><td>วันมะรืนนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">wan-má-rʉʉn-níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>明後日</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 22</h4>
+        <p class="sentence-japanese">友人の誕生日サプライズを計画しています。今晩レストランを予約しているのですが、席にケーキを準備しておいてもらえますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">กำลังวางแผนเซอร์ไพรส์วันเกิดให้เพื่อนครับ/ค่ะ<br>ได้จองร้านอาหารสำหรับคืนนี้ไว้, ไม่ทราบว่าพอจะช่วยเตรียมเค้กไว้ที่โต๊ะให้หน่อยได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(gam-lang waang-pɛ̌ɛn səə-prái wan-gə̀ət hâi pʉ̂an kráp/kâ.<br>dâi jɔɔng ráan-aa-hǎan sǎm-ràp kʉʉn-níi wái, mâi sâap wâa pɔɔ jà chûay dtriam kée-k wái tîi dtó hâi nɔ̀i dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (22):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>วางแผน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">waang-pɛ̌ɛn</div></details></td><td><details class="vocab-details"><summary>表示</summary>計画を立てる</details></td></tr>
+                <tr><td>เซอร์ไพรส์วันเกิด</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">səə-prái wan-gə̀ət</div></details></td><td><details class="vocab-details"><summary>表示</summary>誕生日サプライズ</details></td></tr>
+                <tr><td>เตรียม...ไว้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtriam...wái</div></details></td><td><details class="vocab-details"><summary>表示</summary>～を準備しておく</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 23</h4>
+        <p class="sentence-japanese">最終宿泊日は6月28日の土曜日ですが、この日は宿泊せず夕方6時頃にチェックアウトします。どうか覚えておいてください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">คืนสุดท้ายที่จองไว้คือวันเสาร์ที่ 28 มิถุนายน,<br>แต่ว่าวันนั้นจะไม่ได้พักค้างคืน, จะขอเช็คเอาท์ตอนหกโมงเย็น<br>ช่วยจำไว้ด้วยนะครับ/คะ</span></p>
+                <p><span class="pronunciation">(kʉʉn sùt-táai tîi jɔɔng wái kʉʉ wan-sǎo tîi yîi-sìp-bpɛ̀ɛt mí-tù-naa-yon,<br>dtɛ̀ɛ-wâa wan nán jà mâi dâi pák-káang-kʉʉn, jà kɔ̌ɔ chék-âo dtɔɔn hòk moong yen.<br>chûay jam wái dûay ná kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (23):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>คืนสุดท้าย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kʉʉn sùt-táai</div></details></td><td><details class="vocab-details"><summary>表示</summary>最後の夜</details></td></tr>
+                <tr><td>มิถุนายน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mí-tù-naa-yon</div></details></td><td><details class="vocab-details"><summary>表示</summary>6月</details></td></tr>
+                <tr><td>ไม่ได้พักค้างคืน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi dâi pák-káang-kʉʉn</div></details></td><td><details class="vocab-details"><summary>表示</summary>宿泊しない</details></td></tr>
+                <tr><td>ช่วยจำไว้ด้วย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chûay jam wái dûay</div></details></td><td><details class="vocab-details"><summary>表示</summary>覚えておいてください</details></td></tr>
+            </tbody>
+        </table>
+        
+        <h4>例文 24</h4>
+        <p class="sentence-japanese">その日の深夜便で帰国するので、出発前にシャワーを浴びて休憩するために、1泊分余分に部屋を予約しているのです。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">เนื่องจากมีไฟลท์บินดึก, เลยจองห้องพักเพิ่มอีกหนึ่งคืน<br>เพื่อจะได้อาบน้ำและพักผ่อนก่อนเดินทางกลับครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(nʉ̂ang-jàak mii flái-bin dʉ̀k, ləəi jɔɔng hɔ̂ng-pák pə̂əm ìik nʉ̀ng kʉʉn<br>pʉ̂a jà dâi àap-náam lɛ́ pák-pɔ̀ɔn gɔ̀ɔn dəən-taang glàp kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (24):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เนื่องจาก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nʉ̂ang-jàak</div></details></td><td><details class="vocab-details"><summary>表示</summary>～なので、～という理由で</details></td></tr>
+                <tr><td>ไฟลท์บินดึก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">flái-bin dʉ̀k</div></details></td><td><details class="vocab-details"><summary>表示</summary>深夜便</details></td></tr>
+                <tr><td>เพื่อจะได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pʉ̂a jà dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>～できるように</details></td></tr>
+                <tr><td>พักผ่อน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pák-pɔ̀ɔn</div></details></td><td><details class="vocab-details"><summary>表示</summary>休憩する</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 25</h4>
+        <p class="sentence-japanese">部屋のシャワーのお湯が出ません。修理担当者をすぐに寄こしてもらえますか？もう30分も待っています。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">น้ำร้อนที่ห้องอาบน้ำไม่ไหลครับ/ค่ะ<br>ช่วยส่งช่างมาดูให้ด่วนได้ไหมครับ/คะ<br>รอมาครึ่งชั่วโมงแล้ว</span></p>
+                <p><span class="pronunciation">(náam-rɔ́ɔn tîi hɔ̂ng-àap-náam mâi lǎi kráp/kâ.<br>chûay sòng châng maa duu hâi dùan dâi mái kráp/ká.<br>rɔɔ maa krʉ̂ng chûa-moong lɛ́ɛo)</span></p>
+            </div>
+        </details>
+        <h5>単語 (25):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>น้ำร้อนไม่ไหล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">náam-rɔ́ɔn mâi lǎi</div></details></td><td><details class="vocab-details"><summary>表示</summary>お湯が出ない</details></td></tr>
+                <tr><td>ส่งช่างมาดูให้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sòng châng maa duu hâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>修理工を送って見てもらう</details></td></tr>
+                <tr><td>ด่วน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dùan</div></details></td><td><details class="vocab-details"><summary>表示</summary>至急で</details></td></tr>
+                <tr><td>ครึ่งชั่วโมง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">krʉ̂ng chûa-moong</div></details></td><td><details class="vocab-details"><summary>表示</summary>30分</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 26</h4>
+        <p class="sentence-japanese">隣の部屋が夜中までとてもうるさいです。静かにするように伝えていただけますか。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ห้องข้างๆ ส่งเสียงดังมากจนดึกเลยครับ/ค่ะ<br>รบกวนช่วยไปเตือนให้หน่อยได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(hɔ̂ng kâang-kâang sòng-sǐang dang mâak jon dʉ̀k ləəi kráp/kâ.<br>róp-guan chûay bpai dtʉan hâi nɔ̀i dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (26):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ห้องข้างๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hɔ̂ng kâang-kâang</div></details></td><td><details class="vocab-details"><summary>表示</summary>隣の部屋</details></td></tr>
+                <tr><td>ส่งเสียงดัง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sòng-sǐang dang</div></details></td><td><details class="vocab-details"><summary>表示</summary>うるさい音を出す</details></td></tr>
+                <tr><td>จนดึก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jon dʉ̀k</div></details></td><td><details class="vocab-details"><summary>表示</summary>夜中まで</details></td></tr>
+                <tr><td>ไปเตือน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpai dtʉan</div></details></td><td><details class="vocab-details"><summary>表示</summary>注意しに行く</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 27</h4>
+        <p class="sentence-japanese">この請求書に、私が利用していないミニバーの料金が含まれているようです。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ในใบแจ้งหนี้นี้, เหมือนจะมีค่ามินิบาร์ที่ผม/ฉันไม่ได้ใช้รวมอยู่ด้วยครับ/ค่ะ</span></p>
+                <p><span class="pronunciation">(nai bai-jɛ̂ɛng-nîi níi, mʉ̌an jà mii kâa mí-ní-baa tîi pǒm/chǎn mâi dâi chái ruam yùu dûay kráp/kâ)</span></p>
+            </div>
+        </details>
+        <h5>単語 (27):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ใบแจ้งหนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bai-jɛ̂ɛng-nîi</div></details></td><td><details class="vocab-details"><summary>表示</summary>請求書</details></td></tr>
+                <tr><td>ค่ามินิบาร์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâa mí-ní-baa</div></details></td><td><details class="vocab-details"><summary>表示</summary>ミニバーの料金</details></td></tr>
+                <tr><td>ไม่ได้ใช้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi dâi chái</div></details></td><td><details class="vocab-details"><summary>表示</summary>使っていない</details></td></tr>
+                <tr><td>รวมอยู่ด้วย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ruam yùu dûay</div></details></td><td><details class="vocab-details"><summary>表示</summary>一緒に含まれている</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 28</h4>
+        <p class="sentence-japanese">タクシーを呼んでいただけますか。行き先はサイアムパラゴンです。メーターを使ってくれるよう運転手に伝えてください。</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">ช่วยเรียกแท็กซี่ให้หน่อยครับ/ค่ะ<br>จะไปสยามพารากอน<br>รบกวนช่วยบอกคนขับให้กดมิเตอร์ด้วยนะครับ/คะ</span></p>
+                <p><span class="pronunciation">(chûay rîak tɛ́k-sîi hâi nɔ̀i kráp/kâ.<br>jà bpai sà-yǎam-paa-raa-gɔɔn.<br>róp-guan chûay bɔ̀ɔk kon-kàp hâi gòt mí-dtə̂ə dûay ná kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (28):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>เรียกแท็กซี่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rîak tɛ́k-sîi</div></details></td><td><details class="vocab-details"><summary>表示</summary>タクシーを呼ぶ</details></td></tr>
+                <tr><td>สยามพารากอน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-yǎam-paa-raa-gɔɔn</div></details></td><td><details class="vocab-details"><summary>表示</summary>サイアムパラゴン</details></td></tr>
+                <tr><td>คนขับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kon-kàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>運転手</details></td></tr>
+                <tr><td>กดมิเตอร์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gòt mí-dtə̂ə</div></details></td><td><details class="vocab-details"><summary>表示</summary>メーターを押す</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 29</h4>
+        <p class="sentence-japanese">帰りのフライトがキャンセルになったため、急遽もう一泊する必要があります。同じ部屋に泊まることはできますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">เนื่องจากไฟลท์ขากลับถูกยกเลิก, เลยจำเป็นต้องพักเพิ่มอีกหนึ่งคืนครับ/ค่ะ<br>ไม่ทราบว่ายังสามารถพักห้องเดิมได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(nʉ̂ang-jàak flái kǎa-glàp tùuk yók-lə̂ək, ləəi jam-bpen dtɔ̂ng pák pə̂əm ìik nʉ̀ng kʉʉn kráp/kâ.<br>mâi sâap wâa yang sǎa-mâat pák hɔ̂ng dəəm dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (29):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ไฟลท์ขากลับ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">flái kǎa-glàp</div></details></td><td><details class="vocab-details"><summary>表示</summary>帰りのフライト</details></td></tr>
+                <tr><td>ถูกยกเลิก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tùuk yók-lə̂ək</div></details></td><td><details class="vocab-details"><summary>表示</summary>キャンセルされる（受身）</details></td></tr>
+                <tr><td>จำเป็นต้อง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jam-bpen dtɔ̂ng</div></details></td><td><details class="vocab-details"><summary>表示</summary>～する必要がある</details></td></tr>
+                <tr><td>ห้องเดิม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hɔ̂ng dəəm</div></details></td><td><details class="vocab-details"><summary>表示</summary>同じ部屋</details></td></tr>
+            </tbody>
+        </table>
+
+        <h4>例文 30</h4>
+        <p class="sentence-japanese">領収書を会社名で発行し、宿泊費と飲食代を別々に記載していただけますか？</p>
+        <details class="collapsible-content">
+            <summary>タイ語訳と発音を表示</summary>
+            <div class="content-wrapper">
+                <p><span class="thai-text">รบกวนออกใบเสร็จในนามบริษัท,<br>โดยช่วยแยกระหว่างค่าที่พักกับค่าอาหารและเครื่องดื่มให้ด้วยได้ไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(róp-guan ɔ̀ɔk bai-sèt nai naam bɔɔ-rí-sàt,<br>dooi chûay yɛ̂ɛk rá-wàang kâa tîi-pák gàp kâa aa-hǎan lɛ́ krʉ̂ang-dʉ̀ʉm hâi dûay dâi mái kráp/ká)</span></p>
+            </div>
+        </details>
+        <h5>単語 (30):</h5>
+        <table class="vocab-table">
+            <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+            <tbody>
+                <tr><td>ออกใบเสร็จ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ɔ̀ɔk bai-sèt</div></details></td><td><details class="vocab-details"><summary>表示</summary>領収書を発行する</details></td></tr>
+                <tr><td>ในนามบริษัท</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nai naam bɔɔ-rí-sàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>会社名で</details></td></tr>
+                <tr><td>ช่วยแยก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chûay yɛ̂ɛk</div></details></td><td><details class="vocab-details"><summary>表示</summary>分けてください</details></td></tr>
+                <tr><td>ค่าที่พัก/ค่าอาหาร</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâa tîi-pák / kâa aa-hǎan</div></details></td><td><details class="vocab-details"><summary>表示</summary>宿泊費/食費</details></td></tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <!-- 総まとめ単語表 -->
+    <div class="article-section" id="section-summary-vocab">
+        <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        <h3>4. 総まとめ単語表</h3>
+        <p class="note">これまでに登場した主な単語の一覧です。</p>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                    <th>意味</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>จองโต๊ะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jɔɔng dtó</div></details></td><td><details class="vocab-details"><summary>表示</summary>テーブルを予約する</details></td></tr>
+                <tr><td>ผู้ใหญ่/เด็ก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pûu-yài / dèk</div></details></td><td><details class="vocab-details"><summary>表示</summary>大人/子供</details></td></tr>
+                <tr><td>เช็คอินก่อนเวลา</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chék-in gɔ̀ɔn wee-laa</div></details></td><td><details class="vocab-details"><summary>表示</summary>アーリーチェックイン</details></td></tr>
+                <tr><td>ถ้าเป็นไปได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tâa bpen-bpai-dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>もし可能なら</details></td></tr>
+                <tr><td>รหัส</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rá-hàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>パスワード</details></td></tr>
+                <tr><td>กลิ่นบุหรี่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">glìn bù-rìi</div></details></td><td><details class="vocab-details"><summary>表示</summary>タバコの匂い</details></td></tr>
+                <tr><td>ใช้ไม่ได้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chái mâi dâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>使えない</details></td></tr>
+                <tr><td>อาหารขึ้นชื่อ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">aa-hǎan kʉ̂n-chʉ̂ʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>名物料理</details></td></tr>
+                <tr><td>ราคาต่อคืน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">raa-kaa dtɔ̀ɔ kʉʉn</div></details></td><td><details class="vocab-details"><summary>表示</summary>1泊あたりの料金</details></td></tr>
+                <tr><td>รวม/ภาษี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ruam / paa-sǐi</div></details></td><td><details class="vocab-details"><summary>表示</summary>含む/税金</details></td></tr>
+                <tr><td>ชั้นสูงๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chán sǔung-sǔung</div></details></td><td><details class="vocab-details"><summary>表示</summary>高層階</details></td></tr>
+                <tr><td>รถรับส่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rót ráp-sòng</div></details></td><td><details class="vocab-details"><summary>表示</summary>送迎車</details></td></tr>
+                <tr><td>ควรจะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kuan jà</div></details></td><td><details class="vocab-details"><summary>表示</summary>～すべきだ</details></td></tr>
+                <tr><td>แพ้ไข่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ́ɛ kài</div></details></td><td><details class="vocab-details"><summary>表示</summary>卵アレルギー</details></td></tr>
+                <tr><td>ไม่ใส่ผักชี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi sài pàk-chii</div></details></td><td><details class="vocab-details"><summary>表示</summary>パクチーを入れない</details></td></tr>
+                <tr><td>สมัคร</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-màk</div></details></td><td><details class="vocab-details"><summary>表示</summary>申し込む</details></td></tr>
+                <tr><td>สถานที่นัดพบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-tǎan-tîi nát-póp</div></details></td><td><details class="vocab-details"><summary>表示</summary>集合場所</details></td></tr>
+                <tr><td>ยกเลิก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yók-lə̂ək</div></details></td><td><details class="vocab-details"><summary>表示</summary>キャンセルする</details></td></tr>
+                <tr><td>เลทเช็คเอาท์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lée-t-chék-âo</div></details></td><td><details class="vocab-details"><summary>表示</summary>レイトチェックアウト</details></td></tr>
+                <tr><td>จ่ายเพิ่ม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jàai pə̂əm</div></details></td><td><details class="vocab-details"><summary>表示</summary>追加で支払う</details></td></tr>
+                <tr><td>เปลี่ยนแปลง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bplìan-bplɛɛng</div></details></td><td><details class="vocab-details"><summary>表示</summary>変更する</details></td></tr>
+                <tr><td>วันมะรืนนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">wan-má-rʉʉn-níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>明後日</details></td></tr>
+                <tr><td>วางแผน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">waang-pɛ̌ɛn</div></details></td><td><details class="vocab-details"><summary>表示</summary>計画する</details></td></tr>
+                <tr><td>ไม่ได้พักค้างคืน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mâi dâi pák-káang-kʉʉn</div></details></td><td><details class="vocab-details"><summary>表示</summary>宿泊しない</details></td></tr>
+                <tr><td>เนื่องจาก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nʉ̂ang-jàak</div></details></td><td><details class="vocab-details"><summary>表示</summary>～なので</details></td></tr>
+                <tr><td>ไฟลท์บินดึก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">flái-bin dʉ̀k</div></details></td><td><details class="vocab-details"><summary>表示</summary>深夜便</details></td></tr>
+                <tr><td>น้ำร้อนไม่ไหล</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">náam-rɔ́ɔn mâi lǎi</div></details></td><td><details class="vocab-details"><summary>表示</summary>お湯が出ない</details></td></tr>
+                <tr><td>ด่วน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dùan</div></details></td><td><details class="vocab-details"><summary>表示</summary>至急で</details></td></tr>
+                <tr><td>ห้องข้างๆ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">hɔ̂ng kâang-kâang</div></details></td><td><details class="vocab-details"><summary>表示</summary>隣の部屋</details></td></tr>
+                <tr><td>ไปเตือน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpai dtʉan</div></details></td><td><details class="vocab-details"><summary>表示</summary>注意しに行く</details></td></tr>
+                <tr><td>ใบแจ้งหนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bai-jɛ̂ɛng-nîi</div></details></td><td><details class="vocab-details"><summary>表示</summary>請求書</details></td></tr>
+                <tr><td>กดมิเตอร์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gòt mí-dtə̂ə</div></details></td><td><details class="vocab-details"><summary>表示</summary>メーターを押す</details></td></tr>
+                <tr><td>ถูกยกเลิก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">tùuk yók-lə̂ək</div></details></td><td><details class="vocab-details"><summary>表示</summary>キャンセルされる</details></td></tr>
+                <tr><td>จำเป็นต้อง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">jam-bpen dtɔ̂ng</div></details></td><td><details class="vocab-details"><summary>表示</summary>～する必要がある</details></td></tr>
+                <tr><td>ออกใบเสร็จ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ɔ̀ɔk bai-sèt</div></details></td><td><details class="vocab-details"><summary>表示</summary>領収書を発行する</details></td></tr>
+                <tr><td>ในนามบริษัท</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nai naam bɔɔ-rí-sàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>会社名で</details></td></tr>
+                <tr><td>ช่วยแยก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chûay yɛ̂ɛk</div></details></td><td><details class="vocab-details"><summary>表示</summary>分けてください</details></td></tr>
+            </tbody>
+        </table>
+        <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+    </div>
+
+    <p class="footer-note">発音記号は、タイ語学習で一般的に用いられる表記法（声調記号付きローマ字表記）を参考にしています。丁寧語尾「ครับ/ค่ะ」は適宜補足しています。</p>
+
+</body>
+</html>

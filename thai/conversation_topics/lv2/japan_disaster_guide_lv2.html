@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語で学ぶ：日本の災害とハザードマップの重要性</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            transition: margin-left 0.3s;
+        }
+
+        /* --- ここからサイドメニュー用スタイル --- */
+        #side-menu {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: -250px; /* デフォルトで隠す */
+            background-color: #1a5276;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        #side-menu a {
+            padding: 10px 15px 10px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            color: #e9f5ff;
+            display: block;
+            transition: 0.2s;
+        }
+        #side-menu a:hover {
+            color: #ffffff;
+            background-color: #2e86c1;
+        }
+        #side-menu .close-btn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #f1f1f1;
+        }
+        #menu-toggle {
+            font-size: 30px;
+            cursor: pointer;
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            border-radius: 5px;
+        }
+
+        /* メインコンテンツエリア */
+        #main-content {
+            transition: margin-left .3s;
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        /* メニューが開いている時のスタイル */
+        body.menu-open #side-menu {
+            left: 0;
+        }
+        body.menu-open #main-content {
+            /* スマホでコンテンツが隠れないように調整 */
+            /* margin-left: 250px; */ 
+        }
+        @media (min-width: 768px) {
+             body.menu-open #main-content {
+                margin-left: 250px;
+             }
+        }
+
+
+        /* --- ここまでサイドメニュー用スタイル --- */
+
+
+        /* --- ここから既存のスタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .main-title-header .title-japanese { font-size: 2.5em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 2.0em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .sentence-japanese { font-weight: bold; margin-bottom: 5px; font-size: 1.1em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        
+        table.vocab-table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .vocab-table th, .vocab-table td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .vocab-table th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        .vocab-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        .vocab-table tbody tr:hover { background-color: #e2e6ea; }
+        .vocab-table td { font-size: 1em; }
+        .vocab-table td:nth-child(1) { font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+
+        .collapsible-content summary, .vocab-details summary {
+            cursor: pointer; font-weight: normal; color: #0056b3; display: inline-block; padding: 3px 8px;
+            border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff; margin-left: 5px; font-size: 0.9em;
+        }
+        .collapsible-content summary:hover, .vocab-details summary:hover { background-color: #d0e6ff; }
+        .collapsible-content[open] summary, .vocab-details[open] summary { background-color: #c0d9f7; }
+        .collapsible-content .content-wrapper, .vocab-details .content-wrapper { padding-top: 8px; padding-left: 0px; }
+        .vocab-table td .vocab-details summary { margin-left: 0; padding: 2px 6px; font-size: 0.85em; }
+        .vocab-table td .vocab-details .content-wrapper { padding-top: 5px; }
+
+        #index-toc { background-color: #e9f5ff; border-left: 5px solid #007bff; padding: 15px 20px; margin-bottom: 30px; }
+        #index-toc h3 { color: #0056b3; border-bottom: none; margin-top: 0; }
+        #index-toc ul { list-style-type: none; padding-left: 0; }
+        #index-toc ul li { margin-bottom: 8px; }
+        #index-toc ul li a { text-decoration: none; color: #0056b3; font-weight: 500; }
+        #index-toc ul li a:hover { text-decoration: underline; color: #003d80; }
+        
+        .back-to-toc { text-align: right; margin-top: 15px; margin-bottom: 0px; }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none; color: #0056b3; font-size: 0.9em; font-weight: bold;
+            padding: 5px 10px; border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover { background-color: #d0e6ff; }
+        .section-end-back-to-toc { text-align: right; margin-top: 20px; }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+    </style>
+</head>
+<body>
+
+    <!-- サイドメニュー -->
+    <div id="side-menu">
+        <a href="javascript:void(0)" class="close-btn" id="close-menu-btn">&times;</a>
+        <a href="#section-sentences-1">1. 日本の災害と背景</a>
+        <a href="#section-sentences-2">2. リスクとハザードマップ</a>
+        <a href="#section-sentences-3">3. ハザードマップの活用</a>
+        <a href="#section-discussion">4. ディスカッション</a>
+        <a href="#section-summary-vocab">5. 総まとめ単語表</a>
+    </div>
+
+    <!-- メニュー開閉ボタン -->
+    <button id="menu-toggle">&#9776;</button>
+
+    <main id="main-content">
+        <div class="main-title-header" id="section-main-title">
+            <span class="title-japanese">日本の災害とハザードマップの重要性</span>
+            <span class="title-thai">ความสำคัญของภัยพิบัติและแผนที่ภัยพิบัติในญี่ปุ่น <span class="pronunciation-thai">(kwaam-sǎm-kan kɔ̌ɔng pai-pí-bàt lɛ́ pɛ̌ɛn-tîi pai-pí-bàt nai yîi-bpùn)</span></span>
+        </div>
+
+        <div id="index-toc" class="article-section">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#section-sentences-1">1. 日本の自然災害と地震の背景 (例文 1-5)</a></li>
+                <li><a href="#section-sentences-2">2. 災害リスクとハザードマップの役割 (例文 6-10)</a></li>
+                <li><a href="#section-sentences-3">3. ハザードマップの確認と活用 (例文 11-14)</a></li>
+                <li><a href="#section-discussion">4. ディスカッション (例文 15-17)</a></li>
+                <li><a href="#section-summary-vocab">5. 総まとめ単語表</a></li>
+            </ul>
+        </div>
+
+        <!-- 各セクション ... -->
+        <!-- セクション1: 日本の自然災害と地震の背景 (例文 1-5) -->
+        <div class="article-section" id="section-sentences-1">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>1. 日本の自然災害と地震の背景 (例文 1-5)</h3>
+
+            <h4>例文 1</h4>
+            <p class="sentence-japanese">タイは特に河川地域で水害が多い国ですが、日本もまた自然災害が頻繁に発生する国です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ประเทศไทยเป็นประเทศที่เกิดอุทกภัยบ่อยครั้งโดยเฉพาะในพื้นที่ลุ่มแม่น้ำ,<br>แต่ประเทศญี่ปุ่นก็เป็นประเทศที่เกิดภัยพิบัติทางธรรมชาติบ่อยครั้งเช่นกัน</span></p>
+                <p><span class="pronunciation">(bprà-têet-thai bpen bprà-têet tîi gə̀ət ù-tók-gà-pai bɔ̀i kráng dooi-chà-pɔ́ nai pʉ́ʉn-tîi lûm mɛ̂ɛ-náam,<br>dtɛ̀ɛ bprà-têet yîi-bpùn gɔ̂ bpen bprà-têet tîi gə̀ət pai-pí-bàt taang tam-má-châat bɔ̀i kráng chên-gan)</span></p>
+            </div></details>
+            <h5>単語 (1):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>อุทกภัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ù-tók-gà-pai</div></details></td><td><details class="vocab-details"><summary>表示</summary>水害、洪水</details></td></tr>
+                <tr><td>โดยเฉพาะ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dooi-chà-pɔ́</div></details></td><td><details class="vocab-details"><summary>表示</summary>特に</details></td></tr>
+                <tr><td>ภัยพิบัติทางธรรมชาติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pai-pí-bàt taang tam-má-châat</div></details></td><td><details class="vocab-details"><summary>表示</summary>自然災害</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 2</h4>
+            <p class="sentence-japanese">そのため、日本に住むことを考えている外国人は、日本の主な災害について理解し、備えておくことが非常に重要です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ดังนั้น สำหรับชาวต่างชาติที่คิดจะอาศัยอยู่ในญี่ปุ่น,<br>การทำความเข้าใจและเตรียมพร้อมรับมือกับภัยพิบัติที่สำคัญของญี่ปุ่นจึงเป็นสิ่งสำคัญอย่างยิ่ง</span></p>
+                <p><span class="pronunciation">(dang-nán, sǎm-ràp chaao-dtàang-châat tîi kít jà aa-sǎi yùu nai yîi-bpùn,<br>gaan tam kwaam-kâo-jai lɛ́ dtriam-prɔ́ɔm ráp-mʉʉ gàp pai-pí-bàt tîi sǎm-kan kɔ̌ɔng yîi-bpùn jʉng bpen sìng sǎm-kan yàang-yîng)</span></p>
+            </div></details>
+            <h5>単語 (2):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ดังนั้น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dang-nán</div></details></td><td><details class="vocab-details"><summary>表示</summary>そのため</details></td></tr>
+                <tr><td>อาศัยอยู่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">aa-sǎi yùu</div></details></td><td><details class="vocab-details"><summary>表示</summary>住む</details></td></tr>
+                <tr><td>เตรียมพร้อมรับมือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtriam-prɔ́ɔm ráp-mʉʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>備える</details></td></tr>
+                <tr><td>สำคัญอย่างยิ่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎm-kan yàang-yîng</div></details></td><td><details class="vocab-details"><summary>表示</summary>非常に重要</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 3</h4>
+            <p class="sentence-japanese">日本は、複数のプレート（地球の表面を覆う岩盤）がぶつかり合う場所に位置しています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ประเทศญี่ปุ่นตั้งอยู่ในบริเวณที่แผ่นเปลือกโลกหลายแผ่นมาบรรจบกัน</span></p>
+                <p><span class="pronunciation">(bprà-têet yîi-bpùn dtâng-yùu nai bɔɔ-rí-ween tîi pɛ̀n-bplʉ̀ak-lôok lǎai pɛ̀n maa ban-jòp gan)</span></p>
+            </div></details>
+            <h5>単語 (3):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ตั้งอยู่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtâng-yùu</div></details></td><td><details class="vocab-details"><summary>表示</summary>位置している</details></td></tr>
+                <tr><td>แผ่นเปลือกโลก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̀n-bplʉ̀ak-lôok</div></details></td><td><details class="vocab-details"><summary>表示</summary>プレート</details></td></tr>
+                <tr><td>บรรจบกัน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ban-jòp gan</div></details></td><td><details class="vocab-details"><summary>表示</summary>ぶつかり合う</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 4</h4>
+            <p class="sentence-japanese">このため、世界でも有数の地震多発国として知られています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ด้วยเหตุนี้ ญี่ปุ่นจึงเป็นที่รู้จักในฐานะหนึ่งในประเทศที่เกิดแผ่นดินไหวบ่อยที่สุดในโลก</span></p>
+                <p><span class="pronunciation">(dûay hèet níi, yîi-bpùn jʉng bpen tîi rúu-jàk nai tǎa-ná nʉ̀ng nai bprà-têet tîi gə̀ət pɛ̀n-din-wǎi bɔ̀i tîi-sùt nai lôok)</span></p>
+            </div></details>
+            <h5>単語 (4):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ด้วยเหตุนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dûay hèet níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>このため</details></td></tr>
+                <tr><td>เป็นที่รู้จัก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">bpen tîi rúu-jàk</div></details></td><td><details class="vocab-details"><summary>表示</summary>知られている</details></td></tr>
+                <tr><td>แผ่นดินไหว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̀n-din-wǎi</div></details></td><td><details class="vocab-details"><summary>表示</summary>地震</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 5</h4>
+            <p class="sentence-japanese">大きな揺れは建物を倒壊させたり、火災を引き起こしたりする可能性があります。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">แรงสั่นสะเทือนที่รุนแรงอาจทำให้อาคารพังทลายหรือก่อให้เกิดไฟไหม้ได้</span></p>
+                <p><span class="pronunciation">(rɛɛng-sàn-sà-tʉan tîi run-rɛɛng àat tam-hâi aa-kaan pang-tá-laai rʉ̌ʉ gɔ̀ɔ-hâi-gə̀ət fai-mâi dâi)</span></p>
+            </div></details>
+            <h5>単語 (5):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>แรงสั่นสะเทือน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rɛɛng-sàn-sà-tʉan</div></details></td><td><details class="vocab-details"><summary>表示</summary>揺れ、振動</details></td></tr>
+                <tr><td>พังทลาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pang-tá-laai</div></details></td><td><details class="vocab-details"><summary>表示</summary>倒壊する</details></td></tr>
+                <tr><td>ก่อให้เกิดไฟไหม้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">gɔ̀ɔ-hâi-gə̀ət fai-mâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>火災を引き起こす</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション2: 災害リスクとハザードマップの役割 (例文 6-10) -->
+        <div class="article-section" id="section-sentences-2">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>2. 災害リスクとハザードマップの役割 (例文 6-10)</h3>
+
+            <h4>例文 6</h4>
+            <p class="sentence-japanese">さらに、海岸近くでは地震が原因で津波が発生する危険性もあります。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">นอกจากนี้ ในพื้นที่ใกล้ชายฝั่งยังมีความเสี่ยงที่จะเกิดสึนามิจากแผ่นดินไหวอีกด้วย</span></p>
+                <p><span class="pronunciation">(nɔ̂ɔk-jàak níi, nai pʉ́ʉn-tîi glâi chaai-fàng yang mii kwaam-sìang tîi jà gə̀ət sù-naa-mí jàak pɛ̀n-din-wǎi ìik dûay)</span></p>
+            </div></details>
+            <h5>単語 (6):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>นอกจากนี้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nɔ̂ɔk-jàak níi</div></details></td><td><details class="vocab-details"><summary>表示</summary>さらに</details></td></tr>
+                <tr><td>ชายฝั่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chaai-fàng</div></details></td><td><details class="vocab-details"><summary>表示</summary>海岸</details></td></tr>
+                <tr><td>ความเสี่ยง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-sìang</div></details></td><td><details class="vocab-details"><summary>表示</summary>危険性、リスク</details></td></tr>
+                <tr><td>สึนามิ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sù-naa-mí</div></details></td><td><details class="vocab-details"><summary>表示</summary>津波</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 7</h4>
+            <p class="sentence-japanese">そこで、安全な場所を選ぶために役立つのが「ハザードマップ」です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ดังนั้น สิ่งที่มีประโยชน์ในการเลือกสถานที่ที่ปลอดภัยคือ "แผนที่ภัยพิบัติ" (Hazard Map)</span></p>
+                <p><span class="pronunciation">(dang-nán, sìng tîi mii bprà-yòot nai gaan-lʉ̂ak sà-tǎan-tîi tîi bplɔ̀ɔt-pai kʉʉ "pɛ̌ɛn-tîi pai-pí-bàt")</span></p>
+            </div></details>
+            <h5>単語 (7):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>มีประโยชน์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mii bprà-yòot</div></details></td><td><details class="vocab-details"><summary>表示</summary>役立つ</details></td></tr>
+                <tr><td>เลือก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lʉ̂ak</div></details></td><td><details class="vocab-details"><summary>表示</summary>選ぶ</details></td></tr>
+                <tr><td>แผนที่ภัยพิบัติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̌ɛn-tîi pai-pí-bàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>ハザードマップ</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 8</h4>
+            <p class="sentence-japanese">これは、災害の被害を予測し、その範囲や程度を地図上に示したものです。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ซึ่งเป็นแผนที่ที่คาดการณ์ความเสียหายจากภัยพิบัติและแสดงขอบเขตและระดับของความเสียหายบนแผนที่</span></p>
+                <p><span class="pronunciation">(sʉ̂ng bpen pɛ̌ɛn-tîi tîi kâat-gaan kwaam-sǐa-hǎai jàak pai-pí-bàt lɛ́ sà-dɛɛng kɔ̀ɔp-kèet lɛ́ rá-dàp kɔ̌ɔng kwaam-sǐa-hǎai bon pɛ̌ɛn-tîi)</span></p>
+            </div></details>
+            <h5>単語 (8):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>คาดการณ์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâat-gaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>予測する</details></td></tr>
+                <tr><td>ความเสียหาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-sǐa-hǎai</div></details></td><td><details class="vocab-details"><summary>表示</summary>被害</details></td></tr>
+                <tr><td>ขอบเขต</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kɔ̀ɔp-kèet</div></details></td><td><details class="vocab-details"><summary>表示</summary>範囲</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 9</h4>
+            <p class="sentence-japanese">日本語では「防災地図」や「被害予測地図」とも呼ばれます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในภาษาญี่ปุ่นเรียกว่า "โบไซจิสุ" (防災地図) หรือ "ฮิไกโยโซคุจิสุ" (被害予測地図)</span></p>
+                <p><span class="pronunciation">(nai paa-sǎa yîi-bpùn rîak-wâa "boo-sai-jí-sù" rʉ̌ʉ "hí-gai-yoo-só-kù-jí-sù")</span></p>
+            </div></details>
+            <h5>単語 (9):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ภาษาญี่ปุ่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-sǎa yîi-bpùn</div></details></td><td><details class="vocab-details"><summary>表示</summary>日本語</details></td></tr>
+                <tr><td>เรียกว่า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rîak-wâa</div></details></td><td><details class="vocab-details"><summary>表示</summary>～と呼ばれる</details></td></tr>
+                <tr><td>หรือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rʉ̌ʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>または</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 10</h4>
+            <p class="sentence-japanese">ハザードマップには、災害ごとの危険なエリアが色分けで示されています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในแผนที่ภัยพิบัติ จะมีการใช้สีแบ่งพื้นที่เสี่ยงสำหรับภัยพิบัติแต่ละประเภท</span></p>
+                <p><span class="pronunciation">(nai pɛ̌ɛn-tîi pai-pí-bàt, jà mii gaan chái sǐi bɛ̀ng pʉ́ʉn-tîi sìang sǎm-ràp pai-pí-bàt dtɛ̀ɛ-lá bprà-pêet)</span></p>
+            </div></details>
+            <h5>単語 (10):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ใช้สีแบ่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chái sǐi bɛ̀ng</div></details></td><td><details class="vocab-details"><summary>表示</summary>色分けする</details></td></tr>
+                <tr><td>พื้นที่เสี่ยง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pʉ́ʉn-tîi sìang</div></details></td><td><details class="vocab-details"><summary>表示</summary>危険エリア</details></td></tr>
+                <tr><td>แต่ละประเภท</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtɛ̀ɛ-lá bprà-pêet</div></details></td><td><details class="vocab-details"><summary>表示</summary>種類ごとの</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション3: ハザードマップの確認と活用 (例文 11-14) -->
+        <div class="article-section" id="section-sentences-3">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>3. ハザードマップの確認と活用 (例文 11-14)</h3>
+
+            <h4>例文 11</h4>
+            <p class="sentence-japanese">ハザードマップには、危険なエリアだけでなく、避難場所や安全な避難経路も記載されています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในแผนที่ภัยพิบัติ ไม่เพียงแต่ระบุพื้นที่เสี่ยงเท่านั้น แต่ยังระบุสถานที่หลบภัยและเส้นทางอพยพที่ปลอดภัยอีกด้วย</span></p>
+                <p><span class="pronunciation">(nai pɛ̌ɛn-tîi pai-pí-bàt, mâi piang-dtɛ̀ɛ rá-bù pʉ́ʉn-tîi sìang tâo-nán, dtɛ̀ɛ yang rá-bù sà-tǎan-tîi lòp-pai lɛ́ sên-taang òp-pá-yóp tîi bplɔ̀ɔt-pai ìik dûay)</span></p>
+            </div></details>
+            <h5>単語 (11):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ระบุ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rá-bù</div></details></td><td><details class="vocab-details"><summary>表示</summary>記載する</details></td></tr>
+                <tr><td>สถานที่หลบภัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-tǎan-tîi lòp-pai</div></details></td><td><details class="vocab-details"><summary>表示</summary>避難場所</details></td></tr>
+                <tr><td>เส้นทางอพยพ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sên-taang òp-pá-yóp</div></details></td><td><details class="vocab-details"><summary>表示</summary>避難経路</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 12</h4>
+            <p class="sentence-japanese">家を借りたり買ったりして引っ越す前には、必ずその地域のハザードマップを確認することが推奨されます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ก่อนที่จะเช่าหรือซื้อบ้านเพื่อย้ายเข้าไปอยู่,<br>ขอแนะนำให้ตรวจสอบแผนที่ภัยพิบัติของพื้นที่นั้นๆ ทุกครั้ง</span></p>
+                <p><span class="pronunciation">(gɔ̀ɔn tîi jà châo rʉ̌ʉ sʉ́ʉ bâan pʉ̂a yáai kâo-bpai yùu,<br>kɔ̌ɔ-nɛ́-nam hâi dtrùat-sɔ̀ɔp pɛ̌ɛn-tîi pai-pí-bàt kɔ̌ɔng pʉ́ʉn-tîi nán-nán túk kráng)</span></p>
+            </div></details>
+            <h5>単語 (12):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ย้ายเข้าไปอยู่</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">yáai kâo-bpai yùu</div></details></td><td><details class="vocab-details"><summary>表示</summary>引っ越す</details></td></tr>
+                <tr><td>ขอแนะนำให้</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kɔ̌ɔ-nɛ́-nam hâi</div></details></td><td><details class="vocab-details"><summary>表示</summary>～を推奨する</details></td></tr>
+                <tr><td>ตรวจสอบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtrùat-sɔ̀ɔp</div></details></td><td><details class="vocab-details"><summary>表示</summary>確認する</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 13</h4>
+            <p class="sentence-japanese">これは自治体のウェブサイトなどで簡単に見ることができます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ซึ่งสามารถดูได้ง่ายจากเว็บไซต์ของหน่วยงานปกครองส่วนท้องถิ่น</span></p>
+                <p><span class="pronunciation">(sʉ̂ng sǎa-mâat duu dâi ngâai jàak wép-sái kɔ̌ɔng nùay-ngaan bpòk-krɔɔng sùan tɔ́ɔng-tìn)</span></p>
+            </div></details>
+            <h5>単語 (13):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>สามารถ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sǎa-mâat</div></details></td><td><details class="vocab-details"><summary>表示</summary>できる</details></td></tr>
+                <tr><td>เว็บไซต์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">wép-sái</div></details></td><td><details class="vocab-details"><summary>表示</summary>ウェブサイト</details></td></tr>
+                <tr><td>หน่วยงานปกครองส่วนท้องถิ่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nùay-ngaan bpòk-krɔɔng sùan tɔ́ɔng-tìn</div></details></td><td><details class="vocab-details"><summary>表示</summary>自治体</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 14</h4>
+            <p class="sentence-japanese">事前に危険性を知ることで、災害発生時にどこへ逃げるべきか、適切な対策を立てることが可能になります。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">การทราบถึงความเสี่ยงล่วงหน้า จะทำให้สามารถวางแผนรับมือได้อย่างเหมาะสมว่า,<br>เมื่อเกิดภัยพิบัติควรจะหนีไปที่ไหน และควรเตรียมตัวอย่างไร</span></p>
+                <p><span class="pronunciation">(gaan sâap tʉ̌ng kwaam-sìang lûang-nâa, jà tam-hâi sǎa-mâat waang-pɛ̌ɛn ráp-mʉʉ dâi yàang mɔ̀-sǒm wâa,<br>mʉ̂a gə̀ət pai-pí-bàt kuan jà nǐi bpai tîi-nǎi, lɛ́ kuan dtriam-dtua yàang-rai)</span></p>
+            </div></details>
+            <h5>単語 (14):</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ล่วงหน้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lûang-nâa</div></details></td><td><details class="vocab-details"><summary>表示</summary>事前に</details></td></tr>
+                <tr><td>วางแผนรับมือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">waang-pɛ̌ɛn ráp-mʉʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>対策を立てる</details></td></tr>
+                <tr><td>เหมาะสม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mɔ̀-sǒm</div></details></td><td><details class="vocab-details"><summary>表示</summary>適切な</details></td></tr>
+                <tr><td>หนี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nǐi</div></details></td><td><details class="vocab-details"><summary>表示</summary>逃げる</details></td></tr>
+            </tbody></table>
+
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション4: ディスカッション -->
+        <div class="article-section" id="section-discussion">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>4. ディスカッション (例文 15-17)</h3>
+            
+            <h5>ディスカッションで使える単語</h5>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>พายุไต้ฝุ่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">paa-yú dtâi-fùn</div></details></td><td><details class="vocab-details"><summary>表示</summary>台風</details></td></tr>
+                <tr><td>ภัยแล้ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pai-lɛ́ɛng</div></details></td><td><details class="vocab-details"><summary>表示</summary>干ばつ</details></td></tr>
+                <tr><td>เคย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kəəi</div></details></td><td><details class="vocab-details"><summary>表示</summary>～したことがある（経験）</details></td></tr>
+                <tr><td>ได้รับผลกระทบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dâi-ráp pǒn-grà-tóp</div></details></td><td><details class="vocab-details"><summary>表示</summary>影響を受ける</details></td></tr>
+                <tr><td>โชคดี</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">chôok-dii</div></details></td><td><details class="vocab-details"><summary>表示</summary>幸運な、幸いにも</details></td></tr>
+                <tr><td>กระเป๋าฉุกเฉิน</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">grà-bpǎo chùk-chə̌ən</div></details></td><td><details class="vocab-details"><summary>表示</summary>非常持ち出し袋</details></td></tr>
+                <tr><td>น้ำดื่มและอาหารแห้ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">náam-dʉ̀ʉm lɛ́ aa-hǎan hɛ̂ɛng</div></details></td><td><details class="vocab-details"><summary>表示</summary>飲料水と乾物</details></td></tr>
+            </tbody></table>
+
+            <h4>例文 15 (質問)</h4>
+            <p class="sentence-japanese">あなたの国にはどのような自然災害がありますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ประเทศของคุณมีภัยพิบัติทางธรรมชาติอะไรบ้างครับ/คะ</span></p>
+                <p><span class="pronunciation">(bprà-têet kɔ̌ɔng kun mii pai-pí-bàt taang tam-má-châat à-rai bâang kráp/ká)</span></p>
+            </div></details>
+            
+            <h4>例文 16 (質問)</h4>
+            <p class="sentence-japanese">あなたは今までに自然災害によって大きな影響を受けたことがありますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณเคยได้รับผลกระทบอย่างหนักจากภัยพิบัติทางธรรมชาติบ้างไหมครับ/คะ</span></p>
+                <p><span class="pronunciation">(kun kəəi dâi-ráp pǒn-grà-tóp yàang-nàk jàak pai-pí-bàt taang tam-má-châat bâang mái kráp/ká)</span></p>
+            </div></details>
+
+            <h4>例文 17 (質問)</h4>
+            <p class="sentence-japanese">災害に備えて、何か特別な準備をしていますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณได้มีการเตรียมการพิเศษอะไรเพื่อรับมือกับภัยพิบัติบ้างครับ/คะ</span></p>
+                <p><span class="pronunciation">(kun dâi mii gaan dtriam-gaan pí-sèet à-rai pʉ̂a ráp-mʉʉ gàp pai-pí-bàt bâang kráp/ká)</span></p>
+            </div></details>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+
+        <!-- 総まとめ単語表 -->
+        <div class="article-section" id="section-summary-vocab">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>5. 総まとめ単語表</h3>
+            <p class="note">これまでに登場した主な単語の一覧です。</p>
+            <table class="vocab-table"><thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead><tbody>
+                <tr><td>ภัยพิบัติทางธรรมชาติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pai-pí-bàt taang tam-má-châat</div></details></td><td><details class="vocab-details"><summary>表示</summary>自然災害</details></td></tr>
+                <tr><td>อุทกภัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ù-tók-gà-pai</div></details></td><td><details class="vocab-details"><summary>表示</summary>水害</details></td></tr>
+                <tr><td>เตรียมพร้อมรับมือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtriam-prɔ́ɔm ráp-mʉʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>備える</details></td></tr>
+                <tr><td>แผ่นดินไหว</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̀n-din-wǎi</div></details></td><td><details class="vocab-details"><summary>表示</summary>地震</details></td></tr>
+                <tr><td>แผ่นเปลือกโลก</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̀n-bplʉ̀ak-lôok</div></details></td><td><details class="vocab-details"><summary>表示</summary>プレート</details></td></tr>
+                <tr><td>พังทลาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pang-tá-laai</div></details></td><td><details class="vocab-details"><summary>表示</summary>倒壊する</details></td></tr>
+                <tr><td>ความเสี่ยง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-sìang</div></details></td><td><details class="vocab-details"><summary>表示</summary>危険性、リスク</details></td></tr>
+                <tr><td>สึนามิ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sù-naa-mí</div></details></td><td><details class="vocab-details"><summary>表示</summary>津波</details></td></tr>
+                <tr><td>แผนที่ภัยพิบัติ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pɛ̌ɛn-tîi pai-pí-bàt</div></details></td><td><details class="vocab-details"><summary>表示</summary>ハザードマップ</details></td></tr>
+                <tr><td>คาดการณ์</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kâat-gaan</div></details></td><td><details class="vocab-details"><summary>表示</summary>予測する</details></td></tr>
+                <tr><td>ความเสียหาย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kwaam-sǐa-hǎai</div></details></td><td><details class="vocab-details"><summary>表示</summary>被害</details></td></tr>
+                <tr><td>เรียกว่า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">rîak-wâa</div></details></td><td><details class="vocab-details"><summary>表示</summary>～と呼ばれる</details></td></tr>
+                <tr><td>พื้นที่เสี่ยง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">pʉ́ʉn-tîi sìang</div></details></td><td><details class="vocab-details"><summary>表示</summary>危険エリア</details></td></tr>
+                <tr><td>สถานที่หลบภัย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sà-tǎan-tîi lòp-pai</div></details></td><td><details class="vocab-details"><summary>表示</summary>避難場所</details></td></tr>
+                <tr><td>เส้นทางอพยพ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">sên-taang òp-pá-yóp</div></details></td><td><details class="vocab-details"><summary>表示</summary>避難経路</details></td></tr>
+                <tr><td>ตรวจสอบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dtrùat-sɔ̀ɔp</div></details></td><td><details class="vocab-details"><summary>表示</summary>確認する</details></td></tr>
+                <tr><td>หน่วยงานปกครองส่วนท้องถิ่น</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">nùay-ngaan bpòk-krɔɔng sùan tɔ́ɔng-tìn</div></details></td><td><details class="vocab-details"><summary>表示</summary>自治体</details></td></tr>
+                <tr><td>ล่วงหน้า</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">lûang-nâa</div></details></td><td><details class="vocab-details"><summary>表示</summary>事前に</details></td></tr>
+                <tr><td>วางแผนรับมือ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">waang-pɛ̌ɛn ráp-mʉʉ</div></details></td><td><details class="vocab-details"><summary>表示</summary>対策を立てる</details></td></tr>
+                <tr><td>เหมาะสม</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">mɔ̀-sǒm</div></details></td><td><details class="vocab-details"><summary>表示</summary>適切な</details></td></tr>
+                <tr><td>เคย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">kəəi</div></details></td><td><details class="vocab-details"><summary>表示</summary>～したことがある</details></td></tr>
+                <tr><td>ได้รับผลกระทบ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">dâi-ráp pǒn-grà-tóp</div></details></td><td><details class="vocab-details"><summary>表示</summary>影響を受ける</details></td></tr>
+            </tbody></table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <p class="footer-note">発音記号は、タイ語学習で一般的に用いられる表記法（声調記号付きローマ字表記）を参考にしています。</p>
+    </main>
+
+    <script>
+        // サイドメニューの開閉機能
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const mainContent = document.getElementById('main-content');
+        const body = document.body;
+
+        function openMenu() {
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            body.classList.remove('menu-open');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // メニューのリンクをクリックしたらメニューを閉じる
+        const menuLinks = sideMenu.getElementsByTagName('a');
+        for (let i = 0; i < menuLinks.length; i++) {
+            menuLinks[i].addEventListener('click', closeMenu);
+        }
+
+        // メニュー外をクリックしたら閉じる (オプション)
+        mainContent.addEventListener('click', () => {
+            if (body.classList.contains('menu-open')) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
