@@ -100,6 +100,56 @@
             border-top: 1px solid #ddd;
             width: 100%;
         }
+
+        /* Accordion (details/summary) styles */
+        .topic-category > details {
+            margin-bottom: 20px;
+        }
+        .topic-category > details:last-child {
+            margin-bottom: 0;
+        }
+        .topic-category summary {
+            padding: 15px 20px;
+            background-color: #e3f2fd;
+            border: 1px solid #1976D2;
+            color: #1976D2;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            list-style: none; /* Hide default marker */
+            position: relative;
+        }
+        .topic-category summary:hover {
+            background-color: #d1eaff;
+        }
+        .topic-category summary::-webkit-details-marker {
+            display: none; /* Hide default marker for Chrome/Safari */
+        }
+        .topic-category summary::before {
+            content: '▶'; /* Collapsed state icon */
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
+            margin-right: 15px;
+        }
+        .topic-category details[open] > summary::before {
+            content: '▼'; /* Expanded state icon */
+        }
+        .topic-category details[open] > summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .topic-category .topic-list-wrapper {
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -130,16 +180,58 @@
         <div class="language-section">
             <h2>Thai (ภาษาไทย)</h2>
             <div class="topic-category">
-                <h3>Conversation Topics - Level 2</h3>
-                <ul class="topic-list">
-                    <li>
-                        <a href="./thai/conversation_topics/lv2/hotel_restaurant_lv2.html">Hotel & Restaurant</a>
-                    </li>
-                    <li>
-                        <a href="./thai/conversation_topics/lv2/japan_disaster_guide_lv2.html">Japan Disaster Guide</a>
-                    </li>
-                    <!-- New Thai topics can be added here -->
-                </ul>
+
+                <!-- Level 2 Topics -->
+                <details>
+                    <summary>Conversation Topics - Level 2</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li>
+                                <a href="./thai/conversation_topics/lv2/hotel_restaurant_lv2.html">Hotel & Restaurant</a>
+                            </li>
+                            <li>
+                                <a href="./thai/conversation_topics/lv2/japan_disaster_guide_lv2.html">Japan Disaster Guide</a>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Level 3 Topics -->
+                <details>
+                    <summary>Conversation Topics - Level 3</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li>
+                                <a href="./thai/conversation_topics/lv3/経済の仕組み_lv3.html">経済の仕組み</a>
+                            </li>
+                            <li>
+                                <a href="./thai/conversation_topics/lv3/経済の仕組み2_lv3.html">経済の仕組み 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Thai Made Clear Topics -->
+                <details>
+                    <summary>Thai Made Clear - Intermediate</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/1_タイの地理.html">1. タイの地理</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/2_タイの気候.html">2. タイの気候</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/3_他民族のタイ人.html">3. 他民族のタイ人</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/4課_タイシルク.html">4課. タイシルク</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/5課_タイ家屋.html">5課. タイ家屋</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/6課_タイの食文化.html">6課. タイの食文化</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17_課_通常.html">17課 (通常版)</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17課_和訳有.html">17課 (和訳付き)</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_通常.html">18課 (通常版)</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_翻訳版.html">18課 (翻訳版)</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/19_死.html">19課. 死</a></li>
+                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/20_タイ人の信仰.html">20課. タイ人の信仰</a></li>
+                        </ul>
+                    </div>
+                </details>
+
             </div>
         </div>
 
