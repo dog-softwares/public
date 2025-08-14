@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語で学ぶ：タイの物流とタイ郵便の挑戦</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            transition: margin-left 0.3s;
+        }
+
+        /* --- サイドメニュー用スタイル --- */
+        #side-menu {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: -250px; /* デフォルトで隠す */
+            background-color: #1a5276;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        #side-menu a {
+            padding: 10px 15px 10px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            color: #e9f5ff;
+            display: block;
+            transition: 0.2s;
+        }
+        #side-menu a:hover {
+            color: #ffffff;
+            background-color: #2e86c1;
+        }
+        #side-menu .close-btn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #f1f1f1;
+        }
+        #menu-toggle {
+            font-size: 30px;
+            cursor: pointer;
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 999;
+            border-radius: 5px;
+        }
+
+        /* メインコンテンツエリア */
+        #main-content {
+            transition: margin-left .3s;
+            padding: 20px;
+            margin-left: 0;
+        }
+
+        /* メニューが開いている時のスタイル */
+        body.menu-open #side-menu {
+            left: 0;
+        }
+        body.menu-open #main-content {
+            /* スマホでコンテンツが隠れないように調整 */
+            /* margin-left: 250px; */ 
+        }
+        @media (min-width: 768px) {
+             body.menu-open #main-content {
+                margin-left: 250px;
+             }
+        }
+        /* --- ここまでサイドメニュー用スタイル --- */
+
+        /* --- 既存のスタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .main-title-header .title-japanese { font-size: 2.5em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 2.0em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4, .article-section h5 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .sentence-japanese { font-weight: bold; margin-bottom: 5px; font-size: 1.1em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; font-size: 1.0em; }
+        .translation-note { font-style: italic; color: #555; font-size: 0.95em; border-left: 3px solid #ccc; padding-left: 10px; margin-top: 0; }
+        
+        table.vocab-table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .vocab-table th, .vocab-table td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .vocab-table th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        .vocab-table tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        .vocab-table tbody tr:hover { background-color: #e2e6ea; }
+        .vocab-table td { font-size: 1em; }
+        .vocab-table td:nth-child(1) { font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+
+        .collapsible-content summary, .vocab-details summary {
+            cursor: pointer; font-weight: normal; color: #0056b3; display: inline-block; padding: 3px 8px;
+            border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff; margin-left: 5px; font-size: 0.9em;
+        }
+        .collapsible-content summary:hover, .vocab-details summary:hover { background-color: #d0e6ff; }
+        .collapsible-content[open] summary, .vocab-details[open] summary { background-color: #c0d9f7; }
+        .collapsible-content .content-wrapper, .vocab-details .content-wrapper { padding-top: 8px; padding-left: 0px; }
+        .vocab-table td .vocab-details summary { margin-left: 0; padding: 2px 6px; font-size: 0.85em; }
+        .vocab-table td .vocab-details .content-wrapper { padding-top: 5px; }
+
+        #index-toc { background-color: #e9f5ff; border-left: 5px solid #007bff; padding: 15px 20px; margin-bottom: 30px; }
+        #index-toc h3 { color: #0056b3; border-bottom: none; margin-top: 0; }
+        #index-toc ul { list-style-type: none; padding-left: 0; }
+        #index-toc ul li { margin-bottom: 8px; }
+        #index-toc ul li a { text-decoration: none; color: #0056b3; font-weight: 500; }
+        #index-toc ul li a:hover { text-decoration: underline; color: #003d80; }
+        
+        .back-to-toc { text-align: right; margin-top: 15px; margin-bottom: 0px; }
+        .back-to-toc a, .section-end-back-to-toc a {
+            text-decoration: none; color: #0056b3; font-size: 0.9em; font-weight: bold;
+            padding: 5px 10px; border: 1px solid #0056b3; border-radius: 4px; background-color: #e7f3ff;
+        }
+        .back-to-toc a:hover, .section-end-back-to-toc a:hover { background-color: #d0e6ff; }
+        .section-end-back-to-toc { text-align: right; margin-top: 20px; }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+        
+        #full-article h4 { background-color: #e9ecef; padding: 10px; border-left: 4px solid #1a5276; }
+        #full-article .thai-original { font-size: 1.1em; color: #1a5276; margin-top: 20px; margin-bottom: 2px;}
+        #full-article .pronunciation { font-size: 0.95em; color: #c0392b; margin-top:0; margin-bottom: 2px;}
+        #full-article .translation-note { margin-top: 0; margin-bottom: 20px; font-size: 0.9em;}
+    </style>
+</head>
+<body>
+
+    <!-- サイドメニュー -->
+    <div id="side-menu">
+        <a href="javascript:void(0)" class="close-btn" id="close-menu-btn">&times;</a>
+        <a href="#section-intro">1. タイの物流とECブーム</a>
+        <a href="#section-history">2. タイ郵便の歴史</a>
+        <a href="#section-challenge">3. 現代のタイ郵便の挑戦</a>
+        <a href="#section-strategy">4. パートナーシップ戦略</a>
+        <a href="#section-discussion">5. ディスカッション</a>
+        <a href="#section-full-article">6.【特別付録】元記事全文解説</a>
+        <a href="#section-summary-vocab">7. 総まとめ単語表</a>
+    </div>
+
+    <!-- メニュー開閉ボタン -->
+    <button id="menu-toggle">&#9776;</button>
+
+    <main id="main-content">
+        <div class="main-title-header" id="section-main-title">
+            <span class="title-japanese">タイの物流とタイ郵便の挑戦</span>
+            <span class="title-thai">ความท้าทายของไปรษณีย์ไทยและธุรกิจขนส่ง <span class="pronunciation-thai">(kwaam-táa-taai kɔ̌ɔng bprai-sà-nii-thai lɛ́ tú-rá-gìt kǒn-sòng)</span></span>
+        </div>
+
+        <div id="index-toc" class="article-section">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#section-intro">1. タイの物流とECブーム (例文 1-3)</a></li>
+                <li><a href="#section-history">2. タイ郵便の歴史 (例文 4-6)</a></li>
+                <li><a href="#section-challenge">3. 現代のタイ郵便の挑戦 (例文 7-9)</a></li>
+                <li><a href="#section-strategy">4. パートナーシップ戦略 (例文 10-12)</a></li>
+                <li><a href="#section-discussion">5. ディスカッション (例文 13-15)</a></li>
+                <li><a href="#section-full-article">6. 【特別付録】元記事全文解説</a></li>
+                <li><a href="#section-summary-vocab">7. 総まとめ単語表</a></li>
+            </ul>
+        </div>
+
+        <!-- セクション1: タイの物流とECブーム -->
+        <div class="article-section" id="section-intro">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>1. タイの物流とECブーム (例文 1-3)</h3>
+
+            <h4>例文 1</h4>
+            <p class="sentence-japanese">最近、タイではオンラインショッピングがとても人気です。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ช่วงนี้ การช็อปปิ้งออนไลน์ในประเทศไทยเป็นที่นิยมอย่างมาก</span></p>
+                <p><span class="pronunciation">(chûang-níi, gaan-chɔ́p-bpîng ɔɔn-lai nai bprà-têet-thai bpen tîi ní-yom yàang-mâak)</span></p>
+            </div></details>
+            <h5>単語 (1):</h5>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>ช่วงนี้</td><td>chûang-níi</td><td>最近、この頃</td></tr>
+                    <tr><td>ช็อปปิ้งออนไลน์</td><td>chɔ́p-bpîng ɔɔn-lai</td><td>オンラインショッピング</td></tr>
+                    <tr><td>เป็นที่นิยม</td><td>bpen tîi ní-yom</td><td>人気がある</td></tr>
+                </tbody>
+            </table>
+
+            <h4>例文 2</h4>
+            <p class="sentence-japanese">そのため、商品を家まで届けてくれる物流サービスが非常に重要になっています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ดังนั้น บริการขนส่งที่นำสินค้ามาส่งถึงบ้านจึงมีความสำคัญอย่างยิ่ง</span></p>
+                <p><span class="pronunciation">(dang-nán, bɔɔ-rí-gaan kǒn-sòng tîi nam sǐn-káa maa sòng tʉ̌ng bâan jʉng mii kwaam-sǎm-kan yàang-yîng)</span></p>
+            </div></details>
+            <h5>単語 (2):</h5>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>บริการขนส่ง</td><td>bɔɔ-rí-gaan kǒn-sòng</td><td>物流サービス</td></tr>
+                    <tr><td>สินค้า</td><td>sǐn-káa</td><td>商品</td></tr>
+                    <tr><td>ส่งถึงบ้าน</td><td>sòng tʉ̌ng bâan</td><td>家まで届ける</td></tr>
+                </tbody>
+            </table>
+            
+            <h4>例文 3</h4>
+            <p class="sentence-japanese">タイには多くの物流会社がありますが、今日はタイ郵便について学びましょう。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในประเทศไทยมีบริษัทขนส่งหลายแห่ง แต่วันนี้เราจะมาเรียนรู้เกี่ยวกับไปรษณีย์ไทยกัน</span></p>
+                <p><span class="pronunciation">(nai bprà-têet-thai mii bɔɔ-rí-sàt kǒn-sòng lǎai hɛ̀ng, dtɛ̀ɛ wan-níi rao jà maa rian-rúu gìao-gàp bprai-sà-nii-thai gan)</span></p>
+            </div></details>
+            <h5>単語 (3):</h5>
+            <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>บริษัทขนส่ง</td><td>bɔɔ-rí-sàt kǒn-sòng</td><td>物流会社</td></tr>
+                    <tr><td>หลายแห่ง</td><td>lǎai hɛ̀ng</td><td>多くの（場所）</td></tr>
+                    <tr><td>เรียนรู้เกี่ยวกับ</td><td>rian-rúu gìao-gàp</td><td>～について学ぶ</td></tr>
+                 </tbody>
+            </table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション2: タイ郵便の歴史 -->
+        <div class="article-section" id="section-history">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>2. タイ郵便の歴史 (例文 4-6)</h3>
+
+            <h4>例文 4</h4>
+            <p class="sentence-japanese">タイ郵便は、タイで最も歴史の長い物流サービスの一つです。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ไปรษณีย์ไทยเป็นหนึ่งในบริการขนส่งที่เก่าแก่ที่สุดในประเทศไทย</span></p>
+                <p><span class="pronunciation">(bprai-sà-nii-thai bpen nʉ̀ng nai bɔɔ-rí-gaan kǒn-sòng tîi gào-gɛ̀ɛ tîi-sùt nai bprà-têet-thai)</span></p>
+            </div></details>
+            <h5>単語 (4):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>หนึ่งใน</td><td>nʉ̀ng nai</td><td>～の一つ</td></tr>
+                    <tr><td>เก่าแก่ที่สุด</td><td>gào-gɛ̀ɛ tîi-sùt</td><td>最も古い、最も歴史のある</td></tr>
+                 </tbody>
+            </table>
+
+            <h4>例文 5</h4>
+            <p class="sentence-japanese">昔は「サイアム郵便」という名前で知られていました。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ในอดีต เป็นที่รู้จักในชื่อ "ไปรษณีย์สยาม"</span></p>
+                <p><span class="pronunciation">(nai à-dìit, bpen tîi rúu-jàk nai chʉ̂ʉ "bprai-sà-nii-sà-yǎam")</span></p>
+            </div></details>
+             <h5>単語 (5):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>ในอดีต</td><td>nai à-dìit</td><td>昔は、過去に</td></tr>
+                    <tr><td>เป็นที่รู้จัก</td><td>bpen tîi rúu-jàk</td><td>知られている</td></tr>
+                    <tr><td>ในชื่อ</td><td>nai chʉ̂ʉ</td><td>～という名前で</td></tr>
+                 </tbody>
+            </table>
+
+            <h4>例文 6</h4>
+            <p class="sentence-japanese">設立から140年以上が経ち、今も国民にサービスを提供し続けています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">นับตั้งแต่ก่อตั้งมากว่า 140 ปี ก็ยังคงให้บริการแก่ประชาชนอย่างต่อเนื่อง</span></p>
+                <p><span class="pronunciation">(náp-dtâng-dtɛ̀ɛ gɔ̀ɔ-dtâng maa gwàa rɔ́ɔi-sìi-sìp bpii, gɔ̂ yang kong hâi bɔɔ-rí-gaan gɛ̀ɛ bprà-chaa-chon yàang-dtɔ̀ɔ-nʉ̂ang)</span></p>
+            </div></details>
+             <h5>単語 (6):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>ก่อตั้ง</td><td>gɔ̀ɔ-dtâng</td><td>設立する</td></tr>
+                    <tr><td>ประชาชน</td><td>bprà-chaa-chon</td><td>国民、人々</td></tr>
+                    <tr><td>อย่างต่อเนื่อง</td><td>yàang-dtɔ̀ɔ-nʉ̂ang</td><td>継続的に</td></tr>
+                 </tbody>
+            </table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション3: 現代のタイ郵便の挑戦 -->
+        <div class="article-section" id="section-challenge">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>3. 現代のタイ郵便の挑戦 (例文 7-9)</h3>
+
+            <h4>例文 7</h4>
+            <p class="sentence-japanese">多くの新しい会社との競争の中で、タイ郵便は価格だけでなく品質を重視しています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ท่ามกลางการแข่งขันกับบริษัทใหม่ๆ ไปรษณีย์ไทยให้ความสำคัญกับคุณภาพ ไม่ใช่แค่ราคา</span></p>
+                <p><span class="pronunciation">(tâam-glaang gaan-kɛ̀ng-kǎn gàp bɔɔ-rí-sàt mài-mài, bprai-sà-nii-thai hâi kwaam-sǎm-kan gàp kun-ná-pâap, mâi-châi kɛ̂ɛ raa-kaa)</span></p>
+            </div></details>
+            <h5>単語 (7):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>การแข่งขัน</td><td>gaan-kɛ̀ng-kǎn</td><td>競争</td></tr>
+                    <tr><td>ให้ความสำคัญกับ</td><td>hâi kwaam-sǎm-kan gàp</td><td>～を重視する</td></tr>
+                    <tr><td>คุณภาพ</td><td>kun-ná-pâap</td><td>品質</td></tr>
+                    <tr><td>ไม่ใช่แค่</td><td>mâi-châi kɛ̂ɛ</td><td>～だけでなく</td></tr>
+                 </tbody>
+            </table>
+            
+            <h4>例文 8</h4>
+            <p class="sentence-japanese">例えば、荷物を速く正確に仕分けるために、最新の機械を導入しました。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ตัวอย่างเช่น ได้นำเครื่องจักรที่ทันสมัยมาใช้เพื่อคัดแยกพัสดุให้รวดเร็วและแม่นยำ</span></p>
+                <p><span class="pronunciation">(dtua-yàang-chên, dâi nam krʉ̂ang-jàk tîi tan-sà-mǎi maa chái pʉ̂a kát-yɛ̂ɛk pát-sà-dù hâi rûat-reo lɛ́ mɛ̂n-yam)</span></p>
+            </div></details>
+            <h5>単語 (8):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>เครื่องจักร</td><td>krʉ̂ang-jàk</td><td>機械</td></tr>
+                    <tr><td>ทันสมัย</td><td>tan-sà-mǎi</td><td>最新の、現代的な</td></tr>
+                    <tr><td>คัดแยกพัสดุ</td><td>kát-yɛ̂ɛk pát-sà-dù</td><td>荷物を仕分ける</td></tr>
+                    <tr><td>รวดเร็วและแม่นยำ</td><td>rûat-reo lɛ́ mɛ̂n-yam</td><td>速く正確に</td></tr>
+                 </tbody>
+            </table>
+            
+            <h4>例文 9</h4>
+            <p class="sentence-japanese">この機械は「クロスベルトソーター」と呼ばれ、1時間に多くの荷物を処理できます。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">เครื่องนี้เรียกว่า "ครอสเบลท์ ซอร์ทเตอร์" ซึ่งสามารถจัดการพัสดุจำนวนมากได้ในหนึ่งชั่วโมง</span></p>
+                <p><span class="pronunciation">(krʉ̂ang-níi rîak-wâa "krɔ́ɔt-been sɔɔ-dtə̂ə", sʉ̂ng sǎa-mâat jàt-gaan pát-sà-dù jam-nuan-mâak dâi nai nʉ̀ng chûa-moong)</span></p>
+            </div></details>
+            <h5>単語 (9):</h5>
+             <table class="vocab-table">
+                 <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                 <tbody>
+                    <tr><td>เรียกว่า</td><td>rîak-wâa</td><td>～と呼ばれる</td></tr>
+                    <tr><td>จัดการ</td><td>jàt-gaan</td><td>処理する、管理する</td></tr>
+                    <tr><td>จำนวนมาก</td><td>jam-nuan-mâak</td><td>多くの</td></tr>
+                 </tbody>
+            </table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション4: パートナーシップ戦略 -->
+        <div class="article-section" id="section-strategy">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>4. パートナーシップ戦略 (例文 10-12)</h3>
+            
+            <h4>例文 10</h4>
+            <p class="sentence-japanese">タイ郵便は、他の会社を単なる競争相手とは考えていません。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ไปรษณีย์ไทยไม่ได้มองว่าบริษัทอื่นเป็นเพียงคู่แข่งเท่านั้น</span></p>
+                <p><span class="pronunciation">(bprai-sà-nii-thai mâi dâi mɔɔng wâa bɔɔ-rí-sàt ʉ̀ʉn bpen piang kûu-kɛ̀ng tâo-nán)</span></p>
+            </div></details>
+            <h5>単語 (10):</h5>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>มองว่า</td><td>mɔɔng wâa</td><td>～と見なす、考える</td></tr>
+                    <tr><td>เป็นเพียง</td><td>bpen piang</td><td>単なる～である</td></tr>
+                    <tr><td>คู่แข่ง</td><td>kûu-kɛ̀ng</td><td>競争相手</td></tr>
+                </tbody>
+            </table>
+            
+            <h4>例文 11</h4>
+            <p class="sentence-japanese">彼らは、タイ経済を一緒に発展させる「パートナー」だと考えています。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">พวกเขามองว่าเป็น "พันธมิตร" ที่จะร่วมกันพัฒนาเศรษฐกิจของไทย</span></p>
+                <p><span class="pronunciation">(pûak-kǎo mɔɔng wâa bpen "pan-tá-mít" tîi jà rûam-gan pát-tá-naa sèet-tà-gìt kɔ̌ɔng thai)</span></p>
+            </div></details>
+            <h5>単語 (11):</h5>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>พันธมิตร</td><td>pan-tá-mít</td><td>パートナー、同盟</td></tr>
+                    <tr><td>ร่วมกัน</td><td>rûam-gan</td><td>一緒に</td></tr>
+                    <tr><td>พัฒนาเศรษฐกิจ</td><td>pát-tá-naa sèet-tà-gìt</td><td>経済を発展させる</td></tr>
+                </tbody>
+            </table>
+
+            <h4>例文 12</h4>
+            <p class="sentence-japanese">この協力的な姿勢が、今日のタイ郵便の強みの一つです。</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">ทัศนคติที่เน้นความร่วมมือนี้เป็นหนึ่งในจุดแข็งของไปรษณีย์ไทยในปัจจุบัน</span></p>
+                <p><span class="pronunciation">(tát-sà-ná-kà-dtì tîi nén kwaam-rûam-mʉʉ níi bpen nʉ̀ng nai jùt-kɛ̌ng kɔ̌ɔng bprai-sà-nii-thai nai bpàt-jù-ban)</span></p>
+            </div></details>
+            <h5>単語 (12):</h5>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>ทัศนคติ</td><td>tát-sà-ná-kà-dtì</td><td>姿勢、態度</td></tr>
+                    <tr><td>ความร่วมมือ</td><td>kwaam-rûam-mʉʉ</td><td>協力</td></tr>
+                    <tr><td>จุดแข็ง</td><td>jùt-kɛ̌ng</td><td>強み、長所</td></tr>
+                    <tr><td>ในปัจจุบัน</td><td>nai bpàt-jù-ban</td><td>現在、今日</td></tr>
+                </tbody>
+            </table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- セクション5: ディスカッション -->
+        <div class="article-section" id="section-discussion">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>5. ディスカッション (例文 13-15)</h3>
+
+            <h4>例文 13 (質問)</h4>
+            <p class="sentence-japanese">あなたはオンラインショッピングをよく利用しますか？どの配送会社を使うことが多いですか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณใช้บริการช็อปปิ้งออนไลน์บ่อยไหมครับ/คะ แล้วส่วนใหญ่ใช้บริการบริษัทขนส่งเจ้าไหนครับ/คะ</span></p>
+                <p><span class="pronunciation">(kun chái bɔɔ-rí-gaan chɔ́p-bpîng ɔɔn-lai bɔ̀i mái kráp/ká, lɛ́ɛo sùan-yài chái bɔɔ-rí-gaan bɔɔ-rí-sàt kǒn-sòng jâo nǎi kráp/ká)</span></p>
+            </div></details>
+
+            <h4>例文 14 (質問)</h4>
+            <p class="sentence-japanese">配送サービスで最も重要だと思うことは何ですか？（速さ、安さ、丁寧さなど）</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">คุณคิดว่าอะไรสำคัญที่สุดสำหรับบริการขนส่งครับ/คะ (เช่น ความเร็ว, ราคาถูก, ความสุภาพ)</span></p>
+                <p><span class="pronunciation">(kun kít wâa à-rai sǎm-kan tîi-sùt sǎm-ràp bɔɔ-rí-gaan kǒn-sòng kráp/ká (chên kwaam-reo, raa-kaa tùuk, kwaam-sù-pâap))</span></p>
+            </div></details>
+
+            <h4>例文 15 (質問)</h4>
+            <p class="sentence-japanese">あなたの国の郵便サービスはどのような特徴がありますか？</p>
+            <details class="collapsible-content"><summary>タイ語訳と発音を表示</summary><div class="content-wrapper">
+                <p><span class="thai-text">บริการไปรษณีย์ในประเทศของคุณมีลักษณะเด่นอะไรบ้างครับ/คะ</span></p>
+                <p><span class="pronunciation">(bɔɔ-rí-gaan bprai-sà-nii nai bprà-têet kɔ̌ɔng kun mii lák-sà-nà-dèn à-rai bâang kráp/ká)</span></p>
+            </div></details>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+        
+        <!-- セクション6: 元記事全文解説 -->
+        <div class="article-section" id="section-full-article">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>6. 【特別付録】元記事全文解説</h3>
+            <p class="note">この記事は、以下のニュースサイトの記事を参考に作成されました。<br>
+            ソース: <a href="https://www.nationtv.tv/lifestyle/378962778" target="_blank">Nation TV - เปิดแฟ้มลับ 5 ความจริงเรื่องราวขนส่งไทย...</a>
+            </p>
+
+            <h4>เปิดแฟ้มลับ 5 ความจริงเรื่องราวขนส่งไทย ที่ในซีรีส์ยังเล่าไม่หมด</h4>
+            <p class="thai-original">ไปรษณีย์ไทย เปิดแฟ้มลับ 5 ความจริงสุดว้าวเรื่องราวขนส่งไทยที่ซีรีส์ที่กำลังเป็น Talk of the Town อย่าง “สงครามสตาร์ทอัพ” ยังเล่าไม่หมด</p>
+            <p class="pronunciation">(bprai-sà-nii-thai bpə̀ət fɛ́m-láp hâa kwaam-jing sùt-wáao rʉ̂ang-raao kǒn-sòng thai tîi sii-rîi tîi gam-lang bpen tɔ́ɔk-ɔ̀ɔp-dà-tao yàang “sǒng-kraam sà-dtáat-áp” yang lâo mâi mòt)</p>
+            <p class="translation-note">和訳: タイ郵便が、「スタートアップ戦争」のような今話題のシリーズでもまだ語り尽くされていない、タイの物流に関する5つの驚きの真実の秘密ファイルを開く。</p>
+
+            <p class="thai-original">ถ้าพูดถึงกระแสมาแรงตอนนี้ในโลกสตรีมมิ่ง ต้องยกให้ซีรีส์ที่กำลังพูดถึงวงการขนส่ง และกลายเป็น Talk of the Town อย่าง “สงครามสตาร์ทอัพ” เพราะเรื่องราวของวงการขนส่งในจอได้เล่ามุมดราม่าแบบ Based on true story ที่ทั้งสนุก ทั้งมันส์ ทั้ง “ขับเคี่ยวกัน” จนทำให้คนดูเผลอตั้งคำถามว่า… “เรื่องจริงมันขนาดนี้เลยเหรอ?” แต่บอกเลยว่าในโลกจริง บางเรื่อง “ยิ่งกว่าในจอ” แน่นอน และวันนี้พี่ไปรฯ ขออาสา Insider พาไปส่องเรื่องจริงที่เกิดขึ้นจริงในวงการขนส่งไทยที่รับรองว่า ถ้าได้รู้อินกับทุกซีนในซีรีส์นี้มากขึ้น</p>
+            <p class="pronunciation">(tâa pûut-tʉ̌ng grà-sɛ̌ɛ maa-rɛɛng dtɔɔn-níi nai lôok sà-dtriim-mîng, dtɔ̂ng yók-hâi sii-rîi tîi gam-lang pûut-tʉ̌ng wong-gaan kǒn-sòng, lɛ́ glaai-bpen tɔ́ɔk-ɔ̀ɔp-dà-tao yàang “sǒng-kraam sà-dtáat-áp” prɔ́ rʉ̂ang-raao kɔ̌ɔng wong-gaan kǒn-sòng nai jɔɔ dâi lâo mum-draa-mâa bɛ̀ɛp bées-ɔɔn-truu-sà-dtɔɔ-rîi tîi táng sà-nùk táng man táng “kàp-kîao-gan” jon tam-hâi kon-duu plə̌ə dtâng kam-tǎam wâa… “rʉ̂ang-jing man kà-nàat-níi ləəi rə̌ə?” dtɛ̀ɛ bɔ̀ɔk-ləəi wâa nai lôok-jing, baang rʉ̂ang “yîng-gwàa nai jɔɔ” nɛ̂ɛ-nɔɔn, lɛ́ wan-níi pîi-bprai kɔ̌ɔ aa-sǎa in-sai-də̂ə paa bpai sɔ̀ng rʉ̂ang-jing tîi gə̀ət-kʉ̂n jing nai wong-gaan kǒn-sòng thai tîi ráp-rɔɔng wâa, tâa dâi rúu in gàp túk siin nai sii-rîi níi mâak-kʉ̂n)</p>
+            <p class="translation-note">和訳: 今ストリーミング界で勢いのあるトレンドといえば、物流業界を取り上げ、話題となっているシリーズ「スタートアップ戦争」を挙げなければならない。なぜなら、画面上の物流業界の物語は、楽しく、エキサイティングで、「熾烈な競争」を繰り広げる実話に基づいたドラマチックな側面を描いており、視聴者が思わず「現実はここまでなのか？」と疑問を抱かせるほどだからだ。しかし言っておくが、現実世界では、いくつかの話は「画面以上」であることは間違いない。そして今日、ピー・プライ（タイ郵便の愛称）がインサイダーとして、タイの物流業界で実際に起こった本当の話を覗きに連れて行く。これを知れば、このシリーズの全シーンにさらに感情移入できること請け合いだ。</p>
+
+            <h4>๐ ไปรษณีย์สยาม มีจริง!! ในชื่อ “ไปรษณีย์กรุงสยาม”</h4>
+            <p class="thai-original">หนึ่งในฉากสำคัญตัวละครเอกของเรื่อง “สัณฐิติ” ได้พากลุ่มนักลงทุนจากประเทศจีนตระเวนสำรวจตลาดขนส่งของประเทศไทย เพื่อวิเคราะห์ศักยภาพและโอกาสทางธุรกิจ โดยที่แรกได้พามาชมขนส่งของรัฐสีแดง-ขาว ซึ่งถูกเรียกแทนชื่อด้วย “ไปรษณีย์สยาม” ที่ในเนื้อเรื่องได้มีการเปรียบเทียบเชิงสัญลักษณ์ให้ผู้ชมหลายคนที่ต่างนึกถึงขนส่งของชาติอย่างไปรษณีย์ไทย แต่รู้หรือไม่ว่าความจริงนั้นประเทศไทย เราเคยมีไปรษณีย์ไทยในชื่อ “ไปรษณีย์กรุงสยาม” ซึ่งนับเป็นกิจการที่เก่าแก่ที่สุดแห่งหนึ่งของประเทศ โดยปัจจุบันมีอายุกว่า 142 ปีแล้ว</p>
+            <p class="pronunciation">(nʉ̀ng-nai-chàak-sǎm-kan dtua-lá-kɔɔn-èek kɔ̌ɔng rʉ̂ang “sǎn-tà-tì” dâi paa glùm nák-long-tun jàak bprà-têet-jiin dtrà-ween sǎm-rùat dtà-làat kǒn-sòng kɔ̌ɔng bprà-têet-thai pʉ̂a wí-krɔ́ sàk-gà-yá-pâap lɛ́ oo-gàat taang tú-rá-gìt, dooi tîi-rɛ̂ɛk dâi paa maa chom kǒn-sòng kɔ̌ɔng rát sǐi-dɛɛng-kǎao, sʉ̂ng tùuk rîak tɛɛn chʉ̂ʉ dûay “bprai-sà-nii-sà-yǎam” tîi nai nʉ́a-rʉ̂ang dâi mii gaan bprìap-tîap chəəng sǎn-yá-lák hâi pûu-chom lǎai kon tîi dtàang nʉ́k-tʉ̌ng kǒn-sòng kɔ̌ɔng châat yàang bprai-sà-nii-thai. dtɛ̀ɛ rúu rʉ̌ʉ mâi wâa kwaam-jing nán bprà-têet-thai rao kəəi mii bprai-sà-nii-thai nai chʉ̂ʉ “bprai-sà-nii-grung-sà-yǎam” sʉ̂ng náp bpen gìt-jà-gaan tîi gào-gɛ̀ɛ tîi-sùt hɛ̀ng nʉ̀ng kɔ̌ɔng bprà-têet, dooi bpàt-jù-ban mii aa-yú gwàa rɔ́ɔi-sìi-sìp-sɔ̌ɔng bpii lɛ́ɛo)</p>
+            <p class="translation-note">和訳: 物語の重要なシーンの一つで、主人公「サンタティ」が中国からの投資家グループを率いてタイの物流市場を視察し、ビジネスのポテンシャルと機会を分析する。最初に訪れたのは赤と白の国営物流で、「サイアム郵便」という名前で呼ばれていた。作中では、多くの視聴者がタイ郵便のような国の物流を思い浮かべるよう象徴的に比較されている。しかし、実はタイにはかつて「クルン・サイアム郵便」という名の郵便局が存在し、それは国内で最も古い事業の一つであり、現在では142年以上の歴史があることをご存知だろうか。</p>
+            
+            <h4>๐ อย่าเริ่มทำสงครามราคา เพราะทุกอย่างจะเริ่มพังลง</h4>
+            <p class="thai-original">นับว่าเป็นอีกหนึ่งประโยคทรงพลังในซีนที่ดึงความสนใจให้กับกลุ่มผู้ชมที่อยู่ในแวดวงธุรกิจไม่น้อย สำหรับประเด็นเรื่อง “การทำสงครามราคา” ที่สะท้อนบทเรียนจริงในโลกธุรกิจ ซึ่งฉายย้อนไปเมื่อช่วง 5 - 6 ปี และช่วงการระบาดของโควิด – 19 ภาคธุรกิจอีคอมเมิร์ซไทยเติบโตอย่างก้าวกระโดด ทำให้สงครามธุรกิจขนส่งและโลจิสติกส์เริ่มร้อนระอุ และมีคู่แข่งรายใหม่ทั้งในประเทศและต่างชาติเข้ามาร่วมวงด้วย</p>
+            <p class="pronunciation">(náp-bpen ìik nʉ̀ng bprà-yòok song-pá-lang nai siin tîi dʉng kwaam-sǒn-jai hâi gàp glùm pûu-chom tîi yùu nai wɛ̂t-wong tú-rá-gìt mâi-nɔ́ɔi, sǎm-ràp bprà-den rʉ̂ang “gaan-tam-sǒng-kraam-raa-kaa” tîi sà-tɔ́ɔn bòt-rian jing nai lôok tú-rá-gìt, sʉ̂ng chǎai yɔ́ɔn bpai mʉ̂a chûang hâa-hòk bpii lɛ́ chûang gaan-rá-bàat kɔ̌ɔng koo-wìt-sìp-gâo, pâak-tú-rá-gìt ii-kɔɔm-mə́ət-thai dtə̀əp-dtoo yàang gâo-grà-dòot, tam-hâi sǒng-kraam tú-rá-gìt kǒn-sòng lɛ́ loo-jís-dtìk rə̂əm rɔ́ɔn-rá-ù, lɛ́ mii kûu-kɛ̀ng raai-mài táng nai-bprà-têet lɛ́ dtàang-châat kâo-maa rûam-wong dûay)</p>
+            <p class="translation-note">和訳: 「価格戦争を始めるな」というテーマは、ビジネス界の視聴者グループの注目を大いに引く、力強いセリフの一つと言える。これはビジネス界の現実の教訓を反映しており、5～6年前、そしてCOVID-19のパンデミック期に遡る。タイのEコマース事業は飛躍的に成長し、物流・ロジスティクスビジネスの戦争は過熱し始め、国内・国外から新たな競合他社が参入してきた。</p>
+            
+            <p class="thai-original">โดยขณะนั้น “พี่ใหญ่การขนส่ง” ไปรษณีย์ไทยตัดสินใจที่จะมุ่งมั่นในการพัฒนาคุณภาพในหลากหลายมิติ เพื่อรองรับพฤติกรรมที่เปลี่ยนไปของผู้บริโภค และเริ่มขยายตลาดขนส่งสินค้าที่มีความเฉพาะเจาะจง ตอบโจทย์ความต้องการของลูกค้าแต่ละกลุ่ม ใช้บริการเพื่อสร้างประสบการณ์ให้ดีที่สุดให้แก่ลูกค้า (Parcel Defined Logistics) เช่น สินค้าขนาดใหญ่ ผลไม้/ผลิตผลทางการเกษตร และการให้บริการขนส่งเย็นในความร่วมมือของไปรษณีย์ไทย แฟลช เอ็กซ์เพรส และเจดับเบิ้ลยูดี อินโฟโลจิสติกส์ จำกัด (มหาชน) ภายใต้แบรนด์ Fuze Post (ฟิ้วซ์ โพสต์) ส่งสินค้าควบคุมอุณหภูมิ เป็นต้น เพื่อสร้างความยั่งยืนในธุรกิจและร่วมเติบโตไปกับลูกค้าด้วยกัน</p>
+            <p class="pronunciation">(dooi kà-nà-nán “pîi-yài gaan-kǒn-sòng” bprai-sà-nii-thai dtàt-sǐn-jai tîi jà mûng-mân nai gaan-pát-tá-naa kun-ná-pâap nai lǎak-lǎai mí-dtì, pʉ̂a rɔɔng-ráp prʉ́t-dtì-gam tîi bplìan-bpai kɔ̌ɔng pûu-bɔɔ-rí-pôok, lɛ́ rə̂əm kà-yǎai dtà-làat kǒn-sòng sǐn-káa tîi mii kwaam-chà-pɔ́-jɔ̀-jong, dtɔ̀ɔp-jòot kwaam-dtɔ̂ng-gaan kɔ̌ɔng lûuk-káa dtɛ̀ɛ-lá-glùm, chái bɔɔ-rí-gaan pʉ̂a sâang bprà-sòp-gaan hâi dii-tîi-sùt hâi gɛ̀ɛ lûuk-káa (paa-sêo-dii-fai-loo-jís-dtìk) chên sǐn-káa kà-nàat-yài, pǒn-lá-mái/pà-lìt-tà-pǒn-taang-gaan-gà-sèet, lɛ́ gaan-hâi-bɔɔ-rí-gaan-kǒn-sòng-yen nai kwaam-rûam-mʉʉ kɔ̌ɔng bprai-sà-nii-thai, flɛ́ɛt-èk-prêet, lɛ́ jee-dàp-bəə-yuu-dii-in-foo-loo-jís-dtìk jam-gàt (mà-hǎa-chon) paai-dtâi brɛɛn fuze-post (fíu-póot) sòng sǐn-káa kûap-kum un-hà-puum, bpen-dtôn, pʉ̂a sâang kwaam-yâng-yʉʉn nai tú-rá-gìt lɛ́ rûam dtə̀əp-dtoo bpai gàp lûuk-káa dûay-gan)</p>
+            <p class="translation-note">和訳: その当時、「物流の巨人」であるタイ郵便は、変化する消費者の行動に対応するため、様々な側面で品質向上に注力することを決断した。そして、各顧客層のニーズに応える特定の商品の輸送市場を拡大し始めた。（Parcel Defined Logistics）として、大型商品、果物・農産物、そしてタイ郵便、Flash Express、JWD InfoLogistics Public Company Limitedの協力による冷蔵輸送サービスを、Fuze Postブランドのもとで温度管理商品を輸送するなどして、最高の体験を顧客に提供するサービスを利用し、ビジネスの持続可能性を築き、顧客と共に成長していくことを目指した。</p>
+
+            <h4>๐ ระยะปลอดภัยที่มี “สปีดสายพาน” เป็นตัวกำหนดคุณภาพขนส่ง</h4>
+            <p class="thai-original">โบราณว่า.. “ช้าๆ ได้พร้าเล่มงาม” แต่คงใช้ไม่ได้กับธุรกิจขนส่งที่มี “ความเร็ว” เป็นตัวแปรสำคัญในการสร้างความได้เปรียบทางการแข่งขัน อีกหนึ่งชิ้นส่วนสำคัญที่ถูกพูดถึง กับการปรับสปีดความเร็วของระบบสายพาน แม้จุดที่เป็นการเพิ่มความสามารถในแง่ความเร็ว แต่ในบริบทการทำงานจริงอาจเกินขีดจำกัดของความปลอดภัย และอาจส่งผลต่อระบบการคัดแยกพัสดุที่มีความเสี่ยงด้านการควบคุมคุณภาพ ซึ่งปัจจุบันไปรษณีย์ไทยเตรียมเครื่องคัดแยกอัตโนมัติ Cross Belt Sorter ที่มีประสิทธิภาพในการคัดแยกพัสดุได้กว่า 240,000 ชิ้นต่อวัน โดยมีสายพานอัตโนมัติช่วยเพิ่มความรวดเร็วและคุณภาพในกระบวนการคัดแยกปลายทางให้ถูกต้อง แม่นยำ ปลอดภัย และควบคุมคุณภาพได้ตลอดกระบวนการ</p>
+            <p class="pronunciation">(boo-raan wâa.. “cháa-cháa dâi práa lêm-ngaam” dtɛ̀ɛ kong chái mâi-dâi gàp tú-rá-gìt kǒn-sòng tîi mii “kwaam-reo” bpen dtua-bprɛɛ sǎm-kan nai gaan-sâang-kwaam-dâi-bprìap taang gaan-kɛ̀ng-kǎn. ìik nʉ̀ng chín-sùan sǎm-kan tîi tùuk pûut-tʉ̌ng, gàp gaan-bpràp sà-bpìit kwaam-reo kɔ̌ɔng rá-bòp sǎai-paan, mɛ́ɛ jùt tîi bpen gaan-pə̂əm kwaam-sǎa-mâat nai-ngɛ̂ɛ kwaam-reo, dtɛ̀ɛ nai bɔɔ-rí-bòt gaan-tam-ngaan jing àat gəən kìit-jam-gàt kɔ̌ɔng kwaam-bplɔ̀ɔt-pai, lɛ́ àat sòng-pǒn dtɔ̀ɔ rá-bòp gaan-kát-yɛ̂ɛk pát-sà-dù tîi mii kwaam-sìang dâan gaan-kûap-kum kun-ná-pâap. sʉ̂ng bpàt-jù-ban bprai-sà-nii-thai dtriam krʉ̂ang-kát-yɛ̂ɛk àt-dtà-noo-mát cross-belt-sorter tîi mii bprà-sìt-tí-pâap nai gaan-kát-yɛ̂ɛk pát-sà-dù dâi gwàa sɔ̌ɔng-sɛ̌ɛn-sìi-mʉ̀ʉn chín dtɔ̀ɔ-wan, dooi mii sǎai-paan àt-dtà-noo-mát chûay pə̂əm kwaam-rûat-reo lɛ́ kun-ná-pâap nai grà-buan-gaan kát-yɛ̂ɛk bplaai-taang hâi tùuk-dtɔ̂ng, mɛ̂n-yam, bplɔ̀ɔt-pai, lɛ́ kûap-kum kun-ná-pâap dâi dtà-lɔ̀ɔt grà-buan-gaan)</p>
+            <p class="translation-note">和訳: 古くから「急がば回れ（ゆっくりやれば美しい斧が手に入る）」と言うが、競争優位性を築く上で「速さ」が重要な変数となる物流ビジネスには当てはまらないだろう。もう一つ言及された重要な要素は、コンベアシステムの速度調整である。速度を上げることは能力向上につながる点ではあるが、実際の作業文脈では安全の限界を超え、品質管理面でリスクのある荷物仕分けシステムに影響を与える可能性がある。現在、タイ郵便は1日24万個以上の荷物を仕分ける効率を持つ自動仕分け機「クロスベルトソーター」を準備しており、自動コンベアが最終仕分けプロセスの迅速性と品質を高め、正確、安全、そしてプロセス全体の品質管理を可能にしている。</p>
+
+            <h4>๐ เรื่องจริงของพี่ไปรฯ โคลนนิ่งคนไปส่ง สู่แคมเปญโปรโมทซีรีส์สุดไวรัล</h4>
+            <p class="thai-original">สะท้านมิติใหม่การตลาด! จากเรื่องจริงพี่ไปรฯ จัดส่ง #สุ่มไก่ใกล้ฉัน เบื้องหลังของระบบขนส่งที่ส่งได้แบบไม่มีลิมิต ทำเอาโดนใจชาวเน็ตจนเกิดกระแสไวรัลแชร์ในโซเชียลในช่วงหนึ่งที่สะท้อนความทุ่มเทของบุรุษไปรษณีย์กับการบริการจัดการส่งสิ่งของไปยังทุกเส้นทาง</p>
+            <p class="pronunciation">(sà-táan mí-dtì-mài gaan-dtà-làat! jàak rʉ̂ang-jing pîi-bprai jàt-sòng #sùm-gài-glâi-chǎn, bʉ̂ang-lǎng kɔ̌ɔng rá-bòp kǒn-sòng tîi sòng dâi bɛ̀ɛp mâi-mii-lí-mìt, tam-ao doon-jai chaao-nèt jon gə̀ət grà-sɛ̌ɛ wai-rɔ̂n chɛɛ nai soo-chîan nai chûang nʉ̀ng tîi sà-tɔ́ɔn kwaam-tûm-tee kɔ̌ɔng bù-rùt-bprai-sà-nii gàp gaan-bɔɔ-rí-gaan jàt-gaan sòng sìng-kɔ̌ɔng bpai-yang túk sên-taang)</p>
+            <p class="translation-note">和訳: マーケティングの新次元を揺るがす！ ピー・プライが「#近くの闘鶏用のカゴ」を配送した実話から、限界なく配送できる物流システムの裏側が、ネット民の心を掴み、一時ソーシャルでバイラルなシェアのトレンドを生んだ。これは郵便配達員が、あらゆるルートへ荷物を届ける管理サービスに対する献身を反映している。</p>
+
+            <h4>๐ ไม่ใช่คู่แข่งแต่เป็น “เพื่อนร่วมทางในการพัฒนาระบบเศรษฐกิจไทย”</h4>
+            <p class="thai-original">เพราะธุรกิจที่ไร้จุดยืน...ก็เหมือนเรือที่ไร้เข็มทิศ” แนวคิดที่สะท้อนการวาง Brand Positioning จึงถือเป็นอีกหนึ่งกลยุทธ์ที่สำคัญในการต่อเรือใหญ่ให้แข็งแรงพอที่จะสามารถฝ่าคลื่นลมสมรภูมิธุรกิจไปได้ ในขณะที่ขนส่งเอกชนไม่ได้มองไปรษณีย์ไทยเป็นคู่แข่ง แต่คือ “เพื่อนร่วมทางในการพัฒนาระบบเศรษฐกิจไทย” เช่นเดียวกับไปรษณีย์ไทย ที่มุ่งเน้นการสร้างเครือข่ายธุรกิจผ่านการประสานความร่วมมือกับพาร์ทเนอร์ธุรกิจขนส่ง รวมถึงกลุ่มธุรกิจอื่น ๆ ที่เกี่ยวข้อง เพื่อร่วมพัฒนาศักยภาพบริการที่ตอบโจทย์ผู้ใช้บริการในทุกมิติ จึงเป็นรากฐานสำคัญของการสร้างแบรนด์เลิฟของไปรษณีย์ไทยในทุกวันนี้</p>
+            <p class="pronunciation">(prɔ́ tú-rá-gìt tîi rái jùt-yʉʉn... gɔ̂ mʉ̌an rʉa tîi rái kěm-tít” nɛɛo-kít tîi sà-tɔ́ɔn gaan-waang brɛɛn-poo-sí-chàn-nîng, jʉng tʉ̌ʉ-bpen ìik nʉ̀ng gon-lá-yút tîi sǎm-kan nai gaan-dtɔ̀ɔ-rʉa-yài hâi kɛ̌ng-rɛɛng pɔɔ tîi jà sǎa-mâat fàa-klʉ̂ʉn-lom sà-mɔ̌ɔ-rá-puum tú-rá-gìt bpai dâi. nai-kà-nà-tîi kǒn-sòng èk-gà-chon mâi-dâi mɔɔng bprai-sà-nii-thai bpen kûu-kɛ̀ng, dtɛ̀ɛ kʉʉ “pʉ̂an-rûam-taang nai gaan-pát-tá-naa rá-bòp sèet-tà-gìt thai” chên-diao-gàp bprai-sà-nii-thai, tîi mûng-nén gaan-sâang krʉa-kàai tú-rá-gìt pàan gaan-bprà-sǎan-kwaam-rûam-mʉʉ gàp páat-nə̂ə tú-rá-gìt kǒn-sòng, ruam-tʉ̌ng glùm tú-rá-gìt ʉ̀ʉn-ʉ̀ʉn tîi gìao-kɔ̂ɔng, pʉ̂a rûam pát-tá-naa sàk-gà-yá-pâap bɔɔ-rí-gaan tîi dtɔ̀ɔp-jòot pûu-chái-bɔɔ-rí-gaan nai túk mí-dtì, jʉng bpen râak-tǎan sǎm-kan kɔ̌ɔng gaan-sâang brɛɛn-lǝ́ǝp kɔ̌ɔng bprai-sà-nii-thai nai túk-wan-níi)</p>
+            <p class="translation-note">和訳: 「拠り所のないビジネスは…羅針盤のない船のようだ」というブランドポジショニングの考え方を反映したコンセプトは、ビジネスという戦場の荒波を乗り越えるのに十分な強さを持つ大きな船を建造するための、もう一つの重要な戦略と見なされている。民間輸送業者がタイ郵便を競合相手と見なさず、「タイ経済システムを発展させる旅の仲間」と見なす一方で、タイ郵便も同様に、輸送ビジネスのパートナーやその他関連ビジネスグループとの連携を通じてビジネスネットワークを構築することに重点を置き、あらゆる側面でユーザーのニーズに応えるサービスのポテンシャルを共同で開発している。これが、今日のタイ郵便がブランドとして愛されるための重要な基盤となっている。</p>
+
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <!-- 総まとめ単語表 -->
+        <div class="article-section" id="section-summary-vocab">
+            <p class="back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+            <h3>7. 総まとめ単語表</h3>
+            <p class="note">これまでに登場した主な単語の一覧です。</p>
+            <table class="vocab-table">
+                <thead><tr><th>タイ語</th><th>発音記号</th><th>意味</th></tr></thead>
+                <tbody>
+                    <tr><td>บริการขนส่ง</td><td>bɔɔ-rí-gaan kǒn-sòng</td><td>物流サービス</td></tr>
+                    <tr><td>ไปรษณีย์ไทย</td><td>bprai-sà-nii-thai</td><td>タイ郵便</td></tr>
+                    <tr><td>เป็นที่นิยม</td><td>bpen tîi ní-yom</td><td>人気がある</td></tr>
+                    <tr><td>สินค้า</td><td>sǐn-káa</td><td>商品</td></tr>
+                    <tr><td>บริษัท</td><td>bɔɔ-rí-sàt</td><td>会社</td></tr>
+                    <tr><td>เก่าแก่</td><td>gào-gɛ̀ɛ</td><td>古い、歴史のある</td></tr>
+                    <tr><td>ในอดีต</td><td>nai à-dìit</td><td>昔は、過去に</td></tr>
+                    <tr><td>ก่อตั้ง</td><td>gɔ̀ɔ-dtâng</td><td>設立する</td></tr>
+                    <tr><td>การแข่งขัน</td><td>gaan-kɛ̀ng-kǎn</td><td>競争</td></tr>
+                    <tr><td>คุณภาพ</td><td>kun-ná-pâap</td><td>品質</td></tr>
+                    <tr><td>ให้ความสำคัญกับ</td><td>hâi kwaam-sǎm-kan gàp</td><td>～を重視する</td></tr>
+                    <tr><td>ทันสมัย</td><td>tan-sà-mǎi</td><td>最新の、現代的な</td></tr>
+                    <tr><td>คัดแยกพัสดุ</td><td>kát-yɛ̂ɛk pát-sà-dù</td><td>荷物を仕分ける</td></tr>
+                    <tr><td>จัดการ</td><td>jàt-gaan</td><td>処理する、管理する</td></tr>
+                    <tr><td>คู่แข่ง</td><td>kûu-kɛ̀ng</td><td>競争相手</td></tr>
+                    <tr><td>พันธมิตร</td><td>pan-tá-mít</td><td>パートナー</td></tr>
+                    <tr><td>พัฒนาเศรษฐกิจ</td><td>pát-tá-naa sèet-tà-gìt</td><td>経済を発展させる</td></tr>
+                    <tr><td>ความร่วมมือ</td><td>kwaam-rûam-mʉʉ</td><td>協力</td></tr>
+                    <tr><td>จุดแข็ง</td><td>jùt-kɛ̌ng</td><td>強み</td></tr>
+                    <tr><td>ในปัจจุบัน</td><td>nai bpàt-jù-ban</td><td>現在</td></tr>
+                </tbody>
+            </table>
+            <p class="section-end-back-to-toc"><a href="#index-toc">[目次へ戻る]</a></p>
+        </div>
+
+        <p class="footer-note">発音記号は、タイ語学習で一般的に用いられる表記法（声調記号付きローマ字表記）を参考にしています。</p>
+    </main>
+
+    <script>
+        // サイドメニューの開閉機能
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const mainContent = document.getElementById('main-content');
+        const body = document.body;
+
+        function openMenu() {
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            body.classList.remove('menu-open');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // メニューのリンクをクリックしたらメニューを閉じる
+        const menuLinks = sideMenu.getElementsByTagName('a');
+        for (let i = 0; i < menuLinks.length; i++) {
+            menuLinks[i].addEventListener('click', closeMenu);
+        }
+
+        // メニュー外をクリックしたら閉じる (オプション)
+        mainContent.addEventListener('click', () => {
+            if (body.classList.contains('menu-open') && window.innerWidth < 768) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
