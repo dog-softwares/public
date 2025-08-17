@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語単語リスト：数字の数え方と類別詞</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .main-title-header {
+            border-bottom: 6px solid black;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        .main-title-header .page-title-custom {
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 1.7em;
+        }
+        .article-section h4 {
+            color: #007bff;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            border-left: 4px solid #0056b3;
+            padding-left: 8px;
+        }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        tbody tr:hover { background-color: #e2e6ea; }
+        td { font-size: 1em; }
+        .vocab-table th:nth-child(2), .vocab-table td:nth-child(2) { /* For number tables' Thai numeral column */
+            text-align: center;
+        }
+        .classifier-table th:nth-child(1), .classifier-table td:nth-child(1) { /* Japanese classifier */
+            width: 25%; /* Adjusted width */
+        }
+        .classifier-table th:nth-child(2), .classifier-table td:nth-child(2) { /* Thai reading example */
+            width: 15%;
+            text-align: left;
+        }
+        .classifier-table th:nth-child(5), .classifier-table td:nth-child(5) { /* Remarks column */
+            width: 30%;
+        }
+
+
+        td:nth-child(3) .content-wrapper, td:nth-child(4) .content-wrapper {
+             word-break: break-all;
+        }
+        .thai-numeral {
+            font-size: 1.2em;
+            font-family: 'Tahoma', 'Leelawadee', sans-serif;
+        }
+
+
+        .vocab-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            font-size: 0.9em;
+        }
+        .vocab-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .vocab-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .vocab-details .content-wrapper {
+            padding-top: 8px;
+            padding-left: 0px;
+            font-size: 1.1em;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+        }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+
+        .index-section {
+            background-color: #e9ecef;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .index-section h2 {
+            margin-top: 0;
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            font-size: 1.8em;
+        }
+        .index-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .index-section ul li {
+            margin-bottom: 10px;
+        }
+        .index-section ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .index-section ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .back-to-index a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .back-to-index a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="index" class="main-title-header">
+        <span class="page-title-custom">タイ語単語リスト：数字の数え方と類別詞</span>
+    </div>
+
+    <div class="index-section">
+        <h2>INDEX</h2>
+        <ul>
+            <li><a href="#basic_numbers">基本的な数字の数え方 (1～100)</a></li>
+            <li><a href="#large_numbers">大きな数字の単位</a></li>
+            <li><a href="#classifiers">タイ語の類別詞</a></li>
+        </ul>
+    </div>
+
+    <div id="basic_numbers" class="article-section">
+        <h3>基本的な数字の数え方 (1～100)</h3>
+        <h4>1～10</h4>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>数字</th>
+                    <th>タイ数字</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><span class="thai-numeral">๑</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หนึ่ง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nʉ̀ng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span class="thai-numeral">๒</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สอง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sɔ̌ɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><span class="thai-numeral">๓</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สาม</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎam</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><span class="thai-numeral">๔</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สี่</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìi</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><span class="thai-numeral">๕</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ห้า</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hâa</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><span class="thai-numeral">๖</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หก</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hòk</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><span class="thai-numeral">๗</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เจ็ด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jèt</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><span class="thai-numeral">๘</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แปด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpɛ̀ɛt</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><span class="thai-numeral">๙</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เก้า</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gâo</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><span class="thai-numeral">๑๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>11～20</h4>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>数字</th>
+                    <th>タイ数字</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11</td>
+                    <td><span class="thai-numeral">๑๑</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบเอ็ด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp èt</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><span class="thai-numeral">๑๒</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบสอง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp sɔ̌ɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td><span class="thai-numeral">๑๓</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบสาม</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp sǎam</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td><span class="thai-numeral">๑๔</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบสี่</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp sìi</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td><span class="thai-numeral">๑๕</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบห้า</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp hâa</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td><span class="thai-numeral">๑๖</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบหก</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp hòk</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td><span class="thai-numeral">๑๗</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบเจ็ด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp jèt</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td><span class="thai-numeral">๑๘</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบแปด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp bpɛ̀ɛt</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td><span class="thai-numeral">๑๙</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบเก้า</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp gâo</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td><span class="thai-numeral">๒๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ยี่สิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">yîi sìp</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>20より大きく100未満の10の倍数</h4>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>数字</th>
+                    <th>タイ数字</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>30</td>
+                    <td><span class="thai-numeral">๓๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สามสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎam sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td><span class="thai-numeral">๔๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สี่สิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìi sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td><span class="thai-numeral">๕๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ห้าสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hâa sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>60</td>
+                    <td><span class="thai-numeral">๖๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หกสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hòk sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>70</td>
+                    <td><span class="thai-numeral">๗๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เจ็ดสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jèt sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>80</td>
+                    <td><span class="thai-numeral">๘๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แปดสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpɛ̀ɛt sìp</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>90</td>
+                    <td><span class="thai-numeral">๙๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เก้าสิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gâo sìp</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>100</h4>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>数字</th>
+                    <th>タイ数字</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>100</td>
+                    <td><span class="thai-numeral">๑๐๐</span></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ร้อย (หนึ่งร้อย)</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rɔ́ɔi (nʉ̀ng rɔ́ɔi)</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">※数字の「1」は、単独で言う場合や、百以上の位の先頭に来る場合は「หนึ่ง (nʉ̀ng)」ですが、十の位以上の数字の末尾（一の位）に来る場合は「เอ็ด (èt)」と発音します。例えば、21 (<span class="thai-numeral">๒๑</span>) は「ยี่สิบเอ็ด (yîi sìp èt)」、31 (<span class="thai-numeral">๓๑</span>) は「สามสิบเอ็ด (sǎam sìp èt)」となります。</p>
+        <p class="note">※数字の「20 (<span class="thai-numeral">๒๐</span>)」は「ยี่สิบ (yîi sìp)」という固有の言い方をします。「*สองสิบ (*sɔ̌ɔng sìp)」とは言いません。同様に、200 (<span class="thai-numeral">๒๐๐</span>) は「สองร้อย (sɔ̌ɔng rɔ́ɔi)」ですが、20 (<span class="thai-numeral">๒๐</span>) は「ยี่สิบ (yîi sìp)」です。</p>
+        <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+    </div>
+
+    <div id="large_numbers" class="article-section">
+        <h3>大きな数字の単位</h3>
+        <p>タイ語では、数字の桁が大きくなると、以下のような単位で数えます。日本語の「万」「億」「兆」といった単位と対応させて覚えると便利です。</p>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>数値 (例)</th>
+                    <th>タイ数字 (例)</th>
+                    <th>日本語の単位</th>
+                    <th>タイ語の単位</th>
+                    <th>発音記号</th>
+                    <th>英語の目安</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><span class="thai-numeral">๑</span></td>
+                    <td>一 (いち)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">(หน่วย)</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">(nùai)</span></div></details></td>
+                    <td>One</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><span class="thai-numeral">๑๐</span></td>
+                    <td>十 (じゅう)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp</span></div></details></td>
+                    <td>Ten</td>
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td><span class="thai-numeral">๑๐๐</span></td>
+                    <td>百 (ひゃく)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ร้อย</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rɔ́ɔi</span></div></details></td>
+                    <td>Hundred</td>
+                </tr>
+                <tr>
+                    <td>1,000</td>
+                    <td><span class="thai-numeral">๑,๐๐๐</span></td>
+                    <td>千 (せん)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">พัน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">phan</span></div></details></td>
+                    <td>Thousand</td>
+                </tr>
+                <tr>
+                    <td>10,000</td>
+                    <td><span class="thai-numeral">๑๐,๐๐๐</span></td>
+                    <td>万 (まん)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หมื่น</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̀ʉn</span></div></details></td>
+                    <td>Ten Thousand</td>
+                </tr>
+                <tr>
+                    <td>100,000</td>
+                    <td><span class="thai-numeral">๑๐๐,๐๐๐</span></td>
+                    <td>十万 (じゅうまん)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แสน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sɛ̌ɛn</span></div></details></td>
+                    <td>Hundred Thousand</td>
+                </tr>
+                <tr>
+                    <td>1,000,000</td>
+                    <td><span class="thai-numeral">๑,๐๐๐,๐๐๐</span></td>
+                    <td>百万 (ひゃくまん)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">láan</span></div></details></td>
+                    <td>Million</td>
+                </tr>
+                <tr>
+                    <td>10,000,000</td>
+                    <td><span class="thai-numeral">๑๐,๐๐๐,๐๐๐</span></td>
+                    <td>千万 (せんまん)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สิบล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sìp láan</span></div></details></td>
+                    <td>Ten Million</td>
+                </tr>
+                <tr>
+                    <td>100,000,000</td>
+                    <td><span class="thai-numeral">๑๐๐,๐๐๐,๐๐๐</span></td>
+                    <td>億 (おく)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ร้อยล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rɔ́ɔi láan</span></div></details></td>
+                    <td>Hundred Million</td>
+                </tr>
+                <tr>
+                    <td>1,000,000,000</td>
+                    <td><span class="thai-numeral">๑,๐๐๐,๐๐๐,๐๐๐</span></td>
+                    <td>十億 (じゅうおく)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">พันล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">phan láan</span></div></details></td>
+                    <td>Billion (short scale)</td>
+                </tr>
+                <tr>
+                    <td>10,000,000,000</td>
+                    <td><span class="thai-numeral">๑๐,๐๐๐,๐๐๐,๐๐๐</span></td>
+                    <td>百億 (ひゃくおく)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หมื่นล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̀ʉn láan</span></div></details></td>
+                    <td>Ten Billion (short scale)</td>
+                </tr>
+                <tr>
+                    <td>100,000,000,000</td>
+                    <td><span class="thai-numeral">๑๐๐,๐๐๐,๐๐๐,๐๐๐</span></td>
+                    <td>千億 (せんおく)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แสนล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sɛ̌ɛn láan</span></div></details></td>
+                    <td>Hundred Billion (short scale)</td>
+                </tr>
+                <tr>
+                    <td>1,000,000,000,000</td>
+                    <td><span class="thai-numeral">๑,๐๐๐,๐๐๐,๐๐๐,๐๐๐</span></td>
+                    <td>兆 (ちょう)</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ล้านล้าน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">láan láan</span></div></details></td>
+                    <td>Trillion (short scale)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">※ 「หน่วย (nùai)」は「単位」や「一の位」を意味しますが、通常、数字を読む際には省略されます。</p>
+        <p class="note">※ 「ล้าน (láan)」(百万)より大きな単位は、「ล้าน」に「สิบ (十)」「ร้อย (百)」「พัน (千)」「หมื่น (万)」「แสน (十万)」を組み合わせるか、「ล้าน」を繰り返す（例：ล้านล้าน = 兆）ことで表現します。</p>
+        <p class="note">※ タイ数字の桁区切りは、アラビア数字と同様に3桁ごとに行われることが一般的ですが、ここではタイ語の単位の区切りを明確にするため、必ずしも3桁区切りにはしていません。</p>
+        <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+    </div>
+
+    <div id="classifiers" class="article-section">
+        <h3>タイ語の類別詞</h3>
+        <h4>使用頻度の高いもの</h4>
+        <table class="vocab-table classifier-table">
+            <thead>
+                <tr>
+                    <th>日本の類別詞</th>
+                    <th>タイ語読み (例)</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1個（一般的な助数詞）</td>
+                    <td>アン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">อัน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">an</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1回（回数のカウント）</td>
+                    <td>クラン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ครั้ง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khrán</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1粒（細かな粒のカウント）</td>
+                    <td>メット</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เม็ด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mét</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1セット（セットになっている物）</td>
+                    <td>チュット</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชุด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chút</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1個（ボールや球状の物）</td>
+                    <td>ルーク</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ลูก</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lûuk</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1人（人間）</td>
+                    <td>コン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">คน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khon</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1匹（動物や虫）</td>
+                    <td>トゥア</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ตัว</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tua</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1枚（紙のカウント）</td>
+                    <td>バイ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ใบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bai</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>生活でよく使うもの</h4>
+        <table class="vocab-table classifier-table">
+            <thead>
+                <tr>
+                    <th>日本の類別詞</th>
+                    <th>タイ語読み (例)</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1箱（段ボール箱など）</td>
+                    <td>グローン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กล่อง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">klɔ̀ɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1箱（たばこの箱、封筒）</td>
+                    <td>ソーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ซอง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sɔɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1台（車やミシン）</td>
+                    <td>カン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">คัน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khan</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1チャンネル（テレビのチャンネル）</td>
+                    <td>チョーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ช่อง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chɔ̂ɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1ペア（対になっている物）</td>
+                    <td>クー</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">คู่</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khûu</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1着（衣類）</td>
+                    <td>チュット</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชุด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chút</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1缶（缶の数をカウント）</td>
+                    <td>グラポーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กระป๋อง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kra-bpɔ̌ɔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1袋（袋の数をカウント）</td>
+                    <td>トゥン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ถุง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">thǔng</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1包（包まれたものをカウント）</td>
+                    <td>ホー</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ห่อ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hɔ̀ɔ</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1台（機械をカウント）</td>
+                    <td>クルアン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เครื่อง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khrʉ̂ang</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1冊（本をカウント）</td>
+                    <td>レム</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เล่ม</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lêm</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>食事でよく使うもの</h4>
+        <table class="vocab-table classifier-table">
+            <thead>
+                <tr>
+                    <th>日本の類別詞</th>
+                    <th>タイ語読み (例)</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1皿（皿に入った食べ物）</td>
+                    <td>ジャーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">จาน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jaan</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1皿（皿そのもの）</td>
+                    <td>バイ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ใบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bai</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1杯（コップに入った飲み物）</td>
+                    <td>ゲーオ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แก้ว</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɛ̂ɛo</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1個（コップそのもの）</td>
+                    <td>バイ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ใบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bai</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1杯（茶わんやカップに入ったもの）</td>
+                    <td>トゥアイ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ถ้วย</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">thûai</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1すくい（スプーンに入っているもの）</td>
+                    <td>チョーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ช้อน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chɔ́ɔn</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1席（席数）</td>
+                    <td>ティー</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ที่</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">thîi</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1人前（料理～人前）</td>
+                    <td>ティー</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ที่</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">thîi</span></div></details></td>
+                </tr>
+                <tr>
+                    <td>1切れ（ピザやケーキ、肉など）</td>
+                    <td>チン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชิ้น</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chín</span></div></details></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>その他の主な類別詞</h4>
+        <table class="vocab-table classifier-table">
+            <thead>
+                <tr>
+                    <th>日本の類別詞</th>
+                    <th>タイ語読み (例)</th>
+                    <th>タイ語</th>
+                    <th>発音記号</th>
+                    <th>備考</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1軒（家）</td>
+                    <td>ラン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หลัง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lǎng</span></div></details></td>
+                    <td>家などの建物</td>
+                </tr>
+                <tr>
+                    <td>1棟（建物）</td>
+                    <td>ローン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">โรง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">roong</span></div></details></td>
+                    <td>ホテルや学校などの大きな建物</td>
+                </tr>
+                <tr>
+                    <td>1枚（写真）</td>
+                    <td>ループ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">รูป</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rûup</span></div></details></td>
+                    <td>写真に対して使います</td>
+                </tr>
+                <tr>
+                    <td>1個（塊）</td>
+                    <td>ゴーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ก้อน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔ̂ɔn</span></div></details></td>
+                    <td>石や氷、雲などの塊に対して</td>
+                </tr>
+                <tr>
+                    <td>1字（文字）</td>
+                    <td>トゥア</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ตัว</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tua</span></div></details></td>
+                    <td>文字や数字のカウント（動物と同じ）</td>
+                </tr>
+                <tr>
+                    <td>1脚（机）</td>
+                    <td>トゥア</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ตัว</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tua</span></div></details></td>
+                    <td>机や椅子に対して（同上）</td>
+                </tr>
+                <tr>
+                    <td>1部（新聞）</td>
+                    <td>チャバップ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ฉบับ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chà-bàp</span></div></details></td>
+                    <td>新聞や書類、手紙をカウント</td>
+                </tr>
+                <tr>
+                    <td>1隻、1機</td>
+                    <td>ラム</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ลำ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lam</span></div></details></td>
+                    <td>船や飛行機をカウント</td>
+                </tr>
+                <tr>
+                    <td>1階（階数）</td>
+                    <td>チャン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชั้น</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chán</span></div></details></td>
+                    <td>建物の階数や層、段を数える</td>
+                </tr>
+                <tr>
+                    <td>1滴（水滴）</td>
+                    <td>ヨット</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หยด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">yòt</span></div></details></td>
+                    <td>水滴やしずくに対して</td>
+                </tr>
+                <tr>
+                    <td>1室（部屋）</td>
+                    <td>ホーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ห้อง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hɔ̂ɔng</span></div></details></td>
+                    <td>部屋の数</td>
+                </tr>
+                <tr>
+                    <td>1歩（歩数）</td>
+                    <td>ガーオ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ก้าว</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâao</span></div></details></td>
+                    <td>歩数をカウント</td>
+                </tr>
+                <tr>
+                    <td>1輪（花）</td>
+                    <td>ドーク</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ดอก</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dɔ̀ɔk</span></div></details></td>
+                    <td>花の数をカウント</td>
+                </tr>
+                <tr>
+                    <td>1本（瓶）</td>
+                    <td>クワット</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ขวด</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">khùat</span></div></details></td>
+                    <td>瓶の数</td>
+                </tr>
+                <tr>
+                    <td>1本（タバコ）</td>
+                    <td>ムアン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">มวน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">muan</span></div></details></td>
+                    <td>たばこや葉巻の本数</td>
+                </tr>
+                <tr>
+                    <td>1本</td>
+                    <td>セン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เส้น</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sên</span></div></details></td>
+                    <td>糸、ネクタイ、ネックレスなど</td>
+                </tr>
+                <tr>
+                    <td>1本</td>
+                    <td>サーイ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สาย</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎai</span></div></details></td>
+                    <td>道路、電気コード、川、鉄道など</td>
+                </tr>
+                <tr>
+                    <td>1枚（星）</td>
+                    <td>ドゥアン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ดวง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">duang</span></div></details></td>
+                    <td>星や火などの光るものなど</td>
+                </tr>
+                <tr>
+                    <td>1個（鍵）</td>
+                    <td>ドーク</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ดอก</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dɔ̀ɔk</span></div></details></td>
+                    <td>鍵を数える。花と同じ</td>
+                </tr>
+                <tr>
+                    <td>1カ所</td>
+                    <td>ヘン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แห่ง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hɛ̀ng</span></div></details></td>
+                    <td>3カ所、4カ所など</td>
+                </tr>
+                <tr>
+                    <td>1食</td>
+                    <td>ムー</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">มื้อ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ́ʉ</span></div></details></td>
+                    <td>食事の回数</td>
+                </tr>
+                <tr>
+                    <td>1個（卵）</td>
+                    <td>フォーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ฟอง</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">fɔɔng</span></div></details></td>
+                    <td>卵の数</td>
+                </tr>
+                <tr>
+                    <td>1枚（CDなど）</td>
+                    <td>ペーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แผ่น</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">phɛ̀ɛn</span></div></details></td>
+                    <td>薄くて平らなもの。紙にも使える</td>
+                </tr>
+                <tr>
+                    <td>1枚（布）</td>
+                    <td>プーン</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ผืน</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">phʉ̌ʉn</span></div></details></td>
+                    <td>ハンカチやスカーフなどの布類</td>
+                </tr>
+                <tr>
+                    <td>1周</td>
+                    <td>ロープ</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">รอบ</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rɔ̂ɔp</span></div></details></td>
+                    <td>1周、2周。1回、2回と似ている</td>
+                </tr>
+                <tr>
+                    <td>1本（ペン）</td>
+                    <td>ダーム</td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ด้าม</div></details></td>
+                    <td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dâam</span></div></details></td>
+                    <td>ペンや万年筆など</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note">※ 類別詞は名詞の後ろに「数字 + 類別詞」の形で置かれます。例: รถ ๑ คัน (rót nʉ̀ng khan) - 車 1台。</p>
+        <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+    </div>
+
+    <p class="footer-note">発音記号は、タイ語教科書で用いられる一般的な表記法（声調記号付き）を参考にしています。</p>
+
+</body>
+</html>

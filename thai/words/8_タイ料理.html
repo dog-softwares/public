@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語単語リスト：タイ料理（総合編）</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0; /* bodyのデフォルトマージンをリセット */
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            transition: margin-left 0.3s ease-in-out;
+        }
+        .main-title-header {
+            border-bottom: 6px solid black;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        .main-title-header .page-title-custom {
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+        .note { font-size: 0.9em; color: #7f8c8d; margin-top: 10px; display: block; }
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 1.7em;
+        }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        tbody tr:hover { background-color: #e2e6ea; }
+        td { font-size: 1em; }
+        td:nth-child(3) .content-wrapper, td:nth-child(4) .content-wrapper {
+             word-break: break-all;
+        }
+
+        .vocab-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            font-size: 0.9em;
+        }
+        .vocab-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .vocab-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .vocab-details .content-wrapper {
+            padding-top: 8px;
+            padding-left: 0px;
+            font-size: 1.1em;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+        }
+        .footer-note { text-align:center; margin-top:30px; font-size: 0.95em; color: #555; }
+
+        .index-section {
+            background-color: #e9ecef;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .index-section h2 {
+            margin-top: 0;
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            font-size: 1.8em;
+        }
+        .index-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        .index-section ul li {
+            margin-bottom: 10px;
+        }
+        .index-section ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .index-section ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .back-to-index a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .back-to-index a:hover {
+            background-color: #0056b3;
+        }
+        .conversation-item {
+            border-top: 1px dashed #ccc;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+        .conversation-item:first-child {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+        .conversation-item h4 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .question-thai {
+            font-style: italic;
+            color: #555;
+            margin-left: 10px;
+        }
+        .vocab-table-mini th, .vocab-table-mini td {
+            padding: 8px 10px;
+            font-size: 0.95em;
+        }
+        .answer-details {
+            margin-top: 15px;
+        }
+        .answer-details summary {
+            font-weight: bold;
+            font-size: 1em;
+            display: inline-block;
+            padding: 5px 12px;
+        }
+        .answer-content {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+        .answer-content p {
+            margin: 5px 0;
+        }
+
+        /* --- New Menu Bar Styles --- */
+        #menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            cursor: pointer;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        #menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            border-radius: 3px;
+        }
+        #side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 280px;
+            background-color: #2c3e50;
+            padding-top: 70px; /* Space for the toggle button */
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            overflow-y: auto;
+            box-shadow: 3px 0 6px rgba(0,0,0,0.2);
+        }
+        #side-menu.open {
+            transform: translateX(0);
+        }
+        #side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #side-menu ul li a {
+            display: block;
+            padding: 15px 25px;
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: bold;
+            border-bottom: 1px solid #34495e;
+            transition: background-color 0.2s;
+        }
+        #side-menu ul li a:hover {
+            background-color: #34495e;
+        }
+        #side-menu ul li.top-link a {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1em;
+        }
+        #side-menu ul li.top-link a:hover {
+            background-color: #0056b3;
+        }
+        #main-content {
+            padding: 0 20px 20px 20px; /* Adjust padding for content area */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="side-menu">
+        <ul>
+            <li class="top-link"><a href="../../index.html">全教材トップページへ</a></li>
+            <li><a href="#ingredients">食材・野菜・ハーブ</a></li>
+            <li><a href="#flavors">味・調味料</a></li>
+            <li><a href="#nutrition">栄養・その他</a></li>
+            <li><a href="#dishes">料理名</a></li>
+            <li><a href="#beverages">飲み物・嗜好品</a></li>
+            <li><a href="#conversations">会話練習</a></li>
+        </ul>
+    </nav>
+    
+    <div id="main-content">
+        <div id="index" class="main-title-header">
+            <span class="page-title-custom">タイ語単語リスト：タイ料理（総合編）</span>
+        </div>
+
+        <div class="index-section">
+            <h2>INDEX (ページ内リンク)</h2>
+            <ul>
+                <li><a href="#ingredients">食材・野菜・ハーブ</a></li>
+                <li><a href="#flavors">味・調味料</a></li>
+                <li><a href="#nutrition">栄養・その他</a></li>
+                <li><a href="#dishes">料理名</a></li>
+                <li><a href="#beverages">飲み物・嗜好品</a></li>
+                <li><a href="#conversations">会話練習</a></li>
+            </ul>
+        </div>
+        
+        <!-- (Existing vocabulary sections start here) -->
+        <div id="ingredients" class="article-section">
+            <h3>食材・野菜・ハーブ (Ingredients / Vegetables / Herbs)</h3>
+            <table class="vocab-table">
+                <thead><tr><th>番号</th><th>日本語</th><th>タイ語</th><th>発音記号</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>唐辛子</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">พริก</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prík</span></div></details></td></tr>
+                    <tr><td>2</td><td>パクチー</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ผักชี</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pàk-chii</span></div></details></td></tr>
+                    <tr><td>3</td><td>レモングラス</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ตะไคร้</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtà-krái</span></div></details></td></tr>
+                    <tr><td>4</td><td>こぶみかんの葉</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ใบมะกรูด</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bai má-grùut</span></div></details></td></tr>
+                    <tr><td>5</td><td>ガランガル (タイの生姜)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ข่า</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kàa</span></div></details></td></tr>
+                    <tr><td>6</td><td>バジル (ホーリーバジル)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กะเพรา</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-prao</span></div></details></td></tr>
+                    <tr><td>7</td><td>空芯菜</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ผักบุ้ง</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pàk-bûng</span></div></details></td></tr>
+                    <tr><td>8</td><td>カイラン菜</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">คะน้า</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ká-náa</span></div></details></td></tr>
+                    <tr><td>9</td><td>チャオム (アカシアの若葉)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชะอม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chá-om</span></div></details></td></tr>
+                    <tr><td>10</td><td>サトー豆 (ねじれふさ豆)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สะตอ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-dtɔɔ</span></div></details></td></tr>
+                    <tr><td>11</td><td>パンダンの葉</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ใบเตย</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bai-dtəəi</span></div></details></td></tr>
+                    <tr><td>12</td><td>にんにく</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กระเทียม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">grà-tiam</span></div></details></td></tr>
+                    <tr><td>13</td><td>たまねぎ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หัวหอม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">hǔa-hɔ̌ɔm</span></div></details></td></tr>
+                    <tr><td>14</td><td>トマト</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">มะเขือเทศ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">má-kʉ̌a-têet</span></div></details></td></tr>
+                    <tr><td>15</td><td>ココナッツミルク</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กะทิ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-tí</span></div></details></td></tr>
+                    <tr><td>16</td><td>炒り米</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ข้าวคั่ว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâao-kûa</span></div></details></td></tr>
+                </tbody>
+            </table>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+
+        <div id="flavors" class="article-section">
+            <h3>味・調味料 (Flavors / Seasonings)</h3>
+            <table class="vocab-table">
+                 <thead><tr><th>番号</th><th>日本語</th><th>タイ語</th><th>発音記号</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>辛い</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เผ็ด</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pèt</span></div></details></td></tr>
+                    <tr><td>2</td><td>酸っぱい</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เปรี้ยว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bprîao</span></div></details></td></tr>
+                    <tr><td>3</td><td>甘い</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">หวาน</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wǎan</span></div></details></td></tr>
+                    <tr><td>4</td><td>塩辛い</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เค็ม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kem</span></div></details></td></tr>
+                    <tr><td>5</td><td>ナンプラー (魚醤)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">น้ำปลา</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nám-bplaa</span></div></details></td></tr>
+                    <tr><td>6</td><td>砂糖</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">น้ำตาล</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nám-dtaan</span></div></details></td></tr>
+                    <tr><td>7</td><td>塩</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เกลือ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">glʉa</span></div></details></td></tr>
+                    <tr><td>8</td><td>お酢</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">น้ำส้มสายชู</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nám-sôm-sǎai-chuu</span></div></details></td></tr>
+                    <tr><td>9</td><td>ライム</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">มะนาว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">má-naao</span></div></details></td></tr>
+                    <tr><td>10</td><td>醤油</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ซีอิ๊ว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sii-íu</span></div></details></td></tr>
+                    <tr><td>11</td><td>オイスターソース</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ซอสหอยนางรม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sɔ́ɔt-hɔ̌ɔi-naang-rom</span></div></details></td></tr>
+                    <tr><td>12</td><td>胡椒</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">พริกไทย</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prík-tai</span></div></details></td></tr>
+                    <tr><td>13</td><td>タマリンド</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">มะขาม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">má-kǎam</span></div></details></td></tr>
+                </tbody>
+            </table>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+
+        <div id="nutrition" class="article-section">
+            <h3>栄養・その他 (Nutrition / Others)</h3>
+            <table class="vocab-table">
+                <thead><tr><th>番号</th><th>日本語</th><th>タイ語</th><th>発音記号</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>タンパク質</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">โปรตีน</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bproo-dtiin</span></div></details></td></tr>
+                    <tr><td>2</td><td>炭水化物</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">คาร์โบไฮเดรต</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kaa-boo-hai-drèet</span></div></details></td></tr>
+                    <tr><td>3</td><td>脂質</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ไขมัน</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kǎi-man</span></div></details></td></tr>
+                    <tr><td>4</td><td>うま味調味料 (MSG)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ผงชูรส</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pǒng-chuu-rót</span></div></details></td></tr>
+                    <tr><td>5</td><td>保存料</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สารกันบูด</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎan-gan-bùut</span></div></details></td></tr>
+                    <tr><td>6</td><td>甘味料</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สารให้ความหวาน</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎan-hâi-kwaam-wǎan</span></div></details></td></tr>
+                    <tr><td>7</td><td>色素、着色料</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สารแต่งสี</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎan-dtɛ̀ɛng-sǐi</span></div></details></td></tr>
+                    <tr><td>8</td><td>抗酸化物質</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สารต้านอนุมูลอิสระ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎan-dtâan-à-nú-muun-ìt-sà-rà</span></div></details></td></tr>
+                </tbody>
+            </table>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+
+        <div id="dishes" class="article-section">
+            <h3>料理名 (Dish Names)</h3>
+            <table class="vocab-table">
+                <thead><tr><th>番号</th><th>日本語</th><th>タイ語</th><th>発音記号</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>ラープ (ひき肉サラダ)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ลาบ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lâap</span></div></details></td></tr>
+                    <tr><td>2</td><td>トムヤムクン (エビのスパイシースープ)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ต้มยำกุ้ง</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtôm-yam-gûng</span></div></details></td></tr>
+                    <tr><td>3</td><td>グリーンカレー</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แกงเขียวหวาน</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gɛɛng-kǐao-wǎan</span></div></details></td></tr>
+                    <tr><td>4</td><td>パッタイ (タイ風焼きそば)</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ผัดไทย</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pàt-tai</span></div></details></td></tr>
+                     <tr><td>5</td><td>ガパオライス</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ข้าวกะเพรา</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâao gà-prao</span></div></details></td></tr>
+                </tbody>
+            </table>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+
+        <div id="beverages" class="article-section">
+            <h3>飲み物・嗜好品 (Beverages & Luxuries)</h3>
+            <table class="vocab-table">
+                <thead><tr><th>番号</th><th>日本語</th><th>タイ語</th><th>発音記号</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>ビール</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เบียร์</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bia</span></div></details></td></tr>
+                    <tr><td>2</td><td>ワイン</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ไวน์</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wai</span></div></details></td></tr>
+                    <tr><td>3</td><td>ウイスキー</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">วิสกี้</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wít-gîi</span></div></details></td></tr>
+                    <tr><td>4</td><td>日本酒</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เหล้าสาเก</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lâo sǎa-gèe</span></div></details></td></tr>
+                    <tr><td>5</td><td>タイの焼酎</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เหล้าขาว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lâo kǎao</span></div></details></td></tr>
+                    <tr><td>6</td><td>アルコール</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">แอลกอฮอล์</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ɛɛn-gɔɔ-hɔɔ</span></div></details></td></tr>
+                    <tr><td>7</td><td>酔う</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เมา</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mao</span></div></details></td></tr>
+                    <tr><td>8</td><td>二日酔い</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">เมาค้าง</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mao káang</span></div></details></td></tr>
+                    <tr><td>9</td><td>乾杯！</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชนแก้ว</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chon gɛ̂ɛo</span></div></details></td></tr>
+                    <tr><td>10</td><td>水</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">น้ำ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nám</span></div></details></td></tr>
+                    <tr><td>11</td><td>コーヒー</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">กาแฟ</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaa-fɛɛ</span></div></details></td></tr>
+                    <tr><td>12</td><td>紅茶</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชา</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chaa</span></div></details></td></tr>
+                    <tr><td>13</td><td>タイティー</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">ชาไทย</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chaa tai</span></div></details></td></tr>
+                    <tr><td>14</td><td>牛乳</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">นม</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nom</span></div></details></td></tr>
+                    <tr><td>15</td><td>ジュース</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">น้ำผลไม้</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nám pǒn-lá-mái</span></div></details></td></tr>
+                    <tr><td>16</td><td>タバコ</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">บุหรี่</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bù-rìi</span></div></details></td></tr>
+                    <tr><td>17</td><td>喫煙する</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">สูบบุหรี่</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sùup bù-rìi</span></div></details></td></tr>
+                </tbody>
+            </table>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+        
+        <div id="conversations" class="article-section">
+            <h3>会話練習 (Conversation Practice)</h3>
+            <div class="conversation-item">
+                <h4>1. あなたの国の代表的な料理は何ですか？<span class="question-thai">อาหารที่เป็นตัวแทนของประเทศคุณคืออะไร</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>代表的な</td><td>ที่เป็นตัวแทน</td><td><span class="pronunciation">tîi-bpen-dtua-tɛɛn</span></td></tr><tr><td>国</td><td>ประเทศ</td><td><span class="pronunciation">bprà-têet</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> 私の国では寿司が有名です。新鮮な魚と酢飯で作られています。</p><p><strong>[タイ]</strong> ที่ประเทศของผม/ฉัน ซูชิมีชื่อเสียงมากครับ/ค่ะ ทำจากปลาสดกับข้าวที่ปรุงรสด้วยน้ำส้มสายชู</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>2. 好きなタイ料理は何ですか？ どんな味ですか？<span class="question-thai">คุณชอบอาหารไทยอะไรมากที่สุด มีรสชาติเป็นอย่างไร</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>好き</td><td>ชอบ</td><td><span class="pronunciation">chɔ̂ɔp</span></td></tr><tr><td>最も</td><td>ที่สุด</td><td><span class="pronunciation">tîi-sùt</span></td></tr><tr><td>味</td><td>รสชาติ</td><td><span class="pronunciation">rót-châat</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> ガパオライスが好きです。少し辛くて、バジルの香りがとても良いです。</p><p><strong>[タイ]</strong> ผม/ฉันชอบข้าวกะเพราครับ/ค่ะ มีรสชาติเผ็ดนิดหน่อยและมีกลิ่นหอมของใบกะเพราที่ดีมาก</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>3. 辛い食べ物は好きですか？<span class="question-thai">คุณชอบทานอาหารเผ็ดไหม</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>食べる(丁寧)</td><td>ทาน</td><td><span class="pronunciation">taan</span></td></tr><tr><td>辛い</td><td>เผ็ด</td><td><span class="pronunciation">pèt</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> はい、好きです。でも、辛すぎるのは食べられません。</p><p><strong>[タイ]</strong> ชอบครับ/ค่ะ แต่ถ้าเผ็ดมากเกินไปก็ทานไม่ไหว</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>4. 普段、朝食に何を食べますか？<span class="question-thai">ปกติแล้ว คุณทานอะไรเป็นอาหารเช้า</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>普段</td><td>ปกติแล้ว</td><td><span class="pronunciation">bpòk-gà-dtì lɛ́ɛo</span></td></tr><tr><td>朝食</td><td>อาหารเช้า</td><td><span class="pronunciation">aa-hǎan cháo</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> 普段はパンとコーヒーです。でも週末はご飯とみそ汁を食べます。</p><p><strong>[タイ]</strong> ปกติจะทานขนมปังกับกาแฟครับ/ค่ะ แต่ถ้าเป็นวันหยุดสุดสัปดาห์จะทานข้าวกับซุปมิโซะ</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>5. 自分で料理をしますか？得意料理は何ですか？<span class="question-thai">คุณทำอาหารทานเองไหม อาหารที่ทำเก่งที่สุดคืออะไร</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>自分で作る</td><td>ทำ...เอง</td><td><span class="pronunciation">tam...eeng</span></td></tr><tr><td>得意な</td><td>เก่ง</td><td><span class="pronunciation">gèng</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> はい、時々作ります。得意料理はカレーライスです。</p><p><strong>[タイ]</strong> ครับ/ค่ะ ทำทานเองเป็นบางครั้ง อาหารที่ทำเก่งที่สุดคือข้าวแกงกะหรี่ญี่ปุ่นครับ/ค่ะ</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>6. 外食は好きですか？どんなレストランによく行きますか？<span class="question-thai">คุณชอบไปทานข้าวนอกบ้านไหม ปกติไปร้านอาหารแบบไหนบ่อยๆ</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>外食する</td><td>ทานข้าวนอกบ้าน</td><td><span class="pronunciation">taan kâao nɔ̂ɔk bâan</span></td></tr><tr><td>レストラン</td><td>ร้านอาหาร</td><td><span class="pronunciation">ráan aa-hǎan</span></td></tr><tr><td>よく</td><td>บ่อยๆ</td><td><span class="pronunciation">bɔ̀i-bɔ̀i</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> はい、好きです。特に日本食レストランによく行きます。</p><p><strong>[タイ]</strong> ชอบครับ/ค่ะ โดยเฉพาะร้านอาหารญี่ปุ่นจะไปบ่อยเป็นพิเศษ</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>7. 健康のために、食事で気をつけていることはありますか？<span class="question-thai">เพื่อสุขภาพที่ดี คุณระมัดระวังอะไรเรื่องอาหารการกินบ้าง</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>健康</td><td>สุขภาพ</td><td><span class="pronunciation">sùk-kà-pâap</span></td></tr><tr><td>気をつける</td><td>ระมัดระวัง</td><td><span class="pronunciation">rá-mát-rá-wang</span></td></tr><tr><td>食事</td><td>อาหารการกิน</td><td><span class="pronunciation">aa-hǎan gaan gin</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> はい、野菜をたくさん食べるようにしています。そして、甘いものは少し控えています。</p><p><strong>[タイ]</strong> ครับ/ค่ะ พยายามทานผักให้เยอะๆ และจะควบคุมของหวานนิดหน่อย</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>8. 最近の食品には多くの添加物が使われています。どう思いますか？<span class="question-thai">อาหารในปัจจุบันมีการใช้สารปรุงแต่งเยอะมาก คุณมีความคิดเห็นอย่างไร</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>最近、現在</td><td>ปัจจุบัน</td><td><span class="pronunciation">bpàt-jù-ban</span></td></tr><tr><td>添加物</td><td>สารปรุงแต่ง</td><td><span class="pronunciation">sǎan-bprung-dtɛ̀ɛng</span></td></tr><tr><td>意見</td><td>ความคิดเห็น</td><td><span class="pronunciation">kwaam-kít-hěn</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> 少し心配です。できるだけ添加物の少ないものを選ぶようにしています。</p><p><strong>[タイ]</strong> ก็กังวลนิดหน่อยครับ/ค่ะ พยายามเลือกทานสิ่งที่ใช้สารปรุงแต่งน้อยที่สุดเท่าที่จะทำได้</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>9. あなたの国の有名なデザートは何ですか？<span class="question-thai">ของหวานที่มีชื่อเสียงของประเทศคุณคืออะไร</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>デザート</td><td>ของหวาน</td><td><span class="pronunciation">kɔ̌ɔng-wǎan</span></td></tr><tr><td>有名</td><td>มีชื่อเสียง</td><td><span class="pronunciation">mii-chʉ̂ʉ-sǐang</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> 餅が有名です。お米から作られていて、とてももちもちしています。</p><p><strong>[タイ]</strong> โมจิมีชื่อเสียงครับ/ค่ะ ทำมาจากข้าว มีความเหนียวนุ่มมาก</p></div></details>
+            </div>
+            <div class="conversation-item">
+                <h4>10. 何か食べ物のアレルギーはありますか？<span class="question-thai">คุณแพ้อาหารอะไรบ้างไหม</span></h4>
+                <table class="vocab-table-mini"><tr><th>日本語</th><th>タイ語</th><th>発音</th></tr><tr><td>アレルギーがある</td><td>แพ้</td><td><span class="pronunciation">pɛ́ɛ</span></td></tr><tr><td>何か(複数)</td><td>อะไรบ้าง</td><td><span class="pronunciation">à-rai-bâang</span></td></tr></table>
+                <details class="answer-details"><summary>模範解答を表示</summary><div class="answer-content"><p><strong>[日]</strong> 幸いなことに、ありません。何でも食べられます。</p><p><strong>[タイ]</strong> โชคดีที่ไม่มีครับ/ค่ะ สามารถทานได้ทุกอย่าง</p></div></details>
+            </div>
+            <p class="back-to-index"><a href="#index">INDEXへ戻る</a></p>
+        </div>
+
+        <p class="footer-note">発音記号は、タイ語教科書で用いられる一般的な表記法（声調記号付き）を参考にしています。</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const sideMenu = document.getElementById('side-menu');
+            const menuLinks = sideMenu.querySelectorAll('a');
+
+            // Toggle menu on button click
+            menuToggle.addEventListener('click', function() {
+                sideMenu.classList.toggle('open');
+            });
+
+            // Close menu when a link is clicked
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sideMenu.classList.remove('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
