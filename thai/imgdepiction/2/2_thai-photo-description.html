@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบฝึกหัดการอธิบายภาพ</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        #main-content {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+        }
+        .main-title-header .title-japanese { font-size: 2.2em; font-weight: bold; margin-right: 15px; }
+        .main-title-header .title-thai { font-size: 1.8em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai { font-size: 0.8em; font-weight: normal; margin-left: 8px; vertical-align: baseline; color: #c0392b; }
+
+        .exercise-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .exercise-section h2 {
+            font-size: 1.8em;
+            color: #1a5276;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .instruction-box {
+            background-color: #f5fef5;
+            border: 1px solid #d4edda;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .instruction-box p {
+            margin: 5px 0;
+        }
+        .instruction-box .instruction-ja {
+            font-size: 0.9em;
+        }
+        .instruction-box ol {
+            padding-left: 25px;
+            margin-top: 5px;
+        }
+
+        .description-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .exercise-section h3 { 
+            color: #0056b3; 
+            border-bottom: 2px solid #007bff; 
+            padding-bottom: 8px; 
+            margin-top: 25px; 
+            margin-bottom: 18px; 
+            font-size: 1.5em; 
+        }
+
+        .vocab-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .vocab-card {
+            background-color: #fff;
+            border: 1px solid #d1d9e6;
+            border-radius: 6px;
+            padding: 12px;
+            flex: 1 1 200px;
+            min-width: 200px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .vocab-card .vocab-en {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .vocab-card .vocab-pos {
+            font-size: 0.8em;
+            color: #ffffff;
+            background-color: #7f8c8d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .vocab-card .vocab-ja {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .vocab-card .vocab-th {
+            font-family: 'Tahoma', 'Leelawadee', sans-serif;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1a5276;
+        }
+        .vocab-card .vocab-pron {
+            font-size: 0.9em;
+            color: #c0392b;
+        }
+        
+        .example-sentences {
+            margin-top: 20px;
+        }
+        .example-sentences ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .example-sentences li {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+        .sentence-ja { font-weight: bold; margin-bottom: 5px; }
+        .sentence-th { font-size: 1.2em; color: #1a5276; }
+        .sentence-pron { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; font-size: 0.9em;}
+    </style>
+</head>
+<body>
+
+    <main id="main-content">
+        <div class="main-title-header">
+            <span class="title-thai">แบบฝึกหัดการอธิบายภาพ</span>
+            <span class="title-japanese">写真描写トレーニング</span>
+        </div>
+
+        <!-- Exercise 1 -->
+        <div class="exercise-section" id="exercise1">
+            <h2>แบบฝึกหัดที่ 1: สุนัขใส่สร้อยทอง</h2>
+            <div class="instruction-box">
+                <p class="instruction-th"><strong>คำแนะนำสำหรับครูผู้สอน:</strong></p>
+                <ol class="instruction-th" style="margin-bottom: 15px;">
+                    <li>ให้นักเรียนลองคิดและพูดอธิบายภาพด้วยตนเองก่อน โดยสามารถใช้คำศัพท์ที่ให้ไว้เป็นแนวทางได้</li>
+                    <li>จากนั้น ให้คุณครูพูดเป็นตัวอย่าง แล้วให้นักเรียนลองพูดตาม</li>
+                    <li>หากมีคำศัพท์ใหม่ๆ ที่นักเรียนไม่รู้จัก คุณครูสามารถพิมพ์ส่งให้ในช่องแชทได้</li>
+                </ol>
+                <p class="instruction-ja"><strong>学習の進め方:</strong></p>
+                <ol class="instruction-ja" style="margin-bottom: 0;">
+                    <li>まずは自分で考えて写真を描写してみましょう。「使える単語」を参考にしても構いません。</li>
+                    <li>次に、先生がお手本を話します。それを真似して、同じように話してみましょう。</li>
+                    <li>分からない新しい単語があれば、先生がチャットで教えてくれます。</li>
+                </ol>
+            </div>
+            
+            <img src="1.jpg" alt="สุนัขใส่สร้อยคอทองคำและมีคำพูดว่า ไม่มีทองที่จะให้คุณ" class="description-image">
+
+            <h3>คำศัพท์ที่เป็นประโยชน์ (使える単語)</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card"><div class="vocab-en">dog <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">犬</div><div class="vocab-th">สุนัข / หมา</div><div class="vocab-pron">(sù-nák / mǎa)</div></div>
+                <div class="vocab-card"><div class="vocab-en">necklace <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">ネックレス</div><div class="vocab-th">สร้อยคอ</div><div class="vocab-pron">(sɔ̂ɔi-kɔɔ)</div></div>
+                <div class="vocab-card"><div class="vocab-en">gold <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">金</div><div class="vocab-th">ทอง</div><div class="vocab-pron">(thɔɔng)</div></div>
+                <div class="vocab-card"><div class="vocab-en">speech bubble <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">吹き出し</div><div class="vocab-th">กรอบคำพูด</div><div class="vocab-pron">(grɔ̀ɔp kam-pûut)</div></div>
+                <div class="vocab-card"><div class="vocab-en">funny <span class="vocab-pos">คำคุณศัพท์</span></div><div class="vocab-ja">面白い</div><div class="vocab-th">ตลก</div><div class="vocab-pron">(dtà-lòk)</div></div>
+                <div class="vocab-card"><div class="vocab-en">yellow <span class="vocab-pos">คำคุณศัพท์</span></div><div class="vocab-ja">黄色い</div><div class="vocab-th">สีเหลือง</div><div class="vocab-pron">(sǐi-lʉ̌ang)</div></div>
+                <div class="vocab-card"><div class="vocab-en">wear <span class="vocab-pos">คำกริยา</span></div><div class="vocab-ja">身につける</div><div class="vocab-th">สวม / ใส่</div><div class="vocab-pron">(sǔam / sài)</div></div>
+                <div class="vocab-card"><div class="vocab-en">to give <span class="vocab-pos">คำกริยา</span></div><div class="vocab-ja">あげる</div><div class="vocab-th">ให้</div><div class="vocab-pron">(hâi)</div></div>
+            </div>
+
+            <div class="example-sentences">
+                <h3>ตัวอย่างประโยค (例文)</h3>
+                <ul>
+                    <li><p class="sentence-ja">黄色い犬が金のネックレスをしています。</p><p class="sentence-th">สุนัขสีเหลืองกำลังสวมสร้อยคอทองคำ</p><p class="sentence-pron">(sù-nák sǐi-lʉ̌ang gam-lang sǔam sɔ̂ɔi-kɔɔ thɔɔng-kam)</p></li>
+                    <li><p class="sentence-ja">犬は真剣な顔をしています。</p><p class="sentence-th">สุนัขทำหน้าตาจริงจัง</p><p class="sentence-pron">(sù-nák tam nâa-dtaa jing-jang)</p></li>
+                    <li><p class="sentence-ja">吹き出しには「あなたにあげる金はありません」と書かれています。</p><p class="sentence-th">ในกรอบคำพูดเขียนว่า "ไม่มีทองที่จะให้คุณ"</p><p class="sentence-pron">(nai grɔ̀ɔp kam-pûut kǐan wâa "mâi mii thɔɔng tîi jà hâi kun")</p></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Exercise 2 -->
+        <div class="exercise-section" id="exercise2">
+            <h2>แบบฝึกหัดที่ 2: ท้องถนนในกรุงเทพฯ</h2>
+            <div class="instruction-box">
+                <p class="instruction-th"><strong>คำแนะนำสำหรับครูผู้สอน:</strong></p>
+                <ol class="instruction-th" style="margin-bottom: 15px;">
+                    <li>ให้นักเรียนลองคิดและพูดอธิบายภาพด้วยตนเองก่อน โดยสามารถใช้คำศัพท์ที่ให้ไว้เป็นแนวทางได้</li>
+                    <li>จากนั้น ให้คุณครูพูดเป็นตัวอย่าง แล้วให้นักเรียนลองพูดตาม</li>
+                    <li>หากมีคำศัพท์ใหม่ๆ ที่นักเรียนไม่รู้จัก คุณครูสามารถพิมพ์ส่งให้ในช่องแชทได้</li>
+                </ol>
+                <p class="instruction-ja"><strong>学習の進め方:</strong></p>
+                <ol class="instruction-ja" style="margin-bottom: 0;">
+                    <li>まずは自分で考えて写真を描写してみましょう。「使える単語」を参考にしても構いません。</li>
+                    <li>次に、先生がお手本を話します。それを真似して、同じように話してみましょう。</li>
+                    <li>分からない新しい単語があれば、先生がチャットで教えてくれます。</li>
+                </ol>
+            </div>
+
+            <img src="2.jpg" alt="ภาพถ่ายท้องถนนที่วุ่นวายในกรุงเทพฯ มีรถยนต์ ตึกสูง และผู้คนมากมาย" class="description-image">
+
+            <h3>คำศัพท์ที่เป็นประโยชน์ (使える単語)</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card"><div class="vocab-en">road <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">道路</div><div class="vocab-th">ถนน</div><div class="vocab-pron">(tà-nǒn)</div></div>
+                <div class="vocab-card"><div class="vocab-en">car <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">車</div><div class="vocab-th">รถยนต์</div><div class="vocab-pron">(rót-yon)</div></div>
+                <div class="vocab-card"><div class="vocab-en">motorcycle <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">バイク</div><div class="vocab-th">มอเตอร์ไซค์</div><div class="vocab-pron">(mɔɔ-dtəə-sai)</div></div>
+                <div class="vocab-card"><div class="vocab-en">building <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">ビル</div><div class="vocab-th">ตึก</div><div class="vocab-pron">(dtʉ̀k)</div></div>
+                <div class="vocab-card"><div class="vocab-en">city <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">都市</div><div class="vocab-th">เมือง</div><div class="vocab-pron">(mʉang)</div></div>
+                <div class="vocab-card"><div class="vocab-en">people <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">人々</div><div class="vocab-th">ผู้คน</div><div class="vocab-pron">(pûu-kon)</div></div>
+                <div class="vocab-card"><div class="vocab-en">billboard <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">広告看板</div><div class="vocab-th">ป้ายโฆษณา</div><div class="vocab-pron">(bpâai kôot-sà-naa)</div></div>
+                <div class="vocab-card"><div class="vocab-en">traffic <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">交通</div><div class="vocab-th">การจราจร</div><div class="vocab-pron">(gaan-jà-raa-jɔɔn)</div></div>
+                <div class="vocab-card"><div class="vocab-en">busy <span class="vocab-pos">คำคุณศัพท์</span></div><div class="vocab-ja">混雑した</div><div class="vocab-th">วุ่นวาย</div><div class="vocab-pron">(wûn-waai)</div></div>
+                <div class="vocab-card"><div class="vocab-en">many <span class="vocab-pos">คำคุณศัพท์</span></div><div class="vocab-ja">たくさんの</div><div class="vocab-th">มากมาย</div><div class="vocab-pron">(mâak-maai)</div></div>
+            </div>
+            
+            <div class="example-sentences">
+                <h3>ตัวอย่างประโยค (例文)</h3>
+                <ul>
+                    <li><p class="sentence-ja">これはバンコクの通りの写真です。</p><p class="sentence-th">นี่คือภาพถ่ายถนนในกรุงเทพฯ</p><p class="sentence-pron">(nîi kʉʉ pâap-tàai tà-nǒn nai grung-têep)</p></li>
+                    <li><p class="sentence-ja">道路にはたくさんの車やバイクがいます。</p><p class="sentence-th">บนถนนมีรถยนต์และมอเตอร์ไซค์มากมาย</p><p class="sentence-pron">(bon tà-nǒn mii rót-yon lɛ́ mɔɔ-dtəə-sai mâak-maai)</p></li>
+                    <li><p class="sentence-ja">周りには高いビルや大きな広告看板があります。</p><p class="sentence-th">รอบๆ มีตึกสูงและป้ายโฆษณาขนาดใหญ่</p><p class="sentence-pron">(rɔ̂ɔp-rɔ̂ɔp mii dtʉ̀k-sǔung lɛ́ bpâai kôot-sà-naa kà-nàat yài)</p></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Exercise 3 -->
+        <div class="exercise-section" id="exercise3">
+            <h2>แบบฝึกหัดที่ 3: การถามทางจากแผนที่</h2>
+            <div class="instruction-box">
+                <p class="instruction-th"><strong>คำแนะนำสำหรับครูผู้สอน:</strong></p>
+                <ol class="instruction-th" style="margin-bottom: 15px;">
+                    <li>ให้นักเรียนลองคิดและพูดอธิบายภาพด้วยตนเองก่อน โดยสามารถใช้คำศัพท์ที่ให้ไว้เป็นแนวทางได้</li>
+                    <li>จากนั้น ให้คุณครูพูดเป็นตัวอย่าง แล้วให้นักเรียนลองพูดตาม</li>
+                    <li>หากมีคำศัพท์ใหม่ๆ ที่นักเรียนไม่รู้จัก คุณครูสามารถพิมพ์ส่งให้ในช่องแชทได้</li>
+                </ol>
+                <p class="instruction-ja"><strong>学習の進め方:</strong></p>
+                <ol class="instruction-ja" style="margin-bottom: 0;">
+                    <li>まずは自分で考えて写真を描写してみましょう。「使える単語」を参考にしても構いません。</li>
+                    <li>次に、先生がお手本を話します。それを真似して、同じように話してみましょう。</li>
+                    <li>分からない新しい単語があれば、先生がチャットで教えてくれます。</li>
+                </ol>
+            </div>
+
+            <img src="3.jpg" alt="แผนที่เมืองแสดงตำแหน่งของสถานที่ต่างๆ เช่น โรงพยาบาล ที่ทำการไปรษณีย์ และสถานีตำรวจ" class="description-image">
+
+            <h3>คำศัพท์ที่เป็นประโยชน์ (使える単語)</h3>
+            <div class="vocab-grid">
+                <div class="vocab-card"><div class="vocab-en">map <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">地図</div><div class="vocab-th">แผนที่</div><div class="vocab-pron">(pɛ̌ɛn-tîi)</div></div>
+                <div class="vocab-card"><div class="vocab-en">post office <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">郵便局</div><div class="vocab-th">ที่ทำการไปรษณีย์</div><div class="vocab-pron">(tîi-tam-gaan bprai-sà-nii)</div></div>
+                <div class="vocab-card"><div class="vocab-en">hospital <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">病院</div><div class="vocab-th">โรงพยาบาล</div><div class="vocab-pron">(roong-pá-yaa-baan)</div></div>
+                <div class="vocab-card"><div class="vocab-en">bookstore <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">本屋</div><div class="vocab-th">ร้านหนังสือ</div><div class="vocab-pron">(ráan nǎng-sʉ̌ʉ)</div></div>
+                <div class="vocab-card"><div class="vocab-en">police station <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">警察署</div><div class="vocab-th">สถานีตำรวจ</div><div class="vocab-pron">(sà-tǎa-nii dtam-rùat)</div></div>
+                <div class="vocab-card"><div class="vocab-en">bank <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">銀行</div><div class="vocab-th">ธนาคาร</div><div class="vocab-pron">(tá-naa-kaan)</div></div>
+                <div class="vocab-card"><div class="vocab-en">bus stop <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">バス停</div><div class="vocab-th">ป้ายรถเมล์</div><div class="vocab-pron">(bpâai rót-mee)</div></div>
+                <div class="vocab-card"><div class="vocab-en">station <span class="vocab-pos">คำนาม</span></div><div class="vocab-ja">駅</div><div class="vocab-th">สถานี</div><div class="vocab-pron">(sà-tǎa-nii)</div></div>
+                <div class="vocab-card"><div class="vocab-en">next to <span class="vocab-pos">คำบุพบท</span></div><div class="vocab-ja">～の隣</div><div class="vocab-th">ข้างๆ</div><div class="vocab-pron">(kâang-kâang)</div></div>
+                <div class="vocab-card"><div class="vocab-en">across from <span class="vocab-pos">คำบุพบท</span></div><div class="vocab-ja">～の向かい</div><div class="vocab-th">ตรงข้าม</div><div class="vocab-pron">(dtrong-kâam)</div></div>
+            </div>
+
+            <div class="example-sentences">
+                <h3>ตัวอย่างประโยค (例文)</h3>
+                <ul>
+                    <li><p class="sentence-ja">この地図を使って道を探すことができます。</p><p class="sentence-th">เราสามารถใช้แผนที่นี้เพื่อหาทางได้</p><p class="sentence-pron">(rao sǎa-mâat chái pɛ̌ɛn-tîi níi pʉ̂a hǎa taang dâai)</p></li>
+                    <li><p class="sentence-ja">郵便局は病院の隣にあります。</p><p class="sentence-th">ที่ทำการไปรษณีย์อยู่ข้างๆ โรงพยาบาล</p><p class="sentence-pron">(tîi-tam-gaan bprai-sà-nii yùu kâang-kâang roong-pá-yaa-baan)</p></li>
+                    <li><p class="sentence-ja">本屋はカフェの向かいにあります。</p><p class="sentence-th">ร้านหนังสืออยู่ตรงข้ามกับร้านกาแฟ</p><p class="sentence-pron">(ráan nǎng-sʉ̌ʉ yùu dtrong-kâam gàp ráan gaa-fɛɛ)</p></li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
