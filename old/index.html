@@ -36,7 +36,6 @@
             border-radius: 5px;
             font-size: 1.1em;
         }
-        /* Section for each language */
         .language-section {
             margin-bottom: 40px;
         }
@@ -47,7 +46,6 @@
             border-bottom: 2px solid #ddd;
             margin-bottom: 20px;
         }
-        /* Box for each topic category within a language */
         .topic-category {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -109,6 +107,8 @@
             margin-bottom: 0;
         }
         .topic-category summary {
+            display: flex;
+            align-items: center;
             padding: 15px 20px;
             background-color: #e3f2fd;
             border: 1px solid #1976D2;
@@ -118,26 +118,22 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
-            list-style: none; /* Hide default marker */
-            position: relative;
+            list-style: none;
         }
         .topic-category summary:hover {
             background-color: #d1eaff;
         }
         .topic-category summary::-webkit-details-marker {
-            display: none; /* Hide default marker for Chrome/Safari */
+            display: none;
         }
         .topic-category summary::before {
-            content: '▶'; /* Collapsed state icon */
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            content: '▶';
             font-size: 0.8em;
             margin-right: 15px;
+            transition: transform 0.2s;
         }
         .topic-category details[open] > summary::before {
-            content: '▼'; /* Expanded state icon */
+            content: '▼';
         }
         .topic-category details[open] > summary {
             border-bottom-left-radius: 0;
@@ -149,6 +145,19 @@
             border-top: none;
             border-bottom-left-radius: 8px;
             border-bottom-right-radius: 8px;
+        }
+
+        /* --- New Style for Sub-Category Headers --- */
+        .sub-category-header {
+            font-size: 1.3em;
+            color: #444;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .sub-category-header:first-child {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -171,7 +180,6 @@
                     <li>
                         <a href="./eng/conversation_topics/lv6/alcohol_lv6.html">Alcohol</a>
                     </li>
-                    <!-- New English topics can be added here -->
                 </ul>
             </div>
         </div>
@@ -181,35 +189,33 @@
             <h2>Thai (ภาษาไทย)</h2>
             <div class="topic-category">
 
-                <!-- Level 2 Topics -->
+                <!-- MODIFIED: Conversation Topics (Nested) -->
                 <details>
-                    <summary>Conversation Topics - Level 2</summary>
+                    <summary>Conversation Topics</summary>
                     <div class="topic-list-wrapper">
+                        <h3 class="sub-category-header">Level 2</h3>
                         <ul class="topic-list">
-                            <li>
-                                <a href="./thai/conversation_topics/lv2/hotel_restaurant_lv2.html">Hotel & Restaurant</a>
-                            </li>
-                            <li>
-                                <a href="./thai/conversation_topics/lv2/japan_disaster_guide_lv2.html">Japan Disaster Guide</a>
-                            </li>
+                            <li><a href="./thai/conversation_topics/lv2/hotel_restaurant_lv2.html">Hotel & Restaurant</a></li>
+                            <li><a href="./thai/conversation_topics/lv2/japan_disaster_guide_lv2.html">Japan Disaster Guide</a></li>
+                            <li><a href="./thai/conversation_topics/lv2/japan_history_culture_lv2.html">Japan History & Culture</a></li>
+                        </ul>
+                        
+                        <h3 class="sub-category-header">Level 3</h3>
+                        <ul class="topic-list">
+                            <li><a href="./thai/conversation_topics/lv3/economic_structure_1_lv3.html">経済の仕組み</a></li>
+                            <li><a href="./thai/conversation_topics/lv3/economic_structure_2_lv3.html">経済の仕組み 2</a></li>
+                            <li><a href="./thai/conversation_topics/lv3/japan_aging_society_guide_lv3.html">日本の高齢化社会ガイド</a></li>
                         </ul>
                     </div>
                 </details>
 
-                <!-- Level 3 Topics -->
+                <!-- MODIFIED: News (Nested) -->
                 <details>
-                    <summary>Conversation Topics - Level 3</summary>
+                    <summary>News</summary>
                     <div class="topic-list-wrapper">
+                        <h3 class="sub-category-header">Level 4</h3>
                         <ul class="topic-list">
-                            <li>
-                                <a href="./thai/conversation_topics/lv3/economic_structure_1_lv3.html">経済の仕組み</a>
-                            </li>
-                            <li>
-                                <a href="./thai/conversation_topics/lv3/economic_structure_2_lv3.html">経済の仕組み 2</a>
-                            </li>
-                            <li>
-                                <a href="./thai/conversation_topics/lv3/japan_aging_society_guide_lv3.html">日本の高齢化社会ガイド</a>
-                            </li>
+                            <li><a href="./thai/news/thai_logistics_lv4.html">Thai Logistics</a></li>
                         </ul>
                     </div>
                 </details>
@@ -219,18 +225,56 @@
                     <summary>Thai Made Clear - Intermediate</summary>
                     <div class="topic-list-wrapper">
                         <ul class="topic-list">
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/1_タイの地理.html">1. タイの地理</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/2_タイの気候.html">2. タイの気候</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/3_他民族のタイ人.html">3. 他民族のタイ人</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/4課_タイシルク.html">4課. タイシルク</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/5課_タイ家屋.html">5課. タイ家屋</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/6課_タイの食文化.html">6課. タイの食文化</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17_課_通常.html">17課 (通常版)</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/17課_和訳有.html">17課 (和訳付き)</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_通常.html">18課 (通常版)</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/18課_翻訳版.html">18課 (翻訳版)</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/19_死.html">19課. 死</a></li>
-                            <li><a href="./thai/conversation_topics/thai_made_clear_intermediate_level/20_タイ人の信仰.html">20課. タイ人の信仰</a></li>
+                            <li><a href="./thai/textbook/1_タイの地理.html">1. タイの地理</a></li>
+                            <li><a href="./thai/textbook/2_タイの気候.html">2. タイの気候</a></li>
+                            <li><a href="./thai/textbook/3_他民族のタイ人.html">3. 他民族のタイ人</a></li>
+                            <li><a href="./thai/textbook/4課_タイシルク.html">4課. タイシルク</a></li>
+                            <li><a href="./thai/textbook/5課_タイ家屋.html">5課. タイ家屋</a></li>
+                            <li><a href="./thai/textbook/6課_タイの食文化.html">6課. タイの食文化</a></li>
+                            <li><a href="./thai/textbook/17_課_通常.html">17課 (通常版)</a></li>
+                            <li><a href="./thai/textbook/17課_和訳有.html">17課 (和訳付き)</a></li>
+                            <li><a href="./thai/textbook/18課_通常.html">18課 (通常版)</a></li>
+                            <li><a href="./thai/textbook/18課_翻訳版.html">18課 (翻訳版)</a></li>
+                            <li><a href="./thai/textbook/19_死.html">19課. 死</a></li>
+                            <li><a href="./thai/textbook/20_タイ人の信仰.html">20課. タイ人の信仰</a></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Vocabulary Lists Section -->
+                <details>
+                    <summary>単語リスト (Vocabulary)</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li><a href="./thai/words/1_時間_翻訳.html">1. 時間に関する単語</a></li>
+                            <li><a href="./thai/words/2_タイ語の数字と類別子.html">2. 数字と類別子</a></li>
+                            <li><a href="./thai/words/3_電気自動車.html">3. 電気自動車</a></li>
+                            <li><a href="./thai/words/4_数字の数え方.html">4. 数字の数え方</a></li>
+                            <li><a href="./thai/words/5_0602_単語.html">5. 基本単語 (0602)</a></li>
+                            <li><a href="./thai/words/6_動物.html">6. 動物</a></li>
+                            <li><a href="./thai/words/7_仕事_オフィス.html">7. 仕事・オフィス</a></li>
+                            <li><a href="./thai/words/8_タイ料理.html">8. タイ料理</a></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- UPDATED: Image Depiction Section -->
+                <details>
+                    <summary>画像描写 (Image Depiction)</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li><a href="./thai/imgdepiction/1/1_thai-photo-description.html">画像描写練習 1</a></li>
+                            <li><a href="./thai/imgdepiction/2/2_thai-photo-description.html">画像描写練習 2</a></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- NEW: Role-Playing Section -->
+                <details open>
+                    <summary>ロールプレイ (Role-Playing)</summary>
+                    <div class="topic-list-wrapper">
+                        <ul class="topic-list">
+                            <li><a href="./thai/roleplay/1_thai-office-roleplay.html">オフィスでの会話 (Office Conversation)</a></li>
                         </ul>
                     </div>
                 </details>

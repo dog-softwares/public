@@ -1,0 +1,17 @@
+ok です。
+
+完成した新しいページと、必要なファイルをgit ディレクトリへ保存しました。
+git status
+
+
+
+
+また、このwebサイトのトップページである index.html に新しい教材へのリンクを追加してください。
+「画像描写練習 3」とします。
+
+なお、3_thai-photo-description-work_translation.html
+へはリンクを作成する必要はありません。
+
+
+
+
