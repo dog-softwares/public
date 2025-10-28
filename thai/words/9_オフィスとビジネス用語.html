@@ -105,6 +105,25 @@
         tbody tr:hover { background-color: #e2e6ea; }
         td { font-size: 1em; }
 
+        /* ★★★ START: MODIFICATION ★★★ */
+        /* --- 例文アイテム用のスタイル --- */
+        .example-item {
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #c0c9d6; /* 各例文の区切り線 */
+        }
+        /* 最後の例文アイテムからは区切り線を消す */
+        #section-examples .example-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        /* 例文アイテム内の各行の余白を少し詰めてグループ感を出す */
+        .example-item p {
+            margin: 8px 0;
+        }
+        /* ★★★ END: MODIFICATION ★★★ */
+
         .vocab-table {
             table-layout: fixed; /* カラム幅の計算方法を固定に */
         }
@@ -271,250 +290,316 @@
                 <h3>2. 例文</h3>
 
                 <h4 id="category-1">カテゴリー1：会社・組織 (1-10)</h4>
-                <p><strong>1.</strong> <span class="thai-text">บริษัทนี้ใหญ่</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-sàt níi yài</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この会社は大きいです。</span></div></details></p>
-                
-                <p><strong>2.</strong> <span class="thai-text">โครงสร้างองค์กรซับซ้อน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">krooŋ-sâang ong-gɔɔn sáp-sɔ́ɔn</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">組織の構造は複雑です。</span></div></details></p>
-
-                <p><strong>3.</strong> <span class="thai-text">สวัสดิการดี</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-wàt-dì-gaan dii</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">福利厚生が良いです。</span></div></details></p>
-
-                <p><strong>4.</strong> <span class="thai-text">สำนักงานใหญ่อยู่กรุงเทพ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎm-nák-ngaan yài yùu grung-têep</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">本社はバンコクにあります。</span></div></details></p>
-
-                <p><strong>5.</strong> <span class="thai-text">สาขาอยู่ที่เชียงใหม่</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎa-kǎa yùu chiiang-mài</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">支社はチェンマイにあります。</span></div></details></p>
-
-                <p><strong>6.</strong> <span class="thai-text">เขาก่อตั้งบริษัท</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kǎo gɔ̀ɔ-dtâng bɔɔ-rí-sàt</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">彼は会社を設立しました。</span></div></details></p>
-
-                <p><strong>7.</strong> <span class="thai-text">นี่คือบริษัทข้ามชาติ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nîi kʉʉ bɔɔ-rí-sàt kâam-châat</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">これは多国籍企業です。</span></div></details></p>
-
-                <p><strong>8.</strong> <span class="thai-text">วัฒนธรรมองค์กรสำคัญ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wát-tá-ná-tam ong-gɔɔn sǎm-kan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">企業文化は重要です。</span></div></details></p>
-
-                <p><strong>9.</strong> <span class="thai-text">วิเคราะห์บริษัทคู่แข่ง</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wí-krɔ́ bɔɔ-rí-sàt kûu-kɛ̀ŋ</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">競合他社を分析します。</span></div></details></p>
-
-                <p><strong>10.</strong> <span class="thai-text">มีการประชุมผู้ถือหุ้น</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mii gaan bprà-chum pûu-tʉ̌ʉ-hûn</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">株主総会があります。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>1.</strong> <span class="thai-text">บริษัทนี้ใหญ่</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-sàt níi yài</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この会社は大きいです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>2.</strong> <span class="thai-text">โครงสร้างองค์กรซับซ้อน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">krooŋ-sâang ong-gɔɔn sáp-sɔ́ɔn</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">組織の構造は複雑です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>3.</strong> <span class="thai-text">สวัสดิการดี</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-wàt-dì-gaan dii</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">福利厚生が良いです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>4.</strong> <span class="thai-text">สำนักงานใหญ่อยู่กรุงเทพ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎm-nák-ngaan yài yùu grung-têep</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">本社はバンコクにあります。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>5.</strong> <span class="thai-text">สาขาอยู่ที่เชียงใหม่</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎa-kǎa yùu chiiang-mài</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">支社はチェンマイにあります。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>6.</strong> <span class="thai-text">เขาก่อตั้งบริษัท</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kǎo gɔ̀ɔ-dtâng bɔɔ-rí-sàt</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">彼は会社を設立しました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>7.</strong> <span class="thai-text">นี่คือบริษัทข้ามชาติ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nîi kʉʉ bɔɔ-rí-sàt kâam-châat</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">これは多国籍企業です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>8.</strong> <span class="thai-text">วัฒนธรรมองค์กรสำคัญ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wát-tá-ná-tam ong-gɔɔn sǎm-kan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">企業文化は重要です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>9.</strong> <span class="thai-text">วิเคราะห์บริษัทคู่แข่ง</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wí-krɔ́ bɔɔ-rí-sàt kûu-kɛ̀ŋ</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">競合他社を分析します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>10.</strong> <span class="thai-text">มีการประชุมผู้ถือหุ้น</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mii gaan bprà-chum pûu-tʉ̌ʉ-hûn</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">株主総会があります。</span></div></details></p>
+                </div>
 
                 <h4 id="category-2">カテゴリー2：役職・部署 (11-20)</h4>
-                <p><strong>11.</strong> <span class="thai-text">ประธานบริษัทไม่อยู่</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bprà-taan bɔɔ-rí-sàt mâi yùu</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">社長は不在です。</span></div></details></p>
-
-                <p><strong>12.</strong> <span class="thai-text">รายงานให้ผู้จัดการฝ่าย</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">raai-ngaan hâi pûu-jàt-gaan fàai</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">部長に報告します。</span></div></details></p>
-
-                <p><strong>13.</strong> <span class="thai-text">ฉันอยู่แผนกบุคคล</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chán yùu pà-nɛ̀ɛk bùk-kon</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">私は人事部に所属しています。</span></div></details></p>
-
-                <p><strong>14.</strong> <span class="thai-text">เป้าหมายของฝ่ายขายสูง</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpâo-mǎai kɔ̌ɔng fàai-kǎai sǔung</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">営業部の目標は高いです。</span></div></details></p>
-
-                <p><strong>15.</strong> <span class="thai-text">แผนกบัญชีออกใบแจ้งหนี้</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pà-nɛ̀ɛk ban-chii ɔ̀ɔk bai-jɛ̂ɛng-nîi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">経理部が請求書を発行します。</span></div></details></p>
-
-                <p><strong>16.</strong> <span class="thai-text">เขาได้เลื่อนตำแหน่ง</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kǎo dâai lʉ̂an dtam-nɛ̀ng</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">彼は昇進しました。</span></div></details></p>
-                
-                <p><strong>17.</strong> <span class="thai-text">พนักงานต้อนรับอยู่ไหน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pá-nák-ngaan dtɔ̂ɔn-ráp yùu nǎi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">受付係はどこですか？</span></div></details></p>
-
-                <p><strong>18.</strong> <span class="thai-text">เรียกเจ้าหน้าที่การตลาด</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rîak jâo-nâa-tîi gaan-dtà-làat</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">マーケティング担当者を呼んでください。</span></div></details></p>
-
-                <p><strong>19.</strong> <span class="thai-text">ซีอีโอเป็นคนตัดสินใจ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sii-ii-oo bpen kon dtàt-sǐn-jai</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">CEOが決定を下します。</span></div></details></p>
-
-                <p><strong>20.</strong> <span class="thai-text">เลขานุการจัดการตารางงาน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lee-kǎa-nú-gaan jàt-gaan dtaa-raang-ngaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">秘書がスケジュールを管理します。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>11.</strong> <span class="thai-text">ประธานบริษัทไม่อยู่</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bprà-taan bɔɔ-rí-sàt mâi yùu</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">社長は不在です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>12.</strong> <span class="thai-text">รายงานให้ผู้จัดการฝ่าย</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">raai-ngaan hâi pûu-jàt-gaan fàai</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">部長に報告します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>13.</strong> <span class="thai-text">ฉันอยู่แผนกบุคคล</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chán yùu pà-nɛ̀ɛk bùk-kon</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">私は人事部に所属しています。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>14.</strong> <span class="thai-text">เป้าหมายของฝ่ายขายสูง</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpâo-mǎai kɔ̌ɔng fàai-kǎai sǔung</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">営業部の目標は高いです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>15.</strong> <span class="thai-text">แผนกบัญชีออกใบแจ้งหนี้</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pà-nɛ̀ɛk ban-chii ɔ̀ɔk bai-jɛ̂ɛng-nîi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">経理部が請求書を発行します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>16.</strong> <span class="thai-text">เขาได้เลื่อนตำแหน่ง</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kǎo dâai lʉ̂an dtam-nɛ̀ng</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">彼は昇進しました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>17.</strong> <span class="thai-text">พนักงานต้อนรับอยู่ไหน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pá-nák-ngaan dtɔ̂ɔn-ráp yùu nǎi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">受付係はどこですか？</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>18.</strong> <span class="thai-text">เรียกเจ้าหน้าที่การตลาด</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">rîak jâo-nâa-tîi gaan-dtà-làat</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">マーケティング担当者を呼んでください。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>19.</strong> <span class="thai-text">ซีอีโอเป็นคนตัดสินใจ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sii-ii-oo bpen kon dtàt-sǐn-jai</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">CEOが決定を下します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>20.</strong> <span class="thai-text">เลขานุการจัดการตารางงาน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">lee-kǎa-nú-gaan jàt-gaan dtaa-raang-ngaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">秘書がスケジュールを管理します。</span></div></details></p>
+                </div>
 
                 <h4 id="category-3">カテゴリー3：業務・タスク (21-30)</h4>
-                <p><strong>21.</strong> <span class="thai-text">บริหารโครงการ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-hǎan krooŋ-gaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プロジェクトを管理します。</span></div></details></p>
-                
-                <p><strong>22.</strong> <span class="thai-text">กรอกข้อมูล</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">grɔ̀ɔk kɔ̂ɔ-muun</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">データを入力します。</span></div></details></p>
-
-                <p><strong>23.</strong> <span class="thai-text">เจรจากับลูกค้า</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jeen-rá-jaa gàp lûuk-káa</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">顧客と交渉します。</span></div></details></p>
-
-                <p><strong>24.</strong> <span class="thai-text">ส่งรายงาน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng raai-ngaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">レポートを提出します。</span></div></details></p>
-
-                <p><strong>25.</strong> <span class="thai-text">เสนอแผนกลยุทธ์ใหม่</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-nə̌ə pɛ̌ɛn gon-lá-yút mài</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">新しい戦略を提案します。</span></div></details></p>
-
-                <p><strong>26.</strong> <span class="thai-text">เจ้านายมอบหมายงาน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jâo-naai mɔ̂ɔp-mǎai ngaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">上司が仕事を割り当てます。</span></div></details></p>
-
-                <p><strong>27.</strong> <span class="thai-text">กำหนดส่งคือพรุ่งนี้</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gam-nòt sòng kʉʉ prûng-níi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">締め切りは明日です。</span></div></details></p>
-                
-                <p><strong>28.</strong> <span class="thai-text">การควบคุมคุณภาพเข้มงวด</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan kûap-kum kun-ná-pâap kêm-ngûat</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">品質管理は厳しいです。</span></div></details></p>
-                
-                <p><strong>29.</strong> <span class="thai-text">ทำการวิจัยตลาด</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam gaan wí-jai dtà-làat</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">市場調査を行います。</span></div></details></p>
-                
-                <p><strong>30.</strong> <span class="thai-text">ปรับปรุงประสิทธิภาพการทำงาน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpràp-bprung bprà-sìt-tí-pâap gaan-tam-ngaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">業務効率を改善します。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>21.</strong> <span class="thai-text">บริหารโครงการ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-hǎan krooŋ-gaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プロジェクトを管理します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>22.</strong> <span class="thai-text">กรอกข้อมูล</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">grɔ̀ɔk kɔ̂ɔ-muun</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">データを入力します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>23.</strong> <span class="thai-text">เจรจากับลูกค้า</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jeen-rá-jaa gàp lûuk-káa</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">顧客と交渉します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>24.</strong> <span class="thai-text">ส่งรายงาน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng raai-ngaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">レポートを提出します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>25.</strong> <span class="thai-text">เสนอแผนกลยุทธ์ใหม่</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-nə̌ə pɛ̌ɛn gon-lá-yút mài</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">新しい戦略を提案します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>26.</strong> <span class="thai-text">เจ้านายมอบหมายงาน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">jâo-naai mɔ̂ɔp-mǎai ngaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">上司が仕事を割り当てます。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>27.</strong> <span class="thai-text">กำหนดส่งคือพรุ่งนี้</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gam-nòt sòng kʉʉ prûng-níi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">締め切りは明日です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>28.</strong> <span class="thai-text">การควบคุมคุณภาพเข้มงวด</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan kûap-kum kun-ná-pâap kêm-ngûat</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">品質管理は厳しいです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>29.</strong> <span class="thai-text">ทำการวิจัยตลาด</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam gaan wí-jai dtà-làat</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">市場調査を行います。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>30.</strong> <span class="thai-text">ปรับปรุงประสิทธิภาพการทำงาน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpràp-bprung bprà-sìt-tí-pâap gaan-tam-ngaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">業務効率を改善します。</span></div></details></p>
+                </div>
 
                 <h4 id="category-4">カテゴリー4：会議・書類 (31-40)</h4>
-                <p><strong>31.</strong> <span class="thai-text">วาระการประชุมคืออะไร</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">waa-rá gaan bprà-chum kʉʉ à-rai</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会議の議題は何ですか？</span></div></details></p>
-                
-                <p><strong>32.</strong> <span class="thai-text">ทำรายงานการประชุม</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam raai-ngaan gaan bprà-chum</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">議事録を作成します。</span></div></details></p>
-                
-                <p><strong>33.</strong> <span class="thai-text">กรุณาเซ็นสัญญาฉบับนี้</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-rú-naa sen sǎn-yaa chà-bàp níi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この契約書に署名してください。</span></div></details></p>
-                
-                <p><strong>34.</strong> <span class="thai-text">ส่งใบเสนอราคา</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng bai sà-nə̌ə raa-kaa</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">見積書を送ります。</span></div></details></p>
-                
-                <p><strong>35.</strong> <span class="thai-text">ได้รับใบแจ้งหนี้หรือยัง</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dâai-ráp bai jɛ̂ɛng nîi rʉ̌ʉ yang</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">請求書を受け取りましたか？</span></div></details></p>
-
-                <p><strong>36.</strong> <span class="thai-text">เตรียมการนำเสนอ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtriam gaan nam-sà-nə̌ə</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プレゼンテーションを準備します。</span></div></details></p>
-
-                <p><strong>37.</strong> <span class="thai-text">กรุณาอนุมัติเอกสาร</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-rú-naa à-nú-mát èek-gà-sǎan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">書類を承認してください。</span></div></details></p>
-
-                <p><strong>38.</strong> <span class="thai-text">นี่คือบันทึกข้อความภายใน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nîi kʉʉ ban-tʉ́k kɔ̂ɔ-kwaam paai-nai</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">これは社内回覧です。</span></div></details></p>
-
-                <p><strong>39.</strong> <span class="thai-text">ป้องกันข้อมูลที่เป็นความลับ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpɔ̂ng-gan kɔ̂ɔ-muun tîi bpen kwaam-láp</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">機密情報を保護します。</span></div></details></p>
-
-                <p><strong>40.</strong> <span class="thai-text">ต่อสัญญา</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtɔ̀ɔ sǎn-yaa</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">契約を更新します。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>31.</strong> <span class="thai-text">วาระการประชุมคืออะไร</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">waa-rá gaan bprà-chum kʉʉ à-rai</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会議の議題は何ですか？</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>32.</strong> <span class="thai-text">ทำรายงานการประชุม</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tam raai-ngaan gaan bprà-chum</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">議事録を作成します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>33.</strong> <span class="thai-text">กรุณาเซ็นสัญญาฉบับนี้</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-rú-naa sen sǎn-yaa chà-bàp níi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この契約書に署名してください。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>34.</strong> <span class="thai-text">ส่งใบเสนอราคา</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng bai sà-nə̌ə raa-kaa</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">見積書を送ります。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>35.</strong> <span class="thai-text">ได้รับใบแจ้งหนี้หรือยัง</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dâai-ráp bai jɛ̂ɛng nîi rʉ̌ʉ yang</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">請求書を受け取りましたか？</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>36.</strong> <span class="thai-text">เตรียมการนำเสนอ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtriam gaan nam-sà-nə̌ə</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プレゼンテーションを準備します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>37.</strong> <span class="thai-text">กรุณาอนุมัติเอกสาร</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gà-rú-naa à-nú-mát èek-gà-sǎan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">書類を承認してください。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>38.</strong> <span class="thai-text">นี่คือบันทึกข้อความภายใน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">nîi kʉʉ ban-tʉ́k kɔ̂ɔ-kwaam paai-nai</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">これは社内回覧です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>39.</strong> <span class="thai-text">ป้องกันข้อมูลที่เป็นความลับ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bpɔ̂ng-gan kɔ̂ɔ-muun tîi bpen kwaam-láp</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">機密情報を保護します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>40.</strong> <span class="thai-text">ต่อสัญญา</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtɔ̀ɔ sǎn-yaa</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">契約を更新します。</span></div></details></p>
+                </div>
 
                 <h4 id="category-5">カテゴリー5：OA機器・備品 (41-50)</h4>
-                <p><strong>41.</strong> <span class="thai-text">คอมพิวเตอร์ไม่ทำงาน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔm-piw-dtə̂ə mâi tam-ngaan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">コンピューターが動きません。</span></div></details></p>
-                
-                <p><strong>42.</strong> <span class="thai-text">หมึกเครื่องพิมพ์หมด</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̀k krʉ̂ang-pim mòt</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プリンターのインクが切れました。</span></div></details></p>
-                
-                <p><strong>43.</strong> <span class="thai-text">ถ่ายเอกสารฉบับนี้</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tàai èek-gà-sǎan chà-bàp níi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この書類をコピーします。</span></div></details></p>
-                
-                <p><strong>44.</strong> <span class="thai-text">ใช้เครื่องสแกนไม่เป็น</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chái krʉ̂ang sà-gɛɛn mâi bpen</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">スキャナーの使い方が分かりません。</span></div></details></p>
-                
-                <p><strong>45.</strong> <span class="thai-text">ติดตั้งโปรเจคเตอร์</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtìt-dtâng bproo-jèk-dtə̂ə</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プロジェクターを設置します。</span></div></details></p>
-
-                <p><strong>46.</strong> <span class="thai-text">ส่งแฟกซ์ไปแล้ว</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng fɛ̀k bpai lɛ́ɛo</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ファックスを送りました。</span></div></details></p>
-
-                <p><strong>47.</strong> <span class="thai-text">เครื่องทำลายเอกสารอยู่ไหน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">krʉ̂ang tam-laai èek-gà-sǎan yùu nǎi</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">シュレッダーはどこですか？</span></div></details></p>
-
-                <p><strong>48.</strong> <span class="thai-text">สั่งเครื่องเขียน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sàng krʉ̂ang-kǐan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">文房具を注文します。</span></div></details></p>
-
-                <p><strong>49.</strong> <span class="thai-text">โทรศัพท์ของบริษัทกำลังดัง</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">too-rá-sàp kɔ̌ɔng bɔɔ-rí-sàt gam-lang dang</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会社の電話が鳴っています。</span></div></details></p>
-
-                <p><strong>50.</strong> <span class="thai-text">การเชื่อมต่ออินเทอร์เน็ตช้า</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan chʉ̂am-dtɔ̀ɔ in-təə-nèt cháa</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">インターネット接続が遅いです。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>41.</strong> <span class="thai-text">คอมพิวเตอร์ไม่ทำงาน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kɔm-piw-dtə̂ə mâi tam-ngaan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">コンピューターが動きません。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>42.</strong> <span class="thai-text">หมึกเครื่องพิมพ์หมด</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̀k krʉ̂ang-pim mòt</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プリンターのインクが切れました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>43.</strong> <span class="thai-text">ถ่ายเอกสารฉบับนี้</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tàai èek-gà-sǎan chà-bàp níi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この書類をコピーします。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>44.</strong> <span class="thai-text">ใช้เครื่องสแกนไม่เป็น</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chái krʉ̂ang sà-gɛɛn mâi bpen</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">スキャナーの使い方が分かりません。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>45.</strong> <span class="thai-text">ติดตั้งโปรเจคเตอร์</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtìt-dtâng bproo-jèk-dtə̂ə</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">プロジェクターを設置します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>46.</strong> <span class="thai-text">ส่งแฟกซ์ไปแล้ว</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sòng fɛ̀k bpai lɛ́ɛo</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ファックスを送りました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>47.</strong> <span class="thai-text">เครื่องทำลายเอกสารอยู่ไหน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">krʉ̂ang tam-laai èek-gà-sǎan yùu nǎi</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">シュレッダーはどこですか？</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>48.</strong> <span class="thai-text">สั่งเครื่องเขียน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sàng krʉ̂ang-kǐan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">文房具を注文します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>49.</strong> <span class="thai-text">โทรศัพท์ของบริษัทกำลังดัง</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">too-rá-sàp kɔ̌ɔng bɔɔ-rí-sàt gam-lang dang</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会社の電話が鳴っています。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>50.</strong> <span class="thai-text">การเชื่อมต่ออินเทอร์เน็ตช้า</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gaan chʉ̂am-dtɔ̀ɔ in-təə-nèt cháa</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">インターネット接続が遅いです。</span></div></details></p>
+                </div>
 
                 <h4 id="category-6">カテゴリー6：経済・金融 (51-60)</h4>
-                <p><strong>51.</strong> <span class="thai-text">ช่วงนี้เศรษฐกิจมีภาวะเงินเฟ้อ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chûang níi sèet-tà-gìt mii paa-wá ngən-fə́ə</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">最近、経済はインフレーションです。</span></div></details></p>
-                
-                <p><strong>52.</strong> <span class="thai-text">ค่าจ้างของบริษัทนี้ดี</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâa-jâang kɔ̌ɔng bɔɔ-rí-sàt níi dii</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この会社の賃金は良いです。</span></div></details></p>
-                
-                <p><strong>53.</strong> <span class="thai-text">กำไรปีนี้เพิ่มขึ้น</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gam-rai bpii níi pə̂əm-kʉ̂n</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">今年の利益は増加しました。</span></div></details></p>
-                
-                <p><strong>54.</strong> <span class="thai-text">บริษัทขาดทุน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-sàt kàat-tun</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会社は赤字です。</span></div></details></p>
-                
-                <p><strong>55.</strong> <span class="thai-text">เสนอร่างงบประมาณ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-nə̌ə râang ngóp-bprà-maan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">予算案を提出します。</span></div></details></p>
-
-                <p><strong>56.</strong> <span class="thai-text">ดุลการค้าระหว่างประเทศ</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dun gaan-káa rá-wàang bprà-têet</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">国際貿易収支。</span></div></details></p>
-
-                <p><strong>57.</strong> <span class="thai-text">ราคาหุ้นตก</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">raa-kaa hûn dtòk</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">株価が下落しました。</span></div></details></p>
-
-                <p><strong>58.</strong> <span class="thai-text">ตรวจสอบอัตราแลกเปลี่ยน</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtrùat-sɔ̀ɔp àt-dtraa lɛ̂ɛk-bplìan</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">為替レートを確認します。</span></div></details></p>
-
-                <p><strong>59.</strong> <span class="thai-text">ลงทุนในตลาดใหม่</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">long-tun nai dtà-làat mài</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">新しい市場に投資します。</span></div></details></p>
-
-                <p><strong>60.</strong> <span class="thai-text">ผลิตภัณฑ์มวลรวมในประเทศ (GDP) เพิ่มขึ้น</span></p>
-                <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pà-lìt-dtà-pan muan-ruam nai bprà-têet (jii-dii-pii) pə̂əm-kʉ̂n</span></div></details></p>
-                <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">国内総生産（GDP）が増加しました。</span></div></details></p>
+                <div class="example-item">
+                    <p><strong>51.</strong> <span class="thai-text">ช่วงนี้เศรษฐกิจมีภาวะเงินเฟ้อ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">chûang níi sèet-tà-gìt mii paa-wá ngən-fə́ə</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">最近、経済はインフレーションです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>52.</strong> <span class="thai-text">ค่าจ้างของบริษัทนี้ดี</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kâa-jâang kɔ̌ɔng bɔɔ-rí-sàt níi dii</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">この会社の賃金は良いです。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>53.</strong> <span class="thai-text">กำไรปีนี้เพิ่มขึ้น</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">gam-rai bpii níi pə̂əm-kʉ̂n</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">今年の利益は増加しました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>54.</strong> <span class="thai-text">บริษัทขาดทุน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">bɔɔ-rí-sàt kàat-tun</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">会社は赤字です。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>55.</strong> <span class="thai-text">เสนอร่างงบประมาณ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sà-nə̌ə râang ngóp-bprà-maan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">予算案を提出します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>56.</strong> <span class="thai-text">ดุลการค้าระหว่างประเทศ</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dun gaan-káa rá-wàang bprà-têet</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">国際貿易収支。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>57.</strong> <span class="thai-text">ราคาหุ้นตก</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">raa-kaa hûn dtòk</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">株価が下落しました。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>58.</strong> <span class="thai-text">ตรวจสอบอัตราแลกเปลี่ยน</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">dtrùat-sɔ̀ɔp àt-dtraa lɛ̂ɛk-bplìan</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">為替レートを確認します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>59.</strong> <span class="thai-text">ลงทุนในตลาดใหม่</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">long-tun nai dtà-làat mài</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">新しい市場に投資します。</span></div></details></p>
+                </div>
+                <div class="example-item">
+                    <p><strong>60.</strong> <span class="thai-text">ผลิตภัณฑ์มวลรวมในประเทศ (GDP) เพิ่มขึ้น</span></p>
+                    <p><strong>発音:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">pà-lìt-dtà-pan muan-ruam nai bprà-têet (jii-dii-pii) pə̂əm-kʉ̂n</span></div></details></p>
+                    <p><strong>訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">国内総生産（GDP）が増加しました。</span></div></details></p>
+                </div>
 
             </section>
 
