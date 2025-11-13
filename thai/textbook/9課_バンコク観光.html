@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第9課 バンコク観光 เที่ยวกรุงเทพฯ</title>
+    <style>
+        body {
+            font-family: 'Arial', 'Tahoma', 'Leelawadee', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            /* 横スクロールバーが表示されるのを防ぐ */
+            overflow-x: hidden;
+        }
+
+        .page-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- 左メニュー用スタイル --- */
+        .left-menu {
+            flex: 0 0 220px; /* 左メニューの幅を固定 */
+            background-color: #e9f5ff;
+            padding: 20px;
+            border-right: 1px solid #d1d9e6;
+            height: 100vh;
+            position: sticky; /* スクロールに追従させる */
+            top: 0; /* 上端に固定 */
+            overflow-y: auto; /* 内容が多い場合にメニュー内をスクロール可能にする */
+            /* 開閉アニメーションのためのトランジションを追加 */
+            transition: margin-left 0.35s ease-in-out;
+            z-index: 990;
+        }
+        .left-menu h3 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+        .left-menu ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .left-menu ul li {
+            margin-bottom: 12px;
+        }
+        .left-menu ul li a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: 500;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .left-menu ul li a:hover {
+            text-decoration: underline;
+            background-color: #d0e6ff;
+        }
+
+        /* --- 中央メインコンテンツ用スタイル --- */
+        .main-content {
+            flex: 1; /* 残りの幅をすべて使用 */
+            padding: 20px 30px;
+        }
+        
+        /* --- ここからタイトルヘッダー用スタイル --- */
+        .main-title-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap; /* レスポンシブ対応 */
+            border-bottom: 6px solid black;
+            padding-bottom: 8px;
+            margin-bottom: 35px;
+        }
+        .main-title-header .prefix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 2px; }
+        .main-title-header .lesson-main-number { font-size: 5.5em; font-weight: bold; line-height: 0.8; margin-right: 4px; }
+        .main-title-header .suffix-lesson { font-size: 2.2em; font-weight: bold; margin-right: 20px; }
+        .main-title-header .title-japanese { font-size: 2.2em; font-weight: bold; margin-right: 10px; }
+        .main-title-header .title-thai { font-size: 2.2em; font-weight: bold; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .main-title-header .pronunciation-thai-details { display: inline-block; margin-left: 10px; vertical-align: middle; }
+        .main-title-header .pronunciation-thai { font-size: 0.75em; font-weight: normal; color: #c0392b; }
+
+        .article-section {
+            background-color: #ffffff;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .article-section h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 8px; margin-top: 0; margin-bottom: 18px; font-size: 1.5em; }
+        .article-section h4 { color: #2c3e50; margin-top: 25px; margin-bottom: 12px; font-size: 1.25em; font-weight: 600; }
+        .article-section p { margin: 12px 0; font-size: 1.05em; }
+        .thai-text { font-size: 1.25em; color: #1a5276; font-weight: bold; }
+        .pronunciation { font-style: normal; color: #c0392b; font-family: 'Tahoma', 'Leelawadee', sans-serif; }
+        .translation { color: #228b22; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #d1d9e6; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; font-weight: bold; color: #495057; font-size: 1.05em; }
+        tbody tr:nth-child(odd) { background-color: #f8f9fa; }
+        tbody tr:hover { background-color: #e2e6ea; }
+        td { font-size: 1em; }
+
+        /* --- ここから折りたたみ機能用スタイル (details/summary) --- */
+        .collapsible-content summary,
+        .vocab-details summary,
+        .pronunciation-thai-details summary {
+            cursor: pointer;
+            font-weight: normal;
+            color: #0056b3;
+            display: inline-block;
+            padding: 3px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            background-color: #e7f3ff;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .collapsible-content summary:hover,
+        .vocab-details summary:hover,
+        .pronunciation-thai-details summary:hover {
+            background-color: #d0e6ff;
+        }
+        .collapsible-content[open] summary,
+        .vocab-details[open] summary,
+        .pronunciation-thai-details[open] summary {
+            background-color: #c0d9f7;
+        }
+        .collapsible-content .content-wrapper,
+        .vocab-details .content-wrapper,
+        .pronunciation-thai-details .content-wrapper {
+            padding-top: 8px;
+        }
+        .vocab-table td .vocab-details summary {
+            margin-left: 0;
+            padding: 2px 6px;
+            font-size: 0.85em;
+        }
+        .vocab-table td .vocab-details .content-wrapper {
+             padding-top: 5px;
+             word-break: break-all;
+        }
+        
+        /* --- フッター用スタイル --- */
+        .page-footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.95em;
+            color: #555;
+            border-top: 1px solid #d1d9e6;
+        }
+
+        /* --- ここからメニュー開閉機能のためのスタイル --- */
+        #menu-toggle-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            font-size: 24px;
+            line-height: 1;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        #menu-toggle-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* .menu-closedクラスが付与された時にメニューを隠す */
+        .page-container.menu-closed .left-menu {
+            margin-left: -220px; /* メニューの幅分だけ左に移動させる */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- メニュー開閉ボタン -->
+    <button id="menu-toggle-button" aria-label="メニューを開閉">☰</button>
+
+    <div class="page-container">
+        <nav class="left-menu">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#section-main-title">タイトル</a></li>
+                <li><a href="#section-new-words">1. 新単語</a></li>
+                <li><a href="#section-reading">2. 読解</a></li>
+                <li><a href="#section-conversation">3. 会話練習</a></li>
+                <li><a href="#section-translation">4. 翻訳練習</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-title-header" id="section-main-title">
+                <span class="prefix-lesson">第</span><span class="lesson-main-number">9</span><span class="suffix-lesson">課</span>
+                <span class="title-japanese">バンコク観光</span>
+                <span class="title-thai">เที่ยวกรุงเทพฯ</span>
+                <details class="pronunciation-thai-details">
+                    <summary>発音</summary>
+                    <div class="content-wrapper">
+                        <span class="pronunciation-thai">(tîao grung-têep)</span>
+                    </div>
+                </details>
+            </header>
+
+            <section class="article-section" id="section-new-words">
+                <h3>1. 新単語</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th>タイ語</th>
+                            <th>意味</th>
+                            <th>発音記号</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>เที่ยว</td><td>観光する、旅行する</td><td><span class="pronunciation">tîao</span></td></tr>
+                        <tr><td>ครั้งแรก</td><td>初めて</td><td><span class="pronunciation">kráng rɛ̂ɛk</span></td></tr>
+                        <tr><td>พา...ไป</td><td>～を連れて行く</td><td><span class="pronunciation">paa...bpai</span></td></tr>
+                        <tr><td>ชม</td><td>見物する、観賞する</td><td><span class="pronunciation">chom</span></td></tr>
+                        <tr><td>วัด</td><td>寺院</td><td><span class="pronunciation">wát</span></td></tr>
+                        <tr><td>พระบรมมหาราชวัง</td><td>王宮</td><td><span class="pronunciation">prá-bɔɔ-rom-má-hǎa râat-chá-wang</span></td></tr>
+                        <tr><td>พระพุทธรูป</td><td>仏像</td><td><span class="pronunciation">prá-pút-tá-rûup</span></td></tr>
+                        <tr><td>ทำด้วย</td><td>～で作られている</td><td><span class="pronunciation">tam dûai</span></td></tr>
+                        <tr><td>แก้วมรกต</td><td>エメラルド</td><td><span class="pronunciation">gɛ̂ɛo mɔɔ-rá-gòt</span></td></tr>
+                        <tr><td>เคารพนับถือ</td><td>尊敬する、敬う</td><td><span class="pronunciation">kao-róp náp-tʉ̌ʉ</span></td></tr>
+                        <tr><td>คู่บ้านคู่เมือง</td><td>国の宝、国のシンボル的な</td><td><span class="pronunciation">kûu bâan kûu mʉang</span></td></tr>
+                        <tr><td>สั้นๆ</td><td>短く</td><td><span class="pronunciation">sân-sân</span></td></tr>
+                        <tr><td>ไหว้พระ</td><td>仏像を拝む</td><td><span class="pronunciation">wâi prá</span></td></tr>
+                        <tr><td>พระอุโบสถ</td><td>本堂</td><td><span class="pronunciation">prá-ù-boo-sòt</span></td></tr>
+                        <tr><td>ถอดรองเท้า</td><td>靴を脱ぐ</td><td><span class="pronunciation">tɔ̀ɔt rɔɔng-táo</span></td></tr>
+                        <tr><td>พระที่นั่ง</td><td>宮殿（王族の建物）</td><td><span class="pronunciation">prá tîi nâng</span></td></tr>
+                        <tr><td>พระมหากษัตริย์</td><td>国王</td><td><span class="pronunciation">prá-má-hǎa-gà-sàt</span></td></tr>
+                        <tr><td>แดดร้อน</td><td>日差しが暑い</td><td><span class="pronunciation">dɛ̀ɛt rɔ́ɔn</span></td></tr>
+                        <tr><td>รถตุ๊กๆ</td><td>トゥクトゥク</td><td><span class="pronunciation">rót dtúk-dtúk</span></td></tr>
+                        <tr><td>นวดแผนโบราณ</td><td>古式マッサージ</td><td><span class="pronunciation">nûat pɛ̌ɛn boo-raan</span></td></tr>
+                        <tr><td>นักท่องเที่ยว</td><td>観光客</td><td><span class="pronunciation">nák-tɔ̂ɔng-tîao</span></td></tr>
+                        <tr><td>สุขภาพ</td><td>健康</td><td><span class="pronunciation">sùk-kà-pâap</span></td></tr>
+                        <tr><td>บำบัดโรค</td><td>病気を治療する</td><td><span class="pronunciation">bam-bàt rôok</span></td></tr>
+                        <tr><td>ไม่แพง</td><td>高くない</td><td><span class="pronunciation">mâi pɛɛng</span></td></tr>
+                        <tr><td>พระพุทธไสยาสน์</td><td>涅槃仏</td><td><span class="pronunciation">prá-pút-tá-sǎi-yâat</span></td></tr>
+                        <tr><td>พระบาท</td><td>（高貴な方の）足</td><td><span class="pronunciation">prá-bàat</span></td></tr>
+                        <tr><td>ลวดลาย</td><td>模様</td><td><span class="pronunciation">lûat-laai</span></td></tr>
+                        <tr><td>ประดับมุก</td><td>螺鈿（らでん）細工を施す</td><td><span class="pronunciation">bprà-dàp múk</span></td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="article-section" id="section-reading">
+                <h3>2. 読解</h3>
+
+                <h4>9-1.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เทรุโกะมาเที่ยวเมืองไทยเป็นครั้งแรก นารีเพื่อนคนไทยของเทรุโกะพาเทรุโกะไปชมวัดพระศรีรัตนศาสดาราม</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tee-rú-gò maa tîao mʉang tai bpen kráng rɛ̂ɛk, naa-rii pʉ̂an kon tai kɔ̌ɔng tee-rú-gò paa tee-rú-gò bpai chom wát prá-sǐi-rát-dtà-ná-sàat-sà-daa-raam</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">てるこは初めてタイへ観光に来ました。てるこのタイ人の友人ナリーは、てるこをワット・プラシーラッタナサーサダーラーム見物に連れて行きました。</span></div></details></p>
+                
+                <h4>9-2.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยเรียกวัดนี้กันว่า “วัดพระแก้ว”</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kon tai rîak wát níi gan wâa “wát prá-gɛ̂ɛo”</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイ人はこのお寺を「ワット・プラケオ（エメラルド寺院）」と呼びます。</span></div></details></p>
+
+                <h4>9-3.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">วัดนี้อยู่ในพระบรมมหาราชวัง</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wát níi yùu nai prá-bɔɔ-rom-má-hǎa râat-chá-wang</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">このお寺は王宮の中にあります。</span></div></details></p>
+                
+                <h4>9-4.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เทรุโกะเห็นพระพุทธมหามณีรัตนปฏิมากร พระพุทธรูปองค์นี้ทำด้วยแก้วมรกตทั้งองค์</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tee-rú-gò hěn prá-pút-tá-má-hǎa-má-nii-rát-dtà-ná-bpà-dtì-maa-gɔɔn, prá-pút-tá-rûup ong níi tam dûai gɛ̂ɛo mɔɔ-rá-gòt táng ong</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">てるこはプラプッタマハーマニーラッタナパティマーコーン（仏像の名前）を見ました。この仏像は全体がエメラルドでできています。</span></div></details></p>
+                
+                <h4>9-5.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยเคารพนับถือพระพุทธรูปองค์นี้มากเพราะเป็นพระพุทธรูปคู่บ้านคู่เมืองและเรียกพระพุทธรูปองค์นี้กันสั้นๆ ว่า “พระแก้วมรกต”</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kon tai kao-róp náp-tʉ̌ʉ prá-pút-tá-rûup ong níi mâak prɔ́ bpen prá-pút-tá-rûup kûu bâan kûu mʉang lɛ́ rîak prá-pút-tá-rûup ong níi gan sân-sân wâa “prá-gɛ̂ɛo mɔɔ-rá-gòt”</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイ人はこの仏像を国の宝として非常に敬っており、この仏像を短く「プラケオ・モラコット（エメラルド仏）」と呼びます。</span></div></details></p>
+
+                <h4>9-6.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">นารีพาเทรุโกะเข้าไปไหว้พระในพระอุโบสถ ก่อนเข้าไปในพระอุโบสถต้องถอดรองเท้า</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">naa-rii paa tee-rú-gò kâo bpai wâi prá nai prá-ù-boo-sòt, gɔ̀ɔn kâo bpai nai prá-ù-boo-sòt dtɔ̂ng tɔ̀ɔt rɔɔng-táo</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ナリーはてるこを連れて本堂に入り、仏像を拝みました。本堂に入る前には靴を脱がなければなりません。</span></div></details></p>
+
+                <h4>9-7.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เมื่อไหว้พระแล้ว ทั้งสองคนก็เดินไปชมพระที่นั่งต่างๆ ในพระบรมมหาราชวัง พระที่นั่งคืออาคารที่อยู่อาศัยของพระมหากษัตริย์</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̂a wâi prá lɛ́ɛo, táng sɔ̌ɔng kon gɔ̂ dəən bpai chom prá tîi nâng dtàang-dtàang nai prá-bɔɔ-rom-má-hǎa râat-chá-wang, prá tîi nâng kʉʉ aa-kaan tîi-yùu-aa-sǎi kɔ̌ɔng prá-má-hǎa-gà-sàt</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">仏像を拝み終えると、二人は歩いて王宮内の様々な宮殿を見物しに行きました。宮殿とは、国王の住居である建物のことです。</span></div></details></p>
+                
+                <h4>9-8.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">ออกจากพระบรมมหาราชวังแล้ว นารีพาเทรุโกะไปวัดพระเชตุพนวิมลมังคลาราม คนไทยเรียกวัดนี้กันว่า “วัดโพธิ์”</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ɔ̀ɔk jàak prá-bɔɔ-rom-má-hǎa râat-chá-wang lɛ́ɛo, naa-rii paa tee-rú-gò bpai wát prá-chee-dtù-pon wí-mon-mang-klá-raam, kon tai rîak wát níi gan wâa “wát poo”</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">王宮を出ると、ナリーはてるこをワット・プラチェートゥポンウィモンマンカラーラームに連れて行きました。タイ人はこのお寺を「ワット・ポー」と呼びます。</span></div></details></p>
+
+                <h4>9-9.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">วัดโพธิ์อยู่ไม่ไกลจากพระบรมมหาราชวัง เดินไปก็ได้ แต่นารีเห็นว่าแดดร้อน นารีจึงพาเทรุโกะนั่งรถตุ๊กๆ ไป</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">wát poo yùu mâi glai jàak prá-bɔɔ-rom-má-hǎa râat-chá-wang, dəən bpai gɔ̂ dâi, dɛ̀ɛ naa-rii hěn wâa dɛ̀ɛt rɔ́ɔn, naa-rii jʉng paa tee-rú-gò nâng rót dtúk-dtúk bpai</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ワット・ポーは王宮から遠くなく、歩いて行くこともできます。しかしナリーは日差しが暑いと思ったので、トゥクトゥクに乗ってるこを連れて行きました。</span></div></details></p>
+
+                <h4>9-10.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">ที่วัดโพธิ์มีศาลานวดแผนโบราณ ซึ่งยังเป็นโรงเรียนสอนการนวดแผนโบราณอีกด้วย</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">tîi wát poo mii sǎa-laa nûat pɛ̌ɛn boo-raan, sʉ̂ng yang bpen roong-rian sɔ̌ɔn gaan nûat pɛ̌ɛn boo-raan ìik dûai</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">ワット・ポーには古式マッサージの施設があり、そこは古式マッサージを教える学校にもなっています。</span></div></details></p>
+                <h5>難しい単語 (9-10):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>意味</th><th>発音記号</th></tr></thead>
+                     <tbody>
+                        <tr><td>ศาลา</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">堂、施設、あずまや</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sǎa-laa</span></div></details></td></tr>
+                        <tr><td>ซึ่ง</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">（関係代名詞）～であるところの</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">sʉ̂ng</span></div></details></td></tr>
+                        <tr><td>อีกด้วย</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">～でもある</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">ìik dûai</span></div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>9-11.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">มีนักท่องเที่ยวชาวต่างประเทศมาให้นวดมากมาย การนวดแผนโบราณเป็นการนวดเพื่อสุขภาพและบำบัดโรค ค่านวดไม่แพง</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mii nák-tɔ̂ɔng-tîao chaao dtàang bprà-têet maa hâi nûat mâak-maai, gaan nûat pɛ̌ɛn boo-raan bpen gaan nûat pʉ̂a sùk-kà-pâap lɛ́ bam-bàt rôok, kâa nûat mâi pɛɛng</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">大勢の外国人観光客がマッサージをしてもらいに来ます。古式マッサージは健康と病気治療のためのマッサージです。マッサージ料金は高くありません。</span></div></details></p>
+
+                <h4>9-12.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">เมื่อชมศาลาแล้ว ทั้งสองคนก็เข้าไปไหว้พระพุทธไสยาสน์ในพระวิหาร</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">mʉ̂a chom sǎa-laa lɛ́ɛo, táng sɔ̌ɔng kon gɔ̂ kâo bpai wâi prá-pút-tá-sǎi-yâat nai prá-wí-hǎan</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">マッサージ施設を見学し終えると、二人は仏堂に入って涅槃仏を拝みに行きました。</span></div></details></p>
+                <h5>難しい単語 (9-12):</h5>
+                <table class="vocab-table">
+                     <thead><tr><th>タイ語</th><th>意味</th><th>発音記号</th></tr></thead>
+                     <tbody>
+                        <tr><td>พระวิหาร</td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper">仏堂、礼拝堂</div></details></td><td><details class="vocab-details"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">prá-wí-hǎan</span></div></details></td></tr>
+                     </tbody>
+                </table>
+                
+                <h4>9-13.</h4>
+                <p><strong>元のタイ語:</strong> <span class="thai-text">คนไทยเรียกพระพุทธรูปองค์นี้กันว่า “พระนอนวัดโพธิ์” ที่พระบาทของพระพุทธรูปองค์นี้มีลวดลายประดับมุก</span></p>
+                <p><strong>発音記号:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="pronunciation">kon tai rîak prá-pút-tá-rûup ong níi gan wâa “prá-nɔɔn wát poo”, tîi prá-bàat kɔ̌ɔng prá-pút-tá-rûup ong níi mii lûat-laai bprà-dàp múk</span></div></details></p>
+                <p><strong>日本語訳:</strong> <details class="collapsible-content"><summary>表示</summary><div class="content-wrapper"><span class="translation">タイ人はこの仏像を「ワット・ポーの寝仏」と呼びます。この仏像の足の裏には、螺鈿細工の模様が施されています。</span></div></details></p>
+                
+            </section>
+
+            <section class="article-section" id="section-conversation">
+                <h3>3. 会話練習</h3>
+                <p>※編集中...</p>
+            </section>
+
+            <section class="article-section" id="section-translation">
+                <h3>4. 翻訳練習</h3>
+                <p>※編集中...</p>
+            </section>
+
+            <footer class="page-footer">
+                <p>発音記号は、タイ語教科書で用いられる一般的な表記法（声調記号付き）を参考にしています。</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- メニュー開閉のためのJavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('menu-toggle-button');
+            const pageContainer = document.querySelector('.page-container');
+
+            // デフォルトでメニューを閉じた状態にする
+            pageContainer.classList.add('menu-closed');
+
+            // ボタンがクリックされたら、.menu-closedクラスを付け外しする
+            toggleButton.addEventListener('click', function() {
+                pageContainer.classList.toggle('menu-closed');
+            });
+        });
+    </script>
+</body>
+</html>
