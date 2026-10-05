@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <!-- 音声取得先に公開ページの参照元を送らない -->
+    <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>タイ語学習Webアプリ - ビジネスマナー</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -189,7 +191,14 @@
                         audio.onerror = null;
                         audio.pause();
                         if ('speechSynthesis' in window) {
+                            const thaiVoice = speechSynthesis.getVoices().find(voice => /^th(?:[-_]|$)/i.test(voice.lang));
+                            if (!thaiVoice) {
+                                stopBatchPlayback();
+                                alert('タイ語音声を取得できませんでした。このブラウザには代替のタイ語音声もありません。通信状態を確認して再度お試しください。');
+                                return;
+                            }
                             const utterance = new SpeechSynthesisUtterance(chunkText);
+                            utterance.voice = thaiVoice;
                             utterance.lang = 'th-TH';
                             utterance.rate = speed === 1.0 ? 0.9 : 0.6;
                             utterance.onend = finish;
