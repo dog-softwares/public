@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイ語学習Webアプリ - ビジネスマナー</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;700&display=swap');
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc; }
+        .font-thai { font-family: 'Sarabun', Tahoma, sans-serif; line-height: 1.7; }
+        .font-ipa { font-family: 'Charis SIL', 'Doulos SIL', 'Times New Roman', serif; letter-spacing: 0.02em; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .summary-icon { transition: transform 0.2s ease-in-out; }
+        details[open] .summary-icon { transform: rotate(180deg); }
+        .play-btn { transition: all 0.2s; }
+        .play-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="text-slate-800 p-4 md:p-8">
+    <div class="max-w-5xl mx-auto">
+        <!-- ヘッダー部分 -->
+        <div class="text-center mb-6 bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-slate-200">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">タイ語学習Webアプリ</h1>
+            <p class="text-slate-600 mb-6 font-medium">日本での働き方・ビジネスマナー（全88文収録）</p>
+            <div class="bg-blue-50/80 border border-blue-100 text-blue-800 text-sm md:text-base p-5 rounded-xl text-left inline-block max-w-3xl shadow-inner">
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">🎧</span>
+                        <span><strong>一括音声再生：</strong> 「一括再生スタート」を押すと、全文章をタイ語(標準) ➔ スロー ➔ 和訳 ➔ 単語の順でアナウンス付き連続再生します。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">🔊</span>
+                        <span><strong>標準再生：</strong> 各カードの青いボタンでタイ語の全文が通常速度で再生されます。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">🐢</span>
+                        <span><strong>スロー再生：</strong> 緑のカメボタンで0.6倍速でゆっくり再生されます。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">🇯🇵</span>
+                        <span><strong>日本語再生：</strong> 紫の「日」ボタンで日本語訳を再生します。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">📖</span>
+                        <span><strong>単語の確認：</strong> 「単語リストを表示」から、各単語の意味と個別発音を確認できます。</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-xl">💡</span>
+                        <span><strong>文法の解説：</strong> 特徴的な表現が含まれる文章には、単語リストの下に文法・口語表現の解説が表示されます。</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 一括再生コントロールエリア -->
+        <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white p-6 rounded-2xl mb-8 shadow-lg border border-indigo-700">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <span>🎧</span> 全文一括学習再生
+                    </h2>
+                    <p class="text-indigo-200 text-sm mt-1">「標準タイ語 ➔ スロー再生 ➔ 和訳 ➔ 各単語」を全文章自動で連続読み上げます。</p>
+                </div>
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button id="batch-play-btn" onclick="startBatchPlayback()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 shadow-md transition-all active:scale-95 w-full sm:w-auto justify-center">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        一括再生スタート
+                    </button>
+                    <button id="batch-stop-btn" onclick="stopBatchPlayback()" class="hidden bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-6 rounded-xl flex items-center gap-2 shadow-md transition-all active:scale-95 w-full sm:w-auto justify-center">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+                        停止
+                    </button>
+                </div>
+            </div>
+            <!-- 再生中ステータス表示 -->
+            <div id="batch-status" class="hidden mt-4 pt-4 border-t border-indigo-700/60 flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm gap-2">
+                <span id="batch-status-text" class="text-indigo-100 font-medium flex items-center gap-2">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    再生中: 第 <span id="current-index" class="text-yellow-300 font-bold text-lg">1</span> / 88 文
+                </span>
+                <span id="batch-step-text" class="text-yellow-200 bg-indigo-950/60 px-3 py-1 rounded-full text-xs font-semibold border border-indigo-600/50">準備中...</span>
+            </div>
+        </div>
+
+        <!-- アプリ本体描画エリア -->
+        <div id="app" class="space-y-6"></div>
+    </div>
+
+    <script>
+        // 音声再生状態管理
+        let isBatchPlaying = false;
+        let stopRequested = false;
+        let playbackSession = 0;
+        let activeAudio = null;
+        let resolveActiveSpeech = null;
+
+        function cancelActiveSpeech() {
+            if (activeAudio) {
+                activeAudio.onended = null;
+                activeAudio.onerror = null;
+                activeAudio.pause();
+                activeAudio = null;
+            }
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            if (resolveActiveSpeech) {
+                resolveActiveSpeech();
+                resolveActiveSpeech = null;
+            }
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // 非同期音声再生関数 (一括再生・個別再生共通)
+        function speakAsync(text, lang = 'th', speed = 1.0) {
+            const session = playbackSession;
+            return new Promise((complete) => {
+                const resolve = () => {
+                    if (resolveActiveSpeech === resolve) resolveActiveSpeech = null;
+                    complete();
+                };
+                resolveActiveSpeech = resolve;
+                if (!text || stopRequested) {
+                    resolve();
+                    return;
+                }
+
+                // HTMLタグ(<span>など)が含まれている場合は除去
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = text;
+                const plainText = tempDiv.textContent || tempDiv.innerText || "";
+
+                // 日本語の再生
+                if (lang === 'ja') {
+                    if ('speechSynthesis' in window) {
+                        window.speechSynthesis.cancel();
+                        const utterance = new SpeechSynthesisUtterance(plainText);
+                        utterance.lang = 'ja-JP';
+                        utterance.rate = speed;
+                        utterance.onend = resolve;
+                        utterance.onerror = resolve;
+                        speechSynthesis.speak(utterance);
+                    } else {
+                        const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(plainText)}`;
+                        const audio = new Audio(url);
+                    activeAudio = audio;
+                        audio.playbackRate = speed;
+                        audio.onended = resolve;
+                        audio.onerror = resolve;
+                        audio.play().catch(resolve);
+                    }
+                    return;
+                }
+
+                // タイ語の再生 (Google TTS + Web Speech API フォールバック)
+                const chunks = plainText.match(/.{1,150}(\s|$)|\S+?(\s|$)/g) || [plainText];
+                let currentChunk = 0;
+
+                const playNextChunk = () => {
+                    if (session !== playbackSession || stopRequested || currentChunk >= chunks.length) {
+                        resolve();
+                        return;
+                    }
+
+                    const chunkText = chunks[currentChunk];
+                    const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=th&client=tw-ob&q=${encodeURIComponent(chunkText)}`;
+                    const audio = new Audio(url);
+                    activeAudio = audio;
+                    audio.playbackRate = speed;
+
+                    let isFinished = false;
+                    let fallbackStarted = false;
+                    const finish = () => {
+                        if (!isFinished) {
+                            isFinished = true;
+                            currentChunk++;
+                            playNextChunk();
+                        }
+                    };
+
+                    audio.onended = finish;
+                    const fallback = () => {
+                        if (fallbackStarted || isFinished || session !== playbackSession || stopRequested) return;
+                        fallbackStarted = true;
+                        audio.onended = null;
+                        audio.onerror = null;
+                        audio.pause();
+                        if ('speechSynthesis' in window) {
+                            const utterance = new SpeechSynthesisUtterance(chunkText);
+                            utterance.lang = 'th-TH';
+                            utterance.rate = speed === 1.0 ? 0.9 : 0.6;
+                            utterance.onend = finish;
+                            utterance.onerror = finish;
+                            speechSynthesis.speak(utterance);
+                        } else {
+                            finish();
+                        }
+                    };
+                    audio.onerror = fallback;
+                    audio.play().catch(fallback);
+                };
+
+                playNextChunk();
+            });
+        }
+
+        // 個別ボタン用の音声再生関数
+        function playAudio(text, speed = 1.0, lang = 'th') {
+            stopBatchPlayback();
+            stopRequested = false;
+            return speakAsync(text, lang, speed);
+        }
+
+        // 一括再生メイン処理
+        async function startBatchPlayback() {
+            if (isBatchPlaying) return;
+            cancelActiveSpeech();
+            const session = ++playbackSession;
+            isBatchPlaying = true;
+            stopRequested = false;
+
+            const playBtn = document.getElementById('batch-play-btn');
+            const stopBtn = document.getElementById('batch-stop-btn');
+            const statusBox = document.getElementById('batch-status');
+            const currentIndexEl = document.getElementById('current-index');
+            const stepTextEl = document.getElementById('batch-step-text');
+
+            playBtn.classList.add('hidden');
+            stopBtn.classList.remove('hidden');
+            statusBox.classList.remove('hidden');
+
+            for (let i = 0; i < Data.length; i++) {
+                if (session !== playbackSession || stopRequested) return;
+
+                const item = Data[i];
+                currentIndexEl.textContent = i + 1;
+
+                // 画面スクロール & カードハイライト
+                const cardEl = document.getElementById(`card-${i}`);
+                if (cardEl) {
+                    document.querySelectorAll('.card-item').forEach(c => {
+                        c.classList.remove('ring-4', 'ring-indigo-400', 'bg-indigo-50/30');
+                    });
+                    cardEl.classList.add('ring-4', 'ring-indigo-400', 'bg-indigo-50/30');
+                    cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                // 1. 元の文章 (タイ語・通常速度)
+                stepTextEl.textContent = '🔊 タイ語（標準スピード）';
+                await speakAsync(item.t, 'th', 1.0);
+                if (session !== playbackSession || stopRequested) return;
+                await delay(400);
+
+                // 2. スロー再生アナウンス + 元の文章 (タイ語・スロー)
+                stepTextEl.textContent = '🐢 タイ語（スロー再生）';
+                await speakAsync('スロー再生します', 'ja', 1.0);
+                if (session !== playbackSession || stopRequested) return;
+                await delay(200);
+                await speakAsync(item.t, 'th', 0.6);
+                if (session !== playbackSession || stopRequested) return;
+                await delay(400);
+
+                // 3. 和訳アナウンス + 和訳 (日本語)
+                stepTextEl.textContent = '📖 和訳';
+                await speakAsync('次は和訳です', 'ja', 1.0);
+                if (session !== playbackSession || stopRequested) return;
+                await delay(200);
+                await speakAsync(item.j, 'ja', 1.0);
+                if (session !== playbackSession || stopRequested) return;
+                await delay(400);
+
+                // 4. 単語アナウンス + 各単語リスト
+                if (item.w && item.w.length > 0) {
+                    stepTextEl.textContent = '📝 単語リスト';
+                    await speakAsync('次は単語です', 'ja', 1.0);
+                    if (session !== playbackSession || stopRequested) return;
+                    await delay(300);
+
+                    for (const word of item.w) {
+                        if (session !== playbackSession || stopRequested) return;
+                        // タイ語単語
+                        await speakAsync(word.th, 'th', 1.0);
+                        if (session !== playbackSession || stopRequested) return;
+                        await delay(200);
+                        // 日本語の意味
+                        await speakAsync(word.ja, 'ja', 1.0);
+                        if (session !== playbackSession || stopRequested) return;
+                        await delay(300);
+                    }
+                }
+
+                await delay(800); // 次の文章に移る前のインターバル
+            }
+
+            if (session === playbackSession) stopBatchPlayback();
+        }
+
+        // 停止処理
+        function stopBatchPlayback() {
+            playbackSession++;
+            stopRequested = true;
+            cancelActiveSpeech();
+            isBatchPlaying = false;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+
+            const playBtn = document.getElementById('batch-play-btn');
+            const stopBtn = document.getElementById('batch-stop-btn');
+            const statusBox = document.getElementById('batch-status');
+
+            if (playBtn) playBtn.classList.remove('hidden');
+            if (stopBtn) stopBtn.classList.add('hidden');
+            if (statusBox) statusBox.classList.add('hidden');
+
+            document.querySelectorAll('.card-item').forEach(c => {
+                c.classList.remove('ring-4', 'ring-indigo-400', 'bg-indigo-50/30');
+            });
+        }
+
+        // データ配列 (88文)
+        const Data = [
+            {
+                t: 'สวัสดี ค่ะ Japan นะ คะ ห่าง หาย กัน ไป นาน มาก เลย กับ ทอปิ การ ทำ งาน หา งาน ใน ประเทศ ญี่ปุ่น นะ คะ',
+                i: '[sà.wàt.diː kʰâ d͡ʑa.pɛːn ná kʰá hàːŋ hǎːj kan paj naːn mâːk lɤːj kàp tʰɔ́.pìʔ kaːn tʰam ŋaːn hǎː ŋaːn naj prà.tʰêːt jîː.pùn ná kʰá]',
+                j: 'こんにちは、Japanです。日本での仕事や就職活動というトピックについて、ずいぶんご無沙汰してしまいましたね。',
+                c: 'ทอปิ -> ทอปปิก',
+                w: [
+                    {th: "สวัสดี", ipa: "[sà.wàt.diː]", ja: "こんにちは"},
+                    {th: "ห่างหาย", ipa: "[hàːŋ hǎːj]", ja: "ご無沙汰する"},
+                    {th: "ทำงาน", ipa: "[tʰam ŋaːn]", ja: "働く"},
+                    {th: "หางาน", ipa: "[hǎː ŋaːn]", ja: "仕事を探す"},
+                    {th: "ห่างหายกันไปนานมาก", ipa: "[hàːŋ hǎːj kan paj naːn mâːk]", ja: "ずいぶん長い間ご無沙汰する"},
+                    {th: "นะคะ", ipa: "[ná kʰá]", ja: "〜ですね／〜ですよ（丁寧な文末）"}
+                ],
+                g: '【นะ คะ】丁寧な呼びかけや確認を表す語気助詞です。文末を柔らかくする働きがあります。<br>【กันไป】動詞の後に付いて、「（お互いに）〜していく/してしまう」という変化や継続のニュアンスを加えます。'
+            },
+            {
+                t: 'ซึ่ง มัน เป็น ทอปิ ที่ หลาย ๆ คน ก็ มี ความ สน ใจ เนาะ เพราะ ว่า แบบ หลาย ๆ คน ก็ อยาก มา ทำ งาน ที่ ประเทศ ญี่ปุ่น',
+                i: '[sɯ̂ŋ man pen tʰɔ́.pìʔ tʰîː lǎːj lǎːj kʰon kɔ̂ː miː kʰwaːm sǒn t͡ʑaj nɔ́ pʰrɔ́ wâː bɛ̀ːp lǎːj lǎːj kʰon kɔ̂ː jàːk maː tʰam ŋaːn tʰîː prà.tʰêːt jîː.pùn]',
+                j: 'これは多くの人が興味を持っているトピックですよね。だって、たくさんの人が日本に働きに来たいと思っていますから。',
+                c: 'ทอปิ -> ทอปปิก',
+                w: [
+                    {th: "ความสนใจ", ipa: "[kʰwaːm sǒn t͡ʑaj]", ja: "興味を持つ"},
+                    {th: "หลายๆ คน", ipa: "[lǎːj lǎːj kʰon]", ja: "多くの人"},
+                    {th: "ประเทศญี่ปุ่น", ipa: "[prà.tʰêːt jîː.pùn]", ja: "日本"},
+                    {th: "มีความสนใจ", ipa: "[miː kʰwaːm sǒn t͡ʑaj]", ja: "興味がある"},
+                    {th: "อยากมาทำงานที่ประเทศญี่ปุ่น", ipa: "[jàːk maː tʰam ŋaːn tʰîː prà.tʰêːt jîː.pùn]", ja: "日本へ働きに来たい"},
+                    {th: "เนาะ", ipa: "[nɔ́]", ja: "〜だよね"},
+                    {th: "เพราะว่าแบบ", ipa: "[pʰrɔ́ wâː bɛ̀ːp]", ja: "だって、なんというか（口語）"}
+                ],
+                g: '【เนาะ】นะ よりさらに親近感のある「〜だよね」と同意を求める砕けた表現です。<br>【แบบ】本来は「型・形式」ですが、口語では「〜みたいな」「なんか」という繋ぎ言葉（フィラー）として頻出します。'
+            },
+            {
+                t: 'แล้ว ก็ แน่ นอน นะ เรา ขอ พูด เรื่อง แบบ ที่ มัน เข้ม งวด แบบ เข้ม งวด จริง ๆ นะ คะ ใน ประเทศ ญี่ปุ่น',
+                i: '[lɛ́ːw kɔ̂ː nɛ̂ː nɔːn ná raw kʰɔ̌ː pʰûːt rɯ̂aŋ bɛ̀ːp tʰîː man kʰêm ŋûat bɛ̀ːp kʰêm ŋûat t͡ʑiŋ t͡ʑiŋ ná kʰá naj prà.tʰêːt jîː.pùn]',
+                j: 'そしてもちろん、日本における本当に厳格な、厳しいルールについてお話しさせてくださいね。',
+                w: [
+                    {th: "แน่นอน", ipa: "[nɛ̂ː nɔːn]", ja: "もちろん"},
+                    {th: "เข้มงวด", ipa: "[kʰêm ŋûat]", ja: "厳しい、厳格な"},
+                    {th: "จริงๆ", ipa: "[t͡ʑiŋ t͡ʑiŋ]", ja: "本当に"},
+                    {th: "ขอพูดเรื่อง", ipa: "[kʰɔ̌ː pʰûːt rɯ̂aŋ]", ja: "〜について話させてください"},
+                    {th: "เข้มงวดจริงๆ", ipa: "[kʰêm ŋûat t͡ʑiŋ t͡ʑiŋ]", ja: "本当に厳しい"}
+                ],
+                g: '【ขอพูดเรื่อง〜】「〜について話させてください（ขอ＋動詞で許可を求める表現）」。<br>【จริงๆ】形容詞や副詞の後に置いて「本当に〜だ」と強調します（ๆ は反復記号マイヤモック）。'
+            },
+            {
+                t: 'ถ้า เกิด ว่า เรื่อง ไหน ที่ เรา ไม่ ได้ ไป แตะ เนี่ย ก็ คือ เป็น Business Manner ที่ มัน ค่อน ข้าง จะ สากล เนาะ',
+                i: '[tʰâː kɤ̀ːt wâː rɯ̂aŋ nǎj tʰîː raw mâj dâj paj tɛ̀ʔ nîa kɔ̂ː kʰɯː pen bít.sà.nèt mɛːn.nɤ̂ː tʰîː man kʰɔ̂n kʰâːŋ t͡ʑà sǎː.kon nɔ́]',
+                j: 'もし私が触れなかった事柄があるとしたら、それは比較的グローバルで一般的なビジネスマナーだということです。',
+                w: [
+                    {th: "แตะ", ipa: "[tɛ̀ʔ]", ja: "触れる"},
+                    {th: "ค่อนข้าง", ipa: "[kʰɔ̂n kʰâːŋ]", ja: "比較的、かなり"},
+                    {th: "สากล", ipa: "[sǎː.kon]", ja: "国際的な、普遍的な"},
+                    {th: "ถ้าเกิดว่า", ipa: "[tʰâː kɤ̀ːt wâː]", ja: "もし〜なら"},
+                    {th: "เรื่องไหนที่เราไม่ได้ไปแตะ", ipa: "[rɯ̂aŋ nǎj tʰîː raw mâj dâj paj tɛ̀ʔ]", ja: "私が触れなかった話題"},
+                    {th: "เนี่ยก็คือ", ipa: "[nîa kɔ̂ː kʰɯː]", ja: "それというのは、つまり"}
+                ],
+                g: '【ถ้าเกิดว่า〜】「もし〜だとしたら（เกิดは起きる/生じるの意）」という仮定の表現です。<br>【เนี่ย】นี่ (これ/ここ) の口語形で、文節の区切りで「〜というのは」と話題を提示する際に使われます。'
+            },
+            {
+                t: 'และ แน่ นอน ว่า ก่อน ที่ จะ เริ่ม กัน ก็ อย่า ลืม กด ไลค์ แชร์ แล้ว ก็ Subscribe ช่อง เป็น กำลัง ใจ กัน ให้ ด้วย นะ คะ คลิป ใหม่ ๆ จะ ลง ทุก ๆ วัน พุธ ค่ะ',
+                i: '[lɛ́ nɛ̂ː nɔːn wâː kɔ̀ːn tʰîː t͡ʑà rɤ̂ːm kan kɔ̂ː jàː lɯːm kòt láj t͡ɕʰɛː lɛ́ːw kɔ̂ː sáp.sà.kʰráj t͡ɕʰɔ̂ŋ pen kam.laŋ t͡ʑaj kan hâj dûaj ná kʰá kʰlíp màj màj t͡ʑà loŋ tʰúk tʰúk wan pʰút kʰâ]',
+                j: 'そしてもちろん、本題に入る前に、応援のために「いいね」「シェア」そして「チャンネル登録」を忘れないでくださいね。新しい動画は毎週水曜日にアップします。',
+                w: [
+                    {th: "อย่าลืม", ipa: "[jàː lɯːm]", ja: "忘れないで"},
+                    {th: "กำลังใจ", ipa: "[kam.laŋ t͡ʑaj]", ja: "応援、励み"},
+                    {th: "วันพุธ", ipa: "[wan pʰút]", ja: "水曜日"},
+                    {th: "ก่อนที่จะเริ่ม", ipa: "[kɔ̀ːn tʰîː t͡ʑà rɤ̂ːm]", ja: "始める前に"},
+                    {th: "อย่าลืมกดไลค์แชร์", ipa: "[jàː lɯːm kòt láj t͡ɕʰɛː]", ja: "いいねとシェアを忘れないで"},
+                    {th: "เป็นกำลังใจกันให้ด้วย", ipa: "[pen kam.laŋ t͡ʑaj kan hâj dûaj]", ja: "応援もお願いします"}
+                ],
+                g: '【ก่อนที่จะ〜】「〜する前に」。<br>【ให้ด้วย】動詞のあとに置いて「〜してください」「〜してあげる」という恩恵・依頼を表します。'
+            },
+            {
+                t: 'ค่ะ แล้ว ก็ จะ มี วัน เสาร์ บ้าง เป็น บาง ครั้ง ค่ะ',
+                i: '[kʰâ lɛ́ːw kɔ̂ː t͡ʑà miː wan sǎw bâːŋ pen baːŋ kʰráŋ kʰâ]',
+                j: 'はい、それから時々土曜日にもアップすることがあります。',
+                w: [
+                    {th: "วันเสาร์", ipa: "[wan sǎw]", ja: "土曜日"},
+                    {th: "บางครั้ง", ipa: "[baːŋ kʰráŋ]", ja: "時々"},
+                    {th: "มีวันเสาร์บ้างเป็นบางครั้ง", ipa: "[miː wan sǎw bâːŋ pen baːŋ kʰráŋ]", ja: "時々土曜日にもある"}
+                ],
+                g: '【บ้าง】「〜したりする」「いくつか〜する」という部分的な事象や例示を表す副詞です。'
+            },
+            {
+                t: 'อย่าง แรก เลย นะ คะ เรา ก็ อาจ จะ เคย พูด ไป แล้ว เนาะ ใน คลิป ก่อน หน้า นี้ อะไร อย่าง เงี้ย ค่ะ เรื่อง นี้ ก็ คือ เรื่อง ของ นาม บัตร นั่น เอง ค่ะ',
+                i: '[jàːŋ rɛ̂ːk lɤːj ná kʰá raw kɔ̂ː ʔàːt t͡ʑà kʰɤːj pʰûːt paj lɛ́ːw nɔ́ naj kʰlíp kɔ̀ːn nâː níː ʔà.raj jàːŋ ŋía kʰâ rɯ̂aŋ níː kɔ̂ː kʰɯː rɯ̂aŋ kʰɔ̌ːŋ naːm bàt nân ʔeːŋ kʰâ]',
+                j: 'まず第一にですね、以前の動画などんでもすでに話したことがあるかもしれませんが、これはいわゆる「名刺」についてのことです。',
+                w: [
+                    {th: "อย่างแรก", ipa: "[jàːŋ rɛ̂ːk]", ja: "第一に"},
+                    {th: "นามบัตร", ipa: "[naːm bàt]", ja: "名刺"},
+                    {th: "นั่นเอง", ipa: "[nân ʔeːŋ]", ja: "まさにそれだ"},
+                    {th: "อาจจะเคยพูดไปแล้ว", ipa: "[ʔàːt t͡ʑà kʰɤːj pʰûːt paj lɛ́ːw]", ja: "以前話したことがあるかもしれない"},
+                    {th: "อะไรอย่างเงี้ย", ipa: "[ʔà.raj jàːŋ ŋía]", ja: "〜とか、そんな感じ（口語）"}
+                ],
+                g: '【อะไรอย่างเงี้ย】「〜とか、そういう感じ」という口語表現（อะไรอย่างนี้のくだけた形）。会話で非常によく使われます。<br>【นั่นเอง】「まさにそれだ」「〜に他ならない」と断定・強調する表現です。'
+            },
+            {
+                t: 'หลาย ๆ คน อาจ จะ เคย ได้ ยิน เนาะ ว่า ที่ ญี่ปุ่น เนี่ย คน ญี่ปุ่น เขา จะ ค่อน ข้าง คลั่ง ไล้ การ มี นาม บัตร',
+                i: '[lǎːj lǎːj kʰon ʔàːt t͡ʑà kʰɤːj dâj jin nɔ́ wâː tʰîː jîː.pùn nîa kʰon jîː.pùn kʰǎw t͡ʑà kʰɔ̂n kʰâːŋ kʰlâŋ láj kaːn miː naːm bàt]',
+                j: '日本の人たちは名刺を持つことにかなり執着していると、聞いたことがある人も多いかもしれません。',
+                c: 'คลั่ง ไล้ -> คลั่งไคล้',
+                w: [
+                    {th: "ได้ยิน", ipa: "[dâj jin]", ja: "耳にする、聞く"},
+                    {th: "คลั่งไคล้", ipa: "[kʰlâŋ kʰláj]", ja: "夢中になる、執着する"},
+                    {th: "อาจจะเคยได้ยิน", ipa: "[ʔàːt t͡ʑà kʰɤːj dâj jin]", ja: "聞いたことがあるかもしれない"},
+                    {th: "การมีนามบัตร", ipa: "[kaːn miː naːm bàt]", ja: "名刺を持つこと"}
+                ],
+                g: '【อาจจะเคย〜】อาจจะ(〜かもしれない) + เคย(かつて〜した事がある) で「〜したことがあるかもしれない」という経験の推量を表します。'
+            },
+            {
+                t: 'ไม่ ว่า คุณ จะ เป็น ตำแหน่ง เล็ก ตำแหน่ง ใหญ่ จะ ทำ งาน อะไร ก็ ช่าง เงี้ย เขา จะ พยายาม ทำ ให้ ตัว เอง มี นาม บัตร ค่ะ',
+                i: '[mâj wâː kʰun t͡ʑà pen tam.nɛ̀ŋ lék tam.nɛ̀ŋ jàj t͡ʑà tʰam ŋaːn ʔà.raj kɔ̂ː t͡ɕʰâŋ ŋía kʰǎw t͡ʑà pʰa.jaː.jaːm tʰam hâj tua ʔeːŋ miː naːm bàt kʰâ]',
+                j: '役職が低くても高くても、どんな仕事をしていても関係なく、彼らは自分自身の名刺を持とうと努めます。',
+                w: [
+                    {th: "ตำแหน่ง", ipa: "[tam.nɛ̀ŋ]", ja: "役職、地位"},
+                    {th: "พยายาม", ipa: "[pʰa.jaː.jaːm]", ja: "努力する、努める"},
+                    {th: "ตัวเอง", ipa: "[tua ʔeːŋ]", ja: "自分自身"},
+                    {th: "ไม่ว่าคุณจะเป็นตำแหน่งเล็กตำแหน่งใหญ่", ipa: "[mâj wâː kʰun t͡ʑà pen tam.nɛ̀ŋ lék tam.nɛ̀ŋ jàj]", ja: "役職が低かろうと高かろうと"},
+                    {th: "จะทำงานอะไรก็ช่าง", ipa: "[t͡ʑà tʰam ŋaːn ʔà.raj kɔ̂ː t͡ɕʰâŋ]", ja: "どんな仕事をしていても構わず"},
+                    {th: "ทำให้ตัวเองมีนามบัตร", ipa: "[tʰam hâj tua ʔeːŋ miː naːm bàt]", ja: "自分が名刺を持てるようにする"}
+                ],
+                g: '【ไม่ว่า...ก็ตาม/ก็ช่าง】「〜であろうとも関係なく」という譲歩構文です。<br>【ทำให้】ここでは「〜するようにする」「〜という状態を引き起こす」という使役のニュアンスになります。'
+            },
+            {
+                t: 'เพราะ ว่า เขา บอก ว่า วัฒนธรรม การ มี นาม บัตร ของ ที่ นี่ อ่ะ ค่ะ มัน จะ แตก ต่าง กับ ที่ อื่น เนาะ',
+                i: '[pʰrɔ́ wâː kʰǎw bɔ̀ːk wâː wát.tʰa.ná.tʰam kaːn miː naːm bàt kʰɔ̌ːŋ tʰîː nîː à kʰâ man t͡ʑà tɛ̀ːk tàːŋ kàp tʰîː ʔɯ̀ːn nɔ́]',
+                j: 'なぜなら、ここ（日本）での名刺を持つ文化というのは、他の場所とは違うと言われているからです。',
+                w: [
+                    {th: "วัฒนธรรม", ipa: "[wát.tʰa.ná.tʰam]", ja: "文化"},
+                    {th: "แตกต่าง", ipa: "[tɛ̀ːk tàːŋ]", ja: "異なる"},
+                    {th: "ที่อื่น", ipa: "[tʰîː ʔɯ̀ːn]", ja: "他の場所"},
+                    {th: "วัฒนธรรมการมีนามบัตร", ipa: "[wát.tʰa.ná.tʰam kaːn miː naːm bàt]", ja: "名刺を持つ文化"},
+                    {th: "แตกต่างกับที่อื่น", ipa: "[tɛ̀ːk tàːŋ kàp tʰîː ʔɯ̀ːn]", ja: "ほかの場所と異なる"},
+                    {th: "ที่นี่อ่ะ", ipa: "[tʰîː nîː à]", ja: "ここではね（口語）"}
+                ],
+                g: '【อ่ะ】文末や文節の区切りに置かれ、調子を整えたり、間を持たせるための軽い音声記号的な役割を果たします。'
+            },
+            {
+                t: 'ถ้า เป็น ที่ อื่น เนี่ย นาม บัตร ก็ คือ เป็น เหมือน แค่ การ บอก information ก็ คือ คือ การ บอก ข้อ มูล ส่วน ตัว ว่า ฉัน คือ ใคร เบอร์ ติด ต่อ อะไร ยัง ไง หรือ ว่า บริษัท ฉัน คือ อะไร อะไร อย่าง เงี้ย ค่ะ',
+                i: '[tʰâː pen tʰîː ʔɯ̀ːn nîa naːm bàt kɔ̂ː kʰɯː pen mɯ̌an kʰɛ̂ː kaːn bɔ̀ːk in.fɔː.meː.t͡ɕʰân kɔ̂ː kʰɯː kʰɯː kaːn bɔ̀ːk kʰɔ̂ː muːn sùan tua wâː t͡ɕʰǎn kʰɯː kʰraj bɤː tìt tɔ̀ː ʔà.raj jaŋ ŋaj rɯ̌ː wâː bɔː.rí.sàt t͡ɕʰǎn kʰɯː ʔà.raj ʔà.raj jàːŋ ŋía kʰâ]',
+                j: '他の場所であれば、名刺は自分が誰で連絡先はどうで自分の会社は何なのかといった個人情報を伝えるためのもの、という感じです。',
+                w: [
+                    {th: "ข้อมูลส่วนตัว", ipa: "[kʰɔ̂ː muːn sùan tua]", ja: "個人情報"},
+                    {th: "เบอร์ติดต่อ", ipa: "[bɤː tìt tɔ̀ː]", ja: "連絡先（電話番号）"},
+                    {th: "บริษัท", ipa: "[bɔː.rí.sàt]", ja: "会社"},
+                    {th: "อะไรยังไง", ipa: "[ʔà.raj jaŋ ŋaj]", ja: "何がどうなのか"},
+                    {th: "ก็คือ", ipa: "[kɔ̂ː kʰɯː]", ja: "つまり"}
+                ],
+                g: '【อะไรยังไง】「何がどうなっているか」と詳細を尋ねたり説明したりする際の決まり文句です。<br>【ก็คือ】「つまり〜である」と説明を言い換えるときによく使われます。'
+            },
+            {
+                t: 'แต่ ว่า สำหรับ ใน ประเทศ ญี่ปุ่น แล้ว เนี่ย นำ บัตร มัน เป็น มาก กว่า การ ให้ ข้อ มูล',
+                i: '[tɛ̀ː wâː sǎm.ràp naj prà.tʰêːt jîː.pùn lɛ́ːw nîa nam bàt man pen mâːk kwàː kaːn hâj kʰɔ̂ː muːn]',
+                j: 'ですが、日本においては、名刺は情報を提供する以上のものなのです。',
+                c: 'นำ บัตร -> นามบัตร',
+                w: [
+                    {th: "สำหรับ", ipa: "[sǎm.ràp]", ja: "〜にとっては"},
+                    {th: "มากกว่า", ipa: "[mâːk kwàː]", ja: "〜以上"},
+                    {th: "เป็นมากกว่าการให้ข้อมูล", ipa: "[pen mâːk kwàː kaːn hâj kʰɔ̂ː muːn]", ja: "情報を伝える以上のものだ"}
+                ]
+            },
+            {
+                t: 'ถ้า เรา ได้ รับ น้ำ บัตร จาก ใคร ให้ นำ บัตร เรา อย่าง เงี้ย ค่ะ เรา ควร จะ ทรีทาม บัตร อัน นั้น เนี่ย ให้ เหมือน กับ เป็น ชิ้น ส่วน ร่าง กาย ของ เขา ส่วน นึง อะไร อย่าง เงี้ย ค่ะ',
+                i: '[tʰâː raw dâj ráp nám bàt t͡ʑàːk kʰraj hâj nam bàt raw jàːŋ ŋía kʰâ raw kʰuan t͡ʑà tʰriː.tʰaːm bàt ʔan nán nîa hâj mɯ̌an kàp pen t͡ɕʰín sùan râːŋ kaːj kʰɔ̌ːŋ kʰǎw sùan nɯŋ ʔà.raj jàːŋ ŋía kʰâ]',
+                j: 'もし誰かから名刺を受け取ったり渡されたりした場合、私たちはその名刺を、まるでその人の体の一部であるかのように扱うべきなのです。',
+                c: 'น้ำ บัตร -> นามบัตร, ทรีทาม -> ทรีต(treat)',
+                w: [
+                    {th: "ได้รับ", ipa: "[dâj ráp]", ja: "受け取る"},
+                    {th: "ชิ้นส่วน", ipa: "[t͡ɕʰín sùan]", ja: "一部、部品"},
+                    {th: "ร่างกาย", ipa: "[râːŋ kaːj]", ja: "身体"},
+                    {th: "ให้เหมือนกับเป็นชิ้นส่วนร่างกายของเขา", ipa: "[hâj mɯ̌an kàp pen t͡ɕʰín sùan râːŋ kaːj kʰɔ̌ːŋ kʰǎw]", ja: "相手の体の一部であるかのように（扱う）"}
+                ],
+                g: '【ให้เหมือนกับเป็น〜】ให้ (〜するように) + เหมือนกับ (〜と同じように) + เป็น (〜である) で「〜であるかのように（扱う）」という意味を作っています。'
+            },
+            {
+                t: 'ส่วน มาก แล้ว คน ที่ นี่ เขา ก็ จะ มี กล่อง ที่ เก็บ นาม บัตร ไว้ อย่าง ดี เนาะ',
+                i: '[sùan mâːk lɛ́ːw kʰon tʰîː nîː kʰǎw kɔ̂ː t͡ʑà miː klɔ̀ŋ tʰîː kèp naːm bàt wáj jàːŋ diː nɔ́]',
+                j: 'たいていの場合、ここの人たちは名刺をきちんと保管するためのケースを持っています。',
+                w: [
+                    {th: "ส่วนมาก", ipa: "[sùan mâːk]", ja: "大部分、たいてい"},
+                    {th: "กล่อง", ipa: "[klɔ̀ŋ]", ja: "箱、ケース"},
+                    {th: "เก็บ", ipa: "[kèp]", ja: "しまう、保管する"},
+                    {th: "เก็บนามบัตรไว้อย่างดี", ipa: "[kèp naːm bàt wáj jàːŋ diː]", ja: "名刺をきちんと保管しておく"}
+                ],
+                g: '【ไว้อย่างดี】ไว้(〜しておく) + อย่างดี(良く/立派に) で、「きちんと保管しておく」という意味を表します。'
+            },
+            {
+                t: 'แล้ว ก็ คน ที่ รับ เอง เนี่ย เรา เอง เนี่ย ก็ จะ ต้อง คอย เตรียม กล่อง ที่ จะ เก็บ น้ำ บัตร ของ เขา ไว้ เหมือน กัน ค่ะ',
+                i: '[lɛ́ːw kɔ̂ː kʰon tʰîː ráp ʔeːŋ nîa raw ʔeːŋ nîa kɔ̂ː t͡ʑà tɔ̂ŋ kʰɔːj triam klɔ̀ŋ tʰîː t͡ʑà kèp nám bàt kʰɔ̌ːŋ kʰǎw wáj mɯ̌an kan kʰâ]',
+                j: 'ฝและ、受け取る側である私たち自身も、彼らの名刺をしまっておくためのケースを準備しておかなければなりません。',
+                c: 'น้ำ บัตร -> นามบัตร',
+                w: [
+                    {th: "คนรับ", ipa: "[kʰon ráp]", ja: "受け取る人"},
+                    {th: "เตรียม", ipa: "[triam]", ja: "準備する"},
+                    {th: "เหมือนกัน", ipa: "[mɯ̌an kan]", ja: "同じく、〜もまた"},
+                    {th: "คอยเตรียมกล่อง", ipa: "[kʰɔːj triam klɔ̀ːŋ tʰîː t͡ʑà kèp naːm bàt kʰɔ̌ːŋ kʰǎw wáj]", ja: "相手の名刺を入れる箱を準備しておく"}
+                ],
+                g: '【คอยเตรียม...ไว้】คอย(〜して待つ) + เตรียม(準備する) + ไว้(〜しておく) で、「事前に準備して備えておく」というニュアンスが出ます。'
+            },
+            {
+                t: 'คือ อยู่ ดี ๆ จะ เอา ไป ซุป ไว้ ที่ ไหน ก็ ได้ หรือ ว่า เอา เสียบ ไว้ ใน กระเป๋า ตังค์ อย่าง เดียว อะไร อย่าง เงี้ย เขา จะ รู้ สึก ว่า มัน ไม่ ค่อย ให้ ความ เคารพ เท่า ไหร่ อะไร อย่าง เงี้ย ค่ะ',
+                i: '[kʰɯː jùː diː diː t͡ʑà ʔaw paj súp wáj tʰîː nǎj kɔ̂ː dâj rɯ̌ː wâː ʔaw sìap wáj naj krà.pǎw taŋ jàːŋ diaw ʔà.raj jàːŋ ŋía kʰǎw t͡ʑà rúː sɯ̀k wâː man mâj kʰɔ̂j hâj kʰwaːm kʰaw.róp tʰâw ràj ʔà.raj jàːŋ ŋía kʰâ]',
+                j: 'つまり、いきなり適当な場所に突っ込んでおいたり、あるいはお財布にだけ挟み込んだりすると、相手はあまり敬意を払われていないと感じてしまいます。',
+                c: 'ซุป -> ซุก',
+                w: [
+                    {th: "เสียบ", ipa: "[sìap]", ja: "挟む、差し込む"},
+                    {th: "กระเป๋าตังค์", ipa: "[krà.pǎw taŋ]", ja: "財布"},
+                    {th: "ความเคารพ", ipa: "[kʰwaːm kʰaw.róp]", ja: "敬意"},
+                    {th: "อยู่ดีๆ", ipa: "[jùː diː diː]", ja: "突然、何の前触れもなく"},
+                    {th: "ไม่ค่อยให้ความเคารพเท่าไหร่", ipa: "[mâj kʰɔ̂j hâj kʰwaːm kʰaw.róp tʰâw ràj]", ja: "あまり敬意を払っていない"}
+                ],
+                g: '【อยู่ดีๆ】「突然、急に、脈絡もなく」という意味の副詞表現です。<br>【ไม่ค่อย...เท่าไหร่】「あまり〜ない」という控えめな否定表現です。'
+            },
+            {
+                t: 'มัน ไม่ ใช่ แค่ กระดาษ ที่ บอก ข้อ มูล น่ะ ดัง นั้น ค่ะ การ รับ นำ บัตร จาก คน ญี่ปุ่น ทุก ๆ ครั้ง เนี่ย จะ ต้อง รับ ด้วย มือ แบบ 2 มือ',
+                i: '[man mâj t͡ɕʰâj kʰɛ̂ː krà.dàːt tʰîː bɔ̀ːk kʰɔ̂ː muːn nàʔ daŋ nán kʰâ kaːn ráp nam bàt t͡ʑàːk kʰon jîː.pùn tʰúk tʰúk kʰráŋ nîa t͡ʑà tɔ̂ŋ ráp dûaj mɯː bɛ̀ːp sɔ̌ːŋ mɯː]',
+                j: '単なる情報を伝える紙ではないんですよ。ですから、日本人から名刺を受け取るときは毎回、必ず両手で受け取らなければなりません。',
+                c: 'นำ บัตร -> นามบัตร',
+                w: [
+                    {th: "กระดาษ", ipa: "[krà.dàːt]", ja: "紙"},
+                    {th: "ทุกๆ ครั้ง", ipa: "[tʰúk tʰúk kʰráŋ]", ja: "毎回"},
+                    {th: "สองมือ", ipa: "[sɔ̌ːŋ mɯː]", ja: "両手"},
+                    {th: "รับด้วยมือแบบ 2 มือ", ipa: "[ráp dûaj mɯː bɛ̀ːp sɔ̌ːŋ mɯː]", ja: "両手で受け取る"}
+                ]
+            },
+            {
+                t: 'คือ ถ้า เขา ยื่น ให้ เรา อ่ะ เรา ก็ ต้อง รับ ด้วย 2 มือ แล้ว ก็ ต้อง โค้ง ขอบคุณ เขา ด้วย อะไร อย่าง เงี้ย ค่ะ ห้าม รับ นาม บัตร มือ เดียว เด็ด ขาด',
+                i: '[kʰɯː tʰâː kʰǎw jɯ̂ːn hâj raw àʔ raw kɔ̂ː tɔ̂ŋ ráp dûaj sɔ̌ːŋ mɯː lɛ́ːw kɔ̂ː tɔ̂ŋ kʰóːŋ kʰɔ̀ːp kʰun kʰǎw dûaj ʔà.raj jàːŋ ŋía kʰâ hâːm ráp naːm bàt mɯː diaw dèt kʰàːt]',
+                j: 'つまり、もし相手が渡してくれたら両手で受け取り、そしてお辞儀をしてお礼を言わなければならない、ということです。片手で名刺を受け取るのは絶対にNGです。',
+                w: [
+                    {th: "ยื่น", ipa: "[jɯ̂ːn]", ja: "差し出す、渡す"},
+                    {th: "โค้งขอบคุณ", ipa: "[kʰóːŋ kʰɔ̀ːp kʰun]", ja: "お辞儀をして感謝する"},
+                    {th: "เด็ดขาด", ipa: "[dèt kʰàːt]", ja: "絶対に（〜ない）"},
+                    {th: "โค้งขอบคุณเขาด้วย", ipa: "[kʰôːŋ kʰɔ̀ːp kʰun kʰǎw dûaj]", ja: "お辞儀をして相手にお礼を言う"},
+                    {th: "ห้ามรับนามบัตรมือเดียวเด็ดขาด", ipa: "[hâːm ráp naːm bàt mɯː diaw dèt kʰàːt]", ja: "片手で名刺を受け取るのは絶対禁止"}
+                ],
+                g: '【ห้าม...เด็ดขาด】「絶対に〜してはいけない」という強い禁止を表すセット表現です。'
+            },
+            {
+                t: 'และ ใน ขณะ เดียว กัน ถ้า เรา เป็น ฝ่าย ที่ ต้อง ยื่น นาม บัตร ให้ เค้า ใช่ มั้ คะ เรา ก็ ต้อง ยื่น ให้ 2 มือ เช่น เดียว กัน ค่ะ',
+                i: '[lɛ́ naj kʰà.nàʔ diaw kan tʰâː raw pen fàːj tʰîː tɔ̂ŋ jɯ̂ːn naːm bàt hâj kʰáw t͡ɕʰâj má kʰá raw kɔ̂ː tɔ̂ŋ jɯ̂ːn hâj sɔ̌ːŋ mɯː t͡ɕʰên diaw kan kʰâ]',
+                j: 'それと同時に、もし私たちが相手に名刺を渡す側だった場合ですね、同じように両手で渡さなければなりません。',
+                c: 'มั้ -> มั้ย',
+                w: [
+                    {th: "ฝ่าย", ipa: "[fàːj]", ja: "側、当事者"},
+                    {th: "เช่นเดียวกัน", ipa: "[t͡ɕʰên diaw kan]", ja: "同様に"},
+                    {th: "ในขณะเดียวกัน", ipa: "[naj kʰà.nàʔ diaw kan]", ja: "同時に"},
+                    {th: "ใช่มั้ยคะ", ipa: "[t͡ɕʰâj máj kʰá]", ja: "〜ですよね？"},
+                    {th: "ยื่นให้ 2 มือเช่นเดียวกัน", ipa: "[jɯ̂ːn hâj sɔ̌ːŋ mɯː t͡ɕʰên diaw kan]", ja: "同じく両手で差し出す"}
+                ],
+                g: '【ใช่มั้ยคะ】相手に同意を求める「〜ですよね？」という非常に一般的な文末表現です。'
+            },
+            {
+                t: 'ซึ่ง ถ้า จำ ไม่ ผิด นะ ก็ คือ เรา จะ ต้อง ยื่น ด้วย มือ ขวา ค่ะ แล้ว ก็ รับ ด้วย มือ ซ้าย ทาง ฝั่ง นู้น เอง เขา ก็ ต้อง ยื่น ด้วย มือ ขวา แล้ว ก็ รับ ด้วย มือ ซ้าย ค่ะ',
+                i: '[sɯ̂ŋ tʰâː t͡ʑam mâj pʰìt ná kɔ̂ː kʰɯː raw t͡ʑà tɔ̂ŋ jɯ̂ːn dûaj mɯː kʰwǎː kʰâ lɛ́ːw kɔ̂ː ráp dûaj mɯː sáːj tʰaːŋ fàŋ núːn ʔeːŋ kʰǎw kɔ̂ː tɔ̂ŋ jɯ̂ːn dûaj mɯː kʰwǎː lɛ́ːw kɔ̂ː ráp dûaj mɯː sáːj kʰâ]',
+                j: '記憶が正しければ、私たちは右手で渡し、左手で受け取らなければなりません。あちら側も同様に、右手で渡し、左手で受け取らなければなりません。',
+                w: [
+                    {th: "จำไม่ผิด", ipa: "[t͡ʑam mâj pʰìt]", ja: "記憶が正しければ"},
+                    {th: "มือขวา", ipa: "[mɯː kʰwǎː]", ja: "右手"},
+                    {th: "มือซ้าย", ipa: "[mɯː sáːj]", ja: "左手"},
+                    {th: "ถ้าจำไม่ผิด", ipa: "[tʰâː t͡ʑam mâj pʰìt]", ja: "記憶違いでなければ"},
+                    {th: "ยื่นด้วยมือขวาแล้วก็รับด้วยมือซ้าย", ipa: "[jɯ̂ːn dûaj mɯː kʰwǎː lɛ́ːw kɔ̂ː ráp dûaj mɯː sáːj]", ja: "右手で渡し、左手で受け取る"}
+                ]
+            },
+            {
+                t: 'ต่อ มา ค่ะ เป็น เรื่อง ของ ระยะ ห่าง ค่ะ ซึ่ง ใน การ ติด ต่อ คุย ธุรกิจ กับ คน ญี่ปุ่น ใน ครั้ง แรก อ่ะ ค่ะ ถ้า เจอ กัน ครั้ง แรก อ่ะ นะ เรา จะ ต้อง เว้น ระยะ หาง เขา้า ไว้ นิด นึง',
+                i: '[tɔ̀ː maː kʰâ pen rɯ̂aŋ kʰɔ̌ːŋ rá.jáʔ hàːŋ kʰâ sɯ̂ŋ naj kaːn tìt tɔ̀ː kʰuj tʰú.rá.kìt kàp kʰon jîː.pùn naj kʰráŋ rɛ̂ːk àʔ kʰâ tʰâː t͡ʑɤː kan kʰráŋ rɛ̂ːk àʔ ná raw t͡ʑà tɔ̂ŋ wén rá.jáʔ hàːŋ kʰáw wáj nít nɯŋ]',
+                j: '続いては、距離感（パーソナルスペース）についてです。初めて日本の人とビジネスの連絡や会話をする際ですね、初めて会うときは少し距離を保たなければなりません。',
+                c: 'หาง เขา้า -> ห่าง เขา',
+                w: [
+                    {th: "ระยะห่าง", ipa: "[rá.jáʔ hàːŋ]", ja: "距離（感）"},
+                    {th: "ติดต่อ", ipa: "[tìt tɔ̀ː]", ja: "連絡する"},
+                    {th: "ธุรกิจ", ipa: "[tʰú.rá.kìt]", ja: "ビジネス"},
+                    {th: "เว้น", ipa: "[wén]", ja: "あける、間隔を置く"},
+                    {th: "ไว้นิดนึง", ipa: "[rá.já hàːŋ wáj nít nɯŋ]", ja: "少し距離を置いておく"}
+                ],
+                g: '【ไว้นิดนึง】ไว้(〜しておく) + นิดนึง(少し) で、「少し（距離を）開けておく」という意味です。'
+            },
+            {
+                t: 'เพราะ ว่า มัน อัน นี้ เรา ไม่ รู้ ว่า ทำไม นะ แต่ ว่า มัน เป็น เรื่อง ปกติ ของ คน ญี่ปุ่น เนาะ ที่ เขา จะ แบบ มี ระยะ ห่าง ไว้ กับ ทุก อย่าง อะไร อย่าง เงี้ย ค่ะ',
+                i: '[pʰrɔ́ wâː man ʔan níː raw mâj rúː wâː tʰam.maj ná tɛ̀ː wâː man pen rɯ̂aŋ pòk.kà.tìʔ kʰɔ̌ːŋ kʰon jîː.pùn nɔ́ tʰîː kʰǎw t͡ʑà bɛ̀ːp miː rá.jáʔ hàːŋ wáj kàp tʰúk jàːŋ ʔà.raj jàːŋ ŋía kʰâ]',
+                j: '理由は私にもわからないんですけどね。でも、全ての物事に対して距離を置くというのは、日本人にとっては普通のことなんです。',
+                w: [
+                    {th: "ไม่รู้ว่าทำไม", ipa: "[mâj rúː wâː tʰam.maj]", ja: "なぜかわからない"},
+                    {th: "เรื่องปกติ", ipa: "[rɯ̂aŋ pòk.kà.tìʔ]", ja: "普通のこと"},
+                    {th: "ทุกอย่าง", ipa: "[tʰúk jàːŋ]", ja: "全てのこと"},
+                    {th: "มีระยะห่างไว้กับทุกอย่าง", ipa: "[miː rá.já hàːŋ wáj kàp tʰúk jàːŋ]", ja: "何事にも距離を置いておく"}
+                ]
+            },
+            {
+                t: 'ถ้า เรา เริ่ม ไป แล้ว เรา ก็ แบบ ทำ ตัว สนิท สนม กับ เขา้า เลย หรือ ว่า ถาม ใน เรื่อง ที่ มัน ส่วน ตัว มาก เกิน ไป อะไร เงี้ย มัน อาจ จะ ทำ ให้ เขา ตก ใจ กลัว แล้ว ก็ ถอย ไป ไกล ๆ ได้ เหมือน กัน',
+                i: '[tʰâː raw rɤ̂ːm paj lɛ́ːw raw kɔ̂ː bɛ̀ːp tʰam tua sà.nìt sà.nǒm kàp kʰáw lɤːj rɯ̌ː wâː tʰǎːm naj rɯ̂aŋ tʰîː man sùan tua mâːk kɤːn paj ʔà.raj ŋía man ʔàːt t͡ʑà tʰam hâj kʰǎw tòk t͡ʑaj klua lɛ́ːw kɔ̂ː tʰɔ̌j paj klaj klaj dâj mɯ̌an kan]',
+                j: 'もし私たちが最初から馴れ馴れしく振る舞ったり、あるいはプライベートすぎることを質問したりすると、相手をびっくりさせて怖がらせてしまい、遠くに引かれてしまう可能性があります。',
+                c: 'เขา้า -> เขา',
+                w: [
+                    {th: "สนิทสนม", ipa: "[sà.nìt sà.nǒm]", ja: "親しい、馴れ馴れしい"},
+                    {th: "ส่วนตัว", ipa: "[sùan tua]", ja: "プライベートな"},
+                    {th: "ตกใจ", ipa: "[tòk t͡ʑaj]", ja: "驚く"},
+                    {th: "ทำตัวสนิทสนม", ipa: "[tʰam tua sà.nìt sà.nǒm kàp kʰǎw]", ja: "相手と親しげに振る舞う"},
+                    {th: "มากเกินไป", ipa: "[mâːk kɤːn paj]", ja: "度が過ぎる"}
+                ],
+                g: '【มากเกินไป】「〜すぎる」という程度を超過した状態を表します。<br>【ได้เหมือนกัน】文末に置き「〜する可能性がある」「〜することもあり得る」という推量を表します。'
+            },
+            {
+                t: 'ก็ คือ ต้อง สุภาพ ไว้ ให้ มาก ที่ สุด ต้อง แต่ง ตัว ให้ เอ่อ เป็น ทาง การ มาก ที่ สุด วาง ตัว ให้ เป็น ทาง การ มาก ที่ สุด สุด ค่ะ จะ รีแลก ไม่ ค่อย ได้ อื',
+                i: '[kɔ̂ː kʰɯː tɔ̂ŋ sù.pʰâːp wáj hâj mâːk tʰîː sùt tɔ̂ŋ tɛ̀ŋ tua hâj ʔɤ̀ː pen tʰaːŋ kaːn mâːk tʰîː sùt waːŋ tua hâj pen tʰaːŋ kaːn mâːk tʰîː sùt sùt kʰâ t͡ʑà riː.lɛ̀k mâj kʰɔ̂j dâj ɯː]',
+                j: 'つまり、できる限り礼儀正しく、服装もできる限りフォーマルにし、振る舞いも最大限フォーマルにしなければならないということです。あまりリラックスすることはできませんね。',
+                c: 'รีแลก -> รีแล็กซ์ (relax)',
+                w: [
+                    {th: "สุภาพ", ipa: "[sù.pʰâːp]", ja: "丁寧な、礼儀正しい"},
+                    {th: "แต่งตัว", ipa: "[tɛ̀ŋ tua]", ja: "服装（を着る）"},
+                    {th: "ทางการ", ipa: "[tʰaːŋ kaːn]", ja: "公式な、フォーマルな"},
+                    {th: "ต้องสุภาพไว้ให้มากที่สุด", ipa: "[tɔ̂ŋ sù.pʰâːp wáj hâj mâːk tʰîː sùt]", ja: "できる限り礼儀正しくしておく"},
+                    {th: "วางตัวให้เป็นทางการมากที่สุด", ipa: "[waːŋ tua hâj pen tʰaːŋ kaːn mâːk tʰîː sùt]", ja: "できる限り正式に振る舞う"}
+                ],
+                g: '【ให้มากที่สุด】形容詞・副詞の後に置いて「できるだけ〜（最大限〜に）」という意味を作ります。<br>【วางตัว】「身を置く、振る舞う、立ち振る舞い」を意味する表現です。'
+            },
+            {
+                t: 'แต่ ว่า ใน ประเทศ ญี่ปุ่น น่ะ ค่ะ เค้า ไม่ ได้ แค่ ตรง ต่อ เวลา ไง คือ เค้า อ่ะ ก่อน เวลา แล้ว การ ก่อน เวลา เนี้ย ค่ะ มัน ไม่ ใช่ การ ก่อน แบบ ก่อน นาน ๆ ด้วย นะ คือ มัน ต้อง ก่อน แบบ ประมาณ 10 นาที',
+                i: '[tɛ̀ː wâː naj prà.tʰêːt jîː.pùn nàʔ kʰâ kʰáw mâj dâj kʰɛ̂ː troŋ tɔ̀ː weː.laː ŋaj kʰɯː kʰáw àʔ kɔ̀ːn weː.laː lɛ́ːw kaːn kɔ̀ːn weː.laː nía kʰâ man mâj t͡ɕʰâj kaːn kɔ̀ːn bɛ̀ːp kɔ̀ːn naːn naːn dûaj ná kʰɯː man tɔ̂ŋ kɔ̀ːn bɛ̀ːp prà.maːn sìp naː.tʰiː]',
+                j: 'でも日本では、ただ時間を守るだけじゃないんです。つまり「時間より前（早め）」なんです。そしてその「早め」というのは、ずっと早すぎるということでもないんですよ。大体10分前くらいでなければならないんです。',
+                w: [
+                    {th: "ตรงต่อเวลา", ipa: "[troŋ tɔ̀ː weː.laː]", ja: "時間を守る"},
+                    {th: "ก่อนเวลา", ipa: "[kɔ̀ːn weː.laː]", ja: "時間より前"},
+                    {th: "ประมาณ", ipa: "[prà.maːn]", ja: "だいたい、約"},
+                    {th: "ไม่ได้แค่ตรงต่อเวลา", ipa: "[mâj dâj kʰɛ̂ː troŋ tɔ̀ː weː.laː]", ja: "時間を守るだけではない"},
+                    {th: "ก่อนแบบประมาณ 10 นาที", ipa: "[kɔ̀ːn bɛ̀ːp prà.maːn sìp naː.tʰiː]", ja: "だいたい10分前に"},
+                    {th: "ตรงต่อเวลาไง", ipa: "[troŋ tɔ̀ː weː.laː ŋaj]", ja: "時間を守るじゃないですか（説明・強調）"}
+                ],
+                g: '【ไง】「〜じゃないか」「〜でしょ」と理由や既知の事実を相手に訴えかける・強調する語気助詞です。'
+            },
+            {
+                t: 'ถ้า เกิด ว่า เกิน กว่า นั้น ไป นาน ๆ ก่อน ไป นาน ๆ 15 นาที 20 นาที อย่าง เงี้ย เขา ก็ จะ มี ความ รู้ สึก อึด อัด แล้ว ว่า ฉัน นัด เธอ 10:00 น. ทำไม เธอ มา 9:30. อย่าง เงี้ย เธอ ไม่ ให้ เวลา ฉัน เตรียม ตัว หน่อย หรอ เธอ มา กด ดัน ฉัน หรอ อะไร อย่าง เงี้ย ค่ะ เขา ก็ จะ คิด กัน แบบ นี้ เนาะ',
+                i: '[tʰâː kɤ̀ːt wâː kɤːn kwàː nán paj naːn naːn kɔ̀ːn paj naːn naːn sìp hâː naː.tʰiː jîː sìp naː.tʰiː jàːŋ ŋía kʰǎw kɔ̂ː t͡ʑà miː kʰwaːm rúː sɯ̀k ʔɯ̀t ʔàt lɛ́ːw wâː t͡ɕʰǎn nát tʰɤː sìp moːŋ tʰam.maj tʰɤː maː kâːw moːŋ kʰrɯ̂ŋ jàːŋ ŋía tʰɤː mâj hâj weː.laː t͡ɕʰǎn triam tua nɔ̀j rɔ̌ː tʰɤː maː kòt dan t͡ɕʰǎn rɔ̌ː ʔà.raj jàːŋ ŋía kʰâ kʰǎw kɔ̂ː t͡ʑà kʰít kan bɛ̀ːp níː nɔ́]',
+                j: 'もしそれよりずっと早く、15分や20分も前に着いてしまうと、相手は窮屈に感じてしまいます。「10時に約束したのになぜ9時半に来るの？」と。「私に準備する時間をくれないの？ 私にプレッシャーをかけに来たの？」なんて、彼らはそんな風に考えるんですよ。',
+                w: [
+                    {th: "เกินกว่านั้น", ipa: "[kɤːn kwàː nán]", ja: "それ以上"},
+                    {th: "อึดอัด", ipa: "[ʔɯ̀t ʔàt]", ja: "窮屈な、息苦しい"},
+                    {th: "กดดัน", ipa: "[kòt dan]", ja: "プレッシャーをかける"},
+                    {th: "ถ้าเกิดว่าเกินกว่านั้นไป", ipa: "[tʰâː kɤ̀ːt wâː kɤːn kwàː nán paj]", ja: "もしそれより早すぎたら"},
+                    {th: "เธอมากดดันฉันหรอ", ipa: "[tʰɤː maː kòt dan t͡ɕʰǎn rɔ̌ː]", ja: "私に圧力をかけに来たの？"}
+                ],
+                g: '【หรอ/เหรอ】「〜なの？」「〜ですか？」と驚きや確認を含んで尋ねる口語の疑問詞です。'
+            },
+            {
+                t: 'แต่ ถ้า เกิด ว่า มา ตรง เวลา เป๊ะ ๆ ก็ เหมือน กับ แบบ เธอ ไม่ คิด จะ แบบ เผื่อ เวลา หน่อย หรอ อะไร อย่าง เงี้ย',
+                i: '[tɛ̀ː tʰâː kɤ̀ːt wâː maː troŋ weː.laː péʔ péʔ kɔ̂ː mɯ̌an kàp bɛ̀ːp tʰɤː mâj kʰít t͡ʑà bɛ̀ːp pʰɯ̀a weː.laː nɔ̀j rɔ̌ː ʔà.raj jàːŋ ŋía]',
+                j: 'でも、時間ぴったりに来たら来たで、「少しは余裕を持とうと思わないの？」みたいに思われます。',
+                w: [
+                    {th: "เป๊ะๆ", ipa: "[péʔ péʔ]", ja: "ぴったり、正確に"},
+                    {th: "เผื่อเวลา", ipa: "[pʰɯ̀a weː.laː]", ja: "時間を余分に取る（余裕を持つ）"},
+                    {th: "มาตรงเวลาเป๊ะๆ", ipa: "[maː troŋ weː.laː péʔ péʔ]", ja: "時間ぴったりに来る"},
+                    {th: "เผื่อเวลาหน่อยหรอ", ipa: "[pʰɯ̀a weː.laː nɔ̀j rɔ̌ː]", ja: "少しは時間に余裕を持たないの？"}
+                ],
+                g: '【เป๊ะ】「正確に、ぴったり」を表す言葉で、ๆをつけて強調しています（ตรงเวลาเป๊ะๆ = 時間きっかりに）。'
+            },
+            {
+                t: 'คือ อย่าง ถ้า สมมุติ ว่า เขา จะ ต้อง presีเซน อะไร บาง อย่าง เนี่ย คน ญี่ปุ่น จะ ไม่ สามารถ presีent แบบ wing it อ่ะ',
+                i: '[kʰɯː jàːŋ tʰâː sǒm.mút wâː kʰǎw t͡ʑà tɔ̂ŋ pʰriː.sén ʔà.raj baːŋ jàːŋ nîa kʰon jîː.pùn t͡ʑà mâj sǎː.mâːt pʰriː.sén bɛ̀ːp wiŋ it àʔ]',
+                j: '例えば何かプレゼンしなければならない場合、日本人はぶっつけ本番（wing it）でプレゼンすることができません。',
+                c: 'presีเซน -> พรีเซนต์',
+                w: [
+                    {th: "สมมุติ", ipa: "[sǒm.mút]", ja: "仮に、例えば"},
+                    {th: "พรีเซนต์", ipa: "[pʰriː.sén]", ja: "プレゼンする"},
+                    {th: "ถ้าสมมุติว่า", ipa: "[tʰâː sǒm.mút wâː]", ja: "もし仮に〜なら"},
+                    {th: "อะไรบางอย่าง", ipa: "[ʔà.raj baːŋ jàːŋ]", ja: "何かあるもの"}
+                ],
+                g: '【สมมุติว่า】「仮に〜だとしたら」という仮定法です。'
+            },
+            {
+                t: 'คือ เรา มี ความ รู้ สึก ว่า เขา ทำ อะไร ที่ มัน เฉพาะ หน้า ไม่ ได้ ได้ อะไร ที่ มัน เป็น สถานการณ์ ฉุกเฉิน ที่ แบบ ว่า ฉัน ไม่ ได้ เตรียม ตัว มา อะไร อย่าง เงี้ย คน ญี่ปุ่น จะ ทำ ไม่ ค่อย ได้',
+                i: '[kʰɯː raw miː kʰwaːm rúː sɯ̀k wâː kʰǎw tʰam ʔà.raj tʰîː man t͡ɕʰà.pʰɔ́ʔ nâː mâj dâj dâj ʔà.raj tʰîː man pen sà.tʰǎː.ná.kaːn t͡ɕʰùk.t͡ɕʰɤ̌ːn tʰîː bɛ̀ːp wâː t͡ɕʰǎn mâj dâj triam tua maː ʔà.raj jàːŋ ŋía kʰon jîː.pùn t͡ʑà tʰam mâj kʰɔ̂j dâj]',
+                j: '彼らはその場しのぎの対応ができないように感じます。「準備していなかった」というような緊急事態に遭遇すると、日本人はあまりうまく対応できないんです。',
+                w: [
+                    {th: "เฉพาะหน้า", ipa: "[t͡ɕʰà.pʰɔ́ʔ nâː]", ja: "当面の、その場しのぎの"},
+                    {th: "สถานการณ์", ipa: "[sà.tʰǎː.ná.kaːn]", ja: "状況"},
+                    {th: "ฉุกเฉิน", ipa: "[t͡ɕʰùk.t͡ɕʰɤ̌ːn]", ja: "緊急の"},
+                    {th: "ทำอะไรที่มันเฉพาะหน้าไม่ได้", ipa: "[tʰam ʔà.raj tʰîː man t͡ɕʰà.pʰɔ́ʔ nâː mâj dâj]", ja: "その場での対応ができない"},
+                    {th: "สถานการณ์ฉุกเฉิน", ipa: "[sà.tʰǎː.ná.kaːn t͡ɕʰùk.t͡ɕʰɤ̌ːn]", ja: "緊急事態"},
+                    {th: "ทำไม่ค่อยได้", ipa: "[tʰam mâj kʰɔ̂j dâj]", ja: "あまりうまくできない"}
+                ],
+                g: '【ไม่ค่อยได้】「あまり（うまく）できない」という能力の低さや頻度の少なさを表します。'
+            },
+            {
+                t: 'หรือ อย่าง เรา เอง เงี้ย ค่ะ เรา อาจ จะ ไม่ ได้ อยู่ ใน โลก ที่ แบบ เป็น business จ๋า อะไร ขนาด นั้น ใช่ มย',
+                i: '[rɯ̌ː jàːŋ raw ʔeːŋ ŋía kʰâ raw ʔàːt t͡ʑà mâj dâj jùː naj lôːk tʰîː bɛ̀ːp pen bít.sà.nèt t͡ɕǎː ʔà.raj kʰà.nàːt nán t͡ɕʰâj má]',
+                j: 'あるいは私自身のことですが、私はそこまでバリバリのビジネスの世界にいるわけではありませんよね。',
+                c: 'มย -> มั้ย',
+                w: [
+                    {th: "โลก", ipa: "[lôːk]", ja: "世界"},
+                    {th: "จ๋า", ipa: "[t͡ɕǎː]", ja: "〜ずくめの、コテコテの"},
+                    {th: "เป็น business จ๋า", ipa: "[pen bít.sà.nèt t͡ɕǎː]", ja: "バリバリのビジネスだ"}
+                ],
+                g: '【จ๋า】形容詞や名詞の後ろについて、「コテコテの〜」「〜度合いが極めて高い」という意味を表す口語的な強調表現です。'
+            },
+            {
+                t: 'แต่ ว่า สำหรับ มุม มอง ของ คน ที่ สอน ภาษา แล้ว ก็ จะ มอง ว่า มัน จะ ได้ หรอ อะไร อย่าง เงี้ย แต่ สำหรับ มุม มอง ของ คน ญี่ปุ่น ที่ เขา โต มา ใน ธรรมเนียม แบบ นั้น อย่าง เงี้ย เขา ก็ จะ มี ความ รู้ สึก ว่า ไม่ ได้ ฉัน ต้อง ทำ ให้ มัน เพเfect ฉัน ต้อง ไป เตรียม ตัว มา',
+                i: '[tɛ̀ː wâː sǎm.ràp mum mɔːŋ kʰɔ̌ːŋ kʰon tʰîː sɔ̌ːn pʰaː.sǎː lɛ́ːw kɔ̂ː t͡ʑà mɔːŋ wâː man t͡ʑà dâj rɔ̌ː ʔà.raj jàːŋ ŋía tɛ̀ː sǎm.ràp mum mɔːŋ kʰɔ̌ːŋ kʰon jîː.pùn tʰîː kʰǎw toː maː naj tʰam.niam bɛ̀ːp nán jàːŋ ŋía kʰǎw kɔ̂ː t͡ʑà miː kʰwaːm rúː sɯ̀k wâː mâj dâj t͡ɕʰǎn tɔ̂ŋ tʰam hâj man pʰɤː.fèk t͡ɕʰǎn tɔ̂ŋ paj triam tua maː]',
+                j: '語学を教える側の視点からすると「それで（上達するの）？」と思っちゃうんですけどね。でも、そういう慣習の中で育ってきた日本人の視点からすると、「ダメだ、完璧にやらなきゃ。準備していかなきゃ」と感じてしまうわけです。',
+                c: 'เพเfect -> เพอร์เฟกต์',
+                w: [
+                    {th: "มุมมอง", ipa: "[mum mɔːŋ]", ja: "視点"},
+                    {th: "ธรรมเนียม", ipa: "[tʰam.niam]", ja: "慣習、しきたり"},
+                    {th: "มันจะได้หรอ", ipa: "[man t͡ʑà dâj rɔ̌ː]", ja: "それでいいの？／それでできるの？"},
+                    {th: "ต้องไปเตรียมตัวมา", ipa: "[tɔ̂ŋ paj triam tua maː]", ja: "準備してこなければならない"}
+                ],
+                g: '【มันจะได้หรอ】「それ（そんなやり方）で出来るの？／いいの？」と疑問や懸念を投げかける非常によく使われるフレーズです。'
+            },
+            {
+                t: 'ก็ มัน ก็ มี ทั้ง ดี แล้ว ก็ ไม่ ดี อ่ะ เนาะ กับ เอ่อ นิสัย การ ชอบ ความ เพเฟค ชอบ เตรียม ตัว',
+                i: '[kɔ̂ː man kɔ̂ː miː tʰáŋ diː lɛ́ːw kɔ̂ː mâj diː àʔ nɔ́ kàp ʔɤ̀ː ní.sǎj kaːn t͡ɕʰɔ̂ːp kʰwaːm pʰɤː.fèk t͡ɕʰɔ̂ːp triam tua]',
+                j: '完璧主義で準備好きな性格には、良い面も悪い面もあるんですよね。',
+                c: 'เพเฟค -> เพอร์เฟกต์',
+                w: [
+                    {th: "ทั้ง...แล้วก็...", ipa: "[tʰáŋ...lɛ́ːw kɔ̂ː...]", ja: "〜でもあり、〜でもある"},
+                    {th: "มีทั้งดีแล้วก็ไม่ดี", ipa: "[miː tʰáŋ diː lɛ́ːw kɔ̂ː mâj diː]", ja: "良い面も悪い面もある"},
+                    {th: "อ่ะเนาะ", ipa: "[àʔ nɔ́]", ja: "〜なんだよねぇ（口語）"}
+                ],
+                g: '【อ่ะเนาะ】อ่ะ と เนาะ が合わさった表現で、「〜なんだよねぇ」と深く同意したり、しみじみと語ったりする際に使われます。'
+            },
+            {
+                t: 'ดู ห่าน จะ ดู เหมือน สนุก สนาน เนาะ เฮา ปาร์ตี้ กิน เหล้า แล้ว ก็ เมา กัน แบบ อะไร อย่าง เงี้ย',
+                i: '[duː hǎːn t͡ʑà duː mɯ̌an sà.nùk sà.nǎːn nɔ́ heː.haː paː.tîː kin lâw lɛ́ːw kɔ̂ː maw kan bɛ̀ːp ʔà.raj jàːŋ ŋía]',
+                j: '一見すると、ワイワイお酒を飲んで酔っ払って、楽しいように見えますよね。',
+                c: 'ห่าน -> ผ่านๆ, เฮา -> เฮฮา',
+                w: [
+                    {th: "ดูเหมือน", ipa: "[duː mɯ̌an]", ja: "〜のように見える"},
+                    {th: "สนุกสนาน", ipa: "[sà.nùk sà.nǎːn]", ja: "楽しい"},
+                    {th: "เมา", ipa: "[maw]", ja: "酔う"},
+                    {th: "จะดูเหมือนสนุกสนาน", ipa: "[t͡ʑà duː mɯ̌an sà.nùk sà.nǎːn]", ja: "楽しそうに見える"},
+                    {th: "กินเหล้าแล้วก็เมากัน", ipa: "[kin lâw lɛ́ːw kɔ̂ː maw kan]", ja: "お酒を飲んでみんなで酔う"}
+                ],
+                g: '【ดูเหมือน】「〜のように見える」「〜のようだ」という推量を表します。'
+            },
+            {
+                t: 'ซึ่ง ส่วน มาก แล้ว ก็ จะ เป็น คน ที่ ตำแหน่ง ต่ำ ที่ สุด อายุ น้อย ที่ สุด ค่ะ เพราะ ว่า เพิ่ง เข้า มา ใหม่ ก็ จะ ต้อง เป็น คน รับ ผิด ชอบ จัด แจง วาง แผน อะไร ทุก อย่าง เนาะ',
+                i: '[sɯ̂ŋ sùan mâːk lɛ́ːw kɔ̂ː t͡ʑà pen kʰon tʰîː tam.nɛ̀ŋ tàm tʰîː sùt ʔaː.júʔ nɔ́ːj tʰîː sùt kʰâ pʰrɔ́ wâː pʰɤ̂ŋ kʰâw maː màj kɔ̂ː t͡ʑà tɔ̂ŋ pen kʰon ráp pʰìt t͡ɕʰɔ̂ːp t͡ʑàt t͡ʑɛːŋ waːŋ pʰɛ̌ːn ʔà.raj tʰúk jàːŋ nɔ́]',
+                j: 'และ大抵の場合、最も役職が低く、年齢が若い人になります。新しく入ってきたばかりの人が、手配や計画など全てを担当しなければならないんですよね。',
+                w: [
+                    {th: "ต่ำที่สุด", ipa: "[tàm tʰîː sùt]", ja: "最も低い"},
+                    {th: "อายุน้อยที่สุด", ipa: "[ʔaː.júʔ nɔ́ːj tʰîː sùt]", ja: "最年少の"},
+                    {th: "รับผิดชอบ", ipa: "[ráp pʰìt t͡ɕʰɔ̂ːp]", ja: "責任を負う"},
+                    {th: "เพิ่งเข้ามาใหม่", ipa: "[pʰɤ̂ŋ kʰâw maː màj]", ja: "入ってきたばかり"},
+                    {th: "รับผิดชอบจัดแจงวางแผน", ipa: "[ráp pʰìt t͡ɕʰɔ̂ːp t͡ʑàt t͡ʑɛːŋ waːŋ pʰɛ̌ːn]", ja: "手配や計画を担当する"}
+                ],
+                g: '【เพิ่ง】動詞の前に置いて「〜したばかり」という完了したばかりのアスペクトを表します。'
+            },
+            {
+                t: 'ซึ่ง ส่วน มาก แล้ว ใน ห้อง ประชุม มัน ก็ จะ ต้อง มี ประตู ใช่ มั้ย คะ ซึ่ง คน ที่ นั่ง ใกล้ ประตู มาก ที่ สุด คน คน นั้น จะ ต้อง เป็น คน ที่ ตำแหน่ง เอ่อ น้อย ที่ สุด',
+                i: '[sɯ̂ŋ sùan mâːk lɛ́ːw naj hɔ̂ŋ prà.t͡ɕʰum man kɔ̂ː t͡ʑà tɔ̂ŋ miː prà.tuː t͡ɕʰâj má kʰá sɯ̂ŋ kʰon tʰîː nâŋ klâj prà.tuː mâːk tʰîː sùt kʰon kʰon nán t͡ʑà tɔ̂ŋ pen kʰon tʰîː tam.nɛ̀ŋ ʔɤ̀ː nɔ́ːj tʰîː sùt]',
+                j: '大抵の場合、会議室にはドアがありますよね。一番ドアの近くに座る人というのは、役職が一番低い人でなければなりません。',
+                w: [
+                    {th: "ห้องประชุม", ipa: "[hɔ̂ŋ prà.t͡ɕʰum]", ja: "会議室"},
+                    {th: "ใกล้ประตู", ipa: "[klâj prà.tuː]", ja: "ドアの近く"},
+                    {th: "นั่งใกล้ประตูมากที่สุด", ipa: "[nâŋ klâj prà.tuː mâːk tʰîː sùt]", ja: "ドアに最も近く座る"},
+                    {th: "น้อยที่สุด", ipa: "[tam.nɛ̀ŋ nɔ́ːj tʰîː sùt]", ja: "役職が最も低い"}
+                ],
+                g: '【ที่สุด】形容詞や副詞の後ろに置いて最上級（最も〜）を作ります。（例：มากที่สุด = 最も多い、一番〜）'
+            },
+            {
+                t: 'แต่ ก็ อย่าง ว่า ใน แต่ ละ ห้อง แต่ ละ รูป แบบ ของ โต๊ะ อะไร อย่าง เงี้ย layout มัน ก็ จะ ไม่ เหมือน กัน ใช่ มั้ ดัง นั้น แต่ ละ ห้อง แต่ ละ layout เนี่ย มัน ก็ จะ ไม่ เหมือน กัน ค่ะ อย่าง เช่น 2 layout แบบ นี้',
+                i: '[tɛ̀ː kɔ̂ː jàːŋ wâː naj tɛ̀ː lá hɔ̂ŋ tɛ̀ː lá rûːp bɛ̀ːp kʰɔ̌ːŋ tóʔ ʔà.raj jàːŋ ŋía leː.ʔáw man kɔ̂ː t͡ʑà mâj mɯ̌an kan t͡ɕʰâj má daŋ nán tɛ̀ː lá hɔ̂ŋ tɛ̀ː lá leː.ʔáw nîa man kɔ̂ː t͡ʑà mâj mɯ̌an kan kʰâ jàːŋ t͡ɕʰên sɔ̌ːŋ leː.ʔáw bɛ̀ːp níː]',
+                j: 'でも、それぞれの部屋やテーブルの形によって、レイアウトは異なりますよね。だから、部屋やレイアウトごとに（座り方も）違ってくるんです。例えばこの2つのレイアウトのように。',
+                c: 'มั้ -> มั้ย',
+                w: [
+                    {th: "แต่ละ...", ipa: "[tɛ̀ː lá...]", ja: "それぞれの〜"},
+                    {th: "รูปแบบ", ipa: "[rûːp bɛ̀ːp]", ja: "形式、パターン"},
+                    {th: "อย่างว่า", ipa: "[jàːŋ wâː]", ja: "ご存知の通り、言ったように"},
+                    {th: "แต่ละห้องแต่ละรูปแบบของโต๊ะ", ipa: "[tɛ̀ː lá hɔ̂ŋ tɛ̀ː lá rûːp bɛ̀ːp kʰɔ̌ːŋ tóʔ]", ja: "それぞれの部屋や机の形ごとに"}
+                ],
+                g: '【อย่างว่า】「ご存知の通り」「言ったように」という意味で、話を切り出したり整理したりする際に使われます。'
+            },
+            {
+                t: 'แต่ ที่ เรา รู้ สึก ว่า มัน มัน เยอะ นะ อะไร อย่าง เงี้ย ก็ คือ เอ่อ ตำแหน่ง ใน การ นั่ง แท็กซี่ ตำแหน่ง ใน การ เอ่อ ขึ้น รถ ไฟ นั่ง บน รถ ไฟ อย่าง เงี้ย ค่ะ พวก ชิน คันเซ็น อะไร อย่าง เงี้ย เนาะ ก็ ต้อง มี แบบ ตำแหน่ง ว่า ใคร นั่ง ตรง ไหน อะไร ยัง ไง เงี้ย ค่ะ เรา ก็ ต้อง จำ ให้ ได้',
+                i: '[tɛ̀ː tʰîː raw rúː sɯ̀k wâː man man jɤ́ʔ ná ʔà.raj jàːŋ ŋía kɔ̂ː kʰɯː ʔɤ̀ː tam.nɛ̀ŋ naj kaːn nâŋ tʰɛ́k.sîː tam.nɛ̀ŋ naj kaːn ʔɤ̀ː kʰɯ̂n rót faj nâŋ bon rót faj jàːŋ ŋía kʰâ pʰûak t͡ɕʰin kʰan sen ʔà.raj jàːŋ ŋía nɔ́ kɔ̂ː tɔ̂ŋ miː bɛ̀ːp tam.nɛ̀ŋ wâː kʰraj nâŋ troŋ nǎj ʔà.raj jaŋ ŋaj ŋía kʰâ raw kɔ̂ː tɔ̂ŋ t͡ʑam hâj dâj]',
+                j: 'でも、私が「それはやりすぎでは」と感じるのは、タクシーに乗る時の位置や、電車、新幹線などに乗る時の座席の位置です。誰がどこに座るかという位置が決まっていて、私たちはそれを覚えておかなければなりません。',
+                w: [
+                    {th: "เยอะ", ipa: "[jɤ́ʔ]", ja: "多い（やりすぎ）"},
+                    {th: "แท็กซี่", ipa: "[tʰɛ́k.sîː]", ja: "タクシー"},
+                    {th: "จำให้ได้", ipa: "[t͡ʑam hâj dâj]", ja: "しっかり覚える"},
+                    {th: "ตำแหน่งในการนั่งแท็กซี่", ipa: "[tam.nɛ̀ŋ naj kaːn nâŋ tʰɛ́k.sîː]", ja: "タクシーに乗る際の席の位置"},
+                    {th: "ใครนั่งตรงไหน", ipa: "[kʰraj nâŋ troŋ nǎj]", ja: "誰がどこに座るか"}
+                ],
+                g: '【เยอะ】本来は「数が多い」ですが、ここでは「（ルールなどが）多すぎる、やりすぎ、過剰だ」というニュアンスで使われています。'
+            },
+            {
+                t: 'แต่ สำหรับ ที่ ญี่ปุ่น น่ะ ค่ะ คือ ทุก ตำแหน่ง จะ มี ที่ นั่ง แบบ ฟิก เป็น ของ ตัว เอง ตั้ง แต่ ตำแหน่ง ที่ สูง ที่ สุด ไป ยัง ตำแหน่ง ที่ แบบ น้อง ใหม่ ที่ สุด เด็ก ฝึก งาน ที่ สุด อะไร อย่าง เงี้ย ค่ะ ก็ จะ ต้อง มี ตำแหน่ง ที่ นั่ง ของ ตัว เอง',
+                i: '[tɛ̀ː sǎm.ràp tʰîː jîː.pùn nàʔ kʰâ kʰɯː tʰúk tam.nɛ̀ŋ t͡ʑà miː tʰîː nâŋ bɛ̀ːp fík pen kʰɔ̌ːŋ tua ʔeːŋ tâŋ tɛ̀ː tam.nɛ̀ŋ tʰîː sǔːŋ tʰîː sùt paj jaŋ tam.nɛ̀ŋ tʰîː bɛ̀ːp nɔ́ːŋ màj tʰîː sùt dèk fɯ̀k ŋaːn tʰîː sùt ʔà.raj jàːŋ ŋía kʰâ kɔ̂ː t͡ʑà tɔ̂ŋ miː tam.nɛ̀ŋ tʰîː nâŋ kʰɔ̌ːŋ tua ʔeːŋ]',
+                j: 'でも日本においては、最も高い役職から最も新人のインターン生に至るまで、すべての役職に固定の座席があるんです。自分自身の座席の位置が決まっているんです。',
+                c: 'ฟิก -> ฟิกซ์ (fix)',
+                w: [
+                    {th: "ที่นั่ง", ipa: "[tʰîː nâŋ]", ja: "座席"},
+                    {th: "น้องใหม่", ipa: "[nɔ́ːŋ màj]", ja: "新人"},
+                    {th: "เด็กฝึกงาน", ipa: "[dèk fɯ̀k ŋaːn]", ja: "インターン生"},
+                    {th: "ตั้งแต่ตำแหน่งที่สูงที่สุด", ipa: "[tâŋ tɛ̀ː tam.nɛ̀ŋ tʰîː sǔːŋ tʰîː sùt]", ja: "最高位の役職から"},
+                    {th: "ตำแหน่งที่นั่งของตัวเอง", ipa: "[tam.nɛ̀ŋ tʰîː nâŋ kʰɔ̌ːŋ tua ʔeːŋ]", ja: "自分の座る席の位置"}
+                ]
+            },
+            {
+                t: 'จะ ต้อง รู้ โดย ทัน ที ว่า เรา อยู่ ใน ตำแหน่ง ไหน ใน กลุ่ม นี้ แล้ว ก็ ใคร ที่ เป็น ลำดับ ที่ สำคัญ ที่ สุด 1 2 3 4 จะ ต้อง เรียง ลำดับ ออก มา ให้ ได้ ค่อน ข้าง จะ ซีเรียส นะ ที่ นี่ อื',
+                i: '[t͡ʑà tɔ̂ŋ rúː doːj tʰan tʰiː wâː raw jùː naj tam.nɛ̀ŋ nǎj naj klùm níː lɛ́ːw kɔ̂ː kʰraj tʰîː pen lam.dàp tʰîː sǎm.kʰan tʰîː sùt nɯ̀ŋ sɔ̌ːŋ sǎːm sìː t͡ʑà tɔ̂ŋ riaŋ lam.dàp ʔɔ̀ːk maː hâj dâj kʰɔ̂n kʰâːŋ t͡ʑà siː.rîat ná tʰîː nîː ɯː]',
+                j: 'このグループの中で自分がどの立場にいるかを即座に把握し、誰が一番重要なのか、1位、2位、3位、4位と順位付けできなければなりません。ここはかなりシビアなんですよ。',
+                c: 'เงี้ -> อย่างงี้',
+                w: [
+                    {th: "โดยทันที", ipa: "[doːj tʰan tʰiː]", ja: "即座に"},
+                    {th: "ลำดับ", ipa: "[lam.dàp]", ja: "順番、順位"},
+                    {th: "ซีเรียส", ipa: "[siː.rîat]", ja: "シビアな、真剣な"},
+                    {th: "เรียงลำดับออกมาให้ได้", ipa: "[riaŋ lam.dàp ʔɔ̀ːk maː hâj dâj]", ja: "順番に並べられるようにする"}
+                ]
+            },
+            {
+                t: 'หรือ ว่า ถ้า ไป ส่ง ลูก ค้า ที่ ลิฟต เนาะ ใน ตึก อาคาร ที่ เรา ทำ งาน อย่าง เงี้ย เนี่ย แล้ว เรา ก็ ควร จะ โค้ง ขอบคุณ เค้า แล้ว ก็ ค้าง ไว้ อย่าง นั้น จน กว่า ประตู ลิฟต อ่ะ ค่ะ จะ ปิด แบบ ปิด สนิท จน กว่า จะ ไม่ เห็น กัน และ กัน อ้า',
+                i: '[rɯ̌ː wâː tʰâː paj sòŋ lûːk kʰáː tʰîː líp nɔ́ naj tɯ̀k ʔaː.kʰaːn tʰîː raw tʰam ŋaːn jàːŋ ŋía nîa lɛ́ːw raw kɔ̂ː kʰuan t͡ʑà kʰóːŋ kʰɔ̀ːp kʰun kʰáw lɛ́ːw kɔ̂ː kʰáːŋ wáj jàːŋ nán t͡ʑon kwàː prà.tuː líp àʔ kʰâ t͡ʑà pìt bɛ̀ːp pìt sà.nìt t͡ʑon kwàː t͡ʑà mâj hěn kan lɛ́ kan ʔâː]',
+                j: 'あるいは、自分たちが働いているビルのエレベーターまでお客様を見送る時ですね、お辞儀をしてお礼を言い、エレベーターのドアが完全に閉まってお互いが見えなくなるまで、その姿勢を保たなければなりません。',
+                c: 'ลิฟต -> ลิฟต์',
+                w: [
+                    {th: "ตึกอาคาร", ipa: "[tɯ̀k ʔaː.kʰaːn]", ja: "ビル、建物"},
+                    {th: "ปิดสนิท", ipa: "[pìt sà.nìt]", ja: "完全に閉まる"},
+                    {th: "ไม่เห็นกันและกัน", ipa: "[mâj hěn kan lɛ́ kan]", ja: "お互いが見えなくなる"},
+                    {th: "ค้างไว้อย่างนั้น", ipa: "[kʰáːŋ wáj jàːŋ nán t͡ʑon kwàː prà.tuː líp t͡ʑà pìt]", ja: "エレベーターの扉が閉まるまでその姿勢を保つ"},
+                    {th: "จนกว่าจะไม่เห็นกันและกัน", ipa: "[t͡ʑon kwàː t͡ʑà mâj hěn kan lɛ́ kan]", ja: "お互いが見えなくなるまで"}
+                ],
+                g: '【จนกว่า】「〜するまでずっと」という時間的な継続の限界点を示します。'
+            },
+            {
+                t: 'ซึ่ง เพราะ ว่า ถ้า เรา อยู่ ใน ตำแหน่ง ของ การ เป็น ลูก ค้า อย่าง เงี้ย ค่ะ คือ เรา ไม่ จำเป็น ต้อง โค้ง นาน ๆ กลับ ใช่ มย เรา ก็ แค่ แบบ โค้ง นิด นึง อะไร อย่าง เงี้ย แล้ว ก็ รีแลก ได้ ของ เรา',
+                i: '[sɯ̂ŋ pʰrɔ́ wâː tʰâː raw jùː naj tam.nɛ̀ŋ kʰɔ̌ːŋ kaːn pen lûːk kʰáː jàːŋ ŋía kʰâ kʰɯː raw mâj t͡ʑam pen tɔ̂ŋ kʰóːŋ naːn naːn klàp t͡ɕʰâj má raw kɔ̂ː kʰɛ̂ː bɛ̀ːp kʰóːŋ nít nɯŋ ʔà.raj jàːŋ ŋía lɛ́ːw kɔ̂ː riː.lɛ̀k dâj kʰɔ̌ːŋ raw]',
+                j: 'なぜなら、もし自分が客の立場だった場合、私たちは長々と（相手に）お辞儀を返す必要はないですよね。ただちょっとお辞儀を返して、あとはリラックスしていればいいわけです。',
+                c: 'มย -> มั้ย, รีแลก -> รีแล็กซ์',
+                w: [
+                    {th: "ไม่จำเป็นต้อง...", ipa: "[mâj t͡ʑam pen tɔ̂ŋ]", ja: "〜する必要はない"},
+                    {th: "รีแล็กซ์", ipa: "[riː.lɛ̀k]", ja: "リラックスする"},
+                    {th: "ไม่จำเป็นต้องโค้งนานๆ กลับ", ipa: "[mâj t͡ʑam.pen tɔ̂ŋ kʰôːŋ naːn naːn klàp]", ja: "長くお辞儀を返す必要はない"},
+                    {th: "โค้งนิดนึง", ipa: "[kʰôːŋ nít nɯŋ]", ja: "少しお辞儀をする"}
+                ],
+                g: '【...กลับ】動詞の後に付いて、「（動作を）やり返す、お返しに〜する」という意味を加えます（例: โค้งกลับ = お辞儀を返す）。'
+            },
+            {
+                t: 'มัน ก็ เป็น เรื่อง แบบ อืม คิด ว่า common sense ของ ทุก คน ก็ น่า จะ รู้ อยู่ แล้ว อะไร อย่าง เงี้ย แต่ ว่า เอ่อ อย่าง ที่ บอก ไว้ ว่า ใน ประเทศ ญี่ปุ่น น่ะ ค่ะ ต่อ ให้ มัน ฟัง ดู แบบ เบสิค ขนาด ไหน อะไร อย่าง เงี้ย แต่ การ ผิด พลาด แม้ แต่ ครั้ง เดียว มัน สามารถ ตัด สิน ทั้ง ชีวิต ของ เรา ได้ เลย อะไร อย่าง เงี้ย',
+                i: '[man kɔ̂ː pen rɯ̂aŋ bɛ̀ːp ɯːm kʰít wâː kʰɔm.mɔ̂n sên kʰɔ̌ːŋ tʰúk kʰon kɔ̂ː nâː t͡ʑà rúː jùː lɛ́ːw ʔà.raj jàːŋ ŋía tɛ̀ː wâː ʔɤ̀ː jàːŋ tʰîː bɔ̀ːk wáj wâː naj prà.tʰêːt jîː.pùn nàʔ kʰâ tɔ̀ː hâj man faŋ duː bɛ̀ːp beː.sìk kʰà.nàːt nǎj ʔà.raj jàːŋ ŋía tɛ̀ː kaːn pʰìt pʰlâːt mɛ́ː tɛ̀ː kʰráŋ diaw man sǎː.mâːt tàt sǐn tʰáŋ t͡ɕʰiː.wít kʰɔ̌ːŋ raw dâj lɤːj ʔà.raj jàːŋ ŋía]',
+                j: 'まあ、誰もが知っている常識だと思うようなことなんですけどね。でも日本においては、どんなにベーシックなことに聞こえても、たった一度の失敗が自分の人生全体を決定づけてしまうこともあるんです。',
+                w: [
+                    {th: "เบสิค", ipa: "[beː.sìk]", ja: "基本的、ベーシック"},
+                    {th: "แม้แต่ครั้งเดียว", ipa: "[mɛ́ː tɛ̀ː kʰráŋ diaw]", ja: "たった一度でも"},
+                    {th: "ตัดสิน", ipa: "[tàt sǐn]", ja: "決定する"},
+                    {th: "ต่อให้มันฟังดูแบบเบสิคขนาดไหน", ipa: "[tɔ̀ː hâj man faŋ duː bɛ̀ːp beː.sìk kʰà.nàːt nǎj]", ja: "どれほど基本的に聞こえても"},
+                    {th: "การผิดพลาดแม้แต่ครั้งเดียว", ipa: "[kaːn pʰìt pʰlâːt mɛ́ː tɛ̀ː kʰráŋ diaw]", ja: "たった一度の失敗でさえ"}
+                ],
+                g: '【ต่อให้】「たとえ〜だとしても」「仮に〜であっても」という譲歩や逆接を表す接続詞です。'
+            },
+            {
+                t: 'ซึ่ง เรา คิด ว่า สำหรับ คน ที่ เป็น ต่าง ชาติ แบบ เรา ๆ อ่ะ ค่ะ คน ญี่ปุ่น เขา ค่อน ข้าง จะ เข้า ใจ แล้ว ก็ มี ความ แบบ หยวน ๆ มาก กว่า คน ญี่ปุ่น ด้วย กัน เอง อยู่ แล้ว',
+                i: '[sɯ̂ŋ raw kʰít wâː sǎm.ràp kʰon tʰîː pen tàːŋ t͡ɕʰâːt bɛ̀ːp raw raw àʔ kʰâ kʰon jîː.pùn kʰǎw kʰɔ̂n kʰâːŋ t͡ʑà kʰâw t͡ʑaj lɛ́ːw kɔ̂ː miː kʰwaːm bɛ̀ːp jǔan jǔan mâːk kwàː kʰon jîː.pùn dûaj kan ʔeːŋ jùː lɛ́ːw]',
+                j: 'でも、私達のような外国人に対しては、日本人はかなり理解してくれて、日本人同士の時よりも少し大目に見てくれる傾向にあると私は思っています。',
+                w: [
+                    {th: "เข้าใจ", ipa: "[kʰâw t͡ʑaj]", ja: "理解する"},
+                    {th: "หยวนๆ", ipa: "[jǔan jǔan]", ja: "妥協する、大目に見る"},
+                    {th: "ด้วยกันเอง", ipa: "[dûaj kan ʔeːŋ]", ja: "同士で"},
+                    {th: "คนที่เป็นต่างชาติแบบเราๆ", ipa: "[kʰon tʰîː pen tàːŋ t͡ɕʰâːt bɛ̀ːp raw raw]", ja: "私達のような外国人"},
+                    {th: "หยวนๆ มากกว่าคนญี่ปุ่นด้วยกันเอง", ipa: "[jǔan jǔan mâːk kwàː kʰon jîː.pùn dûaj kan ʔeːŋ]", ja: "日本人同士より寛容だ"}
+                ],
+                g: '【แบบเราๆ】代名詞に ๆ を付けることで「私達のような（複数の）者たち」という広がりを持たせます。'
+            },
+            {
+                t: 'โอเค ค่ะ ถ้า เกิด ว่า ใคร ที่ ชอบ คเทน แบบ นี้ นะ คะ ก็ อย่า ลืม กด ไลค์ แชร์ แล้ว ก็ Subscribe ช่อง เป็น กำลัง ใจ กัน ให้ ด้วย นะ คะ สำหรับ วัน นี้ ก็ ไป แล้ว ค่ะ บ๊าย บาย',
+                i: '[ʔoː.kʰeː kʰâ tʰâː kɤ̀ːt wâː kʰraj tʰîː t͡ɕʰɔ̂ːp kʰɔn.tʰén bɛ̀ːp níː ná kʰá kɔ̂ː jàː lɯːm kòt láj t͡ɕʰɛː lɛ́ːw kɔ̂ː sáp.sà.kʰráj t͡ɕʰɔ̂ŋ pen kam.laŋ t͡ʑaj kan hâj dûaj ná kʰá sǎm.ràp wan níː kɔ̂ː paj lɛ́ːw kʰâ báːj baːj]',
+                j: 'はい、もしこういうコンテンツが好きな方がいたら、「いいね」「シェア」そして「チャンネル登録」で応援をお願いします。それでは今日はこれで失礼します。バイバーイ。',
+                c: 'คเทน -> คอนเทนต์ (content)',
+                w: [
+                    {th: "คอนเทนต์", ipa: "[kʰɔn.tʰén]", ja: "コンテンツ"},
+                    {th: "กดไลค์", ipa: "[kòt láj]", ja: "「いいね」を押す"},
+                    {th: "สำหรับวันนี้", ipa: "[sǎm.ràp wan níː]", ja: "今日に関しては（それでは今日はこれで）"},
+                    {th: "อย่าลืมกดไลค์แชร์", ipa: "[jàː lɯːm kòt láj t͡ɕʰɛː]", ja: "いいねとシェアを忘れないで"},
+                    {th: "เป็นกำลังใจกันให้ด้วย", ipa: "[pen kam.laŋ t͡ʑaj kan hâj dûaj]", ja: "応援もお願いします"}
+                ]
+            }
+        ];
+
+        const app = document.getElementById('app');
+
+        Data.forEach((d, idx) => {
+            const n = idx + 1;
+            
+            
+            // "※要確認" バッジ
+            let cHtml = d.c ? `<span class="inline-flex items-center bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded ml-2 whitespace-nowrap align-middle border border-red-200"><span class="mr-1">※要確認:</span> ${d.c}</span>` : '';
+            
+            // 単語テーブル生成
+            let detailsHtml = '';
+            if (d.w && d.w.length > 0) {
+                const wRows = d.w.map((word, wordIdx) => {
+                    return `
+                    <tr class="border-b last:border-b-0 hover:bg-slate-50 transition-colors">
+                        <td class="py-3 px-4 w-12 text-center align-middle">
+                            <button onclick="playAudio(Data[${idx}].w[${wordIdx}].th, 1.0)" class="play-btn text-blue-500 hover:text-white bg-blue-50 hover:bg-blue-500 border border-blue-200 rounded-full inline-flex items-center justify-center w-9 h-9 focus:outline-none focus:ring-2 focus:ring-blue-300 shadow-sm" title="単語を再生">
+                                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.56.276 2.56-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                                    <path d="M15.932 7.757a.75.75 0 011.061 0 4.5 4.5 0 010 6.364.75.75 0 01-1.06-1.06 3 3 0 000-4.243.75.75 0 010-1.061z" />
+                                </svg>
+                            </button>
+                        </td>
+                        <td class="py-3 px-3 font-thai font-bold text-blue-900 text-lg align-middle">${word.th}</td>
+                        <td class="py-3 px-3 text-slate-500 font-ipa align-middle">${word.ipa}</td>
+                        <td class="py-3 px-3 text-slate-800 align-middle">${word.ja}</td>
+                    </tr>
+                    `;
+                }).join('');
+                
+                detailsHtml = `
+                <details class="mt-5 group bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+                    <summary class="cursor-pointer font-bold text-slate-700 p-4 hover:bg-slate-50 active:bg-slate-100 transition-colors flex items-center justify-between select-none">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            単語リストを表示
+                        </span>
+                        <svg class="summary-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="border-t border-slate-200 overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4 w-12 text-center">再生</th>
+                                    <th class="py-3 px-3">タイ語</th>
+                                    <th class="py-3 px-3">発音(IPA)</th>
+                                    <th class="py-3 px-3">日本語</th>
+                                </tr>
+                            </thead>
+                            <tbody>${wRows}</tbody>
+                        </table>
+                    </div>
+                </details>`;
+            }
+
+            // 文法・表現解説の生成
+            let grammarHtml = '';
+            if (d.g) {
+                grammarHtml = `
+                <div class="mt-4 bg-amber-50/70 border border-amber-200/80 rounded-xl p-4 text-slate-700 shadow-sm">
+                    <div class="flex items-center gap-2 mb-2 font-bold text-amber-700">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        文法・表現の解説
+                    </div>
+                    <div class="text-[0.95em] leading-relaxed text-slate-800">${d.g}</div>
+                </div>`;
+            }
+
+            const cardHtml = `
+            <div id="card-${idx}" class="card-item bg-white rounded-2xl shadow-sm border border-slate-200 p-5 md:p-6 flex flex-col md:flex-row gap-5 hover:shadow-md transition-all">
+                
+                <div class="shrink-0 flex items-start justify-start md:flex-col gap-3 w-full md:w-auto border-b md:border-b-0 pb-4 md:pb-0 border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-sm ring-4 ring-indigo-50 mb-0 md:mb-2 mr-3 md:mr-0">${n}</div>
+                    
+                    <div class="flex flex-row md:flex-col gap-2">
+                        <button onclick="playAudio(Data[${idx}].t, 1.0)" aria-label="タイ語を標準速度で再生" class="play-btn w-12 h-12 rounded-full bg-white border-2 border-blue-100 hover:bg-blue-500 hover:border-blue-500 hover:text-white text-blue-600 flex items-center justify-center transition-all focus:outline-none focus:ring-4 focus:ring-blue-100 shadow-sm" title="標準速度で再生 (1.0x)">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.56.276 2.56-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                                <path d="M15.932 7.757a.75.75 0 011.061 0 4.5 4.5 0 010 6.364.75.75 0 01-1.06-1.06 3 3 0 000-4.243.75.75 0 010-1.061z" />
+                            </svg>
+                        </button>
+                        
+                        <button onclick="playAudio(Data[${idx}].t, 0.6)" aria-label="タイ語をスロー再生" class="play-btn w-12 h-12 rounded-full bg-white border-2 border-emerald-100 hover:bg-emerald-500 hover:border-emerald-500 hover:text-white text-emerald-600 flex items-center justify-center transition-all focus:outline-none focus:ring-4 focus:ring-emerald-100 shadow-sm" title="スロー再生 (0.6x)">
+                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.16 11.23c-.22-.3-.55-.49-.92-.53l-1.18-.14c-.16-.92-.57-1.77-1.18-2.46-.86-.98-2.14-1.58-3.52-1.66-2.14-.13-4.22 1.05-5.26 2.97-.24.45-.42.94-.53 1.45l-1.04-.12c-.52-.06-.99.27-1.13.78l-.5 1.87c-.12.45.05.94.43 1.18.23.14.5.21.77.18l.8-.09c.12.87.42 1.69.88 2.4l-.62.62c-.39.39-.39 1.02 0 1.41l.71.71c.39.39 1.02.39 1.41 0l.65-.65c.78.43 1.66.69 2.59.76.22.02.43.02.65 0 .97-.07 1.89-.35 2.7-.8l.68.68c.39.39 1.02.39 1.41 0l.71-.71c.39-.39.39-1.02 0-1.41l-.65-.65c.5-.74.83-1.61.94-2.54l.97-.11c.42-.05.77-.35.88-.76l.49-1.83c.1-.38-.01-.78-.26-1.06zM9.54 8.78c.88.24 1.54.99 1.65 1.9l-3.23-.37c.36-1 1-1.66 1.58-1.53z"/>
+                            </svg>
+                        </button>
+                        <button onclick="playAudio(Data[${idx}].j, 1.0, 'ja')" class="play-btn w-12 h-12 rounded-full bg-white border-2 border-indigo-100 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white text-indigo-600 flex items-center justify-center transition-all focus:outline-none focus:ring-4 focus:ring-indigo-100 shadow-sm" title="日本語訳を再生" aria-label="日本語訳を再生">
+                            <span class="text-lg font-bold" aria-hidden="true">日</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex-grow min-w-0 pt-1">
+                    <div class="font-thai text-xl md:text-2xl font-bold text-slate-800 mb-3 leading-relaxed inline-block">${d.t}${cHtml}</div>
+                    <div class="font-ipa text-slate-500 mb-4 break-words bg-slate-50 p-3 rounded-lg border border-slate-100 text-[0.95em]">${d.i}</div>
+                    <div class="text-slate-700 leading-relaxed font-medium text-lg border-l-4 border-indigo-200 pl-4 py-1">${d.j}</div>
+                    ${detailsHtml}
+                    ${grammarHtml}
+                </div>
+            </div>`;
+            
+            app.insertAdjacentHTML('beforeend', cardHtml);
+        });
+    </script>
+</body>
+</html>
